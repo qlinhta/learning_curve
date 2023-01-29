@@ -19,10 +19,10 @@ Features such as sharing information between users in the community, taking onli
 #### Target audience : 
 Our expected target audience is university students and working people. Those who will spend their free time pursuing a course to supplement their skills, for work or students who want to learn more about their subject of expertise. Courses are geared towards professional skill development.
 
-####Tech stacks (Estimated):
+#### Tech stacks (Estimated):
 HTML, CSS, JavaScript, SCSS, Bootstrap
 
-####Graphic, UX/UI design:
+#### Graphic, UX/UI design:
 Figma, Adobe PS, Adobe AI
 
 #### First delivery : 29/01/2023
