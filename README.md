@@ -3,10 +3,10 @@
 
 #### Author:
 
-* [Julien HADERER](#)
-* [Siyani SIVANATHAN](#)
-* [Quyen Linh TA](#)
-* [Ha Anh TRAN](#)
+* [Julien HADERER](https://github.com/JulienHaderer)(#)
+* [Siyani SIVANATHAN](https://github.com/sisiyani)(#)
+* [Quyen Linh TA](https://github.com/qlinhta)(#)
+* [Ha Anh TRAN](https://github.com/haanh0811)(#)
 
 
 #### Project idea:
