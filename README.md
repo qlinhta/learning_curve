@@ -28,4 +28,4 @@ Figma, Adobe PS, Adobe AI
 #### First delivery : 29/01/2023
 1. [A logo for our website](https://github.com/haanh0811/learning_curve/tree/main/logo).
 2. [A sketch showing what the main user will see when using our web app](https://github.com/haanh0811/learning_curve/blob/main/user.svg).
-3. [A sketch showing what an admin will see when using our web app] (https://github.com/haanh0811/learning_curve/blob/main/admin.svg).
+3. [A sketch showing what an admin will see when using our web app](https://github.com/haanh0811/learning_curve/blob/main/admin.svg).
