@@ -1,0 +1,60 @@
+body{
+    font-family: 'Suisse International', 'Helvetica', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: linear-gradient(to right, rgb(45, 7, 76), rgb(189, 18, 223));
+    margin-top: 100px
+}
+
+.input{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+    width: 500px;
+    vertical-align: middle;
+    text-align: middle;
+    background-color: white;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+img {
+    width: 500px;
+    height: 250px;
+    overflow: hidden;
+    border: 0px;
+}
+
+input{
+    display: grid;
+    justify-content: center;
+    height: 30px;
+    width: 300px;
+    margin-top: 0px;
+    margin-bottom: 15px;
+    font-size: x-large; 
+    background-color: rgb(189, 18, 223);
+    border-radius: 5px;
+    border: 0px;
+    color:white;
+}
+
+::placeholder{
+    color:rgb(223, 223, 223);
+}
+
+button{
+    height: 100px;
+    width: 500px;
+    border-bottom-left-radius:10px;
+    border-bottom-right-radius:10px;
+    background-color: rgb(62, 5, 83);
+    color: white;
+    font-size:xx-large;
+    border: 0px;
+}
+
+

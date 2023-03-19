@@ -5,3 +5,4 @@ from django import forms
 
 def login(request):
     return render(request, 'learningcurveapp/login.html')
+
