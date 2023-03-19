@@ -13,3 +13,7 @@ def student_path(request):
 
 def teacher_profile(request):
     return render(request, 'learningcurveapp/teacher-profile.html')
+
+
+def aboutus(request):
+    return render(request, 'learningcurveapp/aboutus.html')
