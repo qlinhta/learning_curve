@@ -1,3 +1,7 @@
-from django.shortcuts import render
+from django.http import HttpResponse
+from django.shortcuts import render, redirect
+from django import forms
 
-# Create your views here.
+
+def login(request):
+    return render(request, 'learningcurveapp/login.html')
