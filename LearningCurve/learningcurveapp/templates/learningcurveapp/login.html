@@ -140,7 +140,7 @@
                        data-boundary="window"><i class="material-icons">lock_open</i></a>
                 </li>
                 <li class="nav-item">
-                    <a href="signup.html"
+                    <a href="{% url 'signup' %}"
                        class="btn btn-outline-white">Get Started</a>
                 </li>
             </ul>
@@ -156,14 +156,16 @@
 
         <div class="pt-32pt pt-sm-64pt pb-32pt">
             <div class="container page__container">
-                <form action="index.html"
+                <form method="post" action="{% url 'enter_login' %}"
                       class="col-md-5 p-0 mx-auto">
+                    {% csrf_token %}
                     <div class="form-group">
                         <label class="form-label"
                                for="email">Email:</label>
                         <input id="email"
                                type="text"
                                class="form-control"
+                               name = "username"
                                placeholder="Your email address ...">
                     </div>
                     <div class="form-group">
@@ -172,6 +174,7 @@
                         <input id="password"
                                type="password"
                                class="form-control"
+                               name="password"
                                placeholder="Your first and last name ...">
                         <p class="text-right"><a href="#.html"
                                                  class="small">Forgot your password?</a></p>
@@ -396,7 +399,7 @@
 =======
 <body>
 			<div class="login">
-				<form>
+				<form method="post" action="{% url 'enter_login' %}">
 					<div class="input">
 						<img src="../../static/learningcurveapp/Logo.svg" height="250px">
 						<input type="username" name="username" placeholder="Username" required="">

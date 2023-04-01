@@ -187,14 +187,16 @@
             <div class="col-lg-10 p-0 mx-auto">
                 <div class="row">
                     <div class="col-md-6 mb-24pt mb-md-0">
-                        <form action="#">
+                        <form method="post" action="{% url 'signingup' %}">
+                            {% csrf_token %}
                             <div class="form-group">
                                 <label class="form-label"
-                                       for="name">Your first and last name:</label>
+                                       for="name">Username</label>
                                 <input id="name"
                                        type="text"
                                        class="form-control"
-                                       placeholder="Your first and last name ...">
+                                       name="username"
+                                       placeholder="Username">
                             </div>
                             <div class="form-group">
                                 <label class="form-label"
@@ -202,6 +204,7 @@
                                 <input id="email"
                                        type="email"
                                        class="form-control"
+                                       name="email"
                                        placeholder="Your email address ...">
                             </div>
                             <div class="form-group mb-24pt">
@@ -210,6 +213,7 @@
                                 <input id="password"
                                        type="password"
                                        class="form-control"
+                                       name="password"
                                        placeholder="Your password ...">
                             </div>
                             <button class="btn btn-primary">Create account</button>
