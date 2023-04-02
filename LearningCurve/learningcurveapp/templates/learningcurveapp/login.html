@@ -52,7 +52,7 @@
           href="../../static/learningcurveapp/css/dark.css"
           rel="stylesheet">
 </head>
-<<<<<<< HEAD
+
 <body class="layout-app ">
 <div class="mdk-drawer-layout js-mdk-drawer-layout"
      data-push
@@ -116,6 +116,12 @@
                        data-toggle="dropdown"
                        data-caret="false">Teachers</a>
                 </li>
+                <li class="nav-item dropdown">
+                    <a href="/learningcurveapp/aboutus"
+                       class="nav-link dropdown-toggle"
+                       data-toggle="dropdown"
+                       data-caret="false">About Us</a>
+                </li>
                 <li class="nav-item dropdown"
                     data-toggle="tooltip"
                     data-title="Community"
@@ -156,12 +162,12 @@
 
         <div class="pt-32pt pt-sm-64pt pb-32pt">
             <div class="container page__container">
-                <form method="post" action="{% url 'enter_login' %}"
+                <form method="post" action="{% url 'login' %}"
                       class="col-md-5 p-0 mx-auto">
                     {% csrf_token %}
                     <div class="form-group">
                         <label class="form-label"
-                               for="email">Email:</label>
+                               for="email">Username:</label>
                         <input id="email"
                                type="text"
                                class="form-control"
@@ -183,6 +189,10 @@
                         <button class="btn btn-primary">Login</button>
                     </div>
                 </form>
+                <div class="text-center">
+                <br>Or <br><br>
+                <a href='/learningcurveapp/signup'> <button  class="btn btn-primary">Sign Up</button></a>
+                </div>
             </div>
         </div>
         <div class="page-separator justify-content-center m-0">
@@ -233,6 +243,7 @@
 
     <!-- Drawer -->
 
+
 </div>
 
 
@@ -258,19 +269,7 @@
 <script src="../../static/learningcurveapp/js/preloader.js"></script>
 
 
-=======
-<body>
-			<div class="login">
-				<form method="post" action="{% url 'enter_login' %}">
-					<div class="input">
-						<img src="../../static/learningcurveapp/Logo.svg" height="250px">
-						<input type="username" name="username" placeholder="Username" required="">
-						<input type="password" name="password" placeholder="Password" required="">
-					</div>
-					<button type="submit">Login</button>
-				</form>
-			</div>
->>>>>>> 021f723b43d5a045714949d9931f6cb4e9ab4dd0
-</body>
+
+
 
 </html>

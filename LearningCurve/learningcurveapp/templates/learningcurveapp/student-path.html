@@ -87,7 +87,7 @@
 
                         </span>
 
-                <span class="d-none d-lg-block">Username</span>
+                <span class="d-none d-lg-block">{{ username }}</span>
             </a>
 
             <!-- // END Navbar Brand -->
@@ -140,7 +140,7 @@
                                                          class="avatar-img rounded-circle">
                                                 </span>
                                                 <span class="flex d-flex flex-column">
-                                                    <strong class="text-black-100">Linh</strong>
+                                                    <strong class="text-black-100">{{ username }}</strong>
                                                     <span class="text-black-70">Nothing to worries!.</span>
                                                 </span>
                                             </span>
@@ -158,7 +158,7 @@
                                                          class="avatar-img rounded-circle">
                                                 </span>
                                                 <span class="flex d-flex flex-column">
-                                                    <strong class="text-black-100">Linh</strong>
+                                                    <strong class="text-black-100">{{ username }}</strong>
                                                     <span class="text-black-70">This is a smile :)</span>
                                                 </span>
                                             </span>
@@ -223,7 +223,7 @@
                                                     </span>
                                                 </span>
                                                 <span class="flex d-flex flex-column">
-                                                    <strong class="text-black-100">Linh T.</strong>
+                                                    <strong class="text-black-100">{{ username }}</strong>
                                                     <span class="text-black-70">CocaCola is good! You should buy more!.</span>
                                                 </span>
                                             </span>
@@ -472,6 +472,8 @@
         <div class=" border-top-2 mt-auto">
             <div class="container page__container page-section d-flex flex-column">
                 <p class="text-70 brand mb-24pt">
+                    <a href="/learningcurveapp/aboutus"
+                       class="text-70 text-underline small">About us</a>
                     <img class="brand-icon"
                          src="../../static/learningcurveapp/images/Logo.svg"
                          width="300"
@@ -529,7 +531,7 @@
 
                             </span>
 
-                    <span>Username</span>
+                    <span>{{ username }}</span>
                 </a>
 
                 <div class="sidebar-heading">Student</div>
@@ -631,6 +633,13 @@
                            href="#">
                             <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">assignment_turned_in</span>
                             <span class="sidebar-menu-text">Skill Result</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a class="sidebar-menu-button"
+                           href="/learningcurveapp/logout">
+                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">logout</span>
+                            <span class="sidebar-menu-text">Logout</span>
                         </a>
                     </li>
                 </ul>
