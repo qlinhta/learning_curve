@@ -107,7 +107,7 @@
 
                         </span>
 
-                <span class="d-none d-lg-block">Quyen Linh TA</span>
+                <span class="d-none d-lg-block">{{ username }}</span>
             </a>
 
             <!-- // END Navbar Brand -->
@@ -160,7 +160,7 @@
                                                          class="avatar-img rounded-circle">
                                                 </span>
                                                 <span class="flex d-flex flex-column">
-                                                    <strong class="text-black-100">Linh</strong>
+                                                    <strong class="text-black-100">{{ username }}</strong>
                                                     <span class="text-black-70">Nothing to worries!.</span>
                                                 </span>
                                             </span>
@@ -178,7 +178,7 @@
                                                          class="avatar-img rounded-circle">
                                                 </span>
                                                 <span class="flex d-flex flex-column">
-                                                    <strong class="text-black-100">Linh</strong>
+                                                    <strong class="text-black-100">{{ username }}</strong>
                                                     <span class="text-black-70">This is a smile :)</span>
                                                 </span>
                                             </span>
@@ -243,7 +243,7 @@
                                                     </span>
                                                 </span>
                                                 <span class="flex d-flex flex-column">
-                                                    <strong class="text-black-100">Linh T.</strong>
+                                                    <strong class="text-black-100">{{ username }}</strong>
                                                     <span class="text-black-70">CocaCola is good! You should buy more!.</span>
                                                 </span>
                                             </span>
@@ -292,7 +292,7 @@
                      class="mr-md-32pt mb-32pt mb-md-0"
                      alt="instructor">
                 <div class="flex mb-32pt mb-md-0">
-                    <h2 class="text-white mb-0">Quyen Linh TA</h2>
+                    <h2 class="text-white mb-0">{{ username }}</h2>
                     <p class="lead text-white-50 d-flex align-items-center">Instructor <span
                             class="ml-16pt d-flex align-items-center"><i
                             class="material-icons icon-16pt mr-4pt">opacity</i>-1 IQ</span></p>
@@ -328,7 +328,7 @@
 
             <div class="page-headline text-center">
                 <h2>Courses</h2>
-                <p class="lead text-70 col-lg-8 mx-auto">Courses by Linh</p>
+                <p class="lead text-70 col-lg-8 mx-auto">{{ username }}</p>
             </div>
 
             <div class="row card-group-row mb-8pt">
@@ -483,7 +483,7 @@
                         </div>
                         <div class="flex">
                             <div class="d-flex align-items-center mb-1">
-                                <strong class="card-title">Quyen Linh TA</strong>
+                                <strong class="card-title">{{ username }}</strong>
                                 <small class="ml-auto text-muted">3 days ago</small>
                             </div>
                             <div>
@@ -514,7 +514,7 @@
                         </div>
                         <div class="flex">
                             <div class="d-flex align-items-center mb-1">
-                                <strong class="card-title">Quyen Linh TA</strong>
+                                <strong class="card-title">{{ username }}</strong>
                                 <small class="ml-auto text-muted">4 days ago</small>
                             </div>
                             <div>
@@ -561,6 +561,8 @@
         <div class=" border-top-2 mt-auto">
             <div class="container page__container page-section d-flex flex-column">
                 <p class="text-70 brand mb-24pt">
+                    <a href="/learningcurveapp/aboutus"
+                       class="text-70 text-underline small">About us</a>
                     <img class="brand-icon"
                          src="../../static/learningcurveapp/images/Logo.svg"
                          width="300"
@@ -618,7 +620,7 @@
 
                             </span>
 
-                    <span>Quyen Linh TA</span>
+                    <span>{{ username }}</span>
                 </a>
 
                 <div class="sidebar-heading">Student</div>
@@ -720,6 +722,13 @@
                            href="#">
                             <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">assignment_turned_in</span>
                             <span class="sidebar-menu-text">Skill Result</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a class="sidebar-menu-button"
+                           href="/learningcurveapp/logout">
+                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">logout</span>
+                            <span class="sidebar-menu-text">Logout</span>
                         </a>
                     </li>
                 </ul>

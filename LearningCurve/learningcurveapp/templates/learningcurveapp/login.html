@@ -52,7 +52,7 @@
           href="../../static/learningcurveapp/css/dark.css"
           rel="stylesheet">
 </head>
-<<<<<<< HEAD
+
 <body class="layout-app ">
 <div class="mdk-drawer-layout js-mdk-drawer-layout"
      data-push
@@ -116,6 +116,12 @@
                        data-toggle="dropdown"
                        data-caret="false">Teachers</a>
                 </li>
+                <li class="nav-item dropdown">
+                    <a href="/learningcurveapp/aboutus"
+                       class="nav-link dropdown-toggle"
+                       data-toggle="dropdown"
+                       data-caret="false">About Us</a>
+                </li>
                 <li class="nav-item dropdown"
                     data-toggle="tooltip"
                     data-title="Community"
@@ -156,12 +162,12 @@
 
         <div class="pt-32pt pt-sm-64pt pb-32pt">
             <div class="container page__container">
-                <form method="post" action="{% url 'enter_login' %}"
+                <form method="post" action="{% url 'login' %}"
                       class="col-md-5 p-0 mx-auto">
                     {% csrf_token %}
                     <div class="form-group">
                         <label class="form-label"
-                               for="email">Email:</label>
+                               for="email">Username:</label>
                         <input id="email"
                                type="text"
                                class="form-control"
@@ -183,6 +189,10 @@
                         <button class="btn btn-primary">Login</button>
                     </div>
                 </form>
+                <div class="text-center">
+                <br>Or <br><br>
+                <a href='/learningcurveapp/signup'> <button  class="btn btn-primary">Sign Up</button></a>
+                </div>
             </div>
         </div>
         <div class="page-separator justify-content-center m-0">
@@ -233,144 +243,7 @@
 
     <!-- Drawer -->
 
-    <div class="mdk-drawer js-mdk-drawer"
-         id="default-drawer">
-        <div class="mdk-drawer__content">
-            <div class="sidebar sidebar-black-dodger-blue sidebar-left"
-                 data-perfect-scrollbar>
 
-                <!-- Sidebar Content -->
-
-                <div class="d-flex align-items-center navbar-height">
-                    <form action="#"
-                          class="search-form search-form--black mx-16pt pr-0 pl-16pt">
-                        <input type="text"
-                               class="form-control pl-0"
-                               placeholder="Search">
-                        <button class="btn"
-                                type="submit"><i class="material-icons">search</i></button>
-                    </form>
-                </div>
-
-                <a href="#.html"
-                   class="sidebar-brand ">
-                    <span class="avatar avatar-xl sidebar-brand-icon h-auto">
-
-                                <span class="avatar-title rounded bg-primary"><img
-                                        src="../../static/learningcurveapp/images/avt.jpeg"
-                                        class="img-fluid"
-                                        alt="logo"/></span>
-
-                            </span>
-
-                    <span>Quyen Linh TA</span>
-                </a>
-
-                <div class="sidebar-heading">Student</div>
-                <ul class="sidebar-menu">
-
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button"
-                           href="#">
-                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">home</span>
-                            <span class="sidebar-menu-text">Home</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button"
-                           href="#">
-                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">local_library</span>
-                            <span class="sidebar-menu-text">Browse Courses</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button"
-                           href="#">
-                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">style</span>
-                            <span class="sidebar-menu-text">Browse Paths</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button"
-                           href="#">
-                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">account_box</span>
-                            <span class="sidebar-menu-text">Student Dashboard</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button"
-                           href="#">
-                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">search</span>
-                            <span class="sidebar-menu-text">My Courses</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button"
-                           href="#">
-                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">timeline</span>
-                            <span class="sidebar-menu-text">My Paths</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-menu-item active">
-                        <a class="sidebar-menu-button"
-                           href="student-path.html">
-                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">change_history</span>
-                            <span class="sidebar-menu-text">Path Details</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button"
-                           href="#">
-                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">panorama_fish_eye</span>
-                            <span class="sidebar-menu-text">Lesson Preview</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button"
-                           href="#">
-                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">import_contacts</span>
-                            <span class="sidebar-menu-text">Take Lesson</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button"
-                           href="#">
-                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">dvr</span>
-                            <span class="sidebar-menu-text">Take Quiz</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button"
-                           href="#">
-                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">poll</span>
-                            <span class="sidebar-menu-text">My Quizzes</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button"
-                           href="#">
-                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">live_help</span>
-                            <span class="sidebar-menu-text">Quiz Result</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button"
-                           href="#">
-                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">layers</span>
-                            <span class="sidebar-menu-text">Skill Assessment</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button"
-                           href="#">
-                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">assignment_turned_in</span>
-                            <span class="sidebar-menu-text">Skill Result</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
 </div>
 
 
@@ -396,19 +269,7 @@
 <script src="../../static/learningcurveapp/js/preloader.js"></script>
 
 
-=======
-<body>
-			<div class="login">
-				<form method="post" action="{% url 'enter_login' %}">
-					<div class="input">
-						<img src="../../static/learningcurveapp/Logo.svg" height="250px">
-						<input type="username" name="username" placeholder="Username" required="">
-						<input type="password" name="password" placeholder="Password" required="">
-					</div>
-					<button type="submit">Login</button>
-				</form>
-			</div>
->>>>>>> 021f723b43d5a045714949d9931f6cb4e9ab4dd0
-</body>
+
+
 
 </html>

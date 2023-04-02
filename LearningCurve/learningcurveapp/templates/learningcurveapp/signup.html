@@ -117,6 +117,12 @@
                        data-toggle="dropdown"
                        data-caret="false">Teachers</a>
                 </li>
+                <li class="nav-item dropdown">
+                    <a href="/learningcurveapp/aboutus"
+                       class="nav-link dropdown-toggle"
+                       data-toggle="dropdown"
+                       data-caret="false">About Us</a>
+                </li>
                 <li class="nav-item dropdown"
                     data-toggle="tooltip"
                     data-title="Community"
@@ -187,7 +193,7 @@
             <div class="col-lg-10 p-0 mx-auto">
                 <div class="row">
                     <div class="col-md-6 mb-24pt mb-md-0">
-                        <form method="post" action="{% url 'signingup' %}">
+                        <form method="post" action="{% url 'signup' %}">
                             {% csrf_token %}
                             <div class="form-group">
                                 <label class="form-label"
@@ -216,8 +222,26 @@
                                        name="password"
                                        placeholder="Your password ...">
                             </div>
+                            <div class="form-group mb-24pt">
+                                <div >Profile type:</div>
+                                <input type="radio" id="student" name="profile_type" value="Student" checked>
+                                <label for="student">Student</label>
+                                <input type="radio" id="teacher" name="profile_type" value="Teacher">
+                                <label for="teacher">Teacher</label><br>
+
+                            </div>
+                            <div class="form-group mb-24pt">
+                                <input type="checkbox" id="agree" name="agree" value="agree"> Terms and conditions
+                                <label for="agree"> By checking here and continuing, I agree to the
+                                    Luma Terms of Use</label>
+
+                            </div>
                             <button class="btn btn-primary">Create account</button>
                         </form>
+
+                        <br>
+                        <a href='/learningcurveapp/login'> <button  class="btn btn-primary">Login</button></a>
+
                     </div>
                     <div class="col-md-6">
                         <div class="card mb-0">
@@ -245,7 +269,7 @@
 
                                 <div class="d-flex mb-16pt pb-16pt border-bottom">
                                     <div class="flex"><strong class="text-70">Price</strong></div>
-                                    <strong> $90000000 per month</strong>
+                                    <strong> $9 per month</strong>
                                 </div>
                                 <div class="custom-control custom-checkbox">
                                     <input type="checkbox"
@@ -310,144 +334,7 @@
 
     <!-- Drawer -->
 
-    <div class="mdk-drawer js-mdk-drawer"
-         id="default-drawer">
-        <div class="mdk-drawer__content">
-            <div class="sidebar sidebar-black-dodger-blue sidebar-left"
-                 data-perfect-scrollbar>
 
-                <!-- Sidebar Content -->
-
-                <div class="d-flex align-items-center navbar-height">
-                    <form action="#"
-                          class="search-form search-form--black mx-16pt pr-0 pl-16pt">
-                        <input type="text"
-                               class="form-control pl-0"
-                               placeholder="Search">
-                        <button class="btn"
-                                type="submit"><i class="material-icons">search</i></button>
-                    </form>
-                </div>
-
-                <a href="#"
-                   class="sidebar-brand ">
-                    <span class="avatar avatar-xl sidebar-brand-icon h-auto">
-
-                                <span class="avatar-title rounded bg-primary"><img
-                                        src="../../static/learningcurveapp/images/avt.jpeg"
-                                        class="img-fluid"
-                                        alt="logo"/></span>
-
-                            </span>
-
-                    <span>Quyen Linh TA</span>
-                </a>
-
-                <div class="sidebar-heading">Student</div>
-                <ul class="sidebar-menu">
-
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button"
-                           href="#">
-                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">home</span>
-                            <span class="sidebar-menu-text">Home</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button"
-                           href="#">
-                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">local_library</span>
-                            <span class="sidebar-menu-text">Browse Courses</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button"
-                           href="#">
-                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">style</span>
-                            <span class="sidebar-menu-text">Browse Paths</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button"
-                           href="#">
-                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">account_box</span>
-                            <span class="sidebar-menu-text">Student Dashboard</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button"
-                           href="#">
-                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">search</span>
-                            <span class="sidebar-menu-text">My Courses</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button"
-                           href="#">
-                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">timeline</span>
-                            <span class="sidebar-menu-text">My Paths</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-menu-item active">
-                        <a class="sidebar-menu-button"
-                           href="student-path.html">
-                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">change_history</span>
-                            <span class="sidebar-menu-text">Path Details</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button"
-                           href="#">
-                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">panorama_fish_eye</span>
-                            <span class="sidebar-menu-text">Lesson Preview</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button"
-                           href="#">
-                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">import_contacts</span>
-                            <span class="sidebar-menu-text">Take Lesson</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button"
-                           href="#">
-                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">dvr</span>
-                            <span class="sidebar-menu-text">Take Quiz</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button"
-                           href="#">
-                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">poll</span>
-                            <span class="sidebar-menu-text">My Quizzes</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button"
-                           href="#">
-                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">live_help</span>
-                            <span class="sidebar-menu-text">Quiz Result</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button"
-                           href="#">
-                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">layers</span>
-                            <span class="sidebar-menu-text">Skill Assessment</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button"
-                           href="#">
-                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">assignment_turned_in</span>
-                            <span class="sidebar-menu-text">Skill Result</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
 </div>
 
 
