@@ -1,0 +1,1294 @@
+<!DOCTYPE html>
+<html lang="en"
+      dir="ltr"
+      class="dark-mode">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible"
+          content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Learning Path</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CRoboto:400,500%7CExo+2:600&display=swap"
+          rel="stylesheet">
+
+    <!-- Preloader -->
+    <link type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/spinkit/1.2.5/spinkit.min.css"
+          rel="stylesheet">
+
+    <!-- Perfect Scrollbar -->
+    <link type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.5.2/css/perfect-scrollbar.min.css"
+          rel="stylesheet">
+
+    <!-- Material Design Icons -->
+    <link type="text/css"
+          href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+          rel="stylesheet">
+
+    <!-- Preloader -->
+    <link type="text/css"
+          href="../../static/learningcurveapp/css/preloader.css"
+          rel="stylesheet">
+
+    <!-- App CSS -->
+    <link type="text/css"
+          href="../../static/learningcurveapp/css/app.css"
+          rel="stylesheet">
+
+    <!-- Dark Mode CSS -->
+    <link type="text/css"
+          href="../../static/learningcurveapp/css/dark.css"
+          rel="stylesheet">
+
+</head>
+
+<body class="layout-app ">
+
+<div class="preloader">
+    <div class="sk-chase">
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+    </div>
+
+    <!-- <div class="sk-bounce">
+<div class="sk-bounce-dot"></div>
+<div class="sk-bounce-dot"></div>
+</div> -->
+
+    <!-- More spinner examples at https://github.com/tobiasahlin/SpinKit/blob/master/examples.html -->
+</div>
+
+<!-- Drawer Layout -->
+
+<div class="mdk-drawer-layout js-mdk-drawer-layout"
+     data-push
+     data-responsive-width="992px">
+    <div class="mdk-drawer-layout__content page-content">
+
+        <!-- Header -->
+
+        <!-- Navbar -->
+
+        <div class="navbar navbar-expand pr-0 navbar-dark border-bottom-2"
+             id="default-navbar"
+             data-primary>
+
+            <!-- Navbar Toggler -->
+
+            <button class="navbar-toggler w-auto mr-16pt d-block d-lg-none rounded-0"
+                    type="button"
+                    data-toggle="sidebar">
+                <span class="material-icons">short_text</span>
+            </button>
+
+            <!-- // END Navbar Toggler -->
+
+            <!-- Navbar Brand -->
+
+            <a href="index.html"
+               class="navbar-brand mr-16pt d-lg-none">
+
+                        <span class="avatar avatar-sm navbar-brand-icon mr-0 mr-lg-8pt">
+
+                            <span class="avatar-title rounded bg-primary"><img
+                                    src="../../static/learningcurveapp/images/illustration/student/128/white.svg"
+                                    alt="logo"
+                                    class="img-fluid"/></span>
+
+                        </span>
+
+                <span class="d-none d-lg-block">Luma</span>
+            </a>
+
+            <!-- // END Navbar Brand -->
+
+            <span class="d-none d-md-flex align-items-center mr-16pt">
+
+                        <span class="avatar avatar-sm mr-12pt">
+
+                            <span class="avatar-title rounded navbar-avatar"><i
+                                    class="material-icons">opacity</i></span>
+
+                        </span>
+
+                        <small class="flex d-flex flex-column">
+                            <strong class="navbar-text-100">Experience IQ</strong>
+                            <span class="navbar-text-50">2,300 points</span>
+                        </small>
+                    </span>
+
+            <div class="flex"></div>
+
+            <!-- Switch Layout -->
+
+            <a href="../Compact_App_Layout/student-take-course.html"
+               class="navbar-toggler navbar-toggler-custom align-items-center justify-content-center d-none d-lg-flex"
+               data-toggle="tooltip"
+               data-title="Switch to Compact Layout"
+               data-placement="bottom"
+               data-boundary="window">
+                <span class="material-icons">swap_horiz</span>
+            </a>
+
+            <!-- // END Switch Layout -->
+
+            <!-- Navbar Menu -->
+
+            <div class="nav navbar-nav flex-nowrap d-flex mr-16pt">
+
+                <!-- Notifications dropdown -->
+                <div class="nav-item dropdown dropdown-notifications dropdown-xs-down-full"
+                     data-toggle="tooltip"
+                     data-title="Messages"
+                     data-placement="bottom"
+                     data-boundary="window">
+                    <button class="nav-link btn-flush dropdown-toggle"
+                            type="button"
+                            data-toggle="dropdown"
+                            data-caret="false">
+                        <i class="material-icons icon-24pt">mail_outline</i>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <div data-perfect-scrollbar
+                             class="position-relative">
+                            <div class="dropdown-header"><strong>Messages</strong></div>
+                            <div class="list-group list-group-flush mb-0">
+
+                                <a href="javascript:void(0);"
+                                   class="list-group-item list-group-item-action unread">
+                                            <span class="d-flex align-items-center mb-1">
+                                                <small class="text-black-50">5 minutes ago</small>
+
+                                                <span class="ml-auto unread-indicator bg-accent"></span>
+
+                                            </span>
+                                    <span class="d-flex">
+                                                <span class="avatar avatar-xs mr-2">
+                                                    <img src="../../static/learningcurveapp/images/people/110/woman-5.jpg"
+                                                         alt="people"
+                                                         class="avatar-img rounded-circle">
+                                                </span>
+                                                <span class="flex d-flex flex-column">
+                                                    <strong class="text-black-100">Michelle</strong>
+                                                    <span class="text-black-70">Clients loved the new design.</span>
+                                                </span>
+                                            </span>
+                                </a>
+
+                                <a href="javascript:void(0);"
+                                   class="list-group-item list-group-item-action">
+                                            <span class="d-flex align-items-center mb-1">
+                                                <small class="text-black-50">5 minutes ago</small>
+
+                                            </span>
+                                    <span class="d-flex">
+                                                <span class="avatar avatar-xs mr-2">
+                                                    <img src="../../static/learningcurveapp/images/people/110/woman-5.jpg"
+                                                         alt="people"
+                                                         class="avatar-img rounded-circle">
+                                                </span>
+                                                <span class="flex d-flex flex-column">
+                                                    <strong class="text-black-100">Michelle</strong>
+                                                    <span class="text-black-70">🔥 Superb job..</span>
+                                                </span>
+                                            </span>
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- // END Notifications dropdown -->
+
+                <!-- Notifications dropdown -->
+                <div class="nav-item ml-16pt dropdown dropdown-notifications dropdown-xs-down-full"
+                     data-toggle="tooltip"
+                     data-title="Notifications"
+                     data-placement="bottom"
+                     data-boundary="window">
+                    <button class="nav-link btn-flush dropdown-toggle"
+                            type="button"
+                            data-toggle="dropdown"
+                            data-caret="false">
+                        <i class="material-icons">notifications_none</i>
+                        <span class="badge badge-notifications badge-accent">2</span>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <div data-perfect-scrollbar
+                             class="position-relative">
+                            <div class="dropdown-header"><strong>System notifications</strong></div>
+                            <div class="list-group list-group-flush mb-0">
+
+                                <a href="javascript:void(0);"
+                                   class="list-group-item list-group-item-action unread">
+                                            <span class="d-flex align-items-center mb-1">
+                                                <small class="text-black-50">3 minutes ago</small>
+
+                                                <span class="ml-auto unread-indicator bg-accent"></span>
+
+                                            </span>
+                                    <span class="d-flex">
+                                                <span class="avatar avatar-xs mr-2">
+                                                    <span class="avatar-title rounded-circle bg-light">
+                                                        <i class="material-icons font-size-16pt text-accent">account_circle</i>
+                                                    </span>
+                                                </span>
+                                                <span class="flex d-flex flex-column">
+
+                                                    <span class="text-black-70">Your profile information has not been synced correctly.</span>
+                                                </span>
+                                            </span>
+                                </a>
+
+                                <a href="javascript:void(0);"
+                                   class="list-group-item list-group-item-action">
+                                            <span class="d-flex align-items-center mb-1">
+                                                <small class="text-black-50">5 hours ago</small>
+
+                                            </span>
+                                    <span class="d-flex">
+                                                <span class="avatar avatar-xs mr-2">
+                                                    <span class="avatar-title rounded-circle bg-light">
+                                                        <i class="material-icons font-size-16pt text-primary">group_add</i>
+                                                    </span>
+                                                </span>
+                                                <span class="flex d-flex flex-column">
+                                                    <strong class="text-black-100">Adrian. D</strong>
+                                                    <span class="text-black-70">Wants to join your private group.</span>
+                                                </span>
+                                            </span>
+                                </a>
+
+                                <a href="javascript:void(0);"
+                                   class="list-group-item list-group-item-action">
+                                            <span class="d-flex align-items-center mb-1">
+                                                <small class="text-black-50">1 day ago</small>
+
+                                            </span>
+                                    <span class="d-flex">
+                                                <span class="avatar avatar-xs mr-2">
+                                                    <span class="avatar-title rounded-circle bg-light">
+                                                        <i class="material-icons font-size-16pt text-warning">storage</i>
+                                                    </span>
+                                                </span>
+                                                <span class="flex d-flex flex-column">
+
+                                                    <span class="text-black-70">Your deploy was successful.</span>
+                                                </span>
+                                            </span>
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- // END Notifications dropdown -->
+
+                <div class="nav-item dropdown">
+                    <a href="#"
+                       class="nav-link d-flex align-items-center dropdown-toggle"
+                       data-toggle="dropdown"
+                       data-caret="false">
+
+                                <span class="avatar avatar-sm mr-8pt2">
+
+                                    <span class="avatar-title rounded-circle bg-primary"><i class="material-icons">account_box</i></span>
+
+                                </span>
+
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <div class="dropdown-header"><strong>Account</strong></div>
+                        <a class="dropdown-item"
+                           href="edit-account.html">Edit Account</a>
+                        <a class="dropdown-item"
+                           href="billing.html">Billing</a>
+                        <a class="dropdown-item"
+                           href="billing-history.html">Payments</a>
+                        <a class="dropdown-item"
+                           href="login.html">Logout</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- // END Navbar Menu -->
+
+        </div>
+
+        <!-- // END Navbar -->
+
+        <!-- // END Header -->
+
+        <!-- BEFORE Page Content -->
+
+        <!-- // END BEFORE Page Content -->
+
+        <!-- Page Content -->
+
+        <div class="mdk-box bg-primary mdk-box--bg-gradient-primary2 js-mdk-box mb-0"
+             data-effects="blend-background">
+            <div class="mdk-box__content">
+                <div class="hero py-64pt text-center text-sm-left">
+                    <div class="container page__container">
+                        <h1 class="text-white">Machine Learning Fundamentals</h1>
+                        <p class="lead text-white-50 measure-hero-lead mb-24pt">Unlock the mysteries of Machine Learning
+                            and kick-start your journey into the world of Artificial Intelligence!</p>
+                        <a href="student-take-lesson.html"
+                           class="btn btn-white">Resume course</a>
+                    </div>
+                </div>
+                <div class="navbar navbar-expand-sm navbar-dark border-bottom-2 navbar-list p-0 m-0 align-items-center">
+                    <div class="container page__container">
+                        <ul class="nav navbar-nav flex align-items-sm-center">
+                            <li class="nav-item navbar-list__item">
+                                <div class="media align-items-center">
+                                            <span class="media-left mr-16pt">
+                                                <img src="../../static/learningcurveapp/images/people/50/guy-6.jpg"
+                                                     width="40"
+                                                     alt="avatar"
+                                                     class="rounded-circle">
+                                            </span>
+                                    <div class="media-body">
+                                        <a class="card-title m-0"
+                                           href="teacher-profile.html">Another Linh</a>
+                                        <p class="text-50 lh-1 mb-0">Instructor</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="nav-item navbar-list__item">
+                                <i class="material-icons text-muted icon--left">schedule</i>
+                                2h 46m
+                            </li>
+                            <li class="nav-item navbar-list__item">
+                                <i class="material-icons text-muted icon--left">assessment</i>
+                                Beginner
+                            </li>
+                            <li class="nav-item ml-sm-auto text-sm-center flex-column navbar-list__item">
+                                <div class="rating rating-24">
+                                    <div class="rating__item"><i class="material-icons">star</i></div>
+                                    <div class="rating__item"><i class="material-icons">star</i></div>
+                                    <div class="rating__item"><i class="material-icons">star</i></div>
+                                    <div class="rating__item"><i class="material-icons">star</i></div>
+                                    <div class="rating__item"><i class="material-icons">star_border</i></div>
+                                </div>
+                                <p class="lh-1 mb-0"><small class="text-muted">20 ratings</small></p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container page__container">
+            <div class="row">
+                <div class="col-lg-7">
+                    <div class="border-left-2 page-section pl-32pt">
+
+                        <div class="d-flex align-items-center page-num-container">
+                            <div class="page-num">1</div>
+                            <h4>Getting Started With Machine Learning</h4>
+                        </div>
+
+                        <p class="text-70 mb-24pt">Welcome to Machine Learning Fundamentals, your one-stop source for
+                            diving into the world of Machine Learning (ML) and Artificial Intelligence (AI). Our goal is
+                            to provide a comprehensive understanding of the core concepts, techniques, and applications
+                            of Machine Learning for beginners and professionals alike. Whether you're a student, a
+                            working professional, or simply someone with a passion for data, our courses, resources, and
+                            expert guidance will help you embark on a journey to mastering this cutting-edge
+                            technology. (These contents were sponsored by model GPT4)</p>
+
+                        <div class="card mb-32pt mb-lg-64pt">
+                            <ul class="accordion accordion--boxed js-accordion mb-0"
+                                id="toc-1">
+                                <li class="accordion__item open">
+                                    <a class="accordion__toggle"
+                                       data-toggle="collapse"
+                                       data-parent="#toc-1"
+                                       href="#toc-content-1">
+                                        <span class="flex">1 of 4 Steps</span>
+                                        <span class="accordion__toggle-icon material-icons">keyboard_arrow_down</span>
+                                    </a>
+                                    <div class="accordion__menu">
+                                        <ul class="list-unstyled collapse show"
+                                            id="toc-content-1">
+                                            <li class="accordion__menu-link">
+                                                <span class="material-icons icon-16pt icon--left text-body">check_circle</span>
+                                                <a class="flex"
+                                                   href="student-take-lesson.html">Introduction</a>
+                                                <span class="text-muted">8m 42s</span>
+                                            </li>
+                                            <li class="accordion__menu-link">
+                                                <span class="material-icons icon-16pt icon--left text-body">play_circle_outline</span>
+                                                <a class="flex"
+                                                   href="student-take-lesson.html">ML Techniques</a>
+                                                <span class="text-muted">50m 13s</span>
+                                            </li>
+                                            <li class="accordion__menu-link">
+                                                <span class="material-icons icon-16pt icon--left text-body">play_circle_outline</span>
+                                                <a class="flex"
+                                                   href="student-take-lesson.html">ML Applications</a>
+                                                <span class="text-muted">12m 10s</span>
+                                            </li>
+                                            <li class="accordion__menu-link">
+                                                <span class="material-icons icon-16pt icon--left text-50">hourglass_empty</span>
+                                                <a class="flex"
+                                                   href="student-take-quiz.html">Quiz: Advanced Deep Learning
+                                                    Techniques</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="d-flex align-items-center page-num-container">
+                            <div class="page-num">2</div>
+                            <h4>Deep Learning</h4>
+                        </div>
+                        <p class="text-70 mb-24pt">An essential concept to understand before diving into
+                            your first Deep Learning project. In this section, you will learn four different methods
+                            for fine-tuning DL models.</p>
+
+                        <div class="card mb-0">
+                            <ul class="accordion accordion--boxed js-accordion mb-0"
+                                id="toc-2">
+                                <li class="accordion__item">
+                                    <a class="accordion__toggle"
+                                       data-toggle="collapse"
+                                       data-parent="#toc-2"
+                                       href="#toc-content-2">
+                                        <span class="flex">6 Steps</span>
+                                        <span class="accordion__toggle-icon material-icons">keyboard_arrow_down</span>
+                                    </a>
+                                    <div class="accordion__menu">
+                                        <ul class="list-unstyled collapse"
+                                            id="toc-content-2">
+                                            <li class="accordion__menu-link">
+                                                <span class="material-icons icon-16pt icon--left text-body">check_circle</span>
+                                                <a class="flex"
+                                                   href="student-take-lesson.html">Introduction</a>
+                                                <span class="text-muted">8m 42s</span>
+                                            </li>
+                                            <li class="accordion__menu-link">
+                                                <span class="material-icons icon-16pt icon--left text-body">play_circle_outline</span>
+                                                <a class="flex"
+                                                   href="student-take-lesson.html">Introduction to Optuna</a>
+                                                <span class="text-muted">50m 13s</span>
+                                            </li>
+                                            <li class="accordion__menu-link">
+                                                <span class="material-icons icon-16pt icon--left text-body">play_circle_outline</span>
+                                                <a class="flex"
+                                                   href="student-take-lesson.html">Comparing Optuna vs GridSearchAPC</a>
+                                                <span class="text-muted">12m 10s</span>
+                                            </li>
+                                            <li class="accordion__menu-link">
+                                                <span class="material-icons icon-16pt icon--left text-50">hourglass_empty</span>
+                                                <a class="flex"
+                                                   href="student-take-quiz.html">Quiz: Hyperparameters fine-tune</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-lg-5 page-nav">
+                    <div class="page-section">
+                        <div class="page-nav__content">
+                            <div class="page-separator">
+                                <div class="page-separator__text">Table of contents</div>
+                            </div>
+                            <!-- <h4 class="mb-16pt">Table of contents</h4> -->
+                        </div>
+                        <nav class="nav page-nav__menu">
+                            <a class="nav-link active"
+                               href="">Getting Started With Machine Learning</a>
+                            <a class="nav-link"
+                               href="">Creating and Communicating Between Machine Learning Components</a>
+                            <a class="nav-link"
+                               href="">Exploring the Machine Learning Template Syntax</a>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-section  border-top-2 border-bottom-2">
+
+            <div class="container page__container">
+                <div class="row ">
+                    <div class="col-md-7">
+                        <div class="page-separator">
+                            <div class="page-separator__text">About this course</div>
+                        </div>
+                        <p class="text-70">Introduction to Machine Learning is a comprehensive course designed for those
+                            who are new to the field of Machine Learning and Artificial Intelligence. This course covers
+                            the core concepts, techniques, and applications of Machine Learning, providing you with the
+                            necessary skills and knowledge to further explore the world of AI.
+                        </p>
+                        <p class="text-70 mb-0">By the end of this course, you will have a solid understanding of the
+                            foundational
+                            principles of Machine Learning, be familiar with various ML techniques and algorithms, and
+                            be able to apply this knowledge to real-world problems.</p>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="page-separator">
+                            <div class="page-separator__text ">What you’ll learn</div>
+                        </div>
+                        <ul class="list-unstyled">
+                            <li class="d-flex align-items-center">
+                                <span class="material-icons text-50 mr-8pt">check</span>
+                                <span class="text-70">Fundamentals of working with Machine Learning</span>
+                            </li>
+                            <li class="d-flex align-items-center">
+                                <span class="material-icons text-50 mr-8pt">check</span>
+                                <span class="text-70">Create complete Machine Learning applications</span>
+                            </li>
+                            <li class="d-flex align-items-center">
+                                <span class="material-icons text-50 mr-8pt">check</span>
+                                <span class="text-70">Working with the Machine Learning CLI</span>
+                            </li>
+                            <li class="d-flex align-items-center">
+                                <span class="material-icons text-50 mr-8pt">check</span>
+                                <span class="text-70">Understanding Dependency</span>
+                            </li>
+                            <li class="d-flex align-items-center">
+                                <span class="material-icons text-50 mr-8pt">check</span>
+                                <span class="text-70">Testing with Machine Learning</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="page-section  border-bottom-2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-7 mb-24pt mb-md-0">
+                        <h4>About the author</h4>
+                        <p class="text-70 mb-24pt">Another Linh is a ....</p>
+
+                        <div class="page-separator">
+                            <div class="page-separator__text bg-white">More from the author</div>
+                        </div>
+
+                        <div class="card card-sm mb-8pt">
+                            <div class="card-body d-flex align-items-center">
+                                <a href="course.html"
+                                   class="avatar avatar-4by3 mr-12pt">
+                                    <img src="../../static/learningcurveapp/images/paths/Machine-learning-def-.png"
+                                         alt="Machine Learning Routing In-Depth"
+                                         class="avatar-img rounded">
+                                </a>
+                                <div class="flex">
+                                    <a class="card-title mb-4pt"
+                                       href="course.html">Machine Learning Routing In-Depth</a>
+                                    <div class="d-flex align-items-center">
+                                        <div class="rating mr-8pt">
+
+                                            <span class="rating__item"><span class="material-icons">star</span></span>
+
+                                            <span class="rating__item"><span class="material-icons">star</span></span>
+
+                                            <span class="rating__item"><span class="material-icons">star</span></span>
+
+                                            <span class="rating__item"><span
+                                                    class="material-icons">star_border</span></span>
+
+                                            <span class="rating__item"><span
+                                                    class="material-icons">star_border</span></span>
+
+                                        </div>
+                                        <small class="text-muted">3/5</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card card-sm mb-16pt">
+                            <div class="card-body d-flex align-items-center">
+                                <a href="course.html"
+                                   class="avatar avatar-4by3 mr-12pt">
+                                    <img src="../../static/learningcurveapp/images/paths/Machine-learning-def-.png"
+                                         alt="Machine Learning Unit Testing"
+                                         class="avatar-img rounded">
+                                </a>
+                                <div class="flex">
+                                    <a class="card-title mb-4pt"
+                                       href="course.html">Machine Learning Unit Testing</a>
+                                    <div class="d-flex align-items-center">
+                                        <div class="rating mr-8pt">
+
+                                            <span class="rating__item"><span class="material-icons">star</span></span>
+
+                                            <span class="rating__item"><span class="material-icons">star</span></span>
+
+                                            <span class="rating__item"><span class="material-icons">star</span></span>
+
+                                            <span class="rating__item"><span class="material-icons">star</span></span>
+
+                                            <span class="rating__item"><span
+                                                    class="material-icons">star_border</span></span>
+
+                                        </div>
+                                        <small class="text-muted">4/5</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="list-group list-group-flush">
+                            <div class="list-group-item px-0">
+                                <a href=""
+                                   class="card-title mb-4pt">Machine Learning Best Practices</a>
+                                <p class="lh-1 mb-0">
+                                    <small class="text-muted mr-8pt">6h 40m</small>
+                                    <small class="text-muted mr-8pt">13,876 Views</small>
+                                    <small class="text-muted">13 May 2018</small>
+                                </p>
+                            </div>
+                            <div class="list-group-item px-0">
+                                <a href=""
+                                   class="card-title mb-4pt">Autoencoders</a>
+                                <p class="lh-1 mb-0">
+                                    <small class="text-muted mr-8pt">6h 40m</small>
+                                    <small class="text-muted mr-8pt">13,876 Views</small>
+                                    <small class="text-muted">13 May 2018</small>
+                                </p>
+                            </div>
+                            <div class="list-group-item px-0">
+                                <a href=""
+                                   class="card-title mb-4pt">Convolutional Neural Networks (CNN)</a>
+                                <p class="lh-1 mb-0">
+                                    <small class="text-muted mr-8pt">6h 40m</small>
+                                    <small class="text-muted mr-8pt">13,876 Views</small>
+                                    <small class="text-muted">13 May 2018</small>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5 pt-sm-32pt pt-md-0 d-flex flex-column align-items-center justify-content-start">
+                        <div class="text-center">
+                            <p class="mb-16pt">
+                                <img src="../../static/learningcurveapp/images/people/110/guy-6.jpg"
+                                     alt="guy-6"
+                                     class="rounded-circle"
+                                     width="64">
+                            </p>
+                            <h4 class="m-0">Another Linh</h4>
+                            <p class="lh-1">
+                                <small class="text-muted">AI Scientist</small>
+                            </p>
+                            <div class="d-flex flex-column flex-sm-row align-items-center justify-content-start">
+                                <a href="teacher-profile.html"
+                                   class="btn btn-outline-primary mb-16pt mb-sm-0 mr-sm-16pt">Follow</a>
+                                <a href="teacher-profile.html"
+                                   class="btn btn-outline-secondary">View Profile</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-section border-bottom-2">
+            <div class="container">
+                <div class="page-headline text-center">
+                    <h2>Feedback</h2>
+                    <p class="lead text-70 measure-lead mx-auto">What other students turned professionals have to say
+                        about us after learning with us and reaching their goals.</p>
+                </div>
+
+                <div class="position-relative carousel-card p-0 mx-auto">
+                    <div class="row d-block js-mdk-carousel"
+                         id="carousel-feedback">
+                        <a class="carousel-control-next js-mdk-carousel-control mt-n24pt"
+                           href="#carousel-feedback"
+                           role="button"
+                           data-slide="next">
+                                    <span class="carousel-control-icon material-icons"
+                                          aria-hidden="true">keyboard_arrow_right</span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                        <div class="mdk-carousel__content">
+
+                            <div class="col-12 col-md-6">
+
+                                <div class="card card-feedback card-body">
+                                    <blockquote class="blockquote mb-0">
+                                        <p class="text-70 small mb-0">I recently completed the Introduction to Machine
+                                            Learning course with Another Linh, and I can't recommend it highly enough!
+                                            As a software engineer looking to break into the field of AI, I needed a
+                                            course that would provide me with a solid foundation in the core concepts of
+                                            Machine Learning. Another Linh's course did just that, and more.
+                                        </p>
+                                    </blockquote>
+                                </div>
+                                <div class="media ml-12pt">
+                                    <div class="media-left mr-12pt">
+                                        <a href="student-profile.html"
+                                           class="avatar avatar-sm">
+                                            <!-- <img src="../../static/learningcurveapp/images/people/110/guy-.jpg" width="40" alt="avatar" class="rounded-circle"> -->
+                                            <span class="avatar-title rounded-circle">R</span>
+                                        </a>
+                                    </div>
+                                    <div class="media-body media-middle">
+                                        <a href="student-profile.html"
+                                           class="card-title">Reviewer :))</a>
+                                        <div class="rating mt-4pt">
+                                            <span class="rating__item"><span class="material-icons">star</span></span>
+                                            <span class="rating__item"><span class="material-icons">star</span></span>
+                                            <span class="rating__item"><span class="material-icons">star</span></span>
+                                            <span class="rating__item"><span class="material-icons">star</span></span>
+                                            <span class="rating__item"><span
+                                                    class="material-icons">star_border</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="col-12 col-md-6">
+
+                                <div class="card card-feedback card-body">
+                                    <blockquote class="blockquote mb-0">
+                                        <p class="text-70 small mb-0">I recently completed the Introduction to Machine
+                                            Learning course with Another Linh, and I can't recommend it highly enough!
+                                            As a software engineer looking to break into the field of AI, I needed a
+                                            course that would provide me with a solid foundation in the core concepts of
+                                            Machine Learning. Another Linh's course did just that, and more.</p>
+                                    </blockquote>
+                                </div>
+                                <div class="media ml-12pt">
+                                    <div class="media-left mr-12pt">
+                                        <a href="student-profile.html"
+                                           class="avatar avatar-sm">
+                                            <!-- <img src="../../static/learningcurveapp/images/people/110/guy-.jpg" width="40" alt="avatar" class="rounded-circle"> -->
+                                            <span class="avatar-title rounded-circle">R</span>
+                                        </a>
+                                    </div>
+                                    <div class="media-body media-middle">
+                                        <a href="student-profile.html"
+                                           class="card-title">Reviewer :))</a>
+                                        <div class="rating mt-4pt">
+                                            <span class="rating__item"><span class="material-icons">star</span></span>
+                                            <span class="rating__item"><span class="material-icons">star</span></span>
+                                            <span class="rating__item"><span class="material-icons">star</span></span>
+                                            <span class="rating__item"><span class="material-icons">star</span></span>
+                                            <span class="rating__item"><span
+                                                    class="material-icons">star_border</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="col-12 col-md-6">
+
+                                <div class="card card-feedback card-body">
+                                    <blockquote class="blockquote mb-0">
+                                        <p class="text-70 small mb-0">I recently completed the Introduction to Machine
+                                            Learning course with Another Linh, and I can't recommend it highly enough!
+                                            As a software engineer looking to break into the field of AI, I needed a
+                                            course that would provide me with a solid foundation in the core concepts of
+                                            Machine Learning. Another Linh's course did just that, and more.</p>
+                                    </blockquote>
+                                </div>
+                                <div class="media ml-12pt">
+                                    <div class="media-left mr-12pt">
+                                        <a href="student-profile.html"
+                                           class="avatar avatar-sm">
+                                            <!-- <img src="../../static/learningcurveapp/images/people/110/guy-.jpg" width="40" alt="avatar" class="rounded-circle"> -->
+                                            <span class="avatar-title rounded-circle">R</span>
+                                        </a>
+                                    </div>
+                                    <div class="media-body media-middle">
+                                        <a href="student-profile.html"
+                                           class="card-title">Reviewer :))</a>
+                                        <div class="rating mt-4pt">
+                                            <span class="rating__item"><span class="material-icons">star</span></span>
+                                            <span class="rating__item"><span class="material-icons">star</span></span>
+                                            <span class="rating__item"><span class="material-icons">star</span></span>
+                                            <span class="rating__item"><span class="material-icons">star</span></span>
+                                            <span class="rating__item"><span
+                                                    class="material-icons">star_border</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-section  border-bottom-2">
+
+            <div class="container page__container">
+                <div class="page-separator">
+                    <div class="page-separator__text">Student Feedback</div>
+                </div>
+                <div class="row mb-32pt">
+                    <div class="col-md-3 mb-32pt mb-md-0">
+                        <div class="display-1">4.7</div>
+                        <div class="rating rating-24">
+                            <span class="rating__item"><span class="material-icons">star</span></span>
+                            <span class="rating__item"><span class="material-icons">star</span></span>
+                            <span class="rating__item"><span class="material-icons">star</span></span>
+                            <span class="rating__item"><span class="material-icons">star</span></span>
+                            <span class="rating__item"><span class="material-icons">star_border</span></span>
+                        </div>
+                        <p class="text-muted mb-0">20 ratings</p>
+                    </div>
+                    <div class="col-md-9">
+
+                        <div class="row align-items-center mb-8pt"
+                             data-toggle="tooltip"
+                             data-title="75% rated 5/5"
+                             data-placement="top">
+                            <div class="col-md col-sm-6">
+                                <div class="progress"
+                                     style="height: 8px;">
+                                    <div class="progress-bar bg-secondary"
+                                         role="progressbar"
+                                         aria-valuenow="75"
+                                         style="width: 75%"
+                                         aria-valuemin="0"
+                                         aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-auto col-sm-6 d-none d-sm-flex align-items-center">
+                                <div class="rating">
+                                    <span class="rating__item"><span class="material-icons">star</span></span>
+                                    <span class="rating__item"><span class="material-icons">star</span></span>
+                                    <span class="rating__item"><span class="material-icons">star</span></span>
+                                    <span class="rating__item"><span class="material-icons">star</span></span>
+                                    <span class="rating__item"><span class="material-icons">star</span></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row align-items-center mb-8pt"
+                             data-toggle="tooltip"
+                             data-title="16% rated 4/5"
+                             data-placement="top">
+                            <div class="col-md col-sm-6">
+                                <div class="progress"
+                                     style="height: 8px;">
+                                    <div class="progress-bar bg-secondary"
+                                         role="progressbar"
+                                         aria-valuenow="16"
+                                         style="width: 16%"
+                                         aria-valuemin="0"
+                                         aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-auto col-sm-6 d-none d-sm-flex align-items-center">
+                                <div class="rating">
+                                    <span class="rating__item"><span class="material-icons">star</span></span>
+                                    <span class="rating__item"><span class="material-icons">star</span></span>
+                                    <span class="rating__item"><span class="material-icons">star</span></span>
+                                    <span class="rating__item"><span class="material-icons">star</span></span>
+                                    <span class="rating__item"><span class="material-icons">star_border</span></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row align-items-center mb-8pt"
+                             data-toggle="tooltip"
+                             data-title="12% rated 3/5"
+                             data-placement="top">
+                            <div class="col-md col-sm-6">
+                                <div class="progress"
+                                     style="height: 8px;">
+                                    <div class="progress-bar bg-secondary"
+                                         role="progressbar"
+                                         aria-valuenow="12"
+                                         style="width: 12%"
+                                         aria-valuemin="0"
+                                         aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-auto col-sm-6 d-none d-sm-flex align-items-center">
+                                <div class="rating">
+                                    <span class="rating__item"><span class="material-icons">star</span></span>
+                                    <span class="rating__item"><span class="material-icons">star</span></span>
+                                    <span class="rating__item"><span class="material-icons">star</span></span>
+                                    <span class="rating__item"><span class="material-icons">star_border</span></span>
+                                    <span class="rating__item"><span class="material-icons">star_border</span></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row align-items-center mb-8pt"
+                             data-toggle="tooltip"
+                             data-title="9% rated 2/5"
+                             data-placement="top">
+                            <div class="col-md col-sm-6">
+                                <div class="progress"
+                                     style="height: 8px;">
+                                    <div class="progress-bar bg-secondary"
+                                         role="progressbar"
+                                         aria-valuenow="9"
+                                         style="width: 9%"
+                                         aria-valuemin="0"
+                                         aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-auto col-sm-6 d-none d-sm-flex align-items-center">
+                                <div class="rating">
+                                    <span class="rating__item"><span class="material-icons">star</span></span>
+                                    <span class="rating__item"><span class="material-icons">star</span></span>
+                                    <span class="rating__item"><span class="material-icons">star_border</span></span>
+                                    <span class="rating__item"><span class="material-icons">star_border</span></span>
+                                    <span class="rating__item"><span class="material-icons">star_border</span></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row align-items-center mb-8pt"
+                             data-toggle="tooltip"
+                             data-title="0% rated 0/5"
+                             data-placement="top">
+                            <div class="col-md col-sm-6">
+                                <div class="progress"
+                                     style="height: 8px;">
+                                    <div class="progress-bar bg-secondary"
+                                         role="progressbar"
+                                         aria-valuenow="0"
+                                         aria-valuemin="0"
+                                         aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-auto col-sm-6 d-none d-sm-flex align-items-center">
+                                <div class="rating">
+                                    <span class="rating__item"><span class="material-icons">star</span></span>
+                                    <span class="rating__item"><span class="material-icons">star_border</span></span>
+                                    <span class="rating__item"><span class="material-icons">star_border</span></span>
+                                    <span class="rating__item"><span class="material-icons">star_border</span></span>
+                                    <span class="rating__item"><span class="material-icons">star_border</span></span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="pb-16pt mb-16pt border-bottom row">
+                    <div class="col-md-3 mb-16pt mb-md-0">
+                        <div class="d-flex">
+                            <a href="student-profile.html"
+                               class="avatar avatar-sm mr-12pt">
+                                <!-- <img src="LB" alt="avatar" class="avatar-img rounded-circle"> -->
+                                <span class="avatar-title rounded-circle">R</span>
+                            </a>
+                            <div class="flex">
+                                <p class="small text-muted m-0">2 days ago</p>
+                                <a href="student-profile.html"
+                                   class="card-title">Reviewer</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="rating mb-8pt">
+                            <span class="rating__item"><span class="material-icons">star</span></span>
+                            <span class="rating__item"><span class="material-icons">star</span></span>
+                            <span class="rating__item"><span class="material-icons">star</span></span>
+                            <span class="rating__item"><span class="material-icons">star</span></span>
+                            <span class="rating__item"><span class="material-icons">star_border</span></span>
+                        </div>
+                        <p class="text-70 mb-0">I recently completed the Introduction to Machine
+                            Learning course with Another Linh, and I can't recommend it highly enough!
+                            As a software engineer looking to break into the field of AI, I needed a
+                            course that would provide me with a solid foundation in the core concepts of
+                            Machine Learning. Another Linh's course did just that, and more.</p>
+                    </div>
+                </div>
+
+                <div class="pb-16pt mb-16pt border-bottom row">
+                    <div class="col-md-3 mb-16pt mb-md-0">
+                        <div class="d-flex">
+                            <a href="student-profile.html"
+                               class="avatar avatar-sm mr-12pt">
+                                <!-- <img src="R" alt="avatar" class="avatar-img rounded-circle"> -->
+                                <span class="avatar-title rounded-circle">R</span>
+                            </a>
+                            <div class="flex">
+                                <p class="small text-muted m-0">2 days ago</p>
+                                <a href="student-profile.html"
+                                   class="card-title">Reviewer</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="rating mb-8pt">
+                            <span class="rating__item"><span class="material-icons">star</span></span>
+                            <span class="rating__item"><span class="material-icons">star</span></span>
+                            <span class="rating__item"><span class="material-icons">star</span></span>
+                            <span class="rating__item"><span class="material-icons">star</span></span>
+                            <span class="rating__item"><span class="material-icons">star_border</span></span>
+                        </div>
+                        <p class="text-70 mb-0">I recently completed the Introduction to Machine
+                            Learning course with Another Linh, and I can't recommend it highly enough!
+                            As a software engineer looking to break into the field of AI, I needed a
+                            course that would provide me with a solid foundation in the core concepts of
+                            Machine Learning. Another Linh's course did just that, and more.</p>
+                    </div>
+                </div>
+
+                <div class="pb-16pt mb-24pt row">
+                    <div class="col-md-3 mb-16pt mb-md-0">
+                        <div class="d-flex">
+                            <a href="student-profile.html"
+                               class="avatar avatar-sm mr-12pt">
+                                <!-- <img src="AD" alt="avatar" class="avatar-img rounded-circle"> -->
+                                <span class="avatar-title rounded-circle">R</span>
+                            </a>
+                            <div class="flex">
+                                <p class="small text-muted m-0">2 days ago</p>
+                                <a href="student-profile.html"
+                                   class="card-title">Reviewer</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="rating mb-8pt">
+                            <span class="rating__item"><span class="material-icons">star</span></span>
+                            <span class="rating__item"><span class="material-icons">star</span></span>
+                            <span class="rating__item"><span class="material-icons">star</span></span>
+                            <span class="rating__item"><span class="material-icons">star</span></span>
+                            <span class="rating__item"><span class="material-icons">star_border</span></span>
+                        </div>
+                        <p class="text-70 mb-0">I recently completed the Introduction to Machine
+                            Learning course with Another Linh, and I can't recommend it highly enough!
+                            As a software engineer looking to break into the field of AI, I needed a
+                            course that would provide me with a solid foundation in the core concepts of
+                            Machine Learning. Another Linh's course did just that, and more.</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <!-- Footer -->
+
+        <div class=" border-top-2 mt-auto">
+            <div class="container page__container page-section d-flex flex-column">
+                <p class="text-70 brand mb-24pt">
+                    <a href="/learningcurveapp/aboutus"
+                       class="text-70 text-underline small">About us</a>
+                    <img class="brand-icon"
+                         src="../../static/learningcurveapp/images/Logo.svg"
+                         width="300"
+                         alt="Learning Curve">
+                </p>
+                <p class="measure-lead-max text-50 small mr-8pt">Learning Curve is a platform that provides a variety of
+                    courses for you to learn and improve your skills. We have a variety of courses for you to choose
+                    from.</p>
+                </p>
+                <p class="mb-8pt d-flex">
+                    <a href=""
+                       class="text-70 text-underline mr-8pt small">Terms</a>
+                    <a href=""
+                       class="text-70 text-underline small">Privacy policy</a>
+                </p>
+                <p class="text-50 small mt-n1 mb-0">Copyright 2023 &copy; All rights reserved hehe.</p>
+            </div>
+        </div>
+
+        <!-- // END Footer -->
+
+    </div>
+
+    <!-- // END drawer-layout__content -->
+
+    <!-- Drawer -->
+
+    <div class="mdk-drawer js-mdk-drawer"
+         id="default-drawer">
+        <div class="mdk-drawer__content">
+            <div class="sidebar sidebar-black-dodger-blue sidebar-left"
+                 data-perfect-scrollbar>
+
+                <!-- Sidebar Content -->
+
+                <div class="d-flex align-items-center navbar-height">
+                    <form action="#"
+                          class="search-form search-form--black mx-16pt pr-0 pl-16pt">
+                        <input type="text"
+                               class="form-control pl-0"
+                               placeholder="Search">
+                        <button class="btn"
+                                type="submit"><i class="material-icons">search</i></button>
+                    </form>
+                </div>
+
+                <a href="#.html"
+                   class="sidebar-brand ">
+                    <span class="avatar avatar-xl sidebar-brand-icon h-auto">
+
+                                <span class="avatar-title rounded bg-primary"><img
+                                        src="../../static/learningcurveapp/images/avt.png"
+                                        class="img-fluid"
+                                        alt="logo"/></span>
+
+                            </span>
+
+                    <span>{{ username }}</span>
+                </a>
+
+                <div class="sidebar-heading">Student</div>
+                <ul class="sidebar-menu">
+
+                    <li class="sidebar-menu-item">
+                        <a class="sidebar-menu-button"
+                           href="#">
+                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">home</span>
+                            <span class="sidebar-menu-text">Home</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a class="sidebar-menu-button"
+                           href="#">
+                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">local_library</span>
+                            <span class="sidebar-menu-text">Browse Courses</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a class="sidebar-menu-button"
+                           href="#">
+                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">style</span>
+                            <span class="sidebar-menu-text">Browse Paths</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a class="sidebar-menu-button"
+                           href="#">
+                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">account_box</span>
+                            <span class="sidebar-menu-text">Student Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a class="sidebar-menu-button"
+                           href="#">
+                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">search</span>
+                            <span class="sidebar-menu-text">My Courses</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a class="sidebar-menu-button"
+                           href="#">
+                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">timeline</span>
+                            <span class="sidebar-menu-text">My Paths</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item active">
+                        <a class="sidebar-menu-button"
+                           href="student-path.html">
+                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">change_history</span>
+                            <span class="sidebar-menu-text">Path Details</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a class="sidebar-menu-button"
+                           href="#">
+                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">panorama_fish_eye</span>
+                            <span class="sidebar-menu-text">Lesson Preview</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a class="sidebar-menu-button"
+                           href="#">
+                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">import_contacts</span>
+                            <span class="sidebar-menu-text">Take Lesson</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a class="sidebar-menu-button"
+                           href="#">
+                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">dvr</span>
+                            <span class="sidebar-menu-text">Take Quiz</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a class="sidebar-menu-button"
+                           href="#">
+                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">poll</span>
+                            <span class="sidebar-menu-text">My Quizzes</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a class="sidebar-menu-button"
+                           href="#">
+                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">live_help</span>
+                            <span class="sidebar-menu-text">Quiz Result</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a class="sidebar-menu-button"
+                           href="#">
+                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">layers</span>
+                            <span class="sidebar-menu-text">Skill Assessment</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a class="sidebar-menu-button"
+                           href="#">
+                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">assignment_turned_in</span>
+                            <span class="sidebar-menu-text">Skill Result</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a class="sidebar-menu-button"
+                           href="/learningcurveapp/logout">
+                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">logout</span>
+                            <span class="sidebar-menu-text">Logout</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Perfect Scrollbar -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.5.2/perfect-scrollbar.min.js"></script>
+
+<!-- DOM Factory -->
+<script src="../../static/learningcurveapp/vendor/dom-factory.js"></script>
+
+<!-- MDK -->
+<script src="https://cdn.jsdelivr.net/npm/material-design-kit@1.0.0/dist/material-design-kit.min.js"></script>
+
+<!-- App JS -->
+<script src="../../static/learningcurveapp/js/app.js"></script>
+
+<!-- Preloader -->
+<script src="../../static/learningcurveapp/js/preloader.js"></script>
+
+
+</body>
+
+</html>
