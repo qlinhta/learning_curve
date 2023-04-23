@@ -52,6 +52,9 @@
 </head>
 
 <body class="layout-app ">
+
+<!-- Drawer Layout -->
+
 <div class="mdk-drawer-layout js-mdk-drawer-layout"
      data-push
      data-responsive-width="992px">
@@ -276,300 +279,129 @@
 
         <!-- Page Content -->
 
-        <div class="page-section border-bottom">
-            <div class="container page__container d-flex flex-column flex-md-row align-items-center text-center text-md-left">
-                <img src="../../static/learningcurveapp/images/avt.png"
-                     width="104"
-                     class="mr-md-32pt mb-32pt mb-md-0"
-                     alt="student">
-                <div class="flex mb-32pt mb-md-0">
-                    <h2 class="text-white mb-0">Quyen Linh TA</h2>
-                    <p class="lead text-white-50 d-flex align-items-center">Student<span
-                            class="ml-16pt d-flex align-items-center"><i
-                            class="material-icons icon-16pt mr-4pt">opacity</i> -1 IQ</span></p>
-                </div>
-                <a href=""
-                   class="btn btn-outline-white">Follow</a>
-            </div>
-        </div>
-
-        <div class="page-section">
+        <div class="navbar navbar-list navbar-dark border-bottom-2 border-bottom navbar-expand-sm"
+             style="white-space: nowrap;">
             <div class="container page__container">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="card border-0 mb-lg-0">
-                            <div class="card-header d-flex align-items-center">
-                                <div class="h2 mb-0 mr-3">879</div>
-                                <div class="flex">
-                                    <p class="card-title">Machine Learning</p>
-                                    <p class="card-subtitle text-50">Best score</p>
-                                </div>
-                                <div class="dropdown">
-                                    <a href="#"
-                                       class="btn btn-sm btn-outline-secondary dropdown-toggle"
-                                       data-toggle="dropdown">Popular Topics</a>
-                                    <div class="dropdown-menu dropdown-menu-right">
-                                        <a href=""
-                                           class="dropdown-item">Popular Topics</a>
-                                        <a href=""
-                                           class="dropdown-item">Machine Learning</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body p-24pt">
-                                <div class="chart"
-                                     style="height: 344px;">
-                                    <canvas id="topicIqChart"
-                                            class="chart-canvas js-update-chart-line"
-                                            data-chart-hide-axes="true"
-                                            data-chart-points="true"
-                                            data-chart-suffix=" points"
-                                            data-chart-line-border-color="primary"
-                                            data-chart-dark-mode="true"></canvas>
-                                </div>
-                            </div>
-                        </div>
+                <nav class="nav navbar-nav">
+                    <div class="nav-item navbar-list__item">
+                        <a href="student-take-course.html"
+                           class="nav-link h-auto"><i class="material-icons icon--left">keyboard_backspace</i> Back to
+                            Course</a>
                     </div>
-                    <div class="col-lg-6">
-
-                        <div id="carouselExampleFade"
-                             class="carousel carousel-card slide mb-24pt">
-                            <div class="carousel-inner">
-
-                                <div class="carousel-item active">
-
-                                    <a class="card border-0 mb-0"
-                                       href="">
-                                        <img src="../../static/learningcurveapp/images/flinto.png"
-                                             alt="Flinto"
-                                             class="card-img"
-                                             style="max-height: 100%; width: initial;">
-                                        <div class="fullbleed bg-primary"
-                                             style="opacity: .5;"></div>
-                                        <span class="card-body d-flex flex-column align-items-center justify-content-center fullbleed">
-                                                    <span class="row flex-nowrap">
-                                                        <span class="col-auto text-center d-flex flex-column justify-content-center align-items-center">
-                                                            <span class="h5 text-white text-uppercase font-weight-normal m-0 d-block">Achievement</span>
-                                                            <span class="text-white-60 d-block mb-24pt">April 22, 2023</span>
-                                                        </span>
-                                                        <span class="col d-flex flex-column">
-                                                            <span class="text-right flex mb-16pt">
-                                                                <img src="../../static/learningcurveapp/images/paths/flinto_40x40@2x.png"
-                                                                     width="64"
-                                                                     alt="Flinto"
-                                                                     class="rounded">
-                                                            </span>
-                                                        </span>
-                                                    </span>
-                                                    <span class="row flex-nowrap">
-                                                        <span class="col-auto text-center d-flex flex-column justify-content-center align-items-center">
-                                                            <img src="../../static/learningcurveapp/images/illustration/achievement/128/white.png"
-                                                                 width="64"
-                                                                 alt="achievement">
-                                                        </span>
-                                                        <span class="col d-flex flex-column">
-                                                            <span>
-                                                                <span class="card-title text-white mb-4pt d-block">Quyen Linh TA</span>
-                                                                <span class="text-white-60">Introduction to Machine Learning on Graph</span>
-                                                            </span>
-                                                        </span>
-                                                    </span>
-                                                </span>
-                                    </a>
-
-                                </div>
-
-                                <div class="carousel-item">
-
-                                    <a class="card border-0 mb-0"
-                                       href="">
-                                        <img src="../../static/learningcurveapp/images/achievements/Machine Learning.png"
-                                             alt="Machine Learning fundamentals"
-                                             class="card-img"
-                                             style="max-height: 100%; width: initial;">
-                                        <div class="fullbleed bg-primary"
-                                             style="opacity: .5;"></div>
-                                        <span class="card-body d-flex flex-column align-items-center justify-content-center fullbleed">
-                                                    <span class="row flex-nowrap">
-                                                        <span class="col-auto text-center d-flex flex-column justify-content-center align-items-center">
-                                                            <span class="h5 text-white text-uppercase font-weight-normal m-0 d-block">Achievement</span>
-                                                            <span class="text-white-60 d-block mb-24pt">Jun 5, 2018</span>
-                                                        </span>
-                                                        <span class="col d-flex flex-column">
-                                                            <span class="text-right flex mb-16pt">
-                                                                <img src="../../static/learningcurveapp/images/paths/Machine Learning_64x64.png"
-                                                                     width="64"
-                                                                     alt="Machine Learning fundamentals"
-                                                                     class="rounded">
-                                                            </span>
-                                                        </span>
-                                                    </span>
-                                                    <span class="row flex-nowrap">
-                                                        <span class="col-auto text-center d-flex flex-column justify-content-center align-items-center">
-                                                            <img src="../../static/learningcurveapp/images/illustration/achievement/128/white.png"
-                                                                 width="64"
-                                                                 alt="achievement">
-                                                        </span>
-                                                        <span class="col d-flex flex-column">
-                                                            <span>
-                                                                <span class="card-title text-white mb-4pt d-block">Machine Learning fundamentals</span>
-                                                                <span class="text-white-60">Creating and Communicating Between Machine Learning Components</span>
-                                                            </span>
-                                                        </span>
-                                                    </span>
-                                                </span>
-                                    </a>
-
-                                </div>
-
-                            </div>
-                            <!-- <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
-<span class="carousel-control-icon material-icons" aria-hidden="true">keyboard_arrow_left</span>
-<span class="sr-only">Previous</span>
-</a> -->
-                            <a class="carousel-control-next"
-                               href="#carouselExampleFade"
-                               role="button"
-                               data-slide="next">
-                                        <span class="carousel-control-icon material-icons"
-                                              aria-hidden="true">keyboard_arrow_right</span>
-                                <span class="sr-only">Next</span>
-                            </a>
-                        </div>
-
-                        <div class="card border-0 mb-lg-0">
-                            <div class="card-header d-flex align-items-center border-0">
-                                <div class="h2 mb-0 mr-3">432</div>
-                                <div class="flex">
-                                    <p class="card-title">Experience IQ</p>
-                                    <p class="card-subtitle text-50">4 days streak this week</p>
-                                </div>
-                                <i class="material-icons text-muted ml-2">trending_up</i>
-                            </div>
-                            <div class="card-body pt-0">
-                                <div class="chart"
-                                     style="height: 128px;">
-                                    <canvas id="iqChart"
-                                            class="chart-canvas js-update-chart-line"
-                                            data-chart-hide-axes="false"
-                                            data-chart-points="true"
-                                            data-chart-suffix="pt"
-                                            data-chart-line-border-color="primary"
-                                            data-chart-dark-mode="true"></canvas>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="page-section  border-bottom-2">
-            <div class="container page__container">
-                <div class="row">
-                    <div class="col-md-6">
-                        <h4>About me</h4>
-                        <p class="text-70">As a passionate and dedicated data science enthusiast, I am
-                            constantly driven to expand their knowledge and expertise in the field. With a strong
-                            background in mathematics, statistics, and programming, I have cultivated an analytical
-                            mindset that enables them to harness the power of data to make informed decisions and solve
-                            complex problems. I am so good lying too!</p>
-                    </div>
-                    <div class="col-md-6">
-                        <h4>Connect</h4>
-                        <p class="text-70">I’m currently working as no one, I use my parent's money to live through
-                            these days!</p>
-                        <div class="d-flex align-items-center">
-                            <a href=""
-                               class="text-accent fab fa-facebook-square font-size-24pt mr-8pt"></a>
-                            <a href=""
-                               class="text-accent fab fa-twitter-square font-size-24pt"></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="page-section">
-            <div class="container page__container">
-
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex mb-1">
-                            <div class="avatar avatar-sm mr-3">
-                                <!-- <img src="../../static/learningcurveapp/images/people/50/guy-2.jpg" alt="Avatar" class="avatar-img rounded-circle"> -->
-                                <span class="avatar-title rounded-circle">QL</span>
+                    <div class="nav-item navbar-list__item">
+                        <div class="d-flex align-items-center flex-nowrap">
+                            <div class="mr-16pt">
+                                <a href="student-take-course.html"><img
+                                        src="../../static/learningcurveapp/images/paths/Machine-learning-def-.png"
+                                        width="40"
+                                        alt="Machine Learning"
+                                        class="rounded"></a>
                             </div>
                             <div class="flex">
-                                <div class="d-flex align-items-center mb-1">
-                                    <strong class="card-title">Quyen Linh TA</strong>
-                                    <small class="ml-auto text-muted">3 days ago</small>
-                                </div>
-                                <div>
-                                    <p class="measure-lead">Siyani is one of my friend and she is suck!!!</a>
-                                        🔥</p>
-                                    <p><a href="">#miage</a> <a href="">#dauphine</a></p>
-                                </div>
-
+                                <a href="student-take-course.html"
+                                   class="card-title text-body mb-0">Machine Learning Fundamentals</a>
+                                <p class="lh-1 d-flex align-items-center mb-0">
+                                    <span class="text-50 small font-weight-bold mr-8pt">Another Linh</span>
+                                    <span class="text-50 small">AI Scientist</span>
+                                </p>
                             </div>
                         </div>
-                        <div class="d-flex align-items-center">
-                            <a href=""
-                               class="text-muted d-flex align-items-center text-decoration-0"><i
-                                    class="material-icons mr-1"
-                                    style="font-size: inherit;">favorite_border</i> 1.2M</a>
-                            <a href=""
-                               class="text-muted d-flex align-items-center text-decoration-0 ml-3"><i
-                                    class="material-icons mr-1"
-                                    style="font-size: inherit;">thumb_up</i> 123M</a>
-                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+
+        <div class="bg-primary pb-lg-64pt py-32pt">
+            <div class="container page__container">
+                <nav class="course-nav">
+                    <a href="student-take-lesson.html"
+                       data-toggle="tooltip"
+                       data-placement="bottom"
+                       data-title="Getting Started with Machine Learning: Introduction"><span
+                            class="material-icons">check_circle</span></a>
+                    <a data-toggle="tooltip"
+                       data-placement="bottom"
+                       data-title="Getting Started with Machine Learning: Introduction to TypeScript"
+                       href="student-take-lesson.html"><span class="material-icons">check_circle</span></a>
+                    <a data-toggle="tooltip"
+                       data-placement="bottom"
+                       data-title="Getting Started with Machine Learning: Comparing Machine Learning to Machine LearningJS"
+                       href="student-take-lesson.html"><span class="material-icons">check_circle</span></a>
+                    <a href="student-take-quiz.html"
+                       data-toggle="tooltip"
+                       data-placement="bottom"
+                       data-title="Quiz: Getting Started with Machine Learning"><span class="material-icons text-primary">account_circle</span></a>
+                </nav>
+
+                <div class="d-flex flex-wrap align-items-end justify-content-end mb-16pt">
+                    <h1 class="text-white flex m-0">Question 1 of 5</h1>
+                    <p class="h1 text-white-50 font-weight-light m-0">00:14</p>
+                </div>
+
+                <p class="hero__lead measure-hero-lead text-white-50">Which of the following algorithms is commonly used for regression tasks?</p>
+            </div>
+        </div>
+
+        <div class="navbar navbar-expand-md navbar-list navbar-dark border-bottom-2 "
+             style="white-space: nowrap;">
+            <div class="container page__container">
+                <ul class="nav navbar-nav flex navbar-list__item">
+                    <li class="nav-item">
+                        <i class="material-icons text-50 mr-8pt">tune</i>
+                        Choose the correct answer below:
+                    </li>
+                </ul>
+                <div class="nav navbar-nav ml-sm-auto navbar-list__item">
+                    <div class="nav-item d-flex flex-column flex-sm-row ml-sm-16pt">
+                        <a href="student-quiz-result-details.html"
+                           class="btn justify-content-center btn-outline-secondary w-100 w-sm-auto mb-16pt mb-sm-0">Skip
+                            Quiz</a>
+                        <a href="student-take-lesson.html"
+                           class="btn justify-content-center btn-outline-secondary w-100 w-sm-auto mb-16pt mb-sm-0 ml-sm-16pt">Review
+                            Video</a>
+                        <a href="student-quiz-result-details.html"
+                           class="btn justify-content-center btn-accent w-100 w-sm-auto mb-16pt mb-sm-0 ml-sm-16pt">Next
+                            Question <i class="material-icons icon--right">keyboard_arrow_right</i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container page__container">
+            <div class="page-section">
+                <div class="page-separator">
+                    <div class="page-separator__text">Your Answer</div>
+                </div>
+                <div class="form-group">
+                    <div class="custom-control custom-checkbox">
+                        <input id="customCheck01"
+                               type="checkbox"
+                               class="custom-control-input">
+                        <label for="customCheck01"
+                               class="custom-control-label">K-means clustering</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="custom-control custom-checkbox">
+                        <input id="customCheck02"
+                               type="checkbox"
+                               class="custom-control-input"
+                               checked="">
+                        <label for="customCheck02"
+                               class="custom-control-label">Naïve Bayes classifier</label>
+                    </div>
+                </div>
+                <div class="form-group mb-32pt mb-lg-48pt">
+                    <div class="custom-control custom-checkbox">
+                        <input id="customCheck03"
+                               type="checkbox"
+                               class="custom-control-input">
+                        <label for="customCheck03"
+                               class="custom-control-label">Linear regression</label>
                     </div>
                 </div>
 
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex mb-1">
-                            <div class="avatar avatar-sm mr-3">
-                                <span class="avatar-title rounded-circle">QL</span>
-                            </div>
-                            <div class="flex">
-                                <div class="d-flex align-items-center mb-1">
-                                    <strong class="card-title">Quyen Linh TA</strong>
-                                    <small class="ml-auto text-muted">4 days ago</small>
-                                </div>
-                                <div>
-                                    <p class="measure-lead">Example of a post by student!
-                                        😉
-                                    </p>
-                                </div>
-
-                                <a href=""
-                                   class="card my-3 text-body text-decoration-0 measure-lead">
-                                    <img src="../../static/learningcurveapp/images/hu.jpeg"
-                                         alt="image"
-                                         class="card-img-top">
-                                    <span class="card-footer d-flex flex-column">
-                                            <strong>Non-Linear transformations</strong>
-                                            <span class="text-70">Description</span>
-                                            <span class="text-muted">www.learningcurve.com</span>
-                                        </span>
-                                </a>
-
-                            </div>
-                        </div>
-                        <div class="d-flex align-items-center">
-                            <a href=""
-                               class="text-muted d-flex align-items-center text-decoration-0"><i
-                                    class="material-icons mr-1"
-                                    style="font-size: inherit;">favorite_border</i> 156</a>
-                            <a href=""
-                               class="text-muted d-flex align-items-center text-decoration-0 ml-3"><i
-                                    class="material-icons mr-1"
-                                    style="font-size: inherit;">thumb_up</i> 351</a>
-                        </div>
-                    </div>
-                </div>
-
-                <a href=""
-                   class="btn btn-block btn-light mb-32pt">Load more ...</a>
+                <p class="text-50 mb-0">Note: There can be multiple correct answers to this question.</p>
             </div>
         </div>
 

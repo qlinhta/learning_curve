@@ -63,12 +63,6 @@
         <div class="sk-chase-dot"></div>
     </div>
 
-    <!-- <div class="sk-bounce">
-<div class="sk-bounce-dot"></div>
-<div class="sk-bounce-dot"></div>
-</div> -->
-
-    <!-- More spinner examples at https://github.com/tobiasahlin/SpinKit/blob/master/examples.html -->
 </div>
 
 <!-- Drawer Layout -->
@@ -98,19 +92,19 @@
 
             <!-- Navbar Brand -->
 
-            <a href="index.html"
+            <a href="#"
                class="navbar-brand mr-16pt d-lg-none">
 
                         <span class="avatar avatar-sm navbar-brand-icon mr-0 mr-lg-8pt">
 
                             <span class="avatar-title rounded bg-primary"><img
-                                    src="../../static/learningcurveapp/images/illustration/student/128/white.svg"
+                                    src="../../static/learningcurveapp/images/avt.png"
                                     alt="logo"
                                     class="img-fluid"/></span>
 
                         </span>
 
-                <span class="d-none d-lg-block">Luma</span>
+                <span class="d-none d-lg-block">{{ username }}</span>
             </a>
 
             <!-- // END Navbar Brand -->
@@ -121,34 +115,17 @@
 
                             <span class="avatar-title rounded navbar-avatar"><i
                                     class="material-icons">opacity</i></span>
-
                         </span>
 
                         <small class="flex d-flex flex-column">
-                            <strong class="navbar-text-100">Experience IQ</strong>
-                            <span class="navbar-text-50">2,300 points</span>
+                            <strong class="navbar-text-100">Experiences</strong>
+                            <span class="navbar-text-50">-1 points</span>
                         </small>
                     </span>
 
             <div class="flex"></div>
-
-            <!-- Switch Layout -->
-
-            <a href="../Compact_App_Layout/student-take-course.html"
-               class="navbar-toggler navbar-toggler-custom align-items-center justify-content-center d-none d-lg-flex"
-               data-toggle="tooltip"
-               data-title="Switch to Compact Layout"
-               data-placement="bottom"
-               data-boundary="window">
-                <span class="material-icons">swap_horiz</span>
-            </a>
-
-            <!-- // END Switch Layout -->
-
             <!-- Navbar Menu -->
-
             <div class="nav navbar-nav flex-nowrap d-flex mr-16pt">
-
                 <!-- Notifications dropdown -->
                 <div class="nav-item dropdown dropdown-notifications dropdown-xs-down-full"
                      data-toggle="tooltip"
@@ -171,42 +148,40 @@
                                    class="list-group-item list-group-item-action unread">
                                             <span class="d-flex align-items-center mb-1">
                                                 <small class="text-black-50">5 minutes ago</small>
-
                                                 <span class="ml-auto unread-indicator bg-accent"></span>
-
                                             </span>
                                     <span class="d-flex">
                                                 <span class="avatar avatar-xs mr-2">
-                                                    <img src="../../static/learningcurveapp/images/people/110/woman-5.jpg"
+                                                    <img src="../../static/learningcurveapp/images/avt.png"
                                                          alt="people"
                                                          class="avatar-img rounded-circle">
                                                 </span>
                                                 <span class="flex d-flex flex-column">
-                                                    <strong class="text-black-100">Michelle</strong>
-                                                    <span class="text-black-70">Clients loved the new design.</span>
+                                                    <strong class="text-black-100">{{ username }}</strong>
+                                                    <span class="text-black-70">Nothing to worries!.</span>
                                                 </span>
                                             </span>
                                 </a>
-
-                                <a href="javascript:void(0);"
-                                   class="list-group-item list-group-item-action">
+                                <a class="list-group-item list-group-item-action"
+                                   href="javascript:void(0);">
                                             <span class="d-flex align-items-center mb-1">
-                                                <small class="text-black-50">5 minutes ago</small>
+                                                <small class="text-black-50">1000 years ago</small>
 
                                             </span>
                                     <span class="d-flex">
                                                 <span class="avatar avatar-xs mr-2">
-                                                    <img src="../../static/learningcurveapp/images/people/110/woman-5.jpg"
+                                                    <img src="../../static/learningcurveapp/images/avt.png"
                                                          alt="people"
                                                          class="avatar-img rounded-circle">
                                                 </span>
                                                 <span class="flex d-flex flex-column">
-                                                    <strong class="text-black-100">Michelle</strong>
-                                                    <span class="text-black-70">🔥 Superb job..</span>
+                                                    <strong class="text-black-100">{{ username }}</strong>
+                                                    <span class="text-black-70">This is a smile :)</span>
                                                 </span>
                                             </span>
-                                </a>
 
+
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -224,7 +199,7 @@
                             data-toggle="dropdown"
                             data-caret="false">
                         <i class="material-icons">notifications_none</i>
-                        <span class="badge badge-notifications badge-accent">2</span>
+                        <span class="badge badge-notifications badge-accent">-1</span>
                     </button>
                     <div class="dropdown-menu dropdown-menu-right">
                         <div data-perfect-scrollbar
@@ -248,11 +223,10 @@
                                                 </span>
                                                 <span class="flex d-flex flex-column">
 
-                                                    <span class="text-black-70">Your profile information has not been synced correctly.</span>
+                                                    <span class="text-black-70">This is notification</span>
                                                 </span>
                                             </span>
                                 </a>
-
                                 <a href="javascript:void(0);"
                                    class="list-group-item list-group-item-action">
                                             <span class="d-flex align-items-center mb-1">
@@ -262,35 +236,15 @@
                                     <span class="d-flex">
                                                 <span class="avatar avatar-xs mr-2">
                                                     <span class="avatar-title rounded-circle bg-light">
-                                                        <i class="material-icons font-size-16pt text-primary">group_add</i>
+                                                        <i class="material-icons font-size-16pt text-primary">account_circle</i>
                                                     </span>
                                                 </span>
                                                 <span class="flex d-flex flex-column">
-                                                    <strong class="text-black-100">Adrian. D</strong>
-                                                    <span class="text-black-70">Wants to join your private group.</span>
+                                                    <strong class="text-black-100">{{ username }}</strong>
+                                                    <span class="text-black-70">CocaCola is good! You should buy more!.</span>
                                                 </span>
                                             </span>
                                 </a>
-
-                                <a href="javascript:void(0);"
-                                   class="list-group-item list-group-item-action">
-                                            <span class="d-flex align-items-center mb-1">
-                                                <small class="text-black-50">1 day ago</small>
-
-                                            </span>
-                                    <span class="d-flex">
-                                                <span class="avatar avatar-xs mr-2">
-                                                    <span class="avatar-title rounded-circle bg-light">
-                                                        <i class="material-icons font-size-16pt text-warning">storage</i>
-                                                    </span>
-                                                </span>
-                                                <span class="flex d-flex flex-column">
-
-                                                    <span class="text-black-70">Your deploy was successful.</span>
-                                                </span>
-                                            </span>
-                                </a>
-
                             </div>
                         </div>
                     </div>
@@ -304,22 +258,25 @@
                        data-caret="false">
 
                                 <span class="avatar avatar-sm mr-8pt2">
-
-                                    <span class="avatar-title rounded-circle bg-primary"><i class="material-icons">account_box</i></span>
+                                    <span class="avatar-title rounded-circle bg-primary">
+                                        <img src="../../static/learningcurveapp/images/avt.png"
+                                             alt="avatar_1"
+                                             class="avatar-img rounded-circle">
+                                    </span>
 
                                 </span>
 
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
-                        <div class="dropdown-header"><strong>Account</strong></div>
+                        <div class="dropdown-header"><strong>Menu for account here</strong></div>
                         <a class="dropdown-item"
-                           href="edit-account.html">Edit Account</a>
+                           href="#">Menu 1</a>
                         <a class="dropdown-item"
-                           href="billing.html">Billing</a>
+                           href="#">Menu 2</a>
                         <a class="dropdown-item"
-                           href="billing-history.html">Payments</a>
+                           href="#">Menu 3</a>
                         <a class="dropdown-item"
-                           href="login.html">Logout</a>
+                           href="#">Menu 4</a>
                     </div>
                 </div>
             </div>
@@ -331,10 +288,6 @@
         <!-- // END Navbar -->
 
         <!-- // END Header -->
-
-        <!-- BEFORE Page Content -->
-
-        <!-- // END BEFORE Page Content -->
 
         <!-- Page Content -->
 
