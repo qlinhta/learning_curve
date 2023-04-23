@@ -27,13 +27,13 @@ LINK_FORMAT = (
 )
 
 
-class Author(models.Model):
+class Teacher(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-
+    photo_link=models.CharField()
 
 class Student(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-
+    photo_link=models.CharField()
 
 class Field(models.Model):
     name = models.CharField(max_length=25)

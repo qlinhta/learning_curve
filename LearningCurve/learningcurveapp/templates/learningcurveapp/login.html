@@ -157,12 +157,12 @@
                     {% csrf_token %}
                     <div class="form-group">
                         <label class="form-label"
-                               for="email">Username:</label>
-                        <input id="email"
+                               for="username">Username:</label>
+                        <input id="username"
                                type="text"
                                class="form-control"
                                name = "username"
-                               placeholder="Your email address ...">
+                               placeholder="Your username ...">
                     </div>
                     <div class="form-group">
                         <label class="form-label"
@@ -175,6 +175,7 @@
                         <p class="text-right"><a href="#.html"
                                                  class="small">Forgot your password?</a></p>
                     </div>
+                    <p class="text-danger text-center">{{error_message}}</p>
                     <div class="text-center">
                         <button class="btn btn-primary">Login</button>
                     </div>
