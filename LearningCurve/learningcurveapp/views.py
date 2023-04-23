@@ -18,6 +18,45 @@ def student_path(request):
         'username': request.user.username,
     })
 
+def student_profile(request):
+    if not request.user.is_authenticated:
+        return redirect('/learningcurveapp/login')
+    return render(request, 'learningcurveapp/student-profile.html',context = {
+        'username': request.user.username,
+    })
+
+def student_quiz_result_details(request):
+    if not request.user.is_authenticated:
+        return redirect('/learningcurveapp/login')
+    return render(request, 'learningcurveapp/student-quiz-result-details.html',context = {
+        'username': request.user.username,
+    })
+def student_quiz_results(request):
+    if not request.user.is_authenticated:
+        return redirect('/learningcurveapp/login')
+    return render(request, 'learningcurveapp/student-quiz-results.html',context = {
+        'username': request.user.username,
+    })
+
+def student_take_course(request):
+    if not request.user.is_authenticated:
+        return redirect('/learningcurveapp/login')
+    return render(request, 'learningcurveapp/student-take-course.html',context = {
+        'username': request.user.username,
+    })
+
+def student_take_lesson(request):
+    if not request.user.is_authenticated:
+        return redirect('/learningcurveapp/login')
+    return render(request, 'learningcurveapp/student-take-lesson.html',context = {
+        'username': request.user.username,
+    })
+def student_take_quiz(request):
+    if not request.user.is_authenticated:
+        return redirect('/learningcurveapp/login')
+    return render(request, 'learningcurveapp/student-take-quiz.html',context = {
+        'username': request.user.username,
+    })
 
 def teacher_profile(request):
     if not request.user.is_authenticated:

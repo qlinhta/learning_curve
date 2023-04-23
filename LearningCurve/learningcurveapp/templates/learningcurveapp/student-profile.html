@@ -83,7 +83,7 @@
                         <span class="avatar avatar-sm navbar-brand-icon mr-0 mr-lg-8pt">
 
                             <span class="avatar-title rounded bg-primary"><img
-                                    src="../../static/learningcurveapp/images/avt.png"
+                                    src="../../static/learningcurveapp/img.png"
                                     alt="logo"
                                     class="img-fluid"/></span>
 
@@ -137,7 +137,7 @@
                                             </span>
                                     <span class="d-flex">
                                                 <span class="avatar avatar-xs mr-2">
-                                                    <img src="../../static/learningcurveapp/images/avt.png"
+                                                    <img src="../../static/learningcurveapp/img.png"
                                                          alt="people"
                                                          class="avatar-img rounded-circle">
                                                 </span>
@@ -155,7 +155,7 @@
                                             </span>
                                     <span class="d-flex">
                                                 <span class="avatar avatar-xs mr-2">
-                                                    <img src="../../static/learningcurveapp/images/avt.png"
+                                                    <img src="../../static/learningcurveapp/img.png"
                                                          alt="people"
                                                          class="avatar-img rounded-circle">
                                                 </span>
@@ -244,7 +244,7 @@
 
                                 <span class="avatar avatar-sm mr-8pt2">
                                     <span class="avatar-title rounded-circle bg-primary">
-                                        <img src="../../static/learningcurveapp/images/avt.png"
+                                        <img src="../../static/learningcurveapp/img.png"
                                              alt="avatar_1"
                                              class="avatar-img rounded-circle">
                                     </span>
@@ -278,12 +278,12 @@
 
         <div class="page-section border-bottom">
             <div class="container page__container d-flex flex-column flex-md-row align-items-center text-center text-md-left">
-                <img src="../../static/learningcurveapp/images/avt.png"
+                <img src="../../static/learningcurveapp/img.png"
                      width="104"
                      class="mr-md-32pt mb-32pt mb-md-0"
                      alt="student">
                 <div class="flex mb-32pt mb-md-0">
-                    <h2 class="text-white mb-0">Quyen Linh TA</h2>
+                    <h2 class="text-white mb-0">{{ username }}</h2>
                     <p class="lead text-white-50 d-flex align-items-center">Student<span
                             class="ml-16pt d-flex align-items-center"><i
                             class="material-icons icon-16pt mr-4pt">opacity</i> -1 IQ</span></p>
@@ -369,7 +369,7 @@
                                                         </span>
                                                         <span class="col d-flex flex-column">
                                                             <span>
-                                                                <span class="card-title text-white mb-4pt d-block">Quyen Linh TA</span>
+                                                                <span class="card-title text-white mb-4pt d-block">{{ username }}</span>
                                                                 <span class="text-white-60">Introduction to Machine Learning on Graph</span>
                                                             </span>
                                                         </span>
@@ -500,7 +500,7 @@
                             </div>
                             <div class="flex">
                                 <div class="d-flex align-items-center mb-1">
-                                    <strong class="card-title">Quyen Linh TA</strong>
+                                    <strong class="card-title">{{ username }}</strong>
                                     <small class="ml-auto text-muted">3 days ago</small>
                                 </div>
                                 <div>
@@ -532,7 +532,7 @@
                             </div>
                             <div class="flex">
                                 <div class="d-flex align-items-center mb-1">
-                                    <strong class="card-title">Quyen Linh TA</strong>
+                                    <strong class="card-title">{{ username }}</strong>
                                     <small class="ml-auto text-muted">4 days ago</small>
                                 </div>
                                 <div>
@@ -633,7 +633,7 @@
                     <span class="avatar avatar-xl sidebar-brand-icon h-auto">
 
                                 <span class="avatar-title rounded bg-primary"><img
-                                        src="../../static/learningcurveapp/images/avt.png"
+                                        src="../../static/learningcurveapp/img.png"
                                         class="img-fluid"
                                         alt="logo"/></span>
 
@@ -675,7 +675,7 @@
                     </li>
                     <li class="sidebar-menu-item">
                         <a class="sidebar-menu-button"
-                           href="#">
+                           href="/learningcurveapp/student-take-course">
                             <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">search</span>
                             <span class="sidebar-menu-text">My Courses</span>
                         </a>
@@ -687,9 +687,9 @@
                             <span class="sidebar-menu-text">My Paths</span>
                         </a>
                     </li>
-                    <li class="sidebar-menu-item active">
+                    <li class="sidebar-menu-item">
                         <a class="sidebar-menu-button"
-                           href="student-path.html">
+                           href="/learningcurveapp/student-path">
                             <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">change_history</span>
                             <span class="sidebar-menu-text">Path Details</span>
                         </a>
@@ -703,14 +703,14 @@
                     </li>
                     <li class="sidebar-menu-item">
                         <a class="sidebar-menu-button"
-                           href="#">
+                           href="/learningcurveapp/student-take-lesson">
                             <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">import_contacts</span>
                             <span class="sidebar-menu-text">Take Lesson</span>
                         </a>
                     </li>
                     <li class="sidebar-menu-item">
                         <a class="sidebar-menu-button"
-                           href="#">
+                           href="/learningcurveapp/student-take-quiz">
                             <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">dvr</span>
                             <span class="sidebar-menu-text">Take Quiz</span>
                         </a>
@@ -724,7 +724,7 @@
                     </li>
                     <li class="sidebar-menu-item">
                         <a class="sidebar-menu-button"
-                           href="#">
+                           href="/learningcurveapp/student-quiz-results">
                             <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">live_help</span>
                             <span class="sidebar-menu-text">Quiz Result</span>
                         </a>
