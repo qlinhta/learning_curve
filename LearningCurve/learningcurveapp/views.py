@@ -2,13 +2,28 @@ from django.shortcuts import render, redirect
 from . import forms
 from django.contrib.auth.models import User,auth,Group
 from django.contrib import messages
+from django.contrib.auth import authenticate
 
 
 
 def login(request):
-    return render(request, 'learningcurveapp/login.html', {
-                'form': forms.Authentication()
-            })
+
+    if request.user.is_authenticated:
+        return redirect('/learningcurveapp/profile')
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        print(username,password)
+        u = authenticate(username=username, password=password)
+        print(u)
+        if u:
+            auth.login(request,u)
+            return redirect('/learningcurveapp/profile')
+
+
+    return render(request, 'learningcurveapp/login.html', context = {
+        'error_message': 'The username or password is wrong, Please retry',
+    } )
 
 
 def student_path(request):
@@ -96,10 +111,14 @@ def signup(request):
         profile_type=request.POST['profile_type']
         if User.objects.filter(username=username).first():
             messages.info(request,"The username is already taken, please try another username...")
-            return render(request, 'learningcurveapp/signup.html')
+            return render(request, 'learningcurveapp/signup.html',context = {
+                'error_message': "The username is already taken, please try another username...",
+            })
         if 'agree'  not in request.POST:
             messages.info(request,"You have to agree to create an account")
-            return render(request, 'learningcurveapp/signup.html')
+            return render(request, 'learningcurveapp/signup.html',context = {
+                'error_message': "You have to agree to create an account",
+            })
         else:
             agree=request.POST['agree']
             user=User.objects.create_user(username=username,email=email, password=password)
