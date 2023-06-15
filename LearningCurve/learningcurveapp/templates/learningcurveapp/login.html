@@ -4,6 +4,7 @@
       class="dark-mode">
 
 <head>
+    {% load static %}
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible"
           content="IE=edge">
@@ -39,17 +40,17 @@
 
     <!-- Preloader -->
     <link type="text/css"
-          href="../../static/learningcurveapp/css/preloader.css"
+          href="{ % static 'learningcurveapp/css/preloader.css' %}"
           rel="stylesheet">
 
     <!-- App CSS -->
     <link type="text/css"
-          href="../../static/learningcurveapp/css/app.css"
+          href="{% static 'learningcurveapp/css/app.css' %}"
           rel="stylesheet">
 
     <!-- Dark Mode CSS -->
     <link type="text/css"
-          href="../../static/learningcurveapp/css/dark.css"
+          href="{%static 'learningcurveapp/css/dark.css' %}"
           rel="stylesheet">
 </head>
 
@@ -207,7 +208,7 @@
             <div class="container page__container page-section d-flex flex-column">
                 <p class="text-70 brand mb-24pt">
                     <img class="brand-icon"
-                         src="../../static/learningcurveapp/images/Logo.svg"
+                         src="{% static 'learningcurveapp/images/Logo.svg' %}"
                          width="300"
                          alt="Learning Curve">
                 </p>
@@ -247,16 +248,16 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.5.2/perfect-scrollbar.min.js"></script>
 
 <!-- DOM Factory -->
-<script src="../../static/learningcurveapp/vendor/dom-factory.js"></script>
+<script src="{% static 'learningcurveapp/vendor/dom-factory.js' %}"></script>
 
 <!-- MDK -->
 <script src="https://cdn.jsdelivr.net/npm/material-design-kit@1.0.0/dist/material-design-kit.min.js"></script>
 
 <!-- App JS -->
-<script src="../../static/learningcurveapp/js/app.js"></script>
+<script src="{ % static 'learningcurveapp/js/app.js' %}"></script>
 
 <!-- Preloader -->
-<script src="../../static/learningcurveapp/js/preloader.js"></script>
+<script src="{% static 'learningcurveapp/js/preloader.js'%}"></script>
 
 
 

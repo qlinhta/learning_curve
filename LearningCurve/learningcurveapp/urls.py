@@ -11,8 +11,8 @@ urlpatterns = [
     path('student-take-lesson/', views.student_take_lesson, name='student-take-lesson'),
     path('student-take-quiz/', views.student_take_quiz, name='student-take-quiz'),
     path('student-quiz-results/', views.student_quiz_results, name='student-quiz-results'),
-    #path('teacher_mycourses/', views.teacher_mycourses, name='teacher_mycourses/'),
-    #path('teacher_addcourse/', views.teacher_addcourse, name='teacher_addcourse'),
+    path('teacher-mycourses/', views.teacher_mycourses, name='teacher-mycourses/'),
+    path('teacher-addcourses/', views.teacher_addcourses, name='teacher-addcourses'),
 
     path('teacher-profile/', views.teacher_profile, name='teacher-profile'),
     path('aboutus/', views.aboutus, name='aboutus'),

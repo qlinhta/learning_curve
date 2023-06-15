@@ -80,7 +80,19 @@ def teacher_profile(request):
         'username': request.user.username,
     })
 
+def teacher_addcourses(request):
+    if not request.user.is_authenticated:
+        return redirect('/learningcurveapp/login')
+    return render(request, 'learningcurveapp/teacher-addcourses.html',context = {
+        'username': request.user.username,
+    })
 
+def teacher_mycourses(request):
+    if not request.user.is_authenticated:
+        return redirect('/learningcurveapp/login')
+    return render(request, 'learningcurveapp/teacher-mycourses.html',context = {
+        'username': request.user.username,
+    })
 def profile(request):
     if not request.user.is_authenticated:
         return redirect('/learningcurveapp/login')

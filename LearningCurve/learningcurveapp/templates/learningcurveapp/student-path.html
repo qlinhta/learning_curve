@@ -3,6 +3,7 @@
       dir="ltr"
       class="dark-mode">
 <head>
+    {% load static %}
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible"
           content="IE=edge">
@@ -34,18 +35,18 @@
 
     <!-- Preloader -->
     <link type="text/css"
-          href="../../static/learningcurveapp/css/preloader.css"
+          href="{% static 'learningcurveapp/css/preloader.css' %}"
           rel="stylesheet">
 
     <!-- App CSS -->
     <link type="text/css"
-          href="../../static/learningcurveapp/css/app.css"
+          href="{% static 'learningcurveapp/css/app.css' %}"
           rel="stylesheet">
 
     <!-- Dark Mode CSS -->
     <link type="text/css"
-          href="../../static/learningcurveapp/css/dark.css"
-          rel="stylesheet">
+          href="{% static 'learningcurveapp/css/dark.css' %}"
+          rel= "stylesheet">
 
 </head>
 
@@ -80,7 +81,7 @@
 
                         <span class="avatar avatar-sm navbar-brand-icon mr-0 mr-lg-8pt">
 
-                            <span class="avatar-title rounded bg-primary"><img src="../../static/learningcurveapp/img.png"
+                            <span class="avatar-title rounded bg-primary"><img src="{% static 'learningcurveapp/img.png' %}"
                                                                                alt="logo"
                                                                                class="img-fluid"/></span>
                         </span>
@@ -133,7 +134,7 @@
                                             </span>
                                     <span class="d-flex">
                                                 <span class="avatar avatar-xs mr-2">
-                                                    <img src="../../static/learningcurveapp/img.png"
+                                                    <img src="{% static 'learningcurveapp/img.png' %}"
                                                          alt="people"
                                                          class="avatar-img rounded-circle">
                                                 </span>
@@ -151,7 +152,7 @@
                                             </span>
                                     <span class="d-flex">
                                                 <span class="avatar avatar-xs mr-2">
-                                                    <img src="../../static/learningcurveapp/img.png"
+                                                    <img src="{% static 'learningcurveapp/img.png' %}"
                                                          alt="people"
                                                          class="avatar-img rounded-circle">
                                                 </span>
@@ -240,7 +241,7 @@
                                 <span class="avatar avatar-sm mr-8pt2">
                                     <span class="avatar-title rounded-circle bg-primary">
                                         
-                                        <img src="../../static/learningcurveapp/img.png"
+                                        <img src="{% static 'learningcurveapp/img.png' %}"
                                              alt="avatar_1"
                                              class="avatar-img rounded-circle">
                                     </span>
@@ -294,7 +295,7 @@
                                     <div class="bg-primary fullbleed"
                                          style="opacity: .5;"></div>
                                     <a href = "learningcurveapp/student-profile"><img class=""
-                                         src="../../static/learningcurveapp/img.png" width="96"
+                                         src="{% static 'learningcurveapp/img.png' %}" width="96"
                                          alt="Logo"></a>
                                 </div>
                             </div>
@@ -473,7 +474,7 @@
                     <a href="/learningcurveapp/aboutus"
                        class="text-70 text-underline small">About us</a>
                     <img class="brand-icon"
-                         src="../../static/learningcurveapp/images/Logo.svg"
+                         src="{% static 'learningcurveapp/images/Logo.svg' %}"
                          width="300"
                          alt="Learning Curve">
                 </p>
@@ -522,7 +523,7 @@
                    class="sidebar-brand ">
                     <span class="avatar avatar-xl sidebar-brand-icon h-auto">
                                 <span class="avatar-title rounded bg-primary"><img
-                                        src="../../static/learningcurveapp/img.png"
+                                        src="{%static 'learningcurveapp/img.png' %}"
                                         class="img-fluid"
                                         alt="logo"/></span>
 
@@ -655,16 +656,16 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.5.2/perfect-scrollbar.min.js"></script>
 
 <!-- DOM Factory -->
-<script src="../../static/learningcurveapp/vendor/dom-factory.js"></script>
+<script src="{% static 'learningcurveapp/vendor/dom-factory.js' %}"></script>
 
 <!-- MDK -->
 <script src="https://cdn.jsdelivr.net/npm/material-design-kit@1.0.0/dist/material-design-kit.min.js"></script>
 
 <!-- App JS -->
-<script src="../../static/learningcurveapp/js/app.js"></script>
+<script src="{% static 'learningcurveapp/js/app.js' %}"></script>
 
 <!-- Preloader -->
-<script src="../../static/learningcurveapp/js/preloader.js"></script>
+<script src="{% static 'learningcurveapp/js/preloader.js' %}"></script>
 
 
 </body>
