@@ -5,6 +5,11 @@ from django.contrib import messages
 from django.contrib.auth import authenticate
 
 
+def courses(request):
+    return render(request, 'learningcurveapp/courses.html')
+
+def index(request):
+    return render(request, 'learningcurveapp/index.html')
 
 def login(request):
 
