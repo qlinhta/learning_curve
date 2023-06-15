@@ -10,8 +10,7 @@
           content="IE=edge">
     <meta name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Learning Path</title>
-
+    <title>Teacher Profile</title>
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CRoboto:400,500%7CExo+2:600&display=swap"
           rel="stylesheet">
 
@@ -49,10 +48,30 @@
     <link type="text/css"
           href="{% static 'learningcurveapp/css/dark.css' %}"
           rel="stylesheet">
-
 </head>
 
 <body class="layout-app ">
+
+<div class="preloader">
+    <div class="sk-chase">
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+    </div>
+
+    <!-- <div class="sk-bounce">
+<div class="sk-bounce-dot"></div>
+<div class="sk-bounce-dot"></div>
+</div> -->
+
+    <!-- More spinner examples at https://github.com/tobiasahlin/SpinKit/blob/master/examples.html -->
+</div>
+
+<!-- Drawer Layout -->
+
 <div class="mdk-drawer-layout js-mdk-drawer-layout"
      data-push
      data-responsive-width="992px">
@@ -83,10 +102,9 @@
 
                         <span class="avatar avatar-sm navbar-brand-icon mr-0 mr-lg-8pt">
 
-                            <span class="avatar-title rounded bg-primary"><img
-                                    src="{% static 'learningcurveapp/img.png' %}"
-                                    alt="logo"
-                                    class="img-fluid"/></span>
+                            <span class="avatar-title rounded bg-primary"><img src="{% static 'learningcurveapp/images/user_icon.jpg' %}"
+                                                                               alt="logo"
+                                                                               class="img-fluid"/></span>
 
                         </span>
 
@@ -95,19 +113,6 @@
 
             <!-- // END Navbar Brand -->
 
-            <span class="d-none d-md-flex align-items-center mr-16pt">
-
-                        <span class="avatar avatar-sm mr-12pt">
-
-                            <span class="avatar-title rounded navbar-avatar"><i
-                                    class="material-icons">opacity</i></span>
-                        </span>
-
-                        <small class="flex d-flex flex-column">
-                            <strong class="navbar-text-100">Experiences</strong>
-                            <span class="navbar-text-50">-1 points</span>
-                        </small>
-                    </span>
 
             <div class="flex"></div>
             <!-- Navbar Menu -->
@@ -138,7 +143,7 @@
                                             </span>
                                     <span class="d-flex">
                                                 <span class="avatar avatar-xs mr-2">
-                                                    <img src="{% static 'learningcurveapp/img.png' %}"
+                                                    <img src="{% static 'learningcurveapp/images/user_icon.jpg' %}"
                                                          alt="people"
                                                          class="avatar-img rounded-circle">
                                                 </span>
@@ -156,7 +161,7 @@
                                             </span>
                                     <span class="d-flex">
                                                 <span class="avatar avatar-xs mr-2">
-                                                    <img src="{% static 'learningcurveapp/img.png' %}"
+                                                    <img src="{% static 'learningcurveapp/images/user_icon.jpg' %}"
                                                          alt="people"
                                                          class="avatar-img rounded-circle">
                                                 </span>
@@ -245,7 +250,7 @@
 
                                 <span class="avatar avatar-sm mr-8pt2">
                                     <span class="avatar-title rounded-circle bg-primary">
-                                        <img src="{% static 'learningcurveapp/img.png' %}"
+                                        <img src="{% static 'learningcurveapp/images/user_icon.jpg' %}"
                                              alt="avatar_1"
                                              class="avatar-img rounded-circle">
                                     </span>
@@ -266,312 +271,175 @@
                     </div>
                 </div>
             </div>
-
-            <!-- // END Navbar Menu -->
-
         </div>
 
-        <!-- // END Navbar -->
 
-        <!-- // END Header -->
-
-        <!-- Page Content -->
-
-        <div class="page-section border-bottom">
-            <div class="container page__container d-flex flex-column flex-md-row align-items-center text-center text-md-left">
-                <img src="{% static 'learningcurveapp/img.png' %}"
-                     width="104"
-                     class="mr-md-32pt mb-32pt mb-md-0"
-                     alt="student">
-                <div class="flex mb-32pt mb-md-0">
-                    <h2 class="text-white mb-0">{{ username }}</h2>
-                    <p class="lead text-white-50 d-flex align-items-center">Student<span
-                            class="ml-16pt d-flex align-items-center"><i
-                            class="material-icons icon-16pt mr-4pt">opacity</i> -1 IQ</span></p>
-                </div>
-                <a href=""
-                   class="btn btn-outline-white">Follow</a>
-            </div>
-        </div>
-
-        <div class="page-section">
-            <div class="container page__container">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="card border-0 mb-lg-0">
-                            <div class="card-header d-flex align-items-center">
-                                <div class="h2 mb-0 mr-3">879</div>
-                                <div class="flex">
-                                    <p class="card-title">Machine Learning</p>
-                                    <p class="card-subtitle text-50">Best score</p>
-                                </div>
-                                <div class="dropdown">
-                                    <a href="#"
-                                       class="btn btn-sm btn-outline-secondary dropdown-toggle"
-                                       data-toggle="dropdown">Popular Topics</a>
-                                    <div class="dropdown-menu dropdown-menu-right">
-                                        <a href=""
-                                           class="dropdown-item">Popular Topics</a>
-                                        <a href=""
-                                           class="dropdown-item">Machine Learning</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body p-24pt">
-                                <div class="chart"
-                                     style="height: 344px;">
-                                    <canvas id="topicIqChart"
-                                            class="chart-canvas js-update-chart-line"
-                                            data-chart-hide-axes="true"
-                                            data-chart-points="true"
-                                            data-chart-suffix=" points"
-                                            data-chart-line-border-color="primary"
-                                            data-chart-dark-mode="true"></canvas>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-
-                        <div id="carouselExampleFade"
-                             class="carousel carousel-card slide mb-24pt">
-                            <div class="carousel-inner">
-
-                                <div class="carousel-item active">
-
-                                    <a class="card border-0 mb-0"
-                                       href="">
-                                        <img src="{% static 'learningcurveapp/images/flinto.png' %}"
-                                             alt="Flinto"
-                                             class="card-img"
-                                             style="max-height: 100%; width: initial;">
-                                        <div class="fullbleed bg-primary"
-                                             style="opacity: .5;"></div>
-                                        <span class="card-body d-flex flex-column align-items-center justify-content-center fullbleed">
-                                                    <span class="row flex-nowrap">
-                                                        <span class="col-auto text-center d-flex flex-column justify-content-center align-items-center">
-                                                            <span class="h5 text-white text-uppercase font-weight-normal m-0 d-block">Achievement</span>
-                                                            <span class="text-white-60 d-block mb-24pt">April 22, 2023</span>
-                                                        </span>
-                                                        <span class="col d-flex flex-column">
-                                                            <span class="text-right flex mb-16pt">
-                                                                <img src="{% static 'learningcurveapp/images/paths/flinto_40x40@2x.png' %}"
-                                                                     width="64"
-                                                                     alt="Flinto"
-                                                                     class="rounded">
-                                                            </span>
-                                                        </span>
-                                                    </span>
-                                                    <span class="row flex-nowrap">
-                                                        <span class="col-auto text-center d-flex flex-column justify-content-center align-items-center">
-                                                            <img src="{% static 'learningcurveapp/images/illustration/achievement/128/white.png' %}"
-                                                                 width="64"
-                                                                 alt="achievement">
-                                                        </span>
-                                                        <span class="col d-flex flex-column">
-                                                            <span>
-                                                                <span class="card-title text-white mb-4pt d-block">{{ username }}</span>
-                                                                <span class="text-white-60">Introduction to Machine Learning on Graph</span>
-                                                            </span>
-                                                        </span>
-                                                    </span>
-                                                </span>
-                                    </a>
-
-                                </div>
-
-                                <div class="carousel-item">
-
-                                    <a class="card border-0 mb-0"
-                                       href="">
-                                        <img src="{% static 'learningcurveapp/images/achievements/Machine Learning.png' %}"
-                                             alt="Machine Learning fundamentals"
-                                             class="card-img"
-                                             style="max-height: 100%; width: initial;">
-                                        <div class="fullbleed bg-primary"
-                                             style="opacity: .5;"></div>
-                                        <span class="card-body d-flex flex-column align-items-center justify-content-center fullbleed">
-                                                    <span class="row flex-nowrap">
-                                                        <span class="col-auto text-center d-flex flex-column justify-content-center align-items-center">
-                                                            <span class="h5 text-white text-uppercase font-weight-normal m-0 d-block">Achievement</span>
-                                                            <span class="text-white-60 d-block mb-24pt">Jun 5, 2018</span>
-                                                        </span>
-                                                        <span class="col d-flex flex-column">
-                                                            <span class="text-right flex mb-16pt">
-                                                                <img src="{ % static 'learningcurveapp/images/paths/Machine Learning_64x64.png' %}"
-                                                                     width="64"
-                                                                     alt="Machine Learning fundamentals"
-                                                                     class="rounded">
-                                                            </span>
-                                                        </span>
-                                                    </span>
-                                                    <span class="row flex-nowrap">
-                                                        <span class="col-auto text-center d-flex flex-column justify-content-center align-items-center">
-                                                            <img src="{% static 'learningcurveapp/images/illustration/achievement/128/white.png' %}"
-                                                                 width="64"
-                                                                 alt="achievement">
-                                                        </span>
-                                                        <span class="col d-flex flex-column">
-                                                            <span>
-                                                                <span class="card-title text-white mb-4pt d-block">Machine Learning fundamentals</span>
-                                                                <span class="text-white-60">Creating and Communicating Between Machine Learning Components</span>
-                                                            </span>
-                                                        </span>
-                                                    </span>
-                                                </span>
-                                    </a>
-
-                                </div>
-
-                            </div>
-                            <!-- <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
-<span class="carousel-control-icon material-icons" aria-hidden="true">keyboard_arrow_left</span>
-<span class="sr-only">Previous</span>
-</a> -->
-                            <a class="carousel-control-next"
-                               href="#carouselExampleFade"
-                               role="button"
-                               data-slide="next">
-                                        <span class="carousel-control-icon material-icons"
-                                              aria-hidden="true">keyboard_arrow_right</span>
-                                <span class="sr-only">Next</span>
-                            </a>
-                        </div>
-
-                        <div class="card border-0 mb-lg-0">
-                            <div class="card-header d-flex align-items-center border-0">
-                                <div class="h2 mb-0 mr-3">432</div>
-                                <div class="flex">
-                                    <p class="card-title">Experience IQ</p>
-                                    <p class="card-subtitle text-50">4 days streak this week</p>
-                                </div>
-                                <i class="material-icons text-muted ml-2">trending_up</i>
-                            </div>
-                            <div class="card-body pt-0">
-                                <div class="chart"
-                                     style="height: 128px;">
-                                    <canvas id="iqChart"
-                                            class="chart-canvas js-update-chart-line"
-                                            data-chart-hide-axes="false"
-                                            data-chart-points="true"
-                                            data-chart-suffix="pt"
-                                            data-chart-line-border-color="primary"
-                                            data-chart-dark-mode="true"></canvas>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="page-section  border-bottom-2">
             <div class="container page__container">
                 <div class="row">
+
                     <div class="col-md-6">
-                        <h4>About me</h4>
-                        <p class="text-70">As a passionate and dedicated data science enthusiast, I am
-                            constantly driven to expand their knowledge and expertise in the field. With a strong
-                            background in mathematics, statistics, and programming, I have cultivated an analytical
-                            mindset that enables them to harness the power of data to make informed decisions and solve
-                            complex problems. I am so good lying too!</p>
-                    </div>
-                    <div class="col-md-6">
-                        <h4>Connect</h4>
-                        <p class="text-70">I’m currently working as no one, I use my parent's money to live through
-                            these days!</p>
-                        <div class="d-flex align-items-center">
-                            <a href=""
-                               class="text-accent fab fa-facebook-square font-size-24pt mr-8pt"></a>
-                            <a href=""
-                               class="text-accent fab fa-twitter-square font-size-24pt"></a>
-                        </div>
+                        <h4>New Course</h4>
+                        <a href="/learningcurveapp/teacher_addcourse"><p>Please click here to add new course</p></a>
+
                     </div>
                 </div>
             </div>
         </div>
-        <div class="page-section">
-            <div class="container page__container">
 
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex mb-1">
-                            <div class="avatar avatar-sm mr-3">
-                                <!-- <img src="{% static 'learningcurveapp/images/people/50/guy-2.jpg" alt="Avatar" class="avatar-img rounded-circle' %}"> -->
-                                <span class="avatar-title rounded-circle">QL</span>
-                            </div>
-                            <div class="flex">
-                                <div class="d-flex align-items-center mb-1">
-                                    <strong class="card-title">{{ username }}</strong>
-                                    <small class="ml-auto text-muted">3 days ago</small>
-                                </div>
-                                <div>
-                                    <p class="measure-lead">Siyani is one of my friend and she is suck!!!</a>
-                                        🔥</p>
-                                    <p><a href="">#miage</a> <a href="">#dauphine</a></p>
-                                </div>
+        <div class="container page__container page-section">
 
-                            </div>
-                        </div>
-                        <div class="d-flex align-items-center">
-                            <a href=""
-                               class="text-muted d-flex align-items-center text-decoration-0"><i
-                                    class="material-icons mr-1"
-                                    style="font-size: inherit;">favorite_border</i> 1.2M</a>
-                            <a href=""
-                               class="text-muted d-flex align-items-center text-decoration-0 ml-3"><i
-                                    class="material-icons mr-1"
-                                    style="font-size: inherit;">thumb_up</i> 123M</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex mb-1">
-                            <div class="avatar avatar-sm mr-3">
-                                <span class="avatar-title rounded-circle">QL</span>
-                            </div>
-                            <div class="flex">
-                                <div class="d-flex align-items-center mb-1">
-                                    <strong class="card-title">{{ username }}</strong>
-                                    <small class="ml-auto text-muted">4 days ago</small>
-                                </div>
-                                <div>
-                                    <p class="measure-lead">Example of a post by student!
-                                        😉
-                                    </p>
-                                </div>
-
-                                <a href=""
-                                   class="card my-3 text-body text-decoration-0 measure-lead">
-                                    <img src="{% static 'learningcurveapp/images/hu.jpeg' %}"
-                                         alt="image"
-                                         class="card-img-top">
-                                    <span class="card-footer d-flex flex-column">
-                                            <strong>Non-Linear transformations</strong>
-                                            <span class="text-70">Description</span>
-                                            <span class="text-muted">www.learningcurve.com</span>
-                                        </span>
-                                </a>
-
-                            </div>
-                        </div>
-                        <div class="d-flex align-items-center">
-                            <a href=""
-                               class="text-muted d-flex align-items-center text-decoration-0"><i
-                                    class="material-icons mr-1"
-                                    style="font-size: inherit;">favorite_border</i> 156</a>
-                            <a href=""
-                               class="text-muted d-flex align-items-center text-decoration-0 ml-3"><i
-                                    class="material-icons mr-1"
-                                    style="font-size: inherit;">thumb_up</i> 351</a>
-                        </div>
-                    </div>
-                </div>
-
-                <a href=""
-                   class="btn btn-block btn-light mb-32pt">Load more ...</a>
+            <div class="page-headline text-center">
+                <h2>Courses</h2>
+                <p class="lead text-70 col-lg-8 mx-auto">{{ username }}</p>
             </div>
+
+            <div class="row card-group-row mb-8pt">
+
+                <div class="col-sm-6 card-group-row__col">
+                    <div class="card card-sm card-group-row__card">
+                        <div class="card-body d-flex align-items-center">
+                            <a href="#"
+                               class="avatar avatar-4by3 overlay overlay--primary mr-12pt">
+                                <img src="{% static 'learningcurveapp/images/4040.png' %}"
+                                     alt="GraphML"
+                                     class="avatar-img rounded">
+                                <span class="overlay__content"></span>
+                            </a>
+                            <div class="flex">
+                                <a class="card-title mb-4pt"
+                                   href="#">GraphML</a>
+                                <div class="d-flex align-items-center">
+                                    <div class="rating mr-8pt">
+
+                                        <span class="rating__item"><span class="material-icons">star</span></span>
+
+                                        <span class="rating__item"><span class="material-icons">star</span></span>
+
+                                        <span class="rating__item"><span class="material-icons">star</span></span>
+
+                                        <span class="rating__item"><span
+                                                class="material-icons">star_border</span></span>
+
+                                        <span class="rating__item"><span
+                                                class="material-icons">star_border</span></span>
+
+                                    </div>
+                                    <small class="text-muted">3/5</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 card-group-row__col">
+                    <div class="card card-sm card-group-row__card">
+                        <div class="card-body d-flex align-items-center">
+                            <a href="#"
+                               class="avatar avatar-4by3 overlay overlay--primary mr-12pt">
+                                <img src="{% static 'learningcurveapp/images/4040.png' %}"
+                                     alt="GraphML"
+                                     class="avatar-img rounded">
+                                <span class="overlay__content"></span>
+                            </a>
+                            <div class="flex">
+                                <a class="card-title mb-4pt"
+                                   href="#">GraphML</a>
+                                <div class="d-flex align-items-center">
+                                    <div class="rating mr-8pt">
+
+                                        <span class="rating__item"><span class="material-icons">star</span></span>
+
+                                        <span class="rating__item"><span class="material-icons">star</span></span>
+
+                                        <span class="rating__item"><span class="material-icons">star</span></span>
+
+                                        <span class="rating__item"><span class="material-icons">star</span></span>
+
+                                        <span class="rating__item"><span
+                                                class="material-icons">star_border</span></span>
+
+                                    </div>
+                                    <small class="text-muted">4/5</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 card-group-row__col">
+                    <div class="card card-sm card-group-row__card">
+                        <div class="card-body d-flex align-items-center">
+                            <a href="#"
+                               class="avatar avatar-4by3 overlay overlay--primary mr-12pt">
+                                <img src="{% static 'learningcurveapp/images/4040.png' %}"
+                                     alt="GraphML"
+                                     class="avatar-img rounded">
+                                <span class="overlay__content"></span>
+                            </a>
+                            <div class="flex">
+                                <a class="card-title mb-4pt"
+                                   href="#">GraphML</a>
+                                <div class="d-flex align-items-center">
+                                    <div class="rating mr-8pt">
+
+                                        <span class="rating__item"><span class="material-icons">star</span></span>
+
+                                        <span class="rating__item"><span class="material-icons">star</span></span>
+
+                                        <span class="rating__item"><span class="material-icons">star</span></span>
+
+                                        <span class="rating__item"><span class="material-icons">star</span></span>
+
+                                        <span class="rating__item"><span class="material-icons">star</span></span>
+
+                                    </div>
+                                    <small class="text-muted">5/5</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 card-group-row__col">
+                    <div class="card card-sm card-group-row__card">
+                        <div class="card-body d-flex align-items-center">
+                            <a href="#"
+                               class="avatar avatar-4by3 overlay overlay--primary mr-12pt">
+                                <img src="{% static 'learningcurveapp/images/4040.png' %}"
+                                     alt="Learn Angular Fundamentals"
+                                     class="avatar-img rounded">
+                                <span class="overlay__content"></span>
+                            </a>
+                            <div class="flex">
+                                <a class="card-title mb-4pt"
+                                   href="#">Learn GraphML</a>
+                                <div class="d-flex align-items-center">
+                                    <div class="rating mr-8pt">
+
+                                        <span class="rating__item"><span class="material-icons">star</span></span>
+
+                                        <span class="rating__item"><span class="material-icons">star</span></span>
+
+                                        <span class="rating__item"><span class="material-icons">star</span></span>
+
+                                        <span class="rating__item"><span class="material-icons">star</span></span>
+
+                                        <span class="rating__item"><span class="material-icons">star</span></span>
+
+                                    </div>
+                                    <small class="text-muted">5/5</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+
         </div>
 
         <!-- // END Page Content -->
@@ -634,7 +502,7 @@
                     <span class="avatar avatar-xl sidebar-brand-icon h-auto">
 
                                 <span class="avatar-title rounded bg-primary"><img
-                                        src="{% static 'learningcurveapp/img.png'%}"
+                                        src="{% static 'learningcurveapp/images/user_icon.jpg' %}"
                                         class="img-fluid"
                                         alt="logo"/></span>
 
@@ -643,7 +511,7 @@
                     <span>{{ username }}</span>
                 </a>
 
-                <div class="sidebar-heading">Student</div>
+                <div class="sidebar-heading">Teacher</div>
                 <ul class="sidebar-menu">
 
                     <li class="sidebar-menu-item">
@@ -676,7 +544,7 @@
                     </li>
                     <li class="sidebar-menu-item">
                         <a class="sidebar-menu-button"
-                           href="/learningcurveapp/student-take-course">
+                           href="/learningcurveapp/teacher_mycourses">
                             <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">search</span>
                             <span class="sidebar-menu-text">My Courses</span>
                         </a>
@@ -688,7 +556,7 @@
                             <span class="sidebar-menu-text">My Paths</span>
                         </a>
                     </li>
-                    <li class="sidebar-menu-item">
+                    <li class="sidebar-menu-item active">
                         <a class="sidebar-menu-button"
                            href="/learningcurveapp/student-path">
                             <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">change_history</span>
@@ -704,14 +572,14 @@
                     </li>
                     <li class="sidebar-menu-item">
                         <a class="sidebar-menu-button"
-                           href="/learningcurveapp/student-take-lesson">
+                           href="#">
                             <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">import_contacts</span>
                             <span class="sidebar-menu-text">Take Lesson</span>
                         </a>
                     </li>
                     <li class="sidebar-menu-item">
                         <a class="sidebar-menu-button"
-                           href="/learningcurveapp/student-take-quiz">
+                           href="#">
                             <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">dvr</span>
                             <span class="sidebar-menu-text">Take Quiz</span>
                         </a>
@@ -725,7 +593,7 @@
                     </li>
                     <li class="sidebar-menu-item">
                         <a class="sidebar-menu-button"
-                           href="/learningcurveapp/student-quiz-results">
+                           href="#">
                             <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">live_help</span>
                             <span class="sidebar-menu-text">Quiz Result</span>
                         </a>
@@ -756,8 +624,6 @@
         </div>
     </div>
 </div>
-
-
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -768,7 +634,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.5.2/perfect-scrollbar.min.js"></script>
 
 <!-- DOM Factory -->
-<script src="{%static 'learningcurveapp/vendor/dom-factory.js' %}"></script>
+<script src="{% static 'learningcurveapp/vendor/dom-factory.js' %}"></script>
 
 <!-- MDK -->
 <script src="https://cdn.jsdelivr.net/npm/material-design-kit@1.0.0/dist/material-design-kit.min.js"></script>
@@ -778,7 +644,6 @@
 
 <!-- Preloader -->
 <script src="{% static 'learningcurveapp/js/preloader.js' %}"></script>
-
 
 </body>
 
