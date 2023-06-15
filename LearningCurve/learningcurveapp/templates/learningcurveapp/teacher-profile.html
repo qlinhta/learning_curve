@@ -113,146 +113,14 @@
 
             <!-- // END Navbar Brand -->
 
-            <span class="d-none d-md-flex align-items-center mr-16pt">
-
-                        <span class="avatar avatar-sm mr-12pt">
-
-                            <span class="avatar-title rounded navbar-avatar"><i
-                                    class="material-icons">opacity</i></span>
-                        </span>
-
-                        <small class="flex d-flex flex-column">
-                            <strong class="navbar-text-100">Experiences</strong>
-                            <span class="navbar-text-50">-1 points</span>
-                        </small>
-                    </span>
 
             <div class="flex"></div>
             <!-- Navbar Menu -->
             <div class="nav navbar-nav flex-nowrap d-flex mr-16pt">
                 <!-- Notifications dropdown -->
-                <div class="nav-item dropdown dropdown-notifications dropdown-xs-down-full"
-                     data-toggle="tooltip"
-                     data-title="Messages"
-                     data-placement="bottom"
-                     data-boundary="window">
-                    <button class="nav-link btn-flush dropdown-toggle"
-                            type="button"
-                            data-toggle="dropdown"
-                            data-caret="false">
-                        <i class="material-icons icon-24pt">mail_outline</i>
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-right">
-                        <div data-perfect-scrollbar
-                             class="position-relative">
-                            <div class="dropdown-header"><strong>Messages</strong></div>
-                            <div class="list-group list-group-flush mb-0">
-
-                                <a href="javascript:void(0);"
-                                   class="list-group-item list-group-item-action unread">
-                                            <span class="d-flex align-items-center mb-1">
-                                                <small class="text-black-50">5 minutes ago</small>
-                                                <span class="ml-auto unread-indicator bg-accent"></span>
-                                            </span>
-                                    <span class="d-flex">
-                                                <span class="avatar avatar-xs mr-2">
-                                                    <img src="{% static 'learningcurveapp/images/user_icon.jpg' %}"
-                                                         alt="people"
-                                                         class="avatar-img rounded-circle">
-                                                </span>
-                                                <span class="flex d-flex flex-column">
-                                                    <strong class="text-black-100">{{ username }}</strong>
-                                                    <span class="text-black-70">Nothing to worries!.</span>
-                                                </span>
-                                            </span>
-                                </a>
-                                <a class="list-group-item list-group-item-action"
-                                   href="javascript:void(0);">
-                                            <span class="d-flex align-items-center mb-1">
-                                                <small class="text-black-50">1000 years ago</small>
-
-                                            </span>
-                                    <span class="d-flex">
-                                                <span class="avatar avatar-xs mr-2">
-                                                    <img src="{% static 'learningcurveapp/images/user_icon.jpg' %}"
-                                                         alt="people"
-                                                         class="avatar-img rounded-circle">
-                                                </span>
-                                                <span class="flex d-flex flex-column">
-                                                    <strong class="text-black-100">{{ username }}</strong>
-                                                    <span class="text-black-70">This is a smile :)</span>
-                                                </span>
-                                            </span>
-
-
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <!-- // END Notifications dropdown -->
 
                 <!-- Notifications dropdown -->
-                <div class="nav-item ml-16pt dropdown dropdown-notifications dropdown-xs-down-full"
-                     data-toggle="tooltip"
-                     data-title="Notifications"
-                     data-placement="bottom"
-                     data-boundary="window">
-                    <button class="nav-link btn-flush dropdown-toggle"
-                            type="button"
-                            data-toggle="dropdown"
-                            data-caret="false">
-                        <i class="material-icons">notifications_none</i>
-                        <span class="badge badge-notifications badge-accent">-1</span>
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-right">
-                        <div data-perfect-scrollbar
-                             class="position-relative">
-                            <div class="dropdown-header"><strong>System notifications</strong></div>
-                            <div class="list-group list-group-flush mb-0">
-
-                                <a href="javascript:void(0);"
-                                   class="list-group-item list-group-item-action unread">
-                                            <span class="d-flex align-items-center mb-1">
-                                                <small class="text-black-50">3 minutes ago</small>
-
-                                                <span class="ml-auto unread-indicator bg-accent"></span>
-
-                                            </span>
-                                    <span class="d-flex">
-                                                <span class="avatar avatar-xs mr-2">
-                                                    <span class="avatar-title rounded-circle bg-light">
-                                                        <i class="material-icons font-size-16pt text-accent">account_circle</i>
-                                                    </span>
-                                                </span>
-                                                <span class="flex d-flex flex-column">
-
-                                                    <span class="text-black-70">This is notification</span>
-                                                </span>
-                                            </span>
-                                </a>
-                                <a href="javascript:void(0);"
-                                   class="list-group-item list-group-item-action">
-                                            <span class="d-flex align-items-center mb-1">
-                                                <small class="text-black-50">5 hours ago</small>
-
-                                            </span>
-                                    <span class="d-flex">
-                                                <span class="avatar avatar-xs mr-2">
-                                                    <span class="avatar-title rounded-circle bg-light">
-                                                        <i class="material-icons font-size-16pt text-primary">account_circle</i>
-                                                    </span>
-                                                </span>
-                                                <span class="flex d-flex flex-column">
-                                                    <strong class="text-black-100">{{ username }}</strong>
-                                                    <span class="text-black-70">CocaCola is good! You should buy more!.</span>
-                                                </span>
-                                            </span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <!-- // END Notifications dropdown -->
 
                 <div class="nav-item dropdown">
@@ -294,12 +162,9 @@
                      alt="instructor">
                 <div class="flex mb-32pt mb-md-0">
                     <h2 class="text-white mb-0">{{ username }}</h2>
-                    <p class="lead text-white-50 d-flex align-items-center">Instructor <span
-                            class="ml-16pt d-flex align-items-center"><i
-                            class="material-icons icon-16pt mr-4pt">opacity</i>-1 IQ</span></p>
+                    <p class="lead text-white-50 d-flex align-items-center">Instructor </span></p>
                 </div>
-                <a href=""
-                   class="btn btn-outline-white">Follow</a>
+
             </div>
         </div>
 

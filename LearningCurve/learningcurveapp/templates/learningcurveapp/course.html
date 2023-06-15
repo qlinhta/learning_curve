@@ -110,19 +110,7 @@
 
             <!-- // END Navbar Brand -->
 
-            <span class="d-none d-md-flex align-items-center mr-16pt">
 
-                        <span class="avatar avatar-sm mr-12pt">
-
-                            <span class="avatar-title rounded navbar-avatar"><i
-                                    class="material-icons">opacity</i></span>
-                        </span>
-
-                        <small class="flex d-flex flex-column">
-                            <strong class="navbar-text-100">Experiences</strong>
-                            <span class="navbar-text-50">-1 points</span>
-                        </small>
-                    </span>
 
             <div class="flex"></div>
             <!-- Navbar Menu -->
@@ -133,123 +121,13 @@
                      data-title="Messages"
                      data-placement="bottom"
                      data-boundary="window">
-                    <button class="nav-link btn-flush dropdown-toggle"
-                            type="button"
-                            data-toggle="dropdown"
-                            data-caret="false">
-                        <i class="material-icons icon-24pt">mail_outline</i>
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-right">
-                        <div data-perfect-scrollbar
-                             class="position-relative">
-                            <div class="dropdown-header"><strong>Messages</strong></div>
-                            <div class="list-group list-group-flush mb-0">
-
-                                <a href="javascript:void(0);"
-                                   class="list-group-item list-group-item-action unread">
-                                            <span class="d-flex align-items-center mb-1">
-                                                <small class="text-black-50">5 minutes ago</small>
-                                                <span class="ml-auto unread-indicator bg-accent"></span>
-                                            </span>
-                                    <span class="d-flex">
-                                                <span class="avatar avatar-xs mr-2">
-                                                    <img src="{% static 'learningcurveapp/img.png' %}"
-                                                         alt="people"
-                                                         class="avatar-img rounded-circle">
-                                                </span>
-                                                <span class="flex d-flex flex-column">
-                                                    <strong class="text-black-100">{{ username }}</strong>
-                                                    <span class="text-black-70">Nothing to worries!.</span>
-                                                </span>
-                                            </span>
-                                </a>
-                                <a class="list-group-item list-group-item-action"
-                                   href="javascript:void(0);">
-                                            <span class="d-flex align-items-center mb-1">
-                                                <small class="text-black-50">1000 years ago</small>
-
-                                            </span>
-                                    <span class="d-flex">
-                                                <span class="avatar avatar-xs mr-2">
-                                                    <img src="{% static 'learningcurveapp/img.png' %}"
-                                                         alt="people"
-                                                         class="avatar-img rounded-circle">
-                                                </span>
-                                                <span class="flex d-flex flex-column">
-                                                    <strong class="text-black-100">{{ username }}</strong>
-                                                    <span class="text-black-70">This is a smile :)</span>
-                                                </span>
-                                            </span>
 
 
-                                </a>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <!-- // END Notifications dropdown -->
 
                 <!-- Notifications dropdown -->
-                <div class="nav-item ml-16pt dropdown dropdown-notifications dropdown-xs-down-full"
-                     data-toggle="tooltip"
-                     data-title="Notifications"
-                     data-placement="bottom"
-                     data-boundary="window">
-                    <button class="nav-link btn-flush dropdown-toggle"
-                            type="button"
-                            data-toggle="dropdown"
-                            data-caret="false">
-                        <i class="material-icons">notifications_none</i>
-                        <span class="badge badge-notifications badge-accent">-1</span>
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-right">
-                        <div data-perfect-scrollbar
-                             class="position-relative">
-                            <div class="dropdown-header"><strong>System notifications</strong></div>
-                            <div class="list-group list-group-flush mb-0">
 
-                                <a href="javascript:void(0);"
-                                   class="list-group-item list-group-item-action unread">
-                                            <span class="d-flex align-items-center mb-1">
-                                                <small class="text-black-50">3 minutes ago</small>
-
-                                                <span class="ml-auto unread-indicator bg-accent"></span>
-
-                                            </span>
-                                    <span class="d-flex">
-                                                <span class="avatar avatar-xs mr-2">
-                                                    <span class="avatar-title rounded-circle bg-light">
-                                                        <i class="material-icons font-size-16pt text-accent">account_circle</i>
-                                                    </span>
-                                                </span>
-                                                <span class="flex d-flex flex-column">
-
-                                                    <span class="text-black-70">This is notification</span>
-                                                </span>
-                                            </span>
-                                </a>
-                                <a href="javascript:void(0);"
-                                   class="list-group-item list-group-item-action">
-                                            <span class="d-flex align-items-center mb-1">
-                                                <small class="text-black-50">5 hours ago</small>
-
-                                            </span>
-                                    <span class="d-flex">
-                                                <span class="avatar avatar-xs mr-2">
-                                                    <span class="avatar-title rounded-circle bg-light">
-                                                        <i class="material-icons font-size-16pt text-primary">account_circle</i>
-                                                    </span>
-                                                </span>
-                                                <span class="flex d-flex flex-column">
-                                                    <strong class="text-black-100">{{ username }}</strong>
-                                                    <span class="text-black-70">CocaCola is good! You should buy more!.</span>
-                                                </span>
-                                            </span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <!-- // END Notifications dropdown -->
 
                 <div class="nav-item dropdown">
@@ -300,28 +178,14 @@
                         <h1 class="text-white">Machine Learning Fundamentals</h1>
                         <p class="lead text-white-50 measure-hero-lead mb-24pt">Unlock the mysteries of Machine Learning
                             and kick-start your journey into the world of Artificial Intelligence!</p>
-                        <a href="student-take-lesson.html"
-                           class="btn btn-white">Resume course</a>
+                        <a href="{% url 'teacher-addchapter' id=course.id %}"
+                           class="btn btn-white">Add new chapter</a>
                     </div>
                 </div>
                 <div class="navbar navbar-expand-sm navbar-dark border-bottom-2 navbar-list p-0 m-0 align-items-center">
                     <div class="container page__container">
                         <ul class="nav navbar-nav flex align-items-sm-center">
-                            <li class="nav-item navbar-list__item">
-                                <div class="media align-items-center">
-                                            <span class="media-left mr-16pt">
-                                                <img src="{% static 'learningcurveapp/img3.png' %}"
-                                                     width="50"
-                                                     alt="avatar"
-                                                     class="rounded-circle">
-                                            </span>
-                                    <div class="media-body">
-                                        <a class="card-title m-0"
-                                           href="teacher-profile.html">Another Linh</a>
-                                        <p class="text-50 lh-1 mb-0">Instructor</p>
-                                    </div>
-                                </div>
-                            </li>
+
                             <li class="nav-item navbar-list__item">
                                 <i class="material-icons text-muted icon--left">schedule</i>
                                 2h 46m
@@ -345,143 +209,6 @@
                 </div>
             </div>
         </div>
-
-        <div class="container page__container">
-            <div class="row">
-                <div class="col-lg-7">
-                    <div class="border-left-2 page-section pl-32pt">
-
-                        <div class="d-flex align-items-center page-num-container">
-                            <div class="page-num">1</div>
-                            <h4>Getting Started With Machine Learning</h4>
-                        </div>
-
-                        <p class="text-70 mb-24pt">Welcome to Machine Learning Fundamentals, your one-stop source for
-                            diving into the world of Machine Learning (ML) and Artificial Intelligence (AI). Our goal is
-                            to provide a comprehensive understanding of the core concepts, techniques, and applications
-                            of Machine Learning for beginners and professionals alike. Whether you're a student, a
-                            working professional, or simply someone with a passion for data, our courses, resources, and
-                            expert guidance will help you embark on a journey to mastering this cutting-edge
-                            technology. (These contents were sponsored by model GPT4)</p>
-
-                        <div class="card mb-32pt mb-lg-64pt">
-                            <ul class="accordion accordion--boxed js-accordion mb-0"
-                                id="toc-1">
-                                <li class="accordion__item open">
-                                    <a class="accordion__toggle"
-                                       data-toggle="collapse"
-                                       data-parent="#toc-1"
-                                       href="#toc-content-1">
-                                        <span class="flex">1 of 4 Steps</span>
-                                        <span class="accordion__toggle-icon material-icons">keyboard_arrow_down</span>
-                                    </a>
-                                    <div class="accordion__menu">
-                                        <ul class="list-unstyled collapse show"
-                                            id="toc-content-1">
-                                            <li class="accordion__menu-link">
-                                                <span class="material-icons icon-16pt icon--left text-body">check_circle</span>
-                                                <a class="flex"
-                                                   href="student-take-lesson.html">Introduction</a>
-                                                <span class="text-muted">8m 42s</span>
-                                            </li>
-                                            <li class="accordion__menu-link">
-                                                <span class="material-icons icon-16pt icon--left text-body">play_circle_outline</span>
-                                                <a class="flex"
-                                                   href="student-take-lesson.html">ML Techniques</a>
-                                                <span class="text-muted">50m 13s</span>
-                                            </li>
-                                            <li class="accordion__menu-link">
-                                                <span class="material-icons icon-16pt icon--left text-body">play_circle_outline</span>
-                                                <a class="flex"
-                                                   href="student-take-lesson.html">ML Applications</a>
-                                                <span class="text-muted">12m 10s</span>
-                                            </li>
-                                            <li class="accordion__menu-link">
-                                                <span class="material-icons icon-16pt icon--left text-50">hourglass_empty</span>
-                                                <a class="flex"
-                                                   href="student-take-quiz.html">Quiz: Advanced Deep Learning
-                                                    Techniques</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="d-flex align-items-center page-num-container">
-                            <div class="page-num">2</div>
-                            <h4>Deep Learning</h4>
-                        </div>
-                        <p class="text-70 mb-24pt">An essential concept to understand before diving into
-                            your first Deep Learning project. In this section, you will learn four different methods
-                            for fine-tuning DL models.</p>
-
-                        <div class="card mb-0">
-                            <ul class="accordion accordion--boxed js-accordion mb-0"
-                                id="toc-2">
-                                <li class="accordion__item">
-                                    <a class="accordion__toggle"
-                                       data-toggle="collapse"
-                                       data-parent="#toc-2"
-                                       href="#toc-content-2">
-                                        <span class="flex">6 Steps</span>
-                                        <span class="accordion__toggle-icon material-icons">keyboard_arrow_down</span>
-                                    </a>
-                                    <div class="accordion__menu">
-                                        <ul class="list-unstyled collapse"
-                                            id="toc-content-2">
-                                            <li class="accordion__menu-link">
-                                                <span class="material-icons icon-16pt icon--left text-body">check_circle</span>
-                                                <a class="flex"
-                                                   href="student-take-lesson.html">Introduction</a>
-                                                <span class="text-muted">8m 42s</span>
-                                            </li>
-                                            <li class="accordion__menu-link">
-                                                <span class="material-icons icon-16pt icon--left text-body">play_circle_outline</span>
-                                                <a class="flex"
-                                                   href="student-take-lesson.html">Introduction to Optuna</a>
-                                                <span class="text-muted">50m 13s</span>
-                                            </li>
-                                            <li class="accordion__menu-link">
-                                                <span class="material-icons icon-16pt icon--left text-body">play_circle_outline</span>
-                                                <a class="flex"
-                                                   href="student-take-lesson.html">Comparing Optuna vs GridSearchAPC</a>
-                                                <span class="text-muted">12m 10s</span>
-                                            </li>
-                                            <li class="accordion__menu-link">
-                                                <span class="material-icons icon-16pt icon--left text-50">hourglass_empty</span>
-                                                <a class="flex"
-                                                   href="student-take-quiz.html">Quiz: Hyperparameters fine-tune</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="col-lg-5 page-nav">
-                    <div class="page-section">
-                        <div class="page-nav__content">
-                            <div class="page-separator">
-                                <div class="page-separator__text">Table of contents</div>
-                            </div>
-                            <!-- <h4 class="mb-16pt">Table of contents</h4> -->
-                        </div>
-                        <nav class="nav page-nav__menu">
-                            <a class="nav-link active"
-                               href="">Getting Started With Machine Learning</a>
-                            <a class="nav-link"
-                               href="">Creating and Communicating Between Machine Learning Components</a>
-                            <a class="nav-link"
-                               href="">Exploring the Machine Learning Template Syntax</a>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <div class="page-section  border-top-2 border-bottom-2">
 
             <div class="container page__container">
@@ -500,37 +227,64 @@
                             principles of Machine Learning, be familiar with various ML techniques and algorithms, and
                             be able to apply this knowledge to real-world problems.</p>
                     </div>
-                    <div class="col-md-5">
-                        <div class="page-separator">
-                            <div class="page-separator__text ">What you’ll learn</div>
-                        </div>
-                        <ul class="list-unstyled">
-                            <li class="d-flex align-items-center">
-                                <span class="material-icons text-50 mr-8pt">check</span>
-                                <span class="text-70">Fundamentals of working with Machine Learning</span>
-                            </li>
-                            <li class="d-flex align-items-center">
-                                <span class="material-icons text-50 mr-8pt">check</span>
-                                <span class="text-70">Create complete Machine Learning applications</span>
-                            </li>
-                            <li class="d-flex align-items-center">
-                                <span class="material-icons text-50 mr-8pt">check</span>
-                                <span class="text-70">Working with the Machine Learning CLI</span>
-                            </li>
-                            <li class="d-flex align-items-center">
-                                <span class="material-icons text-50 mr-8pt">check</span>
-                                <span class="text-70">Understanding Dependency</span>
-                            </li>
-                            <li class="d-flex align-items-center">
-                                <span class="material-icons text-50 mr-8pt">check</span>
-                                <span class="text-70">Testing with Machine Learning</span>
-                            </li>
-                        </ul>
-                    </div>
+
                 </div>
             </div>
 
         </div>
+
+
+        <div class="container page__container">
+            <div class="row">
+                <div class="col-lg-7">
+                    <div class="border-left-2 page-section pl-32pt ">
+                        {% for c in chapters %}
+                        <div class="d-flex align-items-center page-num-container page-nav__content">
+                            <div class="page-num">{{c.number}}</div>
+                            <h4>{{c.title}}</h4>
+                        </div>
+                        <p class="text-70 mb-24pt"> {{c.description}}</p>
+
+                        <div class="card mb-0">
+                            <ul class="accordion accordion--boxed js-accordion mb-0"
+                                id="toc-2">
+                                <li class="accordion__item">
+                                    <a class="accordion__toggle"
+                                       data-toggle="collapse"
+                                       data-parent="#toc-2"
+                                       href="{% url 'chapter' id=c.id %}">
+                                        <span class="flex">See More</span>
+
+                                    </a>
+
+                                </li>
+                            </ul>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="col-lg-5 page-nav">
+                    <div class="page-section">
+                        <div class="page-nav__content">
+                            <div class="page-separator">
+                                <div class="page-separator__text">Quizz</div>
+                            </div>
+
+                        </div>
+
+
+                        <nav class="nav page-nav__menu">
+                            {% for c in chapters %}
+                            <a class="nav-link active"
+                               href="">{{c.title}}</a>
+
+                            {% endfor %}
+                         </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
         <div class="page-section  border-bottom-2">
             <div class="container">
@@ -539,9 +293,7 @@
                         <h4>About the author</h4>
                         <p class="text-70 mb-24pt">Another Linh is a ....</p>
 
-                        <div class="page-separator">
-                            <div class="page-separator__text bg-white">More from the author</div>
-                        </div>
+
 
                         <div class="card card-sm mb-8pt">
                             <div class="card-body d-flex align-items-center">
@@ -608,55 +360,9 @@
                             </div>
                         </div>
 
-                        <div class="list-group list-group-flush">
-                            <div class="list-group-item px-0">
-                                <a href=""
-                                   class="card-title mb-4pt">Machine Learning Best Practices</a>
-                                <p class="lh-1 mb-0">
-                                    <small class="text-muted mr-8pt">6h 40m</small>
-                                    <small class="text-muted mr-8pt">13,876 Views</small>
-                                    <small class="text-muted">13 May 2018</small>
-                                </p>
-                            </div>
-                            <div class="list-group-item px-0">
-                                <a href=""
-                                   class="card-title mb-4pt">Autoencoders</a>
-                                <p class="lh-1 mb-0">
-                                    <small class="text-muted mr-8pt">6h 40m</small>
-                                    <small class="text-muted mr-8pt">13,876 Views</small>
-                                    <small class="text-muted">13 May 2018</small>
-                                </p>
-                            </div>
-                            <div class="list-group-item px-0">
-                                <a href=""
-                                   class="card-title mb-4pt">Convolutional Neural Networks (CNN)</a>
-                                <p class="lh-1 mb-0">
-                                    <small class="text-muted mr-8pt">6h 40m</small>
-                                    <small class="text-muted mr-8pt">13,876 Views</small>
-                                    <small class="text-muted">13 May 2018</small>
-                                </p>
-                            </div>
-                        </div>
                     </div>
                     <div class="col-md-5 pt-sm-32pt pt-md-0 d-flex flex-column align-items-center justify-content-start">
-                        <div class="text-center">
-                            <p class="mb-16pt">
-                                <img src="{% static 'learningcurveapp/img3.png' %}"
-                                     alt="guy-6"
-                                     class="rounded-circle"
-                                     width="64">
-                            </p>
-                            <h4 class="m-0">Another Linh</h4>
-                            <p class="lh-1">
-                                <small class="text-muted">AI Scientist</small>
-                            </p>
-                            <div class="d-flex flex-column flex-sm-row align-items-center justify-content-start">
-                                <a href="teacher-profile.html"
-                                   class="btn btn-outline-primary mb-16pt mb-sm-0 mr-sm-16pt">Follow</a>
-                                <a href="teacher-profile.html"
-                                   class="btn btn-outline-secondary">View Profile</a>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -1188,7 +894,7 @@
                     <li class="sidebar-menu-item">
                         <a class="sidebar-menu-button"
                            href="/learningcurveapp/student-quiz-results>
-                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">live_help</span>
+                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left" >live_help</span>
                             <span class="sidebar-menu-text">Quiz Result</span>
                         </a>
                     </li>

@@ -1,10 +1,29 @@
 from django.shortcuts import render, redirect
-from . import forms
+from django import forms
 from django.contrib.auth.models import User,auth,Group
+from django.contrib.auth.decorators import login_required
+
 from django.contrib import messages
 from django.contrib.auth import authenticate
+from .models import LEVELS, TOPIC
+from .models import *
 
 
+current_author=None
+current_student=None
+
+
+
+
+class CourseForm(forms.ModelForm):
+    class Meta:
+        model = Course
+        fields = ['title','description','topic','difficulty']
+
+class ChapterForm(forms.ModelForm):
+    class Meta:
+        model = Chapter
+        fields = ['title','description','number','content']
 
 def login(request):
 
@@ -36,6 +55,7 @@ def student_path(request):
 def student_profile(request):
     if not request.user.is_authenticated:
         return redirect('/learningcurveapp/login')
+    current_student=request.user
     return render(request, 'learningcurveapp/student-profile.html',context = {
         'username': request.user.username,
     })
@@ -76,23 +96,12 @@ def student_take_quiz(request):
 def teacher_profile(request):
     if not request.user.is_authenticated:
         return redirect('learningcurveapp/login')
+    current_author=request.user
     return render(request, 'learningcurveapp/teacher-profile.html',context = {
         'username': request.user.username,
     })
 
-def teacher_addcourses(request):
-    if not request.user.is_authenticated:
-        return redirect('/learningcurveapp/login')
-    return render(request, 'learningcurveapp/teacher-addcourses.html',context = {
-        'username': request.user.username,
-    })
 
-def teacher_mycourses(request):
-    if not request.user.is_authenticated:
-        return redirect('/learningcurveapp/login')
-    return render(request, 'learningcurveapp/teacher-mycourses.html',context = {
-        'username': request.user.username,
-    })
 def profile(request):
     if not request.user.is_authenticated:
         return redirect('/learningcurveapp/login')
@@ -139,11 +148,18 @@ def signup(request):
                 my_group.user_set.add(user)
 
                 auth.login(request,user)
+                student=Student(user=user)
+                student.save()
+                current_student=student
                 return redirect('/learningcurveapp/student-path')
             if(profile_type=='Teacher'):
                 my_group = Group.objects.get(name='teacher')
                 my_group.user_set.add(user)
                 auth.login(request,user)
+                author=Author(user=user)
+                author.save()
+                current_author=author
+
                 return redirect('/learningcurveapp/teacher-profile/')
     return render(request, 'learningcurveapp/signup.html')
 
@@ -153,9 +169,79 @@ def logout(request):
     if not request.user.is_authenticated:
         return render(request, 'learningcurveapp/login.html')
     auth.logout(request)
+    current_author=None
+    current_student=None
     return render(request, 'learningcurveapp/login.html')
 
 
 
+def teacher_mycourses(request):
+    if not request.user.is_authenticated:
+        return redirect('learningcurveapp/login')
+    author = Author.objects.get(user=request.user)
+    courses=Course.objects.filter(author=author).values()
+
+    return render(request, 'learningcurveapp/teacher-mycourses.html',{'courses':courses})
 
 
+@login_required
+def teacher_addcourse(request):
+    if not request.user.is_authenticated:
+        return redirect('learningcurveapp/login')
+
+
+    if request.method == 'POST':
+        form = CourseForm(request.POST)
+        if form.is_valid():
+            author = Author.objects.get(user=request.user)
+            newcourse = form.save(commit=False)
+            newcourse.author = author
+            newcourse.save()
+            courses=Course.objects.filter(author=author).values()
+            return render(request, 'learningcurveapp/teacher-mycourses.html',{'courses':courses})
+
+        else:
+            return render(request, 'learningcurveapp/teacher-addcourse.html',{'form': CourseForm()})
+    else:
+        return render(request, 'learningcurveapp/teacher-addcourse.html',{'form': CourseForm()})
+
+
+def teacher_course(request,id):
+    if not request.user.is_authenticated:
+        return redirect('learningcurveapp/login')
+    author = Author.objects.get(user=request.user)
+    course=Course.objects.get(id=id)
+    chapters=Chapter.objects.filter(course=id).order_by('number').values()
+
+
+    return render(request, 'learningcurveapp/course.html',{'course':course,'chapters':chapters})
+
+
+def teacher_addchapter(request,id):
+    if not request.user.is_authenticated:
+        return redirect('learningcurveapp/login')
+
+
+    if request.method == 'POST':
+        form = ChapterForm(request.POST,request.FILES)
+        if form.is_valid():
+            course=Course.objects.get(id=id)
+            newchapter=form.save(commit=False)
+            newchapter.course=course
+            newchapter.save()
+
+            return teacher_course(request,id)
+
+        else:
+            print(form.errors)
+
+            return render(request, 'learningcurveapp/teacher-addchapter.html',{'id':id,'form': ChapterForm()})
+    else:
+        return render(request, 'learningcurveapp/teacher-addchapter.html',{'id':id,'form': ChapterForm()})
+
+
+@login_required
+def chapter(request,id):
+
+
+        return render(request, 'learningcurveapp/chapter.html',{'id':id,'form': ChapterForm()})

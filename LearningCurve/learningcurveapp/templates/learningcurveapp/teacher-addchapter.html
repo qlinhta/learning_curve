@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en"
+      dir="ltr"
+      class="dark-mode">
+
+<head>
+    {% load static %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible"
+          content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Teacher Profile</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CRoboto:400,500%7CExo+2:600&display=swap"
+          rel="stylesheet">
+
+    <!-- Preloader -->
+    <link type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/spinkit/1.2.5/spinkit.min.css"
+          rel="stylesheet">
+
+    <!-- Perfect Scrollbar -->
+    <link type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.5.2/css/perfect-scrollbar.min.css"
+          rel="stylesheet">
+
+    <!-- Material Design Icons -->
+    <link type="text/css"
+          href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+          rel="stylesheet">
+
+    <!-- Preloader -->
+    <link type="text/css"
+          href="{% static 'learningcurveapp/css/preloader.css' %}"
+          rel="stylesheet">
+
+    <!-- App CSS -->
+    <link type="text/css"
+          href="{% static 'learningcurveapp/css/app.css' %}"
+          rel="stylesheet">
+
+    <!-- Dark Mode CSS -->
+    <link type="text/css"
+          href="{% static 'learningcurveapp/css/dark.css' %}"
+          rel="stylesheet">
+</head>
+
+<body class="layout-app ">
+
+<div class="preloader">
+  <div class="sk-chase">
+    <div class="sk-chase-dot"></div>
+    <div class="sk-chase-dot"></div>
+    <div class="sk-chase-dot"></div>
+    <div class="sk-chase-dot"></div>
+    <div class="sk-chase-dot"></div>
+    <div class="sk-chase-dot"></div>
+  </div>
+
+  <!-- <div class="sk-bounce">
+<div class="sk-bounce-dot"></div>
+<div class="sk-bounce-dot"></div>
+</div> -->
+
+  <!-- More spinner examples at https://github.com/tobiasahlin/SpinKit/blob/master/examples.html -->
+</div>
+
+<!-- Drawer Layout -->
+
+<div class="mdk-drawer-layout js-mdk-drawer-layout"
+     data-push
+     data-responsive-width="992px">
+  <div class="mdk-drawer-layout__content page-content">
+
+    <!-- Header -->
+
+    <!-- Navbar -->
+
+    <div class="navbar navbar-expand pr-0 navbar-dark border-bottom-2"
+         id="default-navbar"
+         data-primary>
+
+      <!-- Navbar Toggler -->
+
+      <button class="navbar-toggler w-auto mr-16pt d-block d-lg-none rounded-0"
+              type="button"
+              data-toggle="sidebar">
+        <span class="material-icons">short_text</span>
+      </button>
+
+      <!-- // END Navbar Toggler -->
+
+      <!-- Navbar Brand -->
+
+      <a href="#"
+         class="navbar-brand mr-16pt d-lg-none">
+
+                        <span class="avatar avatar-sm navbar-brand-icon mr-0 mr-lg-8pt">
+
+                            <span class="avatar-title rounded bg-primary"><img src="{% static 'learningcurveapp/images/user_icon.jpg' %}"
+                                                                               alt="logo"
+                                                                               class="img-fluid"/></span>
+
+                        </span>
+
+        <span class="d-none d-lg-block">{{ username }}</span>
+      </a>
+
+      <!-- // END Navbar Brand -->
+
+
+      <div class="flex"></div>
+      <!-- Navbar Menu -->
+      <div class="nav navbar-nav flex-nowrap d-flex mr-16pt">
+        <!-- Notifications dropdown -->
+        <div class="nav-item dropdown dropdown-notifications dropdown-xs-down-full"
+             data-toggle="tooltip"
+             data-title="Messages"
+             data-placement="bottom"
+             data-boundary="window">
+          <button class="nav-link btn-flush dropdown-toggle"
+                  type="button"
+                  data-toggle="dropdown"
+                  data-caret="false">
+            <i class="material-icons icon-24pt">mail_outline</i>
+          </button>
+          <div class="dropdown-menu dropdown-menu-right">
+            <div data-perfect-scrollbar
+                 class="position-relative">
+              <div class="dropdown-header"><strong>Messages</strong></div>
+              <div class="list-group list-group-flush mb-0">
+
+                <a href="javascript:void(0);"
+                   class="list-group-item list-group-item-action unread">
+                                            <span class="d-flex align-items-center mb-1">
+                                                <small class="text-black-50">5 minutes ago</small>
+                                                <span class="ml-auto unread-indicator bg-accent"></span>
+                                            </span>
+                  <span class="d-flex">
+                                                <span class="avatar avatar-xs mr-2">
+                                                    <img src="{% static 'learningcurveapp/images/user_icon.jpg' %}"
+                                                         alt="people"
+                                                         class="avatar-img rounded-circle">
+                                                </span>
+                                                <span class="flex d-flex flex-column">
+                                                    <strong class="text-black-100">{{ username }}</strong>
+                                                    <span class="text-black-70">Nothing to worries!.</span>
+                                                </span>
+                                            </span>
+                </a>
+                <a class="list-group-item list-group-item-action"
+                   href="javascript:void(0);">
+                                            <span class="d-flex align-items-center mb-1">
+                                                <small class="text-black-50">1000 years ago</small>
+
+                                            </span>
+                  <span class="d-flex">
+                                                <span class="avatar avatar-xs mr-2">
+                                                    <img src="{% static 'learningcurveapp/images/user_icon.jpg' %}"
+                                                         alt="people"
+                                                         class="avatar-img rounded-circle">
+                                                </span>
+                                                <span class="flex d-flex flex-column">
+                                                    <strong class="text-black-100">{{ username }}</strong>
+                                                    <span class="text-black-70">This is a smile :)</span>
+                                                </span>
+                                            </span>
+
+
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- // END Notifications dropdown -->
+
+        <!-- Notifications dropdown -->
+        <div class="nav-item ml-16pt dropdown dropdown-notifications dropdown-xs-down-full"
+             data-toggle="tooltip"
+             data-title="Notifications"
+             data-placement="bottom"
+             data-boundary="window">
+          <button class="nav-link btn-flush dropdown-toggle"
+                  type="button"
+                  data-toggle="dropdown"
+                  data-caret="false">
+            <i class="material-icons">notifications_none</i>
+            <span class="badge badge-notifications badge-accent">-1</span>
+          </button>
+          <div class="dropdown-menu dropdown-menu-right">
+            <div data-perfect-scrollbar
+                 class="position-relative">
+              <div class="dropdown-header"><strong>System notifications</strong></div>
+              <div class="list-group list-group-flush mb-0">
+
+                <a href="javascript:void(0);"
+                   class="list-group-item list-group-item-action unread">
+                                            <span class="d-flex align-items-center mb-1">
+                                                <small class="text-black-50">3 minutes ago</small>
+
+                                                <span class="ml-auto unread-indicator bg-accent"></span>
+
+                                            </span>
+                  <span class="d-flex">
+                                                <span class="avatar avatar-xs mr-2">
+                                                    <span class="avatar-title rounded-circle bg-light">
+                                                        <i class="material-icons font-size-16pt text-accent">account_circle</i>
+                                                    </span>
+                                                </span>
+                                                <span class="flex d-flex flex-column">
+
+                                                    <span class="text-black-70">This is notification</span>
+                                                </span>
+                                            </span>
+                </a>
+                <a href="javascript:void(0);"
+                   class="list-group-item list-group-item-action">
+                                            <span class="d-flex align-items-center mb-1">
+                                                <small class="text-black-50">5 hours ago</small>
+
+                                            </span>
+                  <span class="d-flex">
+                                                <span class="avatar avatar-xs mr-2">
+                                                    <span class="avatar-title rounded-circle bg-light">
+                                                        <i class="material-icons font-size-16pt text-primary">account_circle</i>
+                                                    </span>
+                                                </span>
+                                                <span class="flex d-flex flex-column">
+                                                    <strong class="text-black-100">{{ username }}</strong>
+                                                    <span class="text-black-70">CocaCola is good! You should buy more!.</span>
+                                                </span>
+                                            </span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- // END Notifications dropdown -->
+
+        <div class="nav-item dropdown">
+          <a href="#"
+             class="nav-link d-flex align-items-center dropdown-toggle"
+             data-toggle="dropdown"
+             data-caret="false">
+
+                                <span class="avatar avatar-sm mr-8pt2">
+                                    <span class="avatar-title rounded-circle bg-primary">
+                                        <img src="{% static 'learningcurveapp/images/user_icon.jpg' %}"
+                                             alt="avatar_1"
+                                             class="avatar-img rounded-circle">
+                                    </span>
+
+                                </span>
+
+          </a>
+          <div class="dropdown-menu dropdown-menu-right">
+            <div class="dropdown-header"><strong>Menu for account here</strong></div>
+            <a class="dropdown-item"
+               href="#">Menu 1</a>
+            <a class="dropdown-item"
+               href="#">Menu 2</a>
+            <a class="dropdown-item"
+               href="#">Menu 3</a>
+            <a class="dropdown-item"
+               href="#">Menu 4</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="container page__container page-section">
+
+      <div class="page-headline text-center">
+        <h2>Add Course</h2>
+        <p class="lead text-70 col-lg-8 mx-auto">{{ username }}</p>
+      </div>
+      <form method="post" action="{% url 'teacher-addchapter' id=id %}"  enctype="multipart/form-data">
+
+        {% csrf_token %}
+        {{ form }}
+        <br><br>
+        <input id="add" type="submit" value="Submit">
+      </form>
+    </div>
+
+    <!-- // END Page Content -->
+
+    <!-- Footer -->
+
+    <div class=" border-top-2 mt-auto">
+      <div class="container page__container page-section d-flex flex-column">
+        <p class="text-70 brand mb-24pt">
+          <a href="/learningcurveapp/aboutus"
+             class="text-70 text-underline small">About us</a>
+          <img class="brand-icon"
+               src="{% static 'learningcurveapp/images/Logo.svg' %}"
+               width="300"
+               alt="Learning Curve">
+        </p>
+        <p class="measure-lead-max text-50 small mr-8pt">Learning Curve is a platform that provides a variety of
+          courses for you to learn and improve your skills. We have a variety of courses for you to choose
+          from.</p>
+        </p>
+        <p class="mb-8pt d-flex">
+          <a href=""
+             class="text-70 text-underline mr-8pt small">Terms</a>
+          <a href=""
+             class="text-70 text-underline small">Privacy policy</a>
+        </p>
+        <p class="text-50 small mt-n1 mb-0">Copyright 2023 &copy; All rights reserved hehe.</p>
+      </div>
+    </div>
+
+    <!-- // END Footer -->
+
+  </div>
+
+  <!-- // END drawer-layout__content -->
+
+  <!-- Drawer -->
+
+  <div class="mdk-drawer js-mdk-drawer"
+       id="default-drawer">
+    <div class="mdk-drawer__content">
+      <div class="sidebar sidebar-black-dodger-blue sidebar-left"
+           data-perfect-scrollbar>
+
+        <!-- Sidebar Content -->
+
+        <div class="d-flex align-items-center navbar-height">
+          <form action="#"
+                class="search-form search-form--black mx-16pt pr-0 pl-16pt">
+            <input type="text"
+                   class="form-control pl-0"
+                   placeholder="Search">
+            <button class="btn"
+                    type="submit"><i class="material-icons">search</i></button>
+          </form>
+        </div>
+
+        <a href="#.html"
+           class="sidebar-brand ">
+                    <span class="avatar avatar-xl sidebar-brand-icon h-auto">
+
+                                <span class="avatar-title rounded bg-primary"><img
+                                        src="{% static 'learningcurveapp/images/user_icon.jpg' %}"
+                                        class="img-fluid"
+                                        alt="logo"/></span>
+
+                            </span>
+
+          <span>{{ username }}</span>
+        </a>
+
+        <div class="sidebar-heading">Teacher</div>
+        <ul class="sidebar-menu">
+
+          <li class="sidebar-menu-item">
+            <a class="sidebar-menu-button"
+               href="#">
+              <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">home</span>
+              <span class="sidebar-menu-text">Home</span>
+            </a>
+          </li>
+          <li class="sidebar-menu-item">
+            <a class="sidebar-menu-button"
+               href="#">
+              <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">local_library</span>
+              <span class="sidebar-menu-text">Browse Courses</span>
+            </a>
+          </li>
+          <li class="sidebar-menu-item">
+            <a class="sidebar-menu-button"
+               href="#">
+              <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">style</span>
+              <span class="sidebar-menu-text">Browse Paths</span>
+            </a>
+          </li>
+          <li class="sidebar-menu-item">
+            <a class="sidebar-menu-button"
+               href="#">
+              <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">account_box</span>
+              <span class="sidebar-menu-text">Student Dashboard</span>
+            </a>
+          </li>
+          <li class="sidebar-menu-item">
+            <a class="sidebar-menu-button"
+               href="/learningcurveapp/teacher_mycourses">
+              <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">search</span>
+              <span class="sidebar-menu-text">My Courses</span>
+            </a>
+          </li>
+          <li class="sidebar-menu-item">
+            <a class="sidebar-menu-button"
+               href="#">
+              <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">timeline</span>
+              <span class="sidebar-menu-text">My Paths</span>
+            </a>
+          </li>
+          <li class="sidebar-menu-item active">
+            <a class="sidebar-menu-button"
+               href="student-path.html">
+              <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">change_history</span>
+              <span class="sidebar-menu-text">Path Details</span>
+            </a>
+          </li>
+          <li class="sidebar-menu-item">
+            <a class="sidebar-menu-button"
+               href="#">
+              <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">panorama_fish_eye</span>
+              <span class="sidebar-menu-text">Lesson Preview</span>
+            </a>
+          </li>
+          <li class="sidebar-menu-item">
+            <a class="sidebar-menu-button"
+               href="#">
+              <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">import_contacts</span>
+              <span class="sidebar-menu-text">Take Lesson</span>
+            </a>
+          </li>
+          <li class="sidebar-menu-item">
+            <a class="sidebar-menu-button"
+               href="#">
+              <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">dvr</span>
+              <span class="sidebar-menu-text">Take Quiz</span>
+            </a>
+          </li>
+          <li class="sidebar-menu-item">
+            <a class="sidebar-menu-button"
+               href="#">
+              <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">poll</span>
+              <span class="sidebar-menu-text">My Quizzes</span>
+            </a>
+          </li>
+          <li class="sidebar-menu-item">
+            <a class="sidebar-menu-button"
+               href="#">
+              <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">live_help</span>
+              <span class="sidebar-menu-text">Quiz Result</span>
+            </a>
+          </li>
+          <li class="sidebar-menu-item">
+            <a class="sidebar-menu-button"
+               href="#">
+              <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">layers</span>
+              <span class="sidebar-menu-text">Skill Assessment</span>
+            </a>
+          </li>
+          <li class="sidebar-menu-item">
+            <a class="sidebar-menu-button"
+               href="#">
+              <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">assignment_turned_in</span>
+              <span class="sidebar-menu-text">Skill Result</span>
+            </a>
+          </li>
+          <li class="sidebar-menu-item">
+            <a class="sidebar-menu-button"
+               href="/learningcurveapp/logout">
+              <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">logout</span>
+              <span class="sidebar-menu-text">Logout</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Perfect Scrollbar -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.5.2/perfect-scrollbar.min.js"></script>
+
+<!-- DOM Factory -->
+<script src="{% static 'learningcurveapp/vendor/dom-factory.js' %}"></script>
+
+<!-- MDK -->
+<script src="https://cdn.jsdelivr.net/npm/material-design-kit@1.0.0/dist/material-design-kit.min.js"></script>
+
+<!-- App JS -->
+<script src="{% static 'learningcurveapp/js/app.js' %}"></script>
+
+<!-- Preloader -->
+<script src="{% static 'learningcurveapp/js/preloader.js' %}"></script>
+
+</body>
+
+</html>

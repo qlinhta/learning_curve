@@ -281,7 +281,7 @@
                 <h2>Add Course</h2>
                 <p class="lead text-70 col-lg-8 mx-auto">{{ username }}</p>
             </div>
-            <form method="post" action="{% url 'teacher_addcourse' %}"  enctype="multipart/form-data">
+            <form method="post" action="{% url 'teacher-addcourse' %}"  enctype="multipart/form-data">
 
                 {% csrf_token %}
                 {{ form }}
@@ -392,7 +392,7 @@
                     </li>
                     <li class="sidebar-menu-item">
                         <a class="sidebar-menu-button"
-                           href="/learningcurveapp/teacher_mycourses">
+                           href="/learningcurveapp/teacher-mycourses">
                             <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">search</span>
                             <span class="sidebar-menu-text">My Courses</span>
                         </a>

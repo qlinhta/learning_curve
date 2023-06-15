@@ -11,6 +11,11 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+import os
+
+
+
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -124,5 +129,7 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-AZURE_ACCOUNT_NAME = 'nom_du_compte_de_stockage'
-AZURE_ACCOUNT_KEY = 'clé_du_compte_de_stockage'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# set the url path from which the media can be retreived
+MEDIA_URL = '/media/'

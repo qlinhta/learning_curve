@@ -10,44 +10,29 @@ LEVELS = (
     ('E', 'Expert')
 )
 
+TOPIC = (
+    ( 'CS','Computer sciences'),
+    ('F','Finance'),
+    ('S','Social'),
+    ('O','Others'),
 
-TEXT_FORMAT = (
-    ('Mark', 'Markdown'),
-    ('Lat', 'Latex'),
-    ('HTML', 'HTML'),
-    ('Text', 'Text'),
 )
 
 
-LINK_FORMAT = (
-    ('Vid', 'Video'),
-    ('Lin', 'Link'),
-    ('Pic', 'Picture'),
-    ('Pdf', 'PDF')
-)
 
 
 class Author(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    #description = models.TextField( default='')
+    #profile=models.ImageField(null=True)
 
 
 class Student(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    #profile=models.ImageField(null=True)
+    #points = models.PositiveSmallIntegerField( default=0)
 
 
-class Field(models.Model):
-    name = models.CharField(max_length=25)
-
-    def __str__(self) -> str:
-        return self.name
-
-
-class Topic(models.Model):
-    name = models.CharField(max_length=25)
-    field = models.ManyToManyField(Field, related_name='topics')
-
-    def __str__(self) -> str:
-        return self.field.__str__() + " - " + self.name
 
 
 class Course(models.Model):
@@ -55,44 +40,27 @@ class Course(models.Model):
     description = models.TextField()
     author = models.ForeignKey(Author, on_delete=models.CASCADE, related_name='courses')
 
-    field = models.ManyToManyField(Field, related_name='fields')
-    topic = models.ManyToManyField(Topic, related_name='courses')
-    difficulty = models.CharField(choices=LEVELS, max_length=1)
+    topic = models.CharField(choices=TOPIC, max_length=10, default='O')
+    difficulty = models.CharField(choices=LEVELS, max_length=1, default='B')
+    #subtitle = models.CharField(max_length=300, default='O')
+    #time = models.PositiveSmallIntegerField()
 
     def __str__(self) -> str:
         return self.title
 
 
 class Chapter(models.Model):
-    title = models.CharField(max_length=100)
+    title = models.CharField(max_length=100, default='')
+    description = models.TextField(default='')
     number = models.PositiveSmallIntegerField()
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
-
-    def __str__(self) -> str:
-        return self.course.__str__() + " Chapter " + self.number
+    content= models.FileField(max_length=1000, default='')
 
 
-class Section(models.Model):
-    chapter = models.ForeignKey(Chapter, on_delete=models.CASCADE, related_name='sections')
-    title = models.CharField(max_length=150)
-    number = models.PositiveSmallIntegerField()
-
-    def __str__(self) -> str:
-        return self.chapter.__str__() + " - Paragraph " + self.number
 
 
-class Text(models.Model):
-    text = models.TextField()
-    type = models.CharField(choices=TEXT_FORMAT, max_length=3),
-    index = models.PositiveSmallIntegerField()
-    paragraph = models.ForeignKey(Section, on_delete=models.CASCADE, related_name="texts")
 
 
-class Link(models.Model):
-    link = models.CharField(max_length=200)
-    type = models.CharField(choices=LINK_FORMAT, max_length=3)
-    index = models.PositiveSmallIntegerField()
-    paragraph = models.ForeignKey(Section, on_delete=models.CASCADE, related_name="links")
 
 
 class Quiz(models.Model):
@@ -106,6 +74,24 @@ class QuizCompletion(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE, related_name="quiz_completions")
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE, related_name="quiz_completions")
     result = models.PositiveSmallIntegerField()
+
+    def __str__(self) -> str:
+        return "Quiz " + self.quiz.course.__str__() + "Student " + self.student
+
+class CourseCompletion(models.Model):
+    student = models.ForeignKey(Student, on_delete=models.CASCADE, related_name="course_completions")
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name="course_completions")
+    result = models.PositiveSmallIntegerField()
+
+    def __str__(self) -> str:
+        return "Quiz " + self.quiz.course.__str__() + "Student " + self.student
+
+
+class CourseRates(models.Model):
+    student = models.ForeignKey(Student, on_delete=models.CASCADE, related_name="course_rate")
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name="course_rate")
+    result = models.PositiveSmallIntegerField()
+    comments = models.TextField()
 
     def __str__(self) -> str:
         return "Quiz " + self.quiz.course.__str__() + "Student " + self.student
@@ -127,4 +113,3 @@ class Answer(models.Model):
 
     def __str__(self) -> str:
         return "Quiz " + self.question.quiz.course.__str__() + " - Question " + self.question.number + " - " + self.text
-
