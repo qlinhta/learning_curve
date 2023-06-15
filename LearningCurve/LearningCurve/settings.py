@@ -124,5 +124,3 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-AZURE_ACCOUNT_NAME = 'nom_du_compte_de_stockage'
-AZURE_ACCOUNT_KEY = 'clé_du_compte_de_stockage'

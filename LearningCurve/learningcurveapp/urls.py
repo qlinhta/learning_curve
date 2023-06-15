@@ -11,9 +11,10 @@ urlpatterns = [
     path('student-take-lesson/', views.student_take_lesson, name='student-take-lesson'),
     path('student-take-quiz/', views.student_take_quiz, name='student-take-quiz'),
     path('student-quiz-results/', views.student_quiz_results, name='student-quiz-results'),
-    #path('teacher_mycourses/', views.teacher_mycourses, name='teacher_mycourses/'),
-    #path('teacher_addcourse/', views.teacher_addcourse, name='teacher_addcourse'),
-
+    path('teacher_mycourses/', views.teacher_mycourses, name='teacher_mycourses'),
+    path('teacher_addcourse/', views.teacher_addcourse, name='teacher_addcourse'),
+    path('teacher_addchapter/<int:id>/', views.teacher_addchapter, name='teacher_addchapter'),
+    path('teacher_course/<int:id>/', views.teacher_course, name='teacher_course'),
     path('teacher-profile/', views.teacher_profile, name='teacher-profile'),
     path('aboutus/', views.aboutus, name='aboutus'),
    # path('enter_login/', views.enter_login, name='enter_login'),
