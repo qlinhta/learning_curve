@@ -16,6 +16,7 @@ urlpatterns = [
     path('student-quiz-results/', views.student_quiz_results, name='student-quiz-results'),
     path('teacher-mycourses/', views.teacher_mycourses, name='teacher-mycourses/'),
     path('teacher-addcourses/', views.teacher_addcourses, name='teacher-addcourses'),
+    path('edit-account-profile', views.edit_account_profile, name='edit-account-profile'),
 
     path('teacher-profile/', views.teacher_profile, name='teacher-profile'),
     path('aboutus/', views.aboutus, name='aboutus'),

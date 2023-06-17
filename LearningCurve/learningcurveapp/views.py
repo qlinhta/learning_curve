@@ -175,3 +175,7 @@ def logout(request):
 
 def instructor_edit_quiz(request):
     return render(request, 'learningcurveapp/instructor-edit-quiz.html')
+
+
+def edit_account_profile(request):
+    return render(request, 'learningcurveapp/edit-account-profile.html')
