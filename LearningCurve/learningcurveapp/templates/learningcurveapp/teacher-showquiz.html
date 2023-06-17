@@ -201,7 +201,6 @@
                         <source src="../..{{MEDIA_URL}}{{chapter.content}}" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
-
                     <!---  <embed src="../..{{MEDIA_URL}}{{chapter.content}}"  type="image/png" >--->
                     <!---  <embed src="../..{{MEDIA_URL}}{{chapter.content}}"  type="image/png" >--->
                     <!---  <embed src="../..{{MEDIA_URL}}{{chapter.content}}"  type="image/png" >--->
@@ -210,6 +209,8 @@
 
 
                 </div>
+
+
 
 
             </div>
@@ -238,17 +239,7 @@
 
                     </div>
 
-
                 </div>
-                {% if teacher == False %}
-                <span class="avatar avatar-sm mr-12pt">
-                           <a href="../../../learningcurveapp/teacher-course/{{chapter.course.id}}">
-                            <span class="avatar-title rounded navbar-avatar">
-                                <i>Done</i>
-                            </span>
-                           </a>
-                </span>
-                {% endif %}
             </div>
 
         </div>

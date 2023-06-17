@@ -25,6 +25,12 @@ class ChapterForm(forms.ModelForm):
         model = Chapter
         fields = ['title','description','number','content']
 
+class QuizForm(forms.ModelForm):
+    class Meta:
+        model = Quiz
+        fields = ['course',
+                 ]
+
 def login(request):
 
     if request.user.is_authenticated:
@@ -214,14 +220,11 @@ def teacher_course(request,id):
     chapters=Chapter.objects.filter(course=id).order_by('number').values()
 
 
-    return render(request, 'learningcurveapp/course.html',{'course':course,'chapters':chapters})
+    return render(request, 'learningcurveapp/course.html',{'teacher':True,'course':course,'chapters':chapters,'id':id})
 
 
+@login_required
 def teacher_addchapter(request,id):
-    if not request.user.is_authenticated:
-        return redirect('learningcurveapp/login')
-
-
     if request.method == 'POST':
         form = ChapterForm(request.POST,request.FILES)
         if form.is_valid():
@@ -242,6 +245,45 @@ def teacher_addchapter(request,id):
 
 @login_required
 def chapter(request,id):
+        chapter=Chapter.objects.get(id=id)
+        print("chapter.content.url")
+        print(chapter.content.url)
+        return render(request, 'learningcurveapp/chapter.html',{'chapter':chapter})
 
 
-        return render(request, 'learningcurveapp/chapter.html',{'id':id,'form': ChapterForm()})
+@login_required
+def teacher_quizzes(request):
+    author = Author.objects.get(user=request.user)
+    quizz = Quiz.objects.filter(author=author).select_related()
+
+    return render(request, 'learningcurveapp/teacher-quizzes.html',{'quizz':quizz})
+
+
+@login_required
+def teacher_addquizz(request):
+    if request.method == 'POST':
+        form = QuizForm(request.POST)
+        if form.is_valid():
+            author = Author.objects.get(user=request.user)
+            newquiz=form.save(commit=False)
+            newquiz.author=author
+            newquiz.save()
+
+            return teacher_quizzes(request)
+
+        else:
+            print(form.errors)
+
+            return render(request, 'learningcurveapp/teacher-addquizz.html',{'form': QuizForm()})
+    else:
+        return render(request, 'learningcurveapp/teacher-addquizz.html',{'form': QuizForm()})
+
+@login_required
+def teacher_showquiz(request,id):
+    quiz=Quiz.objects.get(id=id)
+    return render(request, 'learningcurveapp/student-take-quiz.html',{'quiz':quiz})
+
+
+@login_required
+def teacher_coursefeedback(request,id):
+    return render(request, 'learningcurveapp/coursefeedback.html',{'id':id})
