@@ -171,3 +171,7 @@ def logout(request):
         return render(request, 'learningcurveapp/login.html')
     auth.logout(request)
     return render(request, 'learningcurveapp/login.html')
+
+
+def instructor_edit_quiz(request):
+    return render(request, 'learningcurveapp/instructor-edit-quiz.html')
