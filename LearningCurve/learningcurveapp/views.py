@@ -17,12 +17,7 @@ current_student=None
 
 
 
-def courses(request):
-    return render(request, 'learningcurveapp/courses.html')
 
-
-def index(request):
-    return render(request, 'learningcurveapp/index.html')
 
 class CourseForm(forms.ModelForm):
     class Meta:
@@ -37,8 +32,26 @@ class ChapterForm(forms.ModelForm):
 class QuizForm(forms.ModelForm):
     class Meta:
         model = Quiz
-        fields = ['course',
-                 ]
+        fields = ['course']
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['course'].required = False
+
+class QuestionForm(forms.ModelForm):
+    class Meta:
+        model = Question
+        fields = ['question', 'answer']
+
+
+class FilterForm(forms.Form):
+    level = forms.ChoiceField(choices=LEVELS_CHOICE, required=False, initial='')
+    topic = forms.ChoiceField(choices=TOPIC_CHOICE, required=False, initial='')
+
+
+
+def index(request):
+    return render(request, 'learningcurveapp/index.html')
 
 def login(request):
     if request.user.is_authenticated:
@@ -59,6 +72,11 @@ def login(request):
     } )
 
 
+
+
+
+
+
 def student_path(request):
     if not request.user.is_authenticated:
         return redirect('/learningcurveapp/login')
@@ -75,12 +93,15 @@ def student_profile(request):
     })
 
 
-def student_quiz_result_details(request):
+def student_quiz_result_details(request,id):
     if not request.user.is_authenticated:
         return redirect('/learningcurveapp/login')
-    return render(request, 'learningcurveapp/student-quiz-result-details.html',context = {
-        'username': request.user.username,
+    questions=Question.objects.filter(quiz=id).order_by('id').values()
+    return render(request, 'learningcurveapp/student-quiz-result-details.html',context = {'id':id,
+        'username': request.user.username,'questions':questions,'role':'student'
     })
+
+
 def student_quiz_results(request):
     if not request.user.is_authenticated:
         return redirect('/learningcurveapp/login')
@@ -108,6 +129,11 @@ def student_take_quiz(request):
         'username': request.user.username,
     })
 
+
+
+
+
+
 def teacher_profile(request):
     if not request.user.is_authenticated:
         return redirect('learningcurveapp/login')
@@ -126,21 +152,30 @@ def teacher_addcourses(request):
 def teacher_mycourses(request):
     if not request.user.is_authenticated:
         return redirect('/learningcurveapp/login')
-    return render(request, 'learningcurveapp/teacher-mycourses.html',context = {
+    return render(request, 'learningcurveapp/personal_courses.html',context = {
         'username': request.user.username,
     })
+
+
+
+
+
+
 def profile(request):
     if not request.user.is_authenticated:
         return redirect('/learningcurveapp/login')
 
     user = request.user
-    user = request.user
     teacher_group = Group.objects.filter(name='teacher').first()
     is_teacher = teacher_group in user.groups.all()
-    if user.groups.filter(name='teacher').exists():
+    current_author=Author.objects.filter(user=user).first()
+    current_student=Student.objects.filter(user=user).first()
+    print(current_author)
+    print(current_student)
+    if current_author is not None :
         return redirect('/learningcurveapp/teacher-profile')
-    if user.groups.filter(name='student').exists():
-        return redirect('/learningcurveapp/student-path')
+    if current_student is not None :
+        return redirect('/learningcurveapp/student-profile')
     else:
         return redirect('/learningcurveapp/login')
 
@@ -149,14 +184,18 @@ def profile(request):
 def aboutus(request):
     return render(request, 'learningcurveapp/aboutus.html')
 
+
+
 def signup(request):
     if request.user.is_authenticated:
         return redirect('/learningcurveapp/profile')
+
     if request.method == 'POST':
         username = request.POST['username']
         email = request.POST['email']
         password = request.POST['password']
         profile_type=request.POST['profile_type']
+
         if User.objects.filter(username=username).first():
             messages.info(request,"The username is already taken, please try another username...")
             return render(request, 'learningcurveapp/signup.html',context = {
@@ -178,7 +217,7 @@ def signup(request):
                 student=Student(user=user)
                 student.save()
                 current_student=student
-                return redirect('/learningcurveapp/student-path')
+                return redirect('/learningcurveapp/student-profile')
             if(profile_type=='Teacher'):
                 my_group = Group.objects.get(name='teacher')
                 my_group.user_set.add(user)
@@ -202,13 +241,6 @@ def logout(request):
 
 
 
-def teacher_mycourses(request):
-    if not request.user.is_authenticated:
-        return redirect('learningcurveapp/login')
-    author = Author.objects.get(user=request.user)
-    courses=Course.objects.filter(author=author).values()
-
-    return render(request, 'learningcurveapp/teacher-mycourses.html',{'courses':courses})
 
 
 @login_required
@@ -276,12 +308,23 @@ def chapter(request,id):
 def edit_account_profile(request):
     return render(request, 'learningcurveapp/edit-account-profile.html')
 
-@login_required
-def teacher_quizzes(request):
-    author = Author.objects.get(user=request.user)
-    quizz = Quiz.objects.filter(author=author).select_related()
 
-    return render(request, 'learningcurveapp/teacher-quizzes.html',{'quizz':quizz})
+
+@login_required
+def quizzes(request,role):
+    if(role=="teacher"):
+        author = Author.objects.get(user=request.user)
+        quizz = Quiz.objects.filter(author=author).select_related()
+    if(role=="student"):
+       quizz = Quiz.objects.all()
+    return render(request, 'learningcurveapp/quizzes.html',{'quizz':quizz,'role':role})
+
+
+@login_required
+def student_quizzes(request):
+        quizz = Quiz.objects.all()
+        return render(request, 'learningcurveapp/quizzes.html',{'quizz':quizz,'role':"student"})
+
 
 
 @login_required
@@ -290,25 +333,78 @@ def teacher_addquizz(request):
         form = QuizForm(request.POST)
         if form.is_valid():
             author = Author.objects.get(user=request.user)
-            newquiz=form.save(commit=False)
-            newquiz.author=author
-            newquiz.save()
+            quiz = form.save(commit=False)
+            quiz.author=author
+            quiz.save()
+
+            i = 0
+            has_question_form = True
+            while has_question_form:
+                question_form = QuestionForm(request.POST, prefix=f'question_{i}')
+                if question_form.is_valid():
+                    question = question_form.save(commit=False)
+                    question.quiz = quiz
+                    question.save()
+                    i += 1
+                else:
+                    has_question_form = False
 
             return teacher_quizzes(request)
 
-        else:
-            print(form.errors)
-
-            return render(request, 'learningcurveapp/teacher-addquizz.html',{'form': QuizForm()})
     else:
         return render(request, 'learningcurveapp/teacher-addquizz.html',{'form': QuizForm()})
 
 @login_required
 def teacher_showquiz(request,id):
-    quiz=Quiz.objects.get(id=id)
-    return render(request, 'learningcurveapp/student-take-quiz.html',{'quiz':quiz})
+
+    questions=Question.objects.filter(quiz=id).order_by('id').values()
+    return render(request, 'learningcurveapp/teacher-showquiz.html',{'questions':questions,'role':"teacher"})
 
 
 @login_required
 def teacher_coursefeedback(request,id):
     return render(request, 'learningcurveapp/coursefeedback.html',{'id':id})
+
+
+def teacher_mycourses(request):
+    if not request.user.is_authenticated:
+        return redirect('learningcurveapp/login')
+    author = Author.objects.get(user=request.user)
+    courses=Course.objects.filter(author=author).values()
+
+    return render(request, 'learningcurveapp/private-courses.html',{'courses':courses})
+
+
+@login_required
+def student_courses(request):
+    courses = Course.objects.all()
+    return render(request, 'learningcurveapp/private-courses.html',{'courses':courses,'role':'role','form':FilterForm()})
+
+
+@login_required
+def private_courses(request,role):
+    if request.method == 'POST':
+            form = FilterForm(request.POST)
+            if form.is_valid():
+                level = request.POST['level']
+                topic = request.POST['topic']
+                if(level!='' and topic!=''):
+                    courses = Course.objects.filter(difficulty=level,topic=topic)
+                    return render(request, 'learningcurveapp/private-courses.html',{'courses':courses,'role':role,'form':FilterForm()})
+                if(topic=='' and level!=''):
+                     courses = Course.objects.filter(difficulty=level)
+                     return render(request, 'learningcurveapp/private-courses.html',{'courses':courses,'role':role,'form':FilterForm()})
+                if(topic!='' and level==''):
+                    courses = Course.objects.filter(topic=topic)
+                    return render(request, 'learningcurveapp/private-courses.html',{'courses':courses,'role':role,'form':FilterForm()})
+    courses = Course.objects.all()
+    return render(request, 'learningcurveapp/private-courses.html',{'courses':courses,'role':role,'form':FilterForm()})
+
+def edit_account_profile(request):
+    return render(request, 'learningcurveapp/edit-account-profile.html')
+
+@login_required
+def showquiz(request,id,role):
+    questions=Question.objects.filter(quiz=id).order_by('id').values()
+    return render(request, 'learningcurveapp/teacher-showquiz.html',{'id':id,'questions':questions,'role':role})
+

@@ -176,8 +176,7 @@
                 <div class="hero py-64pt text-center text-sm-left">
                     <div class="container page__container">
                         <h1 class="text-white">Machine Learning Fundamentals</h1>
-                        <p class="lead text-white-50 measure-hero-lead mb-24pt">Unlock the mysteries of Machine Learning
-                            and kick-start your journey into the world of Artificial Intelligence!</p>
+                        <p class="lead text-white-50 measure-hero-lead mb-24pt">{{c.subtitle}}</p>
                         {% if teacher == True %}
                         <a href="{% url 'teacher-addchapter' id=course.id %}"
                            class="btn btn-white">Add new chapter</a>
@@ -219,15 +218,9 @@
                         <div class="page-separator">
                             <div class="page-separator__text">About this course</div>
                         </div>
-                        <p class="text-70">Introduction to Machine Learning is a comprehensive course designed for those
-                            who are new to the field of Machine Learning and Artificial Intelligence. This course covers
-                            the core concepts, techniques, and applications of Machine Learning, providing you with the
-                            necessary skills and knowledge to further explore the world of AI.
+                        <p class="text-70">{{course.description}}
                         </p>
-                        <p class="text-70 mb-0">By the end of this course, you will have a solid understanding of the
-                            foundational
-                            principles of Machine Learning, be familiar with various ML techniques and algorithms, and
-                            be able to apply this knowledge to real-world problems.</p>
+
                     </div>
 
                 </div>

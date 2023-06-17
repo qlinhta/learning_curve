@@ -20,6 +20,24 @@ TOPIC = (
 
 )
 
+LEVELS_CHOICE = (
+    ('', ''),
+    ('I', 'Introduction'),
+    ('B', 'Beginner'),
+    ('M', 'Medium'),
+    ('C', 'Confirmed'),
+    ('E', 'Expert')
+)
+
+TOPIC_CHOICE = (
+    ('', ''),
+    ( 'CS','Computer sciences'),
+    ('F','Finance'),
+    ('S','Social'),
+    ('O','Others'),
+
+)
+
 TYPE = (
          ( 'mp4','mp4'),
          ('mp3','mp3'),
@@ -81,6 +99,8 @@ class Quiz(models.Model):
 
     def __str__(self) -> str:
         return "Quiz " + self.course.__str__()
+
+
 
 
 class Question(models.Model):

@@ -4,15 +4,13 @@
       class="dark-mode">
 
 <head>
+    {% load static %}
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible"
           content="IE=edge">
     <meta name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Login</title>
-
-    <meta name="robots"
-          content="noindex">
+    <title>Learning Path</title>
 
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CRoboto:400,500%7CExo+2:600&display=swap"
           rel="stylesheet">
@@ -39,209 +37,131 @@
 
     <!-- Preloader -->
     <link type="text/css"
-          href="../../static/learningcurveapp/css/preloader.css"
+          href="{% static 'learningcurveapp/css/preloader.css' %}"
           rel="stylesheet">
 
     <!-- App CSS -->
     <link type="text/css"
-          href="../../static/learningcurveapp/css/app.css"
+          href="{% static 'learningcurveapp/css/app.css' %}"
           rel="stylesheet">
 
     <!-- Dark Mode CSS -->
     <link type="text/css"
-          href="../../static/learningcurveapp/css/dark.css"
+          href="{% static 'learningcurveapp/css/dark.css' %}"
           rel="stylesheet">
+
 </head>
 
-        <!-- Drawer Layout -->
+<body class="layout-app ">
+<div class="mdk-drawer-layout js-mdk-drawer-layout"
+     data-push
+     data-responsive-width="992px">
+    <div class="mdk-drawer-layout__content page-content">
 
-        <div class="mdk-drawer-layout js-mdk-drawer-layout"
-             data-push
-             data-responsive-width="992px">
-            <div class="mdk-drawer-layout__content page-content">
+        <!-- Header -->
 
-                <!-- Header -->
+        <!-- Navbar -->
+        <div class="navbar navbar-expand pr-0 navbar-dark border-bottom-2"
+             id="default-navbar"
+             data-primary>
 
-                <div class="navbar navbar-expand navbar-dark border-bottom-2"
-                     id="default-navbar"
-                     data-primary>
+            <!-- Navbar Toggler -->
 
-                    <!-- Navbar toggler -->
-                    <button class="navbar-toggler w-auto mr-16pt d-block d-lg-none rounded-0"
-                            type="button"
-                            data-toggle="sidebar">
-                        <span class="material-icons">short_text</span>
-                    </button>
+            <button class="navbar-toggler w-auto mr-16pt d-block d-lg-none rounded-0"
+                    type="button"
+                    data-toggle="sidebar">
+                <span class="material-icons">short_text</span>
+            </button>
 
-                    <!-- Navbar Brand -->
-                    <a href="index.html"
-                       class="navbar-brand mr-16pt d-lg-none">
-                        <span class="avatar avatar-sm navbar-brand-icon mr-0 mr-lg-8pt">
+            <!-- // END Navbar Toggler -->
 
-                            <span class="avatar-title rounded bg-primary"><img src="../../static/learningcurveapp/images/illustration/student/128/white.svg"
-                                     alt="logo"
-                                     class="img-fluid" /></span>
+            <!-- Navbar Brand -->
 
-                        </span>
 
-                        <span class="d-none d-lg-block">Learning Curve</span>
+
+
+
+            <div class="flex"></div>
+            <!-- Navbar Menu -->
+            <div class="nav navbar-nav flex-nowrap d-flex mr-16pt">
+                <!-- Notifications dropdown -->
+                <div class="nav-item dropdown dropdown-notifications dropdown-xs-down-full"
+                     data-toggle="tooltip"
+                     data-title="Messages"
+                     data-placement="bottom"
+                     data-boundary="window">
+
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <div data-perfect-scrollbar
+                             class="position-relative">
+
+                            <div class="list-group list-group-flush mb-0">
+
+
+
+
+                                    <span class="d-flex">
+                                                <span class="avatar avatar-xs mr-2">
+                                                    <img src="{% static 'learningcurveapp/img.png' %}"
+                                                         alt="people"
+                                                         class="avatar-img rounded-circle">
+                                                </span>
+
+                                            </span>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- // END Notifications dropdown -->
+
+                <!-- Notifications dropdown -->
+                <div class="nav-item ml-16pt dropdown dropdown-notifications dropdown-xs-down-full"
+                     data-toggle="tooltip"
+                     data-title="Notifications"
+                     data-placement="bottom"
+                     data-boundary="window">
+
+
+                </div>
+                <!-- // END Notifications dropdown -->
+
+                <div class="nav-item dropdown">
+                    <a href="/learningcurveapp/edit-account-profile"
+                       class="nav-link d-flex align-items-center dropdown-toggle"
+                       data-toggle="dropdown"
+                       data-caret="false">
+
+                                <span class="avatar avatar-sm mr-8pt2">
+                                    <span class="avatar-title rounded-circle bg-primary">
+                                        <img src="{% static 'learningcurveapp/img.png' %}"
+                                             alt="avatar_1"
+                                             class="avatar-img rounded-circle">
+                                    </span>
+
+                                </span>
+
                     </a>
 
-                    <ul class="nav navbar-nav d-none d-sm-flex flex justify-content-start ml-8pt">
-                        <li class="nav-item">
-                            <a href="index.html"
-                               class="nav-link">Home</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a href="#"
-                               class="nav-link dropdown-toggle"
-                               data-toggle="dropdown"
-                               data-caret="false">Courses</a>
-                            <div class="dropdown-menu">
-                                <a href="courses.html"
-                                   class="dropdown-item active">Browse Courses</a>
-                                <a href="student-course.html"
-                                   class="dropdown-item">Preview Course</a>
-                                <a href="student-lesson.html"
-                                   class="dropdown-item">Preview Lesson</a>
-                                <a href="student-take-course.html"
-                                   class="dropdown-item"><span class="mr-16pt">Take Course</span> <span class="badge badge-notifications badge-accent text-uppercase ml-auto">Pro</span></a>
-                                <a href="student-take-lesson.html"
-                                   class="dropdown-item">Take Lesson</a>
-                                <a href="student-showquiz.html"
-                                   class="dropdown-item">Take Quiz</a>
-                                <a href="student-quiz-result-details.html"
-                                   class="dropdown-item">Quiz Result</a>
-                                <a href="student-dashboard.html"
-                                   class="dropdown-item">Student Dashboard</a>
-                                <a href="student-my-courses.html"
-                                   class="dropdown-item">My Courses</a>
-                                <a href="student-quiz-results.html"
-                                   class="dropdown-item">My Quizzes</a>
-                                <a href="help-center.html"
-                                   class="dropdown-item">Help Center</a>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a href="#"
-                               class="nav-link dropdown-toggle"
-                               data-toggle="dropdown"
-                               data-caret="false">Paths</a>
-                            <div class="dropdown-menu">
-                                <a href="paths.html"
-                                   class="dropdown-item">Browse Paths</a>
-                                <a href="student-path.html"
-                                   class="dropdown-item">Path Details</a>
-                                <a href="student-path-assessment.html"
-                                   class="dropdown-item">Skill Assessment</a>
-                                <a href="student-path-assessment-result.html"
-                                   class="dropdown-item">Skill Result</a>
-                                <a href="student-paths.html"
-                                   class="dropdown-item">My Paths</a>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pricing.html"
-                               class="nav-link">Pricing</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a href="#"
-                               class="nav-link dropdown-toggle"
-                               data-toggle="dropdown"
-                               data-caret="false">Teachers</a>
-                            <div class="dropdown-menu">
-                                <a href="instructor-dashboard.html"
-                                   class="dropdown-item">Instructor Dashboard</a>
-                                <a href="instructor-courses.html"
-                                   class="dropdown-item">Manage Courses</a>
-                                <a href="instructor-quizzes.html"
-                                   class="dropdown-item">Manage Quizzes</a>
-                                <a href="instructor-earnings.html"
-                                   class="dropdown-item">Earnings</a>
-                                <a href="instructor-statement.html"
-                                   class="dropdown-item">Statement</a>
-                                <a href="instructor-edit-course.html"
-                                   class="dropdown-item">Edit Course</a>
-                                <a href="instructor-edit-quiz.html"
-                                   class="dropdown-item">Edit Quiz</a>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown"
-                            data-toggle="tooltip"
-                            data-title="Community"
-                            data-placement="bottom"
-                            data-boundary="window">
-                            <a href="#"
-                               class="nav-link dropdown-toggle"
-                               data-toggle="dropdown"
-                               data-caret="false">
-                                <i class="material-icons">people_outline</i>
-                            </a>
-                            <div class="dropdown-menu">
-                                <a href="teachers.html"
-                                   class="dropdown-item">Browse Teachers</a>
-                                <a href="student-profile.html"
-                                   class="dropdown-item">Student Profile</a>
-                                <a href="teacher-profile.html"
-                                   class="dropdown-item">Instructor Profile</a>
-                                <a href="blog.html"
-                                   class="dropdown-item">Blog</a>
-                                <a href="blog-post.html"
-                                   class="dropdown-item">Blog Post</a>
-                                <a href="faq.html"
-                                   class="dropdown-item">FAQ</a>
-                                <a href="help-center.html"
-                                   class="dropdown-item">Help Center</a>
-                                <a href="discussions.html"
-                                   class="dropdown-item">Discussions</a>
-                                <a href="discussion.html"
-                                   class="dropdown-item">Discussion Details</a>
-                                <a href="discussions-ask.html"
-                                   class="dropdown-item">Ask Question</a>
-                            </div>
-                        </li>
-                    </ul>
-
-                    <ul class="nav navbar-nav ml-auto mr-0">
-                        <li class="nav-item">
-                            <a href="login.html"
-                               class="nav-link"
-                               data-toggle="tooltip"
-                               data-title="Login"
-                               data-placement="bottom"
-                               data-boundary="window"><i class="material-icons">lock_open</i></a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="signup.html"
-                               class="btn btn-outline-white">Get Started</a>
-                        </li>
-                    </ul>
                 </div>
+            </div>
 
-                <!-- // END Header -->
+            <!-- // END Navbar Menu -->
 
-                <!-- BEFORE Page Content -->
+        </div>
 
-                <!-- // END BEFORE Page Content -->
 
-                <!-- Page Content -->
 
+        <div class="page-section">
+            <div class="container page__container">
                 <div class="page-section">
                     <div class="container page__container">
 
                         <div class="d-flex flex-column flex-sm-row align-items-sm-center mb-24pt"
                              style="white-space: nowrap;">
-                            <small class="flex text-muted text-headings text-uppercase mr-3 mb-2 mb-sm-0">Displaying 4 out of 10 courses</small>
-                            <div class="w-auto ml-sm-auto table d-flex align-items-center mb-2 mb-sm-0">
-                                <small class="text-muted text-headings text-uppercase mr-3 d-none d-sm-block">Sort by</small>
 
-                                <a href="#"
-                                   class="sort desc small text-headings text-uppercase">Newest</a>
-
-                                <a href="#"
-                                   class="sort small text-headings text-uppercase ml-2">Popularity</a>
-
-                            </div>
 
                             <a href="#"
                                data-target="#library-drawer"
@@ -252,522 +172,12 @@
 
                         </div>
 
-                        <div class="page-separator">
-                            <div class="page-separator__text">Popular Courses</div>
-                        </div>
 
-                        <div class="row card-group-row">
 
-                            <div class="col-md-6 col-lg-4 col-xl-3 card-group-row__col">
 
-                                <div class="card card-sm card--elevated p-relative o-hidden overlay overlay--primary-dodger-blue js-overlay mdk-reveal js-mdk-reveal card-group-row__card"
-                                     data-overlay-onload-show
-                                     data-popover-onload-show
-                                     data-force-reveal
-                                     data-partial-height="44"
-                                     data-toggle="popover"
-                                     data-trigger="click">
-
-                                    <a href="student-course.html"
-                                       class="js-image"
-                                       data-position="">
-                                        <img src="../../static/learningcurveapp/images/paths/mailchimp_430x168.png"
-                                             alt="course">
-                                        <span class="overlay__content align-items-start justify-content-start">
-                                            <span class="overlay__action card-body d-flex align-items-center">
-                                                <i class="material-icons mr-4pt">play_circle_outline</i>
-                                                <span class="card-title text-white">Preview</span>
-                                            </span>
-                                        </span>
-                                    </a>
-
-                                    <div class="mdk-reveal__content">
-                                        <div class="card-body">
-                                            <div class="d-flex">
-                                                <div class="flex">
-                                                    <a class="card-title"
-                                                       href="student-course.html">Newsletter Design</a>
-                                                    <small class="text-50 font-weight-bold mb-4pt">Quyen Linh TA</small>
-                                                </div>
-                                                <a href="student-course.html"
-                                                   data-toggle="tooltip"
-                                                   data-title="Remove Favorite"
-                                                   data-placement="top"
-                                                   data-boundary="window"
-                                                   class="ml-4pt material-icons text-20 card-course__icon-favorite">favorite</a>
-                                            </div>
-                                            <div class="d-flex">
-                                                <div class="rating flex">
-                                                    <span class="rating__item"><span class="material-icons">star</span></span>
-                                                    <span class="rating__item"><span class="material-icons">star</span></span>
-                                                    <span class="rating__item"><span class="material-icons">star</span></span>
-                                                    <span class="rating__item"><span class="material-icons">star</span></span>
-                                                    <span class="rating__item"><span class="material-icons">star_border</span></span>
-                                                </div>
-                                                <small class="text-50">6 hours</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="popoverContainer d-none">
-                                    <div class="media">
-                                        <div class="media-left mr-12pt">
-                                            <img src="../../static/learningcurveapp/images/paths/mailchimp_40x40@2x.png"
-                                                 width="40"
-                                                 height="40"
-                                                 alt="ML"
-                                                 class="rounded">
-                                        </div>
-                                        <div class="media-body">
-                                            <div class="card-title mb-0">Newsletter Design</div>
-                                            <p class="lh-1 mb-0">
-                                                <span class="text-50 small">with</span>
-                                                <span class="text-50 small font-weight-bold">Quyen Linh TA</span>
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    <p class="my-16pt text-70">Learn the fundamentals of working with ML and how to create basic applications.</p>
-
-                                    <div class="mb-16pt">
-                                        <div class="d-flex align-items-center">
-                                            <span class="material-icons icon-16pt text-50 mr-8pt">check</span>
-                                            <p class="flex text-50 lh-1 mb-0"><small>Fundamentals of working with ML</small></p>
-                                        </div>
-                                        <div class="d-flex align-items-center">
-                                            <span class="material-icons icon-16pt text-50 mr-8pt">check</span>
-                                            <p class="flex text-50 lh-1 mb-0"><small>Create complete ML applications</small></p>
-                                        </div>
-                                        <div class="d-flex align-items-center">
-                                            <span class="material-icons icon-16pt text-50 mr-8pt">check</span>
-                                            <p class="flex text-50 lh-1 mb-0"><small>Working with the ML CLI</small></p>
-                                        </div>
-                                        <div class="d-flex align-items-center">
-                                            <span class="material-icons icon-16pt text-50 mr-8pt">check</span>
-                                            <p class="flex text-50 lh-1 mb-0"><small>Understanding Dependency Injection</small></p>
-                                        </div>
-                                        <div class="d-flex align-items-center">
-                                            <span class="material-icons icon-16pt text-50 mr-8pt">check</span>
-                                            <p class="flex text-50 lh-1 mb-0"><small>Testing with ML</small></p>
-                                        </div>
-                                    </div>
-
-                                    <div class="row align-items-center">
-                                        <div class="col-auto">
-                                            <div class="d-flex align-items-center mb-4pt">
-                                                <span class="material-icons icon-16pt text-50 mr-4pt">access_time</span>
-                                                <p class="flex text-50 lh-1 mb-0"><small>6 hours</small></p>
-                                            </div>
-                                            <div class="d-flex align-items-center mb-4pt">
-                                                <span class="material-icons icon-16pt text-50 mr-4pt">play_circle_outline</span>
-                                                <p class="flex text-50 lh-1 mb-0"><small>12 lessons</small></p>
-                                            </div>
-                                            <div class="d-flex align-items-center">
-                                                <span class="material-icons icon-16pt text-50 mr-4pt">assessment</span>
-                                                <p class="flex text-50 lh-1 mb-0"><small>Beginner</small></p>
-                                            </div>
-                                        </div>
-                                        <div class="col text-right">
-                                            <a href="student-course.html"
-                                               class="btn btn-primary">Watch trailer</a>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                            <div class="col-md-6 col-lg-4 col-xl-3 card-group-row__col">
-
-                                <div class="card card-sm card--elevated p-relative o-hidden overlay overlay--primary-dodger-blue js-overlay mdk-reveal js-mdk-reveal card-group-row__card"
-                                     data-partial-height="44"
-                                     data-toggle="popover"
-                                     data-trigger="click">
-
-                                    <a href="student-course.html"
-                                       class="js-image"
-                                       data-position="">
-                                        <img src="../../static/learningcurveapp/images/paths/xd_430x168.png"
-                                             alt="course">
-                                        <span class="overlay__content align-items-start justify-content-start">
-                                            <span class="overlay__action card-body d-flex align-items-center">
-                                                <i class="material-icons mr-4pt">play_circle_outline</i>
-                                                <span class="card-title text-white">Preview</span>
-                                            </span>
-                                        </span>
-                                    </a>
-
-                                    <div class="mdk-reveal__content">
-                                        <div class="card-body">
-                                            <div class="d-flex">
-                                                <div class="flex">
-                                                    <a class="card-title"
-                                                       href="student-course.html">Adobe XD</a>
-                                                    <small class="text-50 font-weight-bold mb-4pt">Quyen Linh TA</small>
-                                                </div>
-                                                <a href="student-course.html"
-                                                   data-toggle="tooltip"
-                                                   data-title="Add Favorite"
-                                                   data-placement="top"
-                                                   data-boundary="window"
-                                                   class="ml-4pt material-icons text-20 card-course__icon-favorite">favorite_border</a>
-                                            </div>
-                                            <div class="d-flex">
-                                                <div class="rating flex">
-                                                    <span class="rating__item"><span class="material-icons">star</span></span>
-                                                    <span class="rating__item"><span class="material-icons">star</span></span>
-                                                    <span class="rating__item"><span class="material-icons">star</span></span>
-                                                    <span class="rating__item"><span class="material-icons">star</span></span>
-                                                    <span class="rating__item"><span class="material-icons">star_border</span></span>
-                                                </div>
-                                                <small class="text-50">6 hours</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="popoverContainer d-none">
-                                    <div class="media">
-                                        <div class="media-left mr-12pt">
-                                            <img src="../../static/learningcurveapp/images/paths/xd_40x40@2x.png"
-                                                 width="40"
-                                                 height="40"
-                                                 alt="ML"
-                                                 class="rounded">
-                                        </div>
-                                        <div class="media-body">
-                                            <div class="card-title mb-0">Adobe XD</div>
-                                            <p class="lh-1 mb-0">
-                                                <span class="text-50 small">with</span>
-                                                <span class="text-50 small font-weight-bold">Quyen Linh TA</span>
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    <p class="my-16pt text-70">Learn the fundamentals of working with ML and how to create basic applications.</p>
-
-                                    <div class="mb-16pt">
-                                        <div class="d-flex align-items-center">
-                                            <span class="material-icons icon-16pt text-50 mr-8pt">check</span>
-                                            <p class="flex text-50 lh-1 mb-0"><small>Fundamentals of working with ML</small></p>
-                                        </div>
-                                        <div class="d-flex align-items-center">
-                                            <span class="material-icons icon-16pt text-50 mr-8pt">check</span>
-                                            <p class="flex text-50 lh-1 mb-0"><small>Create complete ML applications</small></p>
-                                        </div>
-                                        <div class="d-flex align-items-center">
-                                            <span class="material-icons icon-16pt text-50 mr-8pt">check</span>
-                                            <p class="flex text-50 lh-1 mb-0"><small>Working with the ML CLI</small></p>
-                                        </div>
-                                        <div class="d-flex align-items-center">
-                                            <span class="material-icons icon-16pt text-50 mr-8pt">check</span>
-                                            <p class="flex text-50 lh-1 mb-0"><small>Understanding Dependency Injection</small></p>
-                                        </div>
-                                        <div class="d-flex align-items-center">
-                                            <span class="material-icons icon-16pt text-50 mr-8pt">check</span>
-                                            <p class="flex text-50 lh-1 mb-0"><small>Testing with ML</small></p>
-                                        </div>
-                                    </div>
-
-                                    <div class="row align-items-center">
-                                        <div class="col-auto">
-                                            <div class="d-flex align-items-center mb-4pt">
-                                                <span class="material-icons icon-16pt text-50 mr-4pt">access_time</span>
-                                                <p class="flex text-50 lh-1 mb-0"><small>6 hours</small></p>
-                                            </div>
-                                            <div class="d-flex align-items-center mb-4pt">
-                                                <span class="material-icons icon-16pt text-50 mr-4pt">play_circle_outline</span>
-                                                <p class="flex text-50 lh-1 mb-0"><small>12 lessons</small></p>
-                                            </div>
-                                            <div class="d-flex align-items-center">
-                                                <span class="material-icons icon-16pt text-50 mr-4pt">assessment</span>
-                                                <p class="flex text-50 lh-1 mb-0"><small>Beginner</small></p>
-                                            </div>
-                                        </div>
-                                        <div class="col text-right">
-                                            <a href="student-course.html"
-                                               class="btn btn-primary">Watch trailer</a>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                            <div class="col-md-6 col-lg-4 col-xl-3 card-group-row__col">
-
-                                <div class="card card-sm card--elevated p-relative o-hidden overlay overlay--primary-dodger-blue js-overlay mdk-reveal js-mdk-reveal card-group-row__card"
-                                     data-partial-height="44"
-                                     data-toggle="popover"
-                                     data-trigger="click">
-
-                                    <a href="student-course.html"
-                                       class="js-image"
-                                       data-position="">
-                                        <img src="../../static/learningcurveapp/images/paths/invision_430x168.png"
-                                             alt="course">
-                                        <span class="overlay__content align-items-start justify-content-start">
-                                            <span class="overlay__action card-body d-flex align-items-center">
-                                                <i class="material-icons mr-4pt">play_circle_outline</i>
-                                                <span class="card-title text-white">Preview</span>
-                                            </span>
-                                        </span>
-                                    </a>
-
-                                    <div class="mdk-reveal__content">
-                                        <div class="card-body">
-                                            <div class="d-flex">
-                                                <div class="flex">
-                                                    <a class="card-title"
-                                                       href="student-course.html">inVision App</a>
-                                                    <small class="text-50 font-weight-bold mb-4pt">Quyen Linh TA</small>
-                                                </div>
-                                                <a href="student-course.html"
-                                                   data-toggle="tooltip"
-                                                   data-title="Add Favorite"
-                                                   data-placement="top"
-                                                   data-boundary="window"
-                                                   class="ml-4pt material-icons text-20 card-course__icon-favorite">favorite_border</a>
-                                            </div>
-                                            <div class="d-flex">
-                                                <div class="rating flex">
-                                                    <span class="rating__item"><span class="material-icons">star</span></span>
-                                                    <span class="rating__item"><span class="material-icons">star</span></span>
-                                                    <span class="rating__item"><span class="material-icons">star</span></span>
-                                                    <span class="rating__item"><span class="material-icons">star</span></span>
-                                                    <span class="rating__item"><span class="material-icons">star_border</span></span>
-                                                </div>
-                                                <small class="text-50">6 hours</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="popoverContainer d-none">
-                                    <div class="media">
-                                        <div class="media-left mr-12pt">
-                                            <img src="../../static/learningcurveapp/images/paths/invision_40x40@2x.png"
-                                                 width="40"
-                                                 height="40"
-                                                 alt="ML"
-                                                 class="rounded">
-                                        </div>
-                                        <div class="media-body">
-                                            <div class="card-title mb-0">inVision App</div>
-                                            <p class="lh-1 mb-0">
-                                                <span class="text-50 small">with</span>
-                                                <span class="text-50 small font-weight-bold">Quyen Linh TA</span>
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    <p class="my-16pt text-70">Learn the fundamentals of working with ML and how to create basic applications.</p>
-
-                                    <div class="mb-16pt">
-                                        <div class="d-flex align-items-center">
-                                            <span class="material-icons icon-16pt text-50 mr-8pt">check</span>
-                                            <p class="flex text-50 lh-1 mb-0"><small>Fundamentals of working with ML</small></p>
-                                        </div>
-                                        <div class="d-flex align-items-center">
-                                            <span class="material-icons icon-16pt text-50 mr-8pt">check</span>
-                                            <p class="flex text-50 lh-1 mb-0"><small>Create complete ML applications</small></p>
-                                        </div>
-                                        <div class="d-flex align-items-center">
-                                            <span class="material-icons icon-16pt text-50 mr-8pt">check</span>
-                                            <p class="flex text-50 lh-1 mb-0"><small>Working with the ML CLI</small></p>
-                                        </div>
-                                        <div class="d-flex align-items-center">
-                                            <span class="material-icons icon-16pt text-50 mr-8pt">check</span>
-                                            <p class="flex text-50 lh-1 mb-0"><small>Understanding Dependency Injection</small></p>
-                                        </div>
-                                        <div class="d-flex align-items-center">
-                                            <span class="material-icons icon-16pt text-50 mr-8pt">check</span>
-                                            <p class="flex text-50 lh-1 mb-0"><small>Testing with ML</small></p>
-                                        </div>
-                                    </div>
-
-                                    <div class="row align-items-center">
-                                        <div class="col-auto">
-                                            <div class="d-flex align-items-center mb-4pt">
-                                                <span class="material-icons icon-16pt text-50 mr-4pt">access_time</span>
-                                                <p class="flex text-50 lh-1 mb-0"><small>6 hours</small></p>
-                                            </div>
-                                            <div class="d-flex align-items-center mb-4pt">
-                                                <span class="material-icons icon-16pt text-50 mr-4pt">play_circle_outline</span>
-                                                <p class="flex text-50 lh-1 mb-0"><small>12 lessons</small></p>
-                                            </div>
-                                            <div class="d-flex align-items-center">
-                                                <span class="material-icons icon-16pt text-50 mr-4pt">assessment</span>
-                                                <p class="flex text-50 lh-1 mb-0"><small>Beginner</small></p>
-                                            </div>
-                                        </div>
-                                        <div class="col text-right">
-                                            <a href="student-course.html"
-                                               class="btn btn-primary">Watch trailer</a>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                            <div class="col-md-6 col-lg-4 col-xl-3 card-group-row__col">
-
-                                <div class="card card-sm card--elevated p-relative o-hidden overlay overlay--primary-dodger-blue js-overlay mdk-reveal js-mdk-reveal card-group-row__card"
-                                     data-partial-height="44"
-                                     data-toggle="popover"
-                                     data-trigger="click">
-
-                                    <a href="student-course.html"
-                                       class="js-image"
-                                       data-position="">
-                                        <img src="../../static/learningcurveapp/images/paths/craft_430x168.png"
-                                             alt="course">
-                                        <span class="overlay__content align-items-start justify-content-start">
-                                            <span class="overlay__action card-body d-flex align-items-center">
-                                                <i class="material-icons mr-4pt">play_circle_outline</i>
-                                                <span class="card-title text-white">Preview</span>
-                                            </span>
-                                        </span>
-                                    </a>
-
-                                    <div class="mdk-reveal__content">
-                                        <div class="card-body">
-                                            <div class="d-flex">
-                                                <div class="flex">
-                                                    <a class="card-title"
-                                                       href="student-course.html">Craft by inVision</a>
-                                                    <small class="text-50 font-weight-bold mb-4pt">Quyen Linh TA</small>
-                                                </div>
-                                                <a href="student-course.html"
-                                                   data-toggle="tooltip"
-                                                   data-title="Add Favorite"
-                                                   data-placement="top"
-                                                   data-boundary="window"
-                                                   class="ml-4pt material-icons text-20 card-course__icon-favorite">favorite_border</a>
-                                            </div>
-                                            <div class="d-flex">
-                                                <div class="rating flex">
-                                                    <span class="rating__item"><span class="material-icons">star</span></span>
-                                                    <span class="rating__item"><span class="material-icons">star</span></span>
-                                                    <span class="rating__item"><span class="material-icons">star</span></span>
-                                                    <span class="rating__item"><span class="material-icons">star</span></span>
-                                                    <span class="rating__item"><span class="material-icons">star_border</span></span>
-                                                </div>
-                                                <small class="text-50">6 hours</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="popoverContainer d-none">
-                                    <div class="media">
-                                        <div class="media-left mr-12pt">
-                                            <img src="../../static/learningcurveapp/images/paths/craft_40x40@2x.png"
-                                                 width="40"
-                                                 height="40"
-                                                 alt="ML"
-                                                 class="rounded">
-                                        </div>
-                                        <div class="media-body">
-                                            <div class="card-title mb-0">Craft by inVision</div>
-                                            <p class="lh-1 mb-0">
-                                                <span class="text-50 small">with</span>
-                                                <span class="text-50 small font-weight-bold">Quyen Linh TA</span>
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    <p class="my-16pt text-70">Learn the fundamentals of working with ML and how to create basic applications.</p>
-
-                                    <div class="mb-16pt">
-                                        <div class="d-flex align-items-center">
-                                            <span class="material-icons icon-16pt text-50 mr-8pt">check</span>
-                                            <p class="flex text-50 lh-1 mb-0"><small>Fundamentals of working with ML</small></p>
-                                        </div>
-                                        <div class="d-flex align-items-center">
-                                            <span class="material-icons icon-16pt text-50 mr-8pt">check</span>
-                                            <p class="flex text-50 lh-1 mb-0"><small>Create complete ML applications</small></p>
-                                        </div>
-                                        <div class="d-flex align-items-center">
-                                            <span class="material-icons icon-16pt text-50 mr-8pt">check</span>
-                                            <p class="flex text-50 lh-1 mb-0"><small>Working with the ML CLI</small></p>
-                                        </div>
-                                        <div class="d-flex align-items-center">
-                                            <span class="material-icons icon-16pt text-50 mr-8pt">check</span>
-                                            <p class="flex text-50 lh-1 mb-0"><small>Understanding Dependency Injection</small></p>
-                                        </div>
-                                        <div class="d-flex align-items-center">
-                                            <span class="material-icons icon-16pt text-50 mr-8pt">check</span>
-                                            <p class="flex text-50 lh-1 mb-0"><small>Testing with ML</small></p>
-                                        </div>
-                                    </div>
-
-                                    <div class="row align-items-center">
-                                        <div class="col-auto">
-                                            <div class="d-flex align-items-center mb-4pt">
-                                                <span class="material-icons icon-16pt text-50 mr-4pt">access_time</span>
-                                                <p class="flex text-50 lh-1 mb-0"><small>6 hours</small></p>
-                                            </div>
-                                            <div class="d-flex align-items-center mb-4pt">
-                                                <span class="material-icons icon-16pt text-50 mr-4pt">play_circle_outline</span>
-                                                <p class="flex text-50 lh-1 mb-0"><small>12 lessons</small></p>
-                                            </div>
-                                            <div class="d-flex align-items-center">
-                                                <span class="material-icons icon-16pt text-50 mr-4pt">assessment</span>
-                                                <p class="flex text-50 lh-1 mb-0"><small>Beginner</small></p>
-                                            </div>
-                                        </div>
-                                        <div class="col text-right">
-                                            <a href="student-course.html"
-                                               class="btn btn-primary">Watch trailer</a>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                        <div class="mb-32pt">
-
-                            <ul class="pagination justify-content-start pagination-xsm m-0">
-                                <li class="page-item disabled">
-                                    <a class="page-link"
-                                       href="#"
-                                       aria-label="Previous">
-                                        <span aria-hidden="true"
-                                              class="material-icons">chevron_left</span>
-                                        <span>Prev</span>
-                                    </a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link"
-                                       href="#"
-                                       aria-label="Page 1">
-                                        <span>1</span>
-                                    </a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link"
-                                       href="#"
-                                       aria-label="Page 2">
-                                        <span>2</span>
-                                    </a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link"
-                                       href="#"
-                                       aria-label="Next">
-                                        <span>Next</span>
-                                        <span aria-hidden="true"
-                                              class="material-icons">chevron_right</span>
-                                    </a>
-                                </li>
-                            </ul>
-
-                        </div>
 
                         <div class="page-separator">
-                            <div class="page-separator__text">Development Courses</div>
+                            <div class="page-separator__text"> Courses</div>
                         </div>
 
                         <div class="row card-group-row">
@@ -1333,7 +743,7 @@
                                        class="card-img-top js-image"
                                        data-position=""
                                        data-height="140">
-                                        <img src="{ % static 'learningcurveapp/images/paths/sketch_430x168.png' %}"
+                                        <img src="../../static/learningcurveapp/images/paths/sketch_430x168.png"
                                              alt="course">
                                         <span class="overlay__content">
                                             <span class="overlay__action d-flex flex-column text-center">
@@ -1866,55 +1276,135 @@
 
                     </div>
                 </div>
-
-                <!-- // END Page Content -->
-
-                <!-- Footer -->
-
-                <div class=" border-top-2 mt-auto">
-                    <div class="container page__container page-section d-flex flex-column">
-                        <p class="text-70 brand mb-24pt">
-                            <img class="brand-icon"
-                                 src="../../static/learningcurveapp/images/Logo.svg"
-                                 width="300"
-                        </p>
-                        <p class="mb-8pt d-flex">
-                            <a href=""
-                               class="text-70 text-underline mr-8pt small">Terms</a>
-                            <a href=""
-                               class="text-70 text-underline small">Privacy policy</a>
-                        </p>
-                        <p class="text-50 small mt-n1 mb-0">Copyright 2023 &copy; All rights reserved.</p>
-                    </div>
-                </div>
-
-                <!-- // END Footer -->
-
             </div>
+        </div>
 
 
-        <!-- jQuery -->
-        <script src="../../static/learningcurveapp/vendor/jquery.min.js"></script>
+        <!-- // END Page Content -->
 
-        <!-- Bootstrap -->
-        <script src="../../static/learningcurveapp/vendor/popper.min.js"></script>
-        <script src="../../static/learningcurveapp/vendor/bootstrap.min.js"></script>
+        <!-- Footer -->
 
-        <!-- Perfect Scrollbar -->
-        <script src="../../static/learningcurveapp/vendor/perfect-scrollbar.min.js"></script>
+        <div class=" border-top-2 mt-auto">
+            <div class="container page__container page-section d-flex flex-column">
+                <p class="text-70 brand mb-24pt">
+                    <a href="/learningcurveapp/aboutus"
+                       class="text-70 text-underline small">About us</a>
+                    <img class="brand-icon"
+                         src="{% static 'learningcurveapp/images/Logo.svg' %}"
+                         width="300"
+                         alt="Learning Curve">
+                </p>
+                <p class="measure-lead-max text-50 small mr-8pt">Learning Curve is a platform that provides a variety of
+                    courses for you to learn and improve your skills. We have a variety of courses for you to choose
+                    from.</p>
+                </p>
+                <p class="mb-8pt d-flex">
+                    <a href=""
+                       class="text-70 text-underline mr-8pt small">Terms</a>
+                    <a href=""
+                       class="text-70 text-underline small">Privacy policy</a>
+                </p>
+                <p class="text-50 small mt-n1 mb-0">Copyright 2023 &copy; All rights reserved hehe.</p>
+            </div>
+        </div>
 
-        <!-- DOM Factory -->
-        <script src="../../static/learningcurveapp/vendor/dom-factory.js"></script>
+        <!-- // END Footer -->
 
-        <!-- MDK -->
-        <script src="../../static/learningcurveapp/vendor/material-design-kit.js"></script>
+    </div>
 
-        <!-- App JS -->
-        <script src="../../static/learningcurveapp/js/app.js"></script>
+    <!-- // END drawer-layout__content -->
 
-        <!-- Preloader -->
-        <script src="../../static/learningcurveapp/js/preloader.js"></script>
+    <!-- Drawer -->
 
-    </body>
+    <div class="mdk-drawer js-mdk-drawer"
+         id="default-drawer">
+        <div class="mdk-drawer__content">
+            <div class="sidebar sidebar-black-dodger-blue sidebar-left"
+                 data-perfect-scrollbar>
+
+
+                <a href="#"
+                   class="sidebar-brand ">
+                    <span class="avatar avatar-xl sidebar-brand-icon h-auto">
+
+                                <span class="avatar-title rounded bg-primary"><img
+                                        src="{% static 'learningcurveapp/img.png'%}"
+                                        class="img-fluid"
+                                        alt="logo"/></span>
+
+                            </span>
+
+                    <span>{{ username }}</span>
+                </a>
+
+                <div class="sidebar-heading">Student</div>
+                <ul class="sidebar-menu">
+
+                    <li class="sidebar-menu-item">
+                        <a class="sidebar-menu-button"
+                           href="/learningcurveapp/student-profile">
+                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">home</span>
+                            <span class="sidebar-menu-text">Home</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a class="sidebar-menu-button"
+                           href="/learningcurveapp/student-courses">
+                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">local_library</span>
+                            <span class="sidebar-menu-text">Browse Courses</span>
+                        </a>
+                    </li>
+
+
+
+
+
+                    <li class="sidebar-menu-item">
+                        <a class="sidebar-menu-button"
+                           href="/learningcurveapp/quizzes/student">
+                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">dvr</span>
+                            <span class="sidebar-menu-text">Take Quiz</span>
+                        </a>
+                    </li>
+
+
+
+                    <li class="sidebar-menu-item">
+                        <a class="sidebar-menu-button"
+                           href="/learningcurveapp/logout">
+                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">logout</span>
+                            <span class="sidebar-menu-text">Logout</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Perfect Scrollbar -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.5.2/perfect-scrollbar.min.js"></script>
+
+<!-- DOM Factory -->
+<script src="{%static 'learningcurveapp/vendor/dom-factory.js' %}"></script>
+
+<!-- MDK -->
+<script src="https://cdn.jsdelivr.net/npm/material-design-kit@1.0.0/dist/material-design-kit.min.js"></script>
+
+<!-- App JS -->
+<script src="{% static 'learningcurveapp/js/app.js' %}"></script>
+
+<!-- Preloader -->
+<script src="{% static 'learningcurveapp/js/preloader.js' %}"></script>
+
+
+</body>
 
 </html>

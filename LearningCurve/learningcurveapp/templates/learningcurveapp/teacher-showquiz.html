@@ -85,7 +85,7 @@
             <span class="d-none d-md-flex align-items-center mr-16pt">
 
                         <span class="avatar avatar-sm mr-12pt">
-                           <a href="../../../learningcurveapp/teacher-course/{{chapter.course.id}}">
+                           <a href="../../../learningcurveapp/teacher-quizzes">
                             <span class="avatar-title rounded navbar-avatar"><i
                                     class="material-icons">keyboard_arrow_left</i></span></a>
                         </span>
@@ -186,63 +186,67 @@
 
         <!-- Page Content -->
 
+        {% if role == "teacher" %}
         <div class="navbar navbar-light border-0 navbar-expand-sm"
              style="white-space: nowrap;">
-            <h1 class="text-white flex m-0">{{chapter.title}}</h1>
+            <h1 class="text-white flex m-0">Quiz correction</h1>
         </div>
-        <div class="bg-primary pb-lg-64pt py-32pt">
-            <div class="container page__container">
-
-                <div class="js-player bg-primary embed-responsive embed-responsive-16by9 mb-32pt" width="300">
 
 
+        <ul class="nav navbar-nav flex align-items-sm ">
+            {% for c in questions %}
+            <li class="nav-item navbar-list__item bg-primary pb-lg-14pt py-14pt">
+                <i class="material-icons text-muted icon--left">Q</i>
+                {{c.question}}
+            </li>
 
-                    <video controls>
-                        <source src="../..{{MEDIA_URL}}{{chapter.content}}" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <!---  <embed src="../..{{MEDIA_URL}}{{chapter.content}}"  type="image/png" >--->
-                    <!---  <embed src="../..{{MEDIA_URL}}{{chapter.content}}"  type="image/png" >--->
-                    <!---  <embed src="../..{{MEDIA_URL}}{{chapter.content}}"  type="image/png" >--->
-                    <!---  <embed src="../..{{MEDIA_URL}}{{chapter.content}}"  type="image/png" >--->
+                <li class="nav-item navbar-list__item pb-lg-14pt py-14pt ">
+                    <i class="material-icons text-muted icon--left">&#10004;</i>
+                    {{c.answer}}
+                </li>
+            {% endfor %}
+
+        </ul>
 
 
+        {% else %}
+        <div style="white-space: nowrap;">
+            <h1 >Quiz </h1>
+        </div>
+        <div>
+            <form method="post" action="{% url 'student-quiz-result-details' id=id %}" >
+                {% csrf_token %}
 
+                {% for c in questions %}
+                <div  >
+                    <label class="form-label"
+                           for="name">{{c.question}}</label>
+                </div>
+                <div >
+                    <input id="name"
+                           type="text"
+                           class="form-control"
+                           name=answer[] >
                 </div>
 
+        {% endfor %}
 
-
-
-            </div>
+        <div class="text-center">
+            <button class="btn btn-primary">Submit</button>
         </div>
-        <div class="navbar navbar-expand-sm navbar-dark border-bottom-2 navbar-list p-0 m-0 align-items-center">
-            <div class="container page__container">
-                <ul class="nav navbar-nav flex align-items-sm-center">
 
-                    <li class="nav-item navbar-list__item">
-                        <i class="material-icons text-muted icon--left">schedule</i>
-                        2h 46m
-                    </li>
-
-                    s
-                </ul>
-            </div>
-        </div>
-        <div class="page-section  border-top-2 border-bottom-2">
-
-            <div class="container page__container">
-                <div class="row ">
-                    <div class="col-md-7">
-
-                        <p class="text-70">{{chapter.description}}
-                        </p>
-
-                    </div>
-
-                </div>
-            </div>
+        </form>
 
         </div>
+
+
+
+
+        {% endif%}
+
+
+
+
 
 
         <!-- // END Page Content -->
