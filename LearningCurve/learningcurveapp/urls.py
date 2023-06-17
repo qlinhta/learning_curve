@@ -5,6 +5,9 @@ from django.conf.urls.static import static
 from .models import *
 urlpatterns = [
     path('login/', views.login, name='login'),
+    path('courses/', views.courses, name='courses'),
+    path('index', views.index, name='index'),
+    path('instructor-edit-quiz/', views.instructor_edit_quiz, name='instructor-edit-quiz'),
     path('student-path/', views.student_path, name='student-path'),
     path('student-profile/', views.student_profile, name='student-profile'),
     path('student-student-quiz-result-details/', views.student_quiz_result_details, name='student-student-quiz-result-details'),
@@ -18,6 +21,9 @@ urlpatterns = [
     path('teacher-addchapter/<int:id>/', views.teacher_addchapter, name='teacher-addchapter'),
     path('teacher-course/<int:id>/', views.teacher_course, name='teacher-course'),
     path('teacher-coursefeedback/<int:id>/', views.teacher_coursefeedback, name='teacher-coursefeedback'),
+    path('teacher-addcourses/', views.teacher_addcourses, name='teacher-addcourses'),
+    path('edit-account-profile', views.edit_account_profile, name='edit-account-profile'),
+
     path('teacher-profile/', views.teacher_profile, name='teacher-profile'),
     path('teacher-quizzes/', views.teacher_quizzes, name='teacher-quizzes'),
     path('teacher-addquizz/', views.teacher_addquizz, name='teacher-addquizz'),

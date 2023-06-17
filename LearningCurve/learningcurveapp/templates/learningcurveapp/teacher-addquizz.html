@@ -10,7 +10,8 @@
           content="IE=edge">
     <meta name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Teacher Profile</title>
+    <title>Learning Path</title>
+
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CRoboto:400,500%7CExo+2:600&display=swap"
           rel="stylesheet">
 
@@ -48,27 +49,13 @@
     <link type="text/css"
           href="{% static 'learningcurveapp/css/dark.css' %}"
           rel="stylesheet">
+
 </head>
 
 <body class="layout-app ">
-
-<div class="preloader">
-    <div class="sk-chase">
-        <div class="sk-chase-dot"></div>
-        <div class="sk-chase-dot"></div>
-        <div class="sk-chase-dot"></div>
-        <div class="sk-chase-dot"></div>
-        <div class="sk-chase-dot"></div>
-        <div class="sk-chase-dot"></div>
-    </div>
-
-    <!-- <div class="sk-bounce">
-<div class="sk-bounce-dot"></div>
-<div class="sk-bounce-dot"></div>
-</div> -->
-
-    <!-- More spinner examples at https://github.com/tobiasahlin/SpinKit/blob/master/examples.html -->
 </div>
+
+<!-- Drawer Layout -->
 
 <!-- Drawer Layout -->
 
@@ -102,9 +89,10 @@
 
                         <span class="avatar avatar-sm navbar-brand-icon mr-0 mr-lg-8pt">
 
-                            <span class="avatar-title rounded bg-primary"><img src="{% static 'learningcurveapp/images/user_icon.jpg' %}"
-                                                                               alt="logo"
-                                                                               class="img-fluid"/></span>
+                            <span class="avatar-title rounded bg-primary"><img
+                                    src="{% static 'learningcurveapp/images/user_icon.jpg' %}"
+                                    alt="logo"
+                                    class="img-fluid"/></span>
 
                         </span>
 
@@ -113,6 +101,19 @@
 
             <!-- // END Navbar Brand -->
 
+            <span class="d-none d-md-flex align-items-center mr-16pt">
+
+                        <span class="avatar avatar-sm mr-12pt">
+
+                            <span class="avatar-title rounded navbar-avatar"><i
+                                    class="material-icons">opacity</i></span>
+                        </span>
+
+                        <small class="flex d-flex flex-column">
+                            <strong class="navbar-text-100">Experiences</strong>
+                            <span class="navbar-text-50">-1 points</span>
+                        </small>
+                    </span>
 
             <div class="flex"></div>
             <!-- Navbar Menu -->
@@ -273,24 +274,232 @@
             </div>
         </div>
 
+        <!-- Page Content -->
 
-        <div class="container page__container page-section">
-
-            <div class="page-headline text-center">
-                <h2>Add Course</h2>
-                <p class="lead text-70 col-lg-8 mx-auto">{{ username }}</p>
+        <div class="navbar navbar-light border-0 navbar-expand-sm"
+             style="white-space: nowrap;">
+            <div class="container page__container flex-column flex-sm-row">
+                <nav class="nav navbar-nav">
+                    <div class="nav-item py-16pt py-sm-0">
+                        <div class="media flex-nowrap">
+                            <div class="media-left mr-16pt">
+                                <a href="student-take-course.html"><img
+                                        src="{% static 'learningcurveapp/images/paths/Machine-learning-def-.png' %}"
+                                        width="40"
+                                        alt="Machine Learning"
+                                        class="rounded"></a>
+                            </div>
+                            <div class="media-body d-flex flex-column">
+                                <a href="student-take-course.html"
+                                   class="card-title">Machine Learning Fundamentals</a>
+                                <div class="d-flex">
+                                    <span class="text-50 small font-weight-bold mr-8pt">Another Linh</span>
+                                    <span class="text-50 small">AI Scientist</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+                <ul class="nav navbar-nav ml-sm-auto align-items-center align-items-sm-end d-none d-lg-flex">
+                    <li class="nav-item active ml-sm-16pt">
+                        <a href=""
+                           class="nav-link">Video</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href=""
+                           class="nav-link">Downloads</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href=""
+                           class="nav-link">Notes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href=""
+                           class="nav-link">Discussions</a>
+                    </li>
+                </ul>
             </div>
+        </div>
+        <div class="bg-primary pb-lg-64pt py-32pt">
+            <div class="container page__container">
+                <nav class="course-nav">
+                    <a data-toggle="tooltip"
+                       data-placement="bottom"
+                       data-title="Getting Started with Machine Learning: Introduction"
+                       href=""><span class="material-icons">check_circle</span></a>
+                    <a data-toggle="tooltip"
+                       data-placement="bottom"
+                       data-title="Getting Started with Machine Learning: Introduction to TypeScript"
+                       href=""><span class="material-icons text-primary">account_circle</span></a>
+                    <a data-toggle="tooltip"
+                       data-placement="bottom"
+                       data-title="Getting Started with Machine Learning: Comparing Machine Learning to Machine LearningJS"
+                       href=""><span class="material-icons">play_circle_outline</span></a>
+                    <a data-toggle="tooltip"
+                       data-placement="bottom"
+                       data-title="Quiz: Getting Started with Machine Learning"
+                       href="student-take-quiz.html"><span class="material-icons">hourglass_empty</span></a>
+                </nav>
+                <div class="js-player bg-primary embed-responsive embed-responsive-16by9 mb-32pt">
+                    <div class="player embed-responsive-item">
+                        <div class="player__content">
+                            <div class="player__image"
+                                 style="--player-image: url(https://www.youtube.com/watch?v=aircAruvnKk&t=2s)"></div>
+                            <a href=""
+                               class="player__play bg-primary">
+                                <span class="material-icons">play_arrow</span>
+                            </a>
+                        </div>
+                        <div class="player__embed d-none">
+                            <iframe class="embed-responsive-item"
+                                    src="https://www.youtube.com/watch?v=aircAruvnKk&t=2s"
+                                    allowfullscreen=""></iframe>
+                        </div>
+                    </div>
+                </div>
 
+                <div class="d-flex flex-wrap align-items-end mb-16pt">
+                    <h1 class="text-white flex m-0">Introduction to Machine Learning</h1>
+                    <p class="h1 text-white-50 font-weight-light m-0">50:13</p>
+                </div>
 
-            <form method="post" action="{% url 'teacher-addquizz' %}"  enctype="multipart/form-data">
+                <p class="hero__lead measure-hero-lead text-white-50 mb-24pt">Machine Learning (ML) is a subset of
+                    Artificial Intelligence (AI) that involves the development of algorithms that enable computers to
+                    learn from and make predictions or decisions based on data. In essence, Machine Learning focuses on
+                    the creation of models that can recognize patterns and adapt to new information without being
+                    explicitly programmed.</p>
 
-                {% csrf_token %}
-                {{ form }}
-                <br><br>
-                <input id="add" type="submit" value="Submit">
-            </form>
+                <a href=""
+                   class="btn btn-white">Resume lesson</a>
+            </div>
+        </div>
+        <div class="navbar navbar-expand-sm navbar-dark border-bottom-2 navbar-list p-0 m-0 align-items-center">
+            <div class="container page__container">
+                <ul class="nav navbar-nav flex align-items-sm-center">
+                    <li class="nav-item navbar-list__item">
+                        <div class="media align-items-center">
+                                    <span class="media-left mr-16pt">
+                                        <img src="{% static 'learningcurveapp/img3.png' %}"
+                                             width="40"
+                                             alt="avatar"
+                                             class="rounded-circle">
+                                    </span>
+                            <div class="media-body">
+                                <a class="card-title m-0"
+                                   href="teacher-profile.html">Another Linh</a>
+                                <p class="text-50 lh-1 mb-0">Instructor</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item navbar-list__item">
+                        <i class="material-icons text-muted icon--left">schedule</i>
+                        2h 46m
+                    </li>
+                    <li class="nav-item navbar-list__item">
+                        <i class="material-icons text-muted icon--left">assessment</i>
+                        Beginner
+                    </li>
+                    <li class="nav-item ml-sm-auto text-sm-center flex-column navbar-list__item">
+                        <div class="rating rating-24">
+                            <div class="rating__item"><i class="material-icons">star</i></div>
+                            <div class="rating__item"><i class="material-icons">star</i></div>
+                            <div class="rating__item"><i class="material-icons">star</i></div>
+                            <div class="rating__item"><i class="material-icons">star</i></div>
+                            <div class="rating__item"><i class="material-icons">star_border</i></div>
+                        </div>
+                        <p class="lh-1 mb-0"><small class="text-muted">20 ratings</small></p>
+                    </li>
+                </ul>
+            </div>
+        </div>
 
+        <div class="page-section">
+            <div class="container page__container">
 
+                <div class="d-flex align-items-center mb-heading">
+                    <h4 class="m-0">Discussions</h4>
+                    <a href="discussions-ask.html"
+                       class="text-underline ml-auto">Ask a Question</a>
+                </div>
+
+                <div class="border-top">
+
+                    <div class="list-group list-group-flush">
+
+                        <div class="list-group-item p-3">
+                            <div class="row align-items-start">
+                                <div class="col-md-3 mb-8pt mb-md-0">
+                                    <div class="media align-items-center">
+                                        <div class="media-left mr-12pt">
+                                            <a href=""
+                                               class="avatar avatar-sm">
+                                                <!-- <img src="../../LB" alt="avatar" class="avatar-img rounded-circle"> -->
+                                                <span class="avatar-title rounded-circle">SS</span>
+                                            </a>
+                                        </div>
+                                        <div class="d-flex flex-column media-body media-middle">
+                                            <a href=""
+                                               class="card-title">Siyani</a>
+                                            <small class="text-muted">2 days ago</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col mb-8pt mb-md-0">
+                                    <p class="mb-8pt"><a href="discussion.html"
+                                                         class="text-body"><strong>Why I got this error each time run
+                                        model <a href="#"
+                                                 class="chip chip-outline-secondary">#9083</a></strong></a></p>
+
+                                    <a href="discussion.html"
+                                       class="chip chip-outline-secondary">Machine Learning fundamentals</a>
+
+                                </div>
+                                <div class="col-auto d-flex flex-column align-items-center justify-content-center">
+                                    <h5 class="m-0">1</h5>
+                                    <p class="lh-1 mb-0"><small class="text-70">answers</small></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="list-group-item p-3">
+                            <div class="row align-items-start">
+                                <div class="col-md-3 mb-8pt mb-md-0">
+                                    <div class="media align-items-center">
+                                        <div class="media-left mr-12pt">
+                                            <a href=""
+                                               class="avatar avatar-sm">
+                                                <!-- <img src="../../AC" alt="avatar" class="avatar-img rounded-circle"> -->
+                                                <span class="avatar-title rounded-circle">JH</span>
+                                            </a>
+                                        </div>
+                                        <div class="d-flex flex-column media-body media-middle">
+                                            <a href=""
+                                               class="card-title">Juline Haderer</a>
+                                            <small class="text-muted">3 days ago</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col mb-8pt mb-md-0">
+                                    <p class="mb-0"><a href="discussion.html"
+                                                       class="text-body"><strong>Why am I getting an error when trying
+                                        to install Python/http@3.11</strong></a></p>
+
+                                </div>
+                                <div class="col-auto d-flex flex-column align-items-center justify-content-center">
+                                    <h5 class="m-0">1</h5>
+                                    <p class="lh-1 mb-0"><small class="text-70">answers</small></p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <a href="discussions.html"
+                   class="btn btn-outline-secondary">See all discussions for this lesson</a>
+
+            </div>
         </div>
 
         <!-- // END Page Content -->
@@ -348,12 +557,12 @@
                     </form>
                 </div>
 
-                <a href="#.html"
+                <a href="/learningcurveapp/student-profile"
                    class="sidebar-brand ">
                     <span class="avatar avatar-xl sidebar-brand-icon h-auto">
 
                                 <span class="avatar-title rounded bg-primary"><img
-                                        src="{% static 'learningcurveapp/images/user_icon.jpg' %}"
+                                        src="{% static 'learningcurveapp/img.png' %}"
                                         class="img-fluid"
                                         alt="logo"/></span>
 
@@ -362,7 +571,7 @@
                     <span>{{ username }}</span>
                 </a>
 
-                <div class="sidebar-heading">Teacher</div>
+                <div class="sidebar-heading">Student</div>
                 <ul class="sidebar-menu">
 
                     <li class="sidebar-menu-item">
@@ -395,7 +604,7 @@
                     </li>
                     <li class="sidebar-menu-item">
                         <a class="sidebar-menu-button"
-                           href="/learningcurveapp/teacher-mycourses">
+                           href="/learningcurveapp/student-take-course">
                             <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">search</span>
                             <span class="sidebar-menu-text">My Courses</span>
                         </a>
@@ -407,7 +616,7 @@
                             <span class="sidebar-menu-text">My Paths</span>
                         </a>
                     </li>
-                    <li class="sidebar-menu-item active">
+                    <li class="sidebar-menu-item">
                         <a class="sidebar-menu-button"
                            href="/learningcurveapp/student-path">
                             <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">change_history</span>
@@ -421,16 +630,16 @@
                             <span class="sidebar-menu-text">Lesson Preview</span>
                         </a>
                     </li>
-                    <li class="sidebar-menu-item">
+                    <li class="sidebar-menu-item  active">
                         <a class="sidebar-menu-button"
-                           href="#">
+                           href="/learningcurveapp/student-take-lesson">
                             <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">import_contacts</span>
                             <span class="sidebar-menu-text">Take Lesson</span>
                         </a>
                     </li>
                     <li class="sidebar-menu-item">
                         <a class="sidebar-menu-button"
-                           href="#">
+                           href="/learningcurveapp/student-take-quiz">
                             <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">dvr</span>
                             <span class="sidebar-menu-text">Take Quiz</span>
                         </a>
@@ -444,7 +653,7 @@
                     </li>
                     <li class="sidebar-menu-item">
                         <a class="sidebar-menu-button"
-                           href="#">
+                           href="/learningcurveapp/student-quiz-results">
                             <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">live_help</span>
                             <span class="sidebar-menu-text">Quiz Result</span>
                         </a>
@@ -475,6 +684,8 @@
         </div>
     </div>
 </div>
+
+
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -495,6 +706,7 @@
 
 <!-- Preloader -->
 <script src="{% static 'learningcurveapp/js/preloader.js' %}"></script>
+
 
 </body>
 

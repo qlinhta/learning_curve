@@ -3,6 +3,8 @@ from django import forms
 from django.contrib.auth.models import User,auth,Group
 from django.contrib.auth.decorators import login_required
 
+
+from django.contrib.auth.models import User, auth, Group
 from django.contrib import messages
 from django.contrib.auth import authenticate
 from .models import LEVELS, TOPIC
@@ -14,6 +16,13 @@ current_student=None
 
 
 
+
+def courses(request):
+    return render(request, 'learningcurveapp/courses.html')
+
+
+def index(request):
+    return render(request, 'learningcurveapp/index.html')
 
 class CourseForm(forms.ModelForm):
     class Meta:
@@ -32,7 +41,6 @@ class QuizForm(forms.ModelForm):
                  ]
 
 def login(request):
-
     if request.user.is_authenticated:
         return redirect('/learningcurveapp/profile')
     if request.method == 'POST':
@@ -65,6 +73,7 @@ def student_profile(request):
     return render(request, 'learningcurveapp/student-profile.html',context = {
         'username': request.user.username,
     })
+
 
 def student_quiz_result_details(request):
     if not request.user.is_authenticated:
@@ -107,7 +116,19 @@ def teacher_profile(request):
         'username': request.user.username,
     })
 
+def teacher_addcourses(request):
+    if not request.user.is_authenticated:
+        return redirect('/learningcurveapp/login')
+    return render(request, 'learningcurveapp/teacher-addcourses.html',context = {
+        'username': request.user.username,
+    })
 
+def teacher_mycourses(request):
+    if not request.user.is_authenticated:
+        return redirect('/learningcurveapp/login')
+    return render(request, 'learningcurveapp/teacher-mycourses.html',context = {
+        'username': request.user.username,
+    })
 def profile(request):
     if not request.user.is_authenticated:
         return redirect('/learningcurveapp/login')
@@ -242,6 +263,8 @@ def teacher_addchapter(request,id):
     else:
         return render(request, 'learningcurveapp/teacher-addchapter.html',{'id':id,'form': ChapterForm()})
 
+def instructor_edit_quiz(request):
+    return render(request, 'learningcurveapp/instructor-edit-quiz.html')
 
 @login_required
 def chapter(request,id):
@@ -250,6 +273,8 @@ def chapter(request,id):
         print(chapter.content.url)
         return render(request, 'learningcurveapp/chapter.html',{'chapter':chapter})
 
+def edit_account_profile(request):
+    return render(request, 'learningcurveapp/edit-account-profile.html')
 
 @login_required
 def teacher_quizzes(request):
