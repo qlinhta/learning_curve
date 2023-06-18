@@ -11,6 +11,7 @@ from .models import LEVELS, TOPIC
 from .models import *
 from django.shortcuts import redirect, reverse
 from django.db.models import Sum, Avg
+from fuzzywuzzy import fuzz
 
 
 
@@ -111,6 +112,18 @@ def student_quiz_result_details(request,id):
     if not request.user.is_authenticated:
         return redirect('/learningcurveapp/login')
     questions=Question.objects.filter(quiz=id).order_by('id').values()
+    if request.method == 'POST':
+        i=0
+        answer_list = request.POST.getlist('answer[]')
+        for q in questions:
+
+
+            print(q['answer'])
+            print(answer_list[i])
+            i=i+1
+
+
+
     return render(request, 'learningcurveapp/student-quiz-result-details.html',context = {'id':id,
         'username': request.user.username,'questions':questions,'role':'student'
     })
@@ -315,7 +328,11 @@ def instructor_edit_quiz(request):
 @login_required
 def chapter(request,id,role):
         chapter=Chapter.objects.get(id=id)
-        return render(request, 'learningcurveapp/chapter.html',{'chapter':chapter,'role':role})
+        chapter_completed=False
+        if(role=='student'):
+            student = Student.objects.get(user=request.user)
+            chapter_completed = ChapterCompletion.objects.filter(chapter=chapter, student=student).exists()
+        return render(request, 'learningcurveapp/chapter.html',{'chapter':chapter,'role':role,'chapter_completed':chapter_completed})
 
 def edit_account_profile(request):
     return render(request, 'learningcurveapp/edit-account-profile.html')
@@ -366,11 +383,7 @@ def teacher_addquizz(request):
     else:
         return render(request, 'learningcurveapp/teacher-addquizz.html',{'form': QuizForm()})
 
-@login_required
-def teacher_showquiz(request,id):
 
-    questions=Question.objects.filter(quiz=id).order_by('id').values()
-    return render(request, 'learningcurveapp/teacher-showquiz.html',{'questions':questions,'role':"teacher"})
 
 
 @login_required
@@ -442,7 +455,7 @@ def edit_account_profile(request):
 @login_required
 def showquiz(request,id,role):
     questions=Question.objects.filter(quiz=id).order_by('id').values()
-    return render(request, 'learningcurveapp/teacher-showquiz.html',{'id':id,'questions':questions,'role':role})
+    return render(request, 'learningcurveapp/showquiz.html',{'id':id,'questions':questions,'role':role})
 
 @login_required
 def course(request,role,id):
@@ -453,9 +466,21 @@ def course(request,role,id):
     others_course=Course.objects.filter(author=course.author)[:3]
     review_count = CourseRate.objects.filter(course_id=id).count()
     review_avg = CourseRate.objects.filter(course=course).aggregate(Avg('result'))['result__avg']
+    chapter_completions=None
+    if( role=='student'):
+        student = Student.objects.get(user=request.user)
+        chapter_completes = set(student.course_completions_student.filter(chapter__course=course).values_list('chapter_id', flat=True))
+
+
+        progression=int(len(chapter_completes)/chapters.count()*100)
+        print(chapter_completes)
+        print(chapters.count())
+        print(progression)
+
     return render(request, 'learningcurveapp/course.html',{'role':role,'course':course,'chapters':chapters,'time':time,
                                                             'course_rates':course_rates,'others_course':others_course,
-                                                             'review_count':review_count,'review_avg':review_avg})
+                                                             'review_count':review_count,'review_avg':review_avg,'chapter_completes':chapter_completes,
+                                                             'progression':progression})
 
 @login_required
 def student_chapter_complete(request,id):

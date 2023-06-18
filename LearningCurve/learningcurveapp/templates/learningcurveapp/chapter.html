@@ -210,12 +210,7 @@
 
 
                 </div>
-                {% if role == 'student' %}
-                <span class="avatar avatar-sm mr-12pt">
-                           <a href="{% url 'student-chapter-complete' id=chapter.id %}">
-                            <span class="avatar-title rounded navbar-avatar">Done</span></a>
-                </span>
-                {% endif %}
+
 
             </div>
         </div>
@@ -245,15 +240,24 @@
 
 
                 </div>
-                {% if teacher == False %}
+
                 <span class="avatar avatar-sm mr-12pt">
-                           <a href="../../../learningcurveapp/teacher-course/{{chapter.course.id}}">
+                    {% if role == 'student' and chapter_completed %}
+                     <a href="{% url 'course'  id=chapter.course.id role=role %}">
+                            <span class="avatar-title rounded navbar-avatar">
+                                <i>Already Done</i>
+                            </span>
+                           </a>
+                    {% elif  role == 'student'  %}
+                     <a href="{% url 'student-chapter-complete' id=chapter.id %}">
                             <span class="avatar-title rounded navbar-avatar">
                                 <i>Done</i>
                             </span>
                            </a>
+                    {% endif %}
+
                 </span>
-                {% endif %}
+
             </div>
 
         </div>
