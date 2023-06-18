@@ -123,12 +123,7 @@
                      data-title="Messages"
                      data-placement="bottom"
                      data-boundary="window">
-                    <button class="nav-link btn-flush dropdown-toggle"
-                            type="button"
-                            data-toggle="dropdown"
-                            data-caret="false">
-                        <i class="material-icons icon-24pt">mail_outline</i>
-                    </button>
+
                     <div class="dropdown-menu dropdown-menu-right">
                         <div data-perfect-scrollbar
                              class="position-relative">
@@ -179,78 +174,18 @@
                 </div>
                 <!-- // END Notifications dropdown -->
 
-                <!-- Notifications dropdown -->
-                <div class="nav-item ml-16pt dropdown dropdown-notifications dropdown-xs-down-full"
-                     data-toggle="tooltip"
-                     data-title="Notifications"
-                     data-placement="bottom"
-                     data-boundary="window">
-                    <button class="nav-link btn-flush dropdown-toggle"
-                            type="button"
-                            data-toggle="dropdown"
-                            data-caret="false">
-                        <i class="material-icons">notifications_none</i>
-                        <span class="badge badge-notifications badge-accent">-1</span>
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-right">
-                        <div data-perfect-scrollbar
-                             class="position-relative">
-                            <div class="dropdown-header"><strong>System notifications</strong></div>
-                            <div class="list-group list-group-flush mb-0">
 
-                                <a href="javascript:void(0);"
-                                   class="list-group-item list-group-item-action unread">
-                                            <span class="d-flex align-items-center mb-1">
-                                                <small class="text-black-50">3 minutes ago</small>
-
-                                                <span class="ml-auto unread-indicator bg-accent"></span>
-
-                                            </span>
-                                    <span class="d-flex">
-                                                <span class="avatar avatar-xs mr-2">
-                                                    <span class="avatar-title rounded-circle bg-light">
-                                                        <i class="material-icons font-size-16pt text-accent">account_circle</i>
-                                                    </span>
-                                                </span>
-                                                <span class="flex d-flex flex-column">
-
-                                                    <span class="text-black-70">This is notification</span>
-                                                </span>
-                                            </span>
-                                </a>
-                                <a href="javascript:void(0);"
-                                   class="list-group-item list-group-item-action">
-                                            <span class="d-flex align-items-center mb-1">
-                                                <small class="text-black-50">5 hours ago</small>
-
-                                            </span>
-                                    <span class="d-flex">
-                                                <span class="avatar avatar-xs mr-2">
-                                                    <span class="avatar-title rounded-circle bg-light">
-                                                        <i class="material-icons font-size-16pt text-primary">account_circle</i>
-                                                    </span>
-                                                </span>
-                                                <span class="flex d-flex flex-column">
-                                                    <strong class="text-black-100">{{ username }}</strong>
-                                                    <span class="text-black-70">CocaCola is good! You should buy more!.</span>
-                                                </span>
-                                            </span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <!-- // END Notifications dropdown -->
 
                 <div class="nav-item dropdown">
-                    <a href="#"
+                    <a href="/learningcurveapp/edit-account-profile"
                        class="nav-link d-flex align-items-center dropdown-toggle"
                        data-toggle="dropdown"
                        data-caret="false">
 
                                 <span class="avatar avatar-sm mr-8pt2">
                                     <span class="avatar-title rounded-circle bg-primary">
-                                        <img src="{% static 'learningcurveapp/images/user_icon.jpg' %}"
+                                        <img src="{% static 'learningcurveapp/img.png' %}"
                                              alt="avatar_1"
                                              class="avatar-img rounded-circle">
                                     </span>
@@ -258,20 +193,11 @@
                                 </span>
 
                     </a>
-                    <div class="dropdown-menu dropdown-menu-right">
-                        <div class="dropdown-header"><strong>Menu for account here</strong></div>
-                        <a class="dropdown-item"
-                           href="#">Menu 1</a>
-                        <a class="dropdown-item"
-                           href="#">Menu 2</a>
-                        <a class="dropdown-item"
-                           href="#">Menu 3</a>
-                        <a class="dropdown-item"
-                           href="#">Menu 4</a>
-                    </div>
+
                 </div>
             </div>
         </div>
+
 
         {% if role == "teacher" %}
         <div class="page-section  border-bottom-2">
@@ -377,18 +303,7 @@
             <div class="sidebar sidebar-black-dodger-blue sidebar-left"
                  data-perfect-scrollbar>
 
-                <!-- Sidebar Content -->
 
-                <div class="d-flex align-items-center navbar-height">
-                    <form action="#"
-                          class="search-form search-form--black mx-16pt pr-0 pl-16pt">
-                        <input type="text"
-                               class="form-control pl-0"
-                               placeholder="Search">
-                        <button class="btn"
-                                type="submit"><i class="material-icons">search</i></button>
-                    </form>
-                </div>
 
                 <a href="#.html"
                    class="sidebar-brand ">
@@ -409,25 +324,26 @@
 
                     <li class="sidebar-menu-item">
                         <a class="sidebar-menu-button"
-                           href="/learningcurveapp/login">
+                           href="/learningcurveapp/profile">
                             <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">home</span>
                             <span class="sidebar-menu-text">Home</span>
                         </a>
                     </li>
                     <li class="sidebar-menu-item">
                         <a class="sidebar-menu-button"
-                           href="/learningcurveapp/teacher-mycourses">
-                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">search</span>
+                           href="{% url 'private-courses' role=role %}">
+                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">local_library</span>
                             <span class="sidebar-menu-text">Courses</span>
                         </a>
                     </li>
                     <li class="sidebar-menu-item">
                         <a class="sidebar-menu-button"
-                           href="#">
-                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">poll</span>
-                            <span class="sidebar-menu-text">Quizzes</span>
+                           href="{% url 'quizzes' role=role %}">
+                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">dvr</span>
+                            <span class="sidebar-menu-text">Quiz</span>
                         </a>
                     </li>
+
                     <li class="sidebar-menu-item">
                         <a class="sidebar-menu-button"
                            href="/learningcurveapp/logout">

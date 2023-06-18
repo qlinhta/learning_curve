@@ -9,6 +9,10 @@ from django.contrib import messages
 from django.contrib.auth import authenticate
 from .models import LEVELS, TOPIC
 from .models import *
+from django.shortcuts import redirect, reverse
+from django.db.models import Sum, Avg
+
+
 
 
 current_author=None
@@ -43,6 +47,11 @@ class QuestionForm(forms.ModelForm):
         model = Question
         fields = ['question', 'answer']
 
+class CourseRateForm(forms.ModelForm):
+
+    class Meta:
+        model = CourseRate
+        fields = ['result', 'comments']
 
 class FilterForm(forms.Form):
     level = forms.ChoiceField(choices=LEVELS_CHOICE, required=False, initial='')
@@ -52,6 +61,11 @@ class FilterForm(forms.Form):
 
 def index(request):
     return render(request, 'learningcurveapp/index.html')
+
+def courses(request):
+    return render(request, 'learningcurveapp/courses.html')
+
+
 
 def login(request):
     if request.user.is_authenticated:
@@ -299,11 +313,9 @@ def instructor_edit_quiz(request):
     return render(request, 'learningcurveapp/instructor-edit-quiz.html')
 
 @login_required
-def chapter(request,id):
+def chapter(request,id,role):
         chapter=Chapter.objects.get(id=id)
-        print("chapter.content.url")
-        print(chapter.content.url)
-        return render(request, 'learningcurveapp/chapter.html',{'chapter':chapter})
+        return render(request, 'learningcurveapp/chapter.html',{'chapter':chapter,'role':role})
 
 def edit_account_profile(request):
     return render(request, 'learningcurveapp/edit-account-profile.html')
@@ -362,8 +374,15 @@ def teacher_showquiz(request,id):
 
 
 @login_required
-def teacher_coursefeedback(request,id):
-    return render(request, 'learningcurveapp/coursefeedback.html',{'id':id})
+def coursefeedback(request,role,id):
+    course=Course.objects.get(id=id)
+    course_rates = CourseRate.objects.filter(course=course)
+    response=False
+    if(role=='student'):
+        student = Student.objects.get(user=request.user)
+        course= Course.objects.get(id=id)
+        response = CourseRate.objects.filter(student=student, course=course).exists()
+    return render(request, 'learningcurveapp/coursefeedback.html',{'course_rates':course_rates,'course':course,'role':role,'form':CourseRateForm(),'response':response})
 
 
 def teacher_mycourses(request):
@@ -383,21 +402,38 @@ def student_courses(request):
 
 @login_required
 def private_courses(request,role):
+    courses = Course.objects.annotate(
+            total_chapters=Sum('chapter__number'),
+            total_time=Sum('chapter__time'),
+            average_result=Avg('course_rate__result')
+        ).values('id','title', 'total_chapters', 'total_time', 'average_result', 'difficulty','topic')
+
+
     if request.method == 'POST':
             form = FilterForm(request.POST)
             if form.is_valid():
                 level = request.POST['level']
                 topic = request.POST['topic']
                 if(level!='' and topic!=''):
-                    courses = Course.objects.filter(difficulty=level,topic=topic)
-                    return render(request, 'learningcurveapp/private-courses.html',{'courses':courses,'role':role,'form':FilterForm()})
+
+                    courses = Course.objects.filter(difficulty=level, topic=topic).annotate(
+                        total_chapters=Sum('chapter__number'),
+                        total_time=Sum('chapter__time'),
+                        average_result=Avg('course_rate__result')
+                    ).values('id','title', 'total_chapters', 'total_time', 'average_result', 'difficulty','topic')
+
                 if(topic=='' and level!=''):
-                     courses = Course.objects.filter(difficulty=level)
-                     return render(request, 'learningcurveapp/private-courses.html',{'courses':courses,'role':role,'form':FilterForm()})
+                      courses = Course.objects.filter(difficulty=level).annotate(
+                                             total_chapters=Sum('chapter__number'),
+                                             total_time=Sum('chapter__time'),
+                                             average_result=Avg('course_rate__result')
+                        ).values('id','title', 'total_chapters', 'total_time', 'average_result', 'difficulty','topic')
                 if(topic!='' and level==''):
-                    courses = Course.objects.filter(topic=topic)
-                    return render(request, 'learningcurveapp/private-courses.html',{'courses':courses,'role':role,'form':FilterForm()})
-    courses = Course.objects.all()
+                     courses = Course.objects.filter(topic=topic).annotate(
+                                            total_chapters=Sum('chapter__number'),
+                                            total_time=Sum('chapter__time'),
+                                            average_result=Avg('course_rate__result')
+                                        ).values('id','title', 'total_chapters', 'total_time', 'average_result', 'difficulty','topic')
     return render(request, 'learningcurveapp/private-courses.html',{'courses':courses,'role':role,'form':FilterForm()})
 
 def edit_account_profile(request):
@@ -408,3 +444,39 @@ def showquiz(request,id,role):
     questions=Question.objects.filter(quiz=id).order_by('id').values()
     return render(request, 'learningcurveapp/teacher-showquiz.html',{'id':id,'questions':questions,'role':role})
 
+@login_required
+def course(request,role,id):
+    course=Course.objects.get(id=id)
+    chapters=Chapter.objects.filter(course=id).order_by('number').values()
+    course_rates = CourseRate.objects.filter(course=course)
+    time=chapters.aggregate(total_duree=models.Sum('time'))['total_duree']
+    others_course=Course.objects.filter(author=course.author)[:3]
+    review_count = CourseRate.objects.filter(course_id=id).count()
+    review_avg = CourseRate.objects.filter(course=course).aggregate(Avg('result'))['result__avg']
+    return render(request, 'learningcurveapp/course.html',{'role':role,'course':course,'chapters':chapters,'time':time,
+                                                            'course_rates':course_rates,'others_course':others_course,
+                                                             'review_count':review_count,'review_avg':review_avg})
+
+@login_required
+def student_chapter_complete(request,id):
+    chapter=Chapter.objects.get(id=id)
+    student = Student.objects.get(user=request.user)
+    chaptercompletion=ChapterCompletion(chapter=chapter,student=student)
+    chaptercompletion.save()
+    url = reverse('course', args=('student',chapter.course.id))
+    return redirect(url)
+
+
+@login_required
+def student_feedback(request,id):
+    if request.method == 'POST':
+            form = CourseRateForm(request.POST)
+            if form.is_valid():
+                student = Student.objects.get(user=request.user)
+                course= Course.objects.get(id=id)
+                feedback = form.save(commit=False)
+                feedback.student=student
+                feedback.course=course
+                feedback.save()
+    url = reverse('coursefeedback', args=(id,'student'))
+    return redirect(url)

@@ -92,7 +92,7 @@
             <!-- // END Navbar Toggler -->
 
             <!-- Navbar Brand -->
-            <a href="../../../learningcurveapp/teacher-course/{{id}}">
+            <a href="{% url 'course'  id=course.id role=role %}">
                             <span class="avatar-title rounded navbar-avatar"><i
                                     class="material-icons">keyboard_arrow_left</i></span></a>
 
@@ -180,9 +180,8 @@
             <div class="mdk-box__content">
                 <div class="hero py-64pt text-center text-sm-left">
                     <div class="container page__container">
-                        <h1 class="text-white">Machine Learning Fundamentals</h1>
-                        <p class="lead text-white-50 measure-hero-lead mb-24pt">Unlock the mysteries of Machine Learning
-                            and kick-start your journey into the world of Artificial Intelligence!</p>
+                        <h1 class="text-white">{{course.title}}</h1>
+                        <p class="lead text-white-50 measure-hero-lead mb-24pt">{{course.subtitle}}</p>
 
                     </div>
                 </div>
@@ -385,7 +384,7 @@
 
                     </div>
                 </div>
-
+                {% for c in course_rates %}
                 <div class="pb-16pt mb-16pt border-bottom row">
                     <div class="col-md-3 mb-16pt mb-md-0">
                         <div class="d-flex">
@@ -397,99 +396,48 @@
                             <div class="flex">
 
                                 <a href="student-profile.html"
-                                   class="card-title">Reviewer</a>
+                                   class="card-title">{{c.student}}</a>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-9">
                         <div class="rating mb-8pt">
+                            {{c.result}}
                             <span class="rating__item"><span class="material-icons">star</span></span>
-                            <span class="rating__item"><span class="material-icons">star</span></span>
-                            <span class="rating__item"><span class="material-icons">star</span></span>
-                            <span class="rating__item"><span class="material-icons">star</span></span>
-                            <span class="rating__item"><span class="material-icons">star_border</span></span>
+
+
+
+
                         </div>
-                        <p class="text-70 mb-0">I recently completed the Introduction to Machine
-                            Learning course with Another Linh, and I can't recommend it highly enough!
-                            As a software engineer looking to break into the field of AI, I needed a
-                            course that would provide me with a solid foundation in the core concepts of
-                            Machine Learning. Another Linh's course did just that, and more.</p>
+                        <p class="text-70 mb-0">{{c.comments}}</p>
                     </div>
                 </div>
+                {% endfor %}
 
-                <div class="pb-16pt mb-16pt border-bottom row">
-                    <div class="col-md-3 mb-16pt mb-md-0">
-                        <div class="d-flex">
-                            <a href="student-profile.html"
-                               class="avatar avatar-sm mr-12pt">
-                                <!-- <img src="R" alt="avatar" class="avatar-img rounded-circle"> -->
-                                <span class="avatar-title rounded-circle">R</span>
-                            </a>
-                            <div class="flex">
 
-                                <a href="student-profile.html"
-                                   class="card-title">Reviewer</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-9">
-                        <div class="rating mb-8pt">
-                            <span class="rating__item"><span class="material-icons">star</span></span>
-                            <span class="rating__item"><span class="material-icons">star</span></span>
-                            <span class="rating__item"><span class="material-icons">star</span></span>
-                            <span class="rating__item"><span class="material-icons">star</span></span>
-                            <span class="rating__item"><span class="material-icons">star_border</span></span>
-                        </div>
-                        <p class="text-70 mb-0">I recently completed the Introduction to Machine
-                            Learning course with Another Linh, and I can't recommend it highly enough!
-                            As a software engineer looking to break into the field of AI, I needed a
-                            course that would provide me with a solid foundation in the core concepts of
-                            Machine Learning. Another Linh's course did just that, and more.</p>
-                    </div>
-                </div>
-
-                <div class="pb-16pt mb-24pt row">
-                    <div class="col-md-3 mb-16pt mb-md-0">
-                        <div class="d-flex">
-                            <a href="student-profile.html"
-                               class="avatar avatar-sm mr-12pt">
-                                <!-- <img src="AD" alt="avatar" class="avatar-img rounded-circle"> -->
-                                <span class="avatar-title rounded-circle">R</span>
-                            </a>
-                            <div class="flex">
-
-                                <a href="student-profile.html"
-                                   class="card-title">Reviewer</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-9">
-                        <div class="rating mb-8pt">
-                            <span class="rating__item"><span class="material-icons">star</span></span>
-                            <span class="rating__item"><span class="material-icons">star</span></span>
-                            <span class="rating__item"><span class="material-icons">star</span></span>
-                            <span class="rating__item"><span class="material-icons">star</span></span>
-                            <span class="rating__item"><span class="material-icons">star_border</span></span>
-                        </div>
-                        <p class="text-70 mb-0">I recently completed the Introduction to Machine
-                            Learning course with Another Linh, and I can't recommend it highly enough!
-                            As a software engineer looking to break into the field of AI, I needed a
-                            course that would provide me with a solid foundation in the core concepts of
-                            Machine Learning. Another Linh's course did just that, and more.</p>
-                    </div>
-                </div>
 
             </div>
 
         </div>
-        {% if teacher == True %}
+        {% if role == 'student' %}
+            {% if  response %}
+            <div class="page-section border-bottom-2">
+                <div class="container">
+                    <div class="page-headline text-center">
+                        <h2>Thank you for your feedback</h2>
+                        <p class="lead text-70 measure-lead mx-auto">You already gave your feedback, you can't add another one</p>
+                    </div>
+                </div>
+
+            </div>
+        {% else %}
         <div class="page-section border-bottom-2">
             <div class="container">
                 <div class="page-headline text-center">
                     <h2>Give us your feedback</h2>
                     <p class="lead text-70 measure-lead mx-auto">Thanks to have read this course. We invite you to rate this course.</p>
                 </div>
-                <form method="post" action="{% url 'teacher-addquizz' %}"  enctype="multipart/form-data">
+                <form method="post" action="{% url 'student-feedback' id=course.id %}"  enctype="multipart/form-data">
 
                     {% csrf_token %}
                     {{ form }}
@@ -499,6 +447,7 @@
 
             </div>
         </div>
+        {% endif %}
         {% endif %}
 
         <!-- Footer -->
@@ -535,74 +484,7 @@
 
     <!-- Drawer -->
 
-    <div class="mdk-drawer js-mdk-drawer"
-         id="default-drawer">
-        <div class="mdk-drawer__content">
-            <div class="sidebar sidebar-black-dodger-blue sidebar-left"
-                 data-perfect-scrollbar>
 
-                <!-- Sidebar Content -->
-
-                <div class="d-flex align-items-center navbar-height">
-                    <form action="#"
-                          class="search-form search-form--black mx-16pt pr-0 pl-16pt">
-                        <input type="text"
-                               class="form-control pl-0"
-                               placeholder="Search">
-                        <button class="btn"
-                                type="submit"><i class="material-icons">search</i></button>
-                    </form>
-                </div>
-
-                <a href="/learningcurveapp/student-profile"
-                   class="sidebar-brand ">
-                    <span class="avatar avatar-xl sidebar-brand-icon h-auto">
-
-                                <span class="avatar-title rounded bg-primary"><img
-                                        src="{% static 'learningcurveapp/img.png' %}"
-                                        class="img-fluid"
-                                        alt="logo"/></span>
-
-                            </span>
-
-                    <span>{{ username }}</span>
-                </a>
-
-                <div class="sidebar-heading">Student</div>
-                <ul class="sidebar-menu">
-
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button"
-                           href="#">
-                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">home</span>
-                            <span class="sidebar-menu-text">Home</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button"
-                           href="/learningcurveapp/teacher-mycourses">
-                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">search</span>
-                            <span class="sidebar-menu-text">My Courses</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button"
-                           href="#">
-                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">poll</span>
-                            <span class="sidebar-menu-text">My Quizzes</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button"
-                           href="/learningcurveapp/logout">
-                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">logout</span>
-                            <span class="sidebar-menu-text">Logout</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
 </div>
 
 

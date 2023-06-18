@@ -54,14 +54,16 @@ class Author(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     description = models.TextField( default='')
     profile=models.ImageField(null=True)
-
+    def __str__(self) -> str:
+            return  self.user.__str__()
 
 class Student(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     profile=models.ImageField(null=True)
     points = models.PositiveSmallIntegerField( default=0)
 
-
+    def __str__(self) -> str:
+            return  self.user.__str__()
 
 
 class Course(models.Model):
@@ -128,16 +130,16 @@ class ChapterCompletion(models.Model):
 
 
     def __str__(self) -> str:
-        return "Quiz " + self.quiz.course.__str__() + "Student " + self.student
+        return "Student " + self.student.__str__()
 
 
 class CourseRate(models.Model):
-    student = models.ForeignKey(Student, on_delete=models.CASCADE, related_name="course_rate",default='')
+    student = models.ForeignKey(Student, on_delete=models.CASCADE, related_name="course_rate_student",default='')
     course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name="course_rate",default='')
     result = models.PositiveSmallIntegerField(validators=[MinValueValidator(0), MaxValueValidator(5)])
     comments = models.TextField()
 
     def __str__(self) -> str:
-        return "Quiz " + self.quiz.course.__str__() + "Student " + self.student
+        return "Student " + self.student.__str__()
 
 
