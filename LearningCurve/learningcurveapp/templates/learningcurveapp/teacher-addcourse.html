@@ -48,6 +48,42 @@
     <link type="text/css"
           href="{% static 'learningcurveapp/css/dark.css' %}"
           rel="stylesheet">
+    
+    <!--Style for the add course part-->
+    <style>
+    /* Custom styles for the form elements */
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        form input[type="text"],
+        form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 30px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        form select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 30px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f8f9fa;
+            color: #333;
+            font-size: 14px;
+        }
+        form select option {
+            background-color: #b0b2b7; /* Set the background color for the options */
+            color: #333; /* Set the text color for the options */
+            font-size: 14px; /* Set the font size for the options */
+        }
+
+
+
+</style>
 </head>
 
 <body class="layout-app ">
@@ -218,24 +254,6 @@
                                                 </span>
                                             </span>
                                 </a>
-                                <a href="javascript:void(0);"
-                                   class="list-group-item list-group-item-action">
-                                            <span class="d-flex align-items-center mb-1">
-                                                <small class="text-black-50">5 hours ago</small>
-
-                                            </span>
-                                    <span class="d-flex">
-                                                <span class="avatar avatar-xs mr-2">
-                                                    <span class="avatar-title rounded-circle bg-light">
-                                                        <i class="material-icons font-size-16pt text-primary">account_circle</i>
-                                                    </span>
-                                                </span>
-                                                <span class="flex d-flex flex-column">
-                                                    <strong class="text-black-100">{{ username }}</strong>
-                                                    <span class="text-black-70">CocaCola is good! You should buy more!.</span>
-                                                </span>
-                                            </span>
-                                </a>
                             </div>
                         </div>
                     </div>
@@ -258,17 +276,6 @@
                                 </span>
 
                     </a>
-                    <div class="dropdown-menu dropdown-menu-right">
-                        <div class="dropdown-header"><strong>Menu for account here</strong></div>
-                        <a class="dropdown-item"
-                           href="#">Menu 1</a>
-                        <a class="dropdown-item"
-                           href="#">Menu 2</a>
-                        <a class="dropdown-item"
-                           href="#">Menu 3</a>
-                        <a class="dropdown-item"
-                           href="#">Menu 4</a>
-                    </div>
                 </div>
             </div>
         </div>
@@ -281,13 +288,20 @@
                 <h2>Add Course</h2>
                 <p class="lead text-70 col-lg-8 mx-auto">{{ username }}</p>
             </div>
+            <form method="post" action="{% url 'teacher-addcourse' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form }}
+                <br><br>
+                <input id="add" type="submit" value="Submit" class="btn btn-block btn-primary mb-3">
+            </form>
+            <!--
             <form method="post" action="{% url 'teacher-addcourse' %}"  enctype="multipart/form-data">
 
                 {% csrf_token %}
                 {{ form }}
                 <br><br>
                 <input id="add" type="submit" value="Submit">
-            </form>
+            </form>-->
         </div>
 
         <!-- // END Page Content -->
