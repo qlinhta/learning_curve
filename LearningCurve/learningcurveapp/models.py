@@ -108,8 +108,7 @@ class Quiz(models.Model):
 class Question(models.Model):
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE, related_name="questions")
     question = models.TextField(default='')
-    answer=models.CharField(max_length=150)
-
+    answer = models.CharField(max_length=150, default='')
     def __str__(self) -> str:
         return "Quiz " + self.quiz.course.__str__()
 
@@ -121,7 +120,7 @@ class StudentQuiz(models.Model):
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE, related_name="studentquiz")
 
     def __str__(self) -> str:
-        return "Quiz " + self.question.quiz.course.__str__() + " - Question "
+        return "Quiz " + self.quiz.course.__str__()
 
 
 class ChapterCompletion(models.Model):

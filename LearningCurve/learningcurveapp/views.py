@@ -10,7 +10,7 @@ from django.contrib.auth import authenticate
 from .models import LEVELS, TOPIC
 from .models import *
 from django.shortcuts import redirect, reverse
-from django.db.models import Sum, Avg
+from django.db.models import Sum, Avg, Max
 from fuzzywuzzy import fuzz
 
 
@@ -91,7 +91,6 @@ def login(request):
 
 
 
-
 def student_path(request):
     if not request.user.is_authenticated:
         return redirect('/learningcurveapp/login')
@@ -103,8 +102,25 @@ def student_profile(request):
     if not request.user.is_authenticated:
         return redirect('/learningcurveapp/login')
     current_student=request.user
+    student = Student.objects.get(user__username=current_student.username)
+    cours_lus = ChapterCompletion.objects.filter(student=student)
+    nombre_chapitre_lus = cours_lus.count()
+    quiz_answered = StudentQuiz.objects.filter(student = student).count()
+    if quiz_answered == 0:
+        average_grade = 0
+        max_grade = 0
+    else:
+        average  = StudentQuiz.objects.filter(student = student).aggregate(Avg('points'))['points__avg']
+        average_grade = round(average, 2)
+        max_grade =  StudentQuiz.objects.filter(student=student).aggregate(max_score=Max('points'))['max_score']
+        max_course =  StudentQuiz.objects.filter(student=student, points=max_grade).first().quiz.course
     return render(request, 'learningcurveapp/student-profile.html',context = {
         'username': request.user.username,
+        'read_chapters': nombre_chapitre_lus,
+        'answered_quiz':quiz_answered,
+        'average_grade': average_grade,
+        'max_grade': max_grade,
+        'max_course': max_course
     })
 
 
@@ -239,7 +255,6 @@ def signup(request):
             if(profile_type=='Student'):
                 my_group = Group.objects.get(name='student')
                 my_group.user_set.add(user)
-
                 auth.login(request,user)
                 student=Student(user=user)
                 student.save()
