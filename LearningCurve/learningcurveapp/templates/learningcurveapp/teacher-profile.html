@@ -124,14 +124,14 @@
                 <!-- // END Notifications dropdown -->
 
                 <div class="nav-item dropdown">
-                    <a href="#"
+                    <a href="/learningcurveapp/edit-account-profile"
                        class="nav-link d-flex align-items-center dropdown-toggle"
                        data-toggle="dropdown"
                        data-caret="false">
 
                                 <span class="avatar avatar-sm mr-8pt2">
                                     <span class="avatar-title rounded-circle bg-primary">
-                                        <img src="{% static 'learningcurveapp/images/user_icon.jpg' %}"
+                                        <img src="{% static 'learningcurveapp/img.png' %}"
                                              alt="avatar_1"
                                              class="avatar-img rounded-circle">
                                     </span>
@@ -462,25 +462,13 @@
             <div class="sidebar sidebar-black-dodger-blue sidebar-left"
                  data-perfect-scrollbar>
 
-                <!-- Sidebar Content -->
 
-                <div class="d-flex align-items-center navbar-height">
-                    <form action="#"
-                          class="search-form search-form--black mx-16pt pr-0 pl-16pt">
-                        <input type="text"
-                               class="form-control pl-0"
-                               placeholder="Search">
-                        <button class="btn"
-                                type="submit"><i class="material-icons">search</i></button>
-                    </form>
-                </div>
-
-                <a href="#.html"
+                <a href="#"
                    class="sidebar-brand ">
                     <span class="avatar avatar-xl sidebar-brand-icon h-auto">
 
                                 <span class="avatar-title rounded bg-primary"><img
-                                        src="{% static 'learningcurveapp/images/user_icon.jpg' %}"
+                                        src="{% static 'learningcurveapp/img.png'%}"
                                         class="img-fluid"
                                         alt="logo"/></span>
 
@@ -489,28 +477,28 @@
                     <span>{{ username }}</span>
                 </a>
 
-                <div class="sidebar-heading">Teacher</div>
+                <div class="sidebar-heading">Student</div>
                 <ul class="sidebar-menu">
 
                     <li class="sidebar-menu-item">
                         <a class="sidebar-menu-button"
-                           href="#">
+                           href="/learningcurveapp/profile">
                             <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">home</span>
                             <span class="sidebar-menu-text">Home</span>
                         </a>
                     </li>
                     <li class="sidebar-menu-item">
                         <a class="sidebar-menu-button"
-                           href="/learningcurveapp/teacher-mycourses">
-                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">search</span>
-                            <span class="sidebar-menu-text">My Courses</span>
+                           href="/learningcurveapp/private-courses/teacher">
+                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">local_library</span>
+                            <span class="sidebar-menu-text">Courses</span>
                         </a>
-                    </li>                
+                    </li>
                     <li class="sidebar-menu-item">
                         <a class="sidebar-menu-button"
-                           href="/learningcurveapp/teacher-quizzes">
-                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">poll</span>
-                            <span class="sidebar-menu-text">My Quizzes</span>
+                           href="/learningcurveapp/quizzes/teacher">
+                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">dvr</span>
+                            <span class="sidebar-menu-text">Quiz</span>
                         </a>
                     </li>
                     <li class="sidebar-menu-item">

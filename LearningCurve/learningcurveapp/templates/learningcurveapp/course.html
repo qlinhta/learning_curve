@@ -198,6 +198,11 @@
                                 <i class="material-icons text-muted icon--left">assessment</i>
                                 {{course.difficulty}}
                             </li>
+                            <li class="nav-item navbar-list__item">
+                                <i class="material-icons text-muted icon--left">play_circle_outline</i>
+                                {{total_chapters}} chapters
+                            </li>
+
                             <li class="nav-item ml-sm-auto text-sm-center flex-column navbar-list__item">
                                 <h2 class="lh-1 mb-0">{{review_avg}} </h2><br>
                                 <div class="rating rating-24">
@@ -431,18 +436,7 @@
             <div class="sidebar sidebar-black-dodger-blue sidebar-left"
                  data-perfect-scrollbar>
 
-                <!-- Sidebar Content -->
 
-                <div class="d-flex align-items-center navbar-height">
-                    <form action="#"
-                          class="search-form search-form--black mx-16pt pr-0 pl-16pt">
-                        <input type="text"
-                               class="form-control pl-0"
-                               placeholder="Search">
-                        <button class="btn"
-                                type="submit"><i class="material-icons">search</i></button>
-                    </form>
-                </div>
 
                 <a href="/learningcurveapp/student-profile"
                    class="sidebar-brand ">
@@ -455,10 +449,10 @@
 
                             </span>
 
-                    <span>{{ username }}</span>
+                    <span>{{ request.user.username }}</span>
                 </a>
 
-                <div class="sidebar-heading">Student</div>
+
 
                 <ul class="sidebar-menu">
 

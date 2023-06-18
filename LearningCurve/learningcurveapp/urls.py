@@ -21,6 +21,8 @@ urlpatterns = [
     path('teacher-addcourse/', views.teacher_addcourse, name='teacher-addcourse'),
     path('teacher-addchapter/<int:id>/', views.teacher_addchapter, name='teacher-addchapter'),
     path('teacher-addquizz/', views.teacher_addquizz, name='teacher-addquizz'),
+    path('teacher-mycourses/', views.private_courses, name='teacher-addquizz'),
+    path('teacher-quizzes/', views.quizzes, name='teacher-addquizz'),
 
     path('chapter/<str:role>/<int:id>', views.chapter, name='chapter'),
     path('coursefeedback/<int:id>/<str:role>/', views.coursefeedback, name='coursefeedback'),

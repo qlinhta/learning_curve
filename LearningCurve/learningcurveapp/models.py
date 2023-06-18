@@ -53,13 +53,16 @@ TYPE = (
 class Author(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     description = models.TextField( default='')
-    profile=models.ImageField(null=True)
+    profile=models.ImageField(null=True,upload_to='user/')
+    facebook_link=models.CharField(max_length=1000,default='')
+    instagram_link=models.CharField(max_length=1000,default='')
     def __str__(self) -> str:
             return  self.user.__str__()
 
 class Student(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    profile=models.ImageField(null=True)
+    description = models.TextField( default='')
+    profile=models.ImageField(null=True,upload_to='user/')
     points = models.PositiveSmallIntegerField( default=0)
 
     def __str__(self) -> str:

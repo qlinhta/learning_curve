@@ -6,18 +6,17 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Prefetch
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate,UserForm
 from .models import LEVELS, TOPIC
 from .models import *
 from django.shortcuts import redirect, reverse
 from django.db.models import Sum, Avg,Max
 from fuzzywuzzy import fuzz
+from django.contrib.auth.forms import AuthenticationForm
 
+from django.shortcuts import render, redirect
 
-
-
-current_author=None
-current_student=None
+from django.contrib.auth import authenticate, login
 
 
 
@@ -60,6 +59,41 @@ class FilterForm(forms.Form):
 
 
 
+
+
+class UserCreateForm(UserForm):
+     profil_type=forms.ChoiceField(widget=forms.RadioSelect, choices=[('student','student'),('teacher','teacher')],initial='student')
+     agree = forms.BooleanField(initial=True)
+     class meta:
+        model=User
+        fields = ['username','email','password']
+        widgets = {
+            'username':forms.TextInput(attrs={'class':"form-control",'name':"username",'placeholder':"Enter a pseudo"}),
+            'email':forms.EmailInput(attrs={'class':"form-control",'name':"email",'placeholder':"Enter an email"}),
+            'password':forms.PasswordInput(attrs={'class':"form-control",'name':"password",'placeholder':"Enter a password"}),
+        }
+
+class AuthorUpdateForm(forms.modelForm):
+    class meta:
+        model=Author
+        fields = ['profile','description','facebook_link','instagram_link']
+        widgets = {
+            'description': forms.Textarea(attrs={'class':"form-control",'name':"description",'placeholder':"Enter a description"}),
+            'picture': forms.FileInput(),
+        }
+
+class StudentUpdateForm(forms.modelForm):
+    class meta:
+        model=Student
+        fields = ['profile','description']
+        widgets = {
+            'description': forms.Textarea(attrs={'class':"form-control",'name':"description",'placeholder':"Enter a description"}),
+            'picture': forms.FileInput(),
+        }
+
+
+
+
 def index(request):
     return render(request, 'learningcurveapp/index.html')
 
@@ -77,13 +111,16 @@ def login(request):
         print(username,password)
         u = authenticate(username=username, password=password)
         print(u)
-        if u:
+        if u is not None:
             auth.login(request,u)
             return redirect('/learningcurveapp/profile')
-
+        else:
+            return render(request, 'learningcurveapp/login.html', context = {
+                'error_message': 'The username or password is wrong, Please retry',
+            } )
 
     return render(request, 'learningcurveapp/login.html', context = {
-        'error_message': 'The username or password is wrong, Please retry',
+        'error_message': '',
     } )
 
 
@@ -96,6 +133,7 @@ def teacher_profile(request):
     return render(request, 'learningcurveapp/teacher-profile.html',context = {
         'username': request.user.username,
     })
+
 
 
 def student_path(request):
@@ -148,58 +186,6 @@ def student_quiz_results(request):
         'username': request.user.username,
     })
 
-def student_take_course(request):
-    if not request.user.is_authenticated:
-        return redirect('/learningcurveapp/login')
-    return render(request, 'learningcurveapp/student-take-course.html',context = {
-        'username': request.user.username,
-    })
-
-def student_take_lesson(request):
-    if not request.user.is_authenticated:
-        return redirect('/learningcurveapp/login')
-    return render(request, 'learningcurveapp/student-take-lesson.html',context = {
-        'username': request.user.username,
-    })
-def student_take_quiz(request):
-    if not request.user.is_authenticated:
-        return redirect('/learningcurveapp/login')
-    return render(request, 'learningcurveapp/student-take-quiz.html',context = {
-        'username': request.user.username,
-    })
-
-
-
-
-
-
-def teacher_profile(request):
-    if not request.user.is_authenticated:
-        return redirect('learningcurveapp/login')
-    current_author=request.user
-    return render(request, 'learningcurveapp/teacher-profile.html',context = {
-        'username': request.user.username,
-    })
-
-def teacher_addcourses(request):
-    if not request.user.is_authenticated:
-        return redirect('/learningcurveapp/login')
-    return render(request, 'learningcurveapp/teacher-addcourses.html',context = {
-        'username': request.user.username,
-    })
-
-def teacher_mycourses(request):
-    if not request.user.is_authenticated:
-        return redirect('/learningcurveapp/login')
-    return render(request, 'learningcurveapp/personal_courses.html',context = {
-        'username': request.user.username,
-    })
-
-
-
-
-
-
 def profile(request):
     if not request.user.is_authenticated:
         return redirect('/learningcurveapp/login')
@@ -207,6 +193,7 @@ def profile(request):
     user = request.user
     teacher_group = Group.objects.filter(name='teacher').first()
     is_teacher = teacher_group in user.groups.all()
+    print(user.groups.all())
     current_author=Author.objects.filter(user=user).first()
     current_student=Student.objects.filter(user=user).first()
     print(current_author)
@@ -230,43 +217,47 @@ def signup(request):
         return redirect('/learningcurveapp/profile')
 
     if request.method == 'POST':
-        username = request.POST['username']
-        email = request.POST['email']
-        password = request.POST['password']
-        profile_type=request.POST['profile_type']
-
-        if User.objects.filter(username=username).first():
-            messages.info(request,"The username is already taken, please try another username...")
-            return render(request, 'learningcurveapp/signup.html',context = {
-                'error_message': "The username is already taken, please try another username...",
-            })
-        if 'agree'  not in request.POST:
-            messages.info(request,"You have to agree to create an account")
-            return render(request, 'learningcurveapp/signup.html',context = {
-                'error_message': "You have to agree to create an account",
-            })
-        else:
+        form = UserCreateForm(request.POST,request.FILES)
+        if form.is_valid():
+            username = request.POST['username']
+            email = request.POST['email']
+            password = request.POST['password']
+            profile_type=request.POST['profile_type']
+            description=request.POST['description']
+            picture=request.FILES['picture']
             agree=request.POST['agree']
-            user=User.objects.create_user(username=username,email=email, password=password)
-            if(profile_type=='Student'):
-                my_group = Group.objects.get(name='student')
-                my_group.user_set.add(user)
 
-                auth.login(request,user)
-                student=Student(user=user)
-                student.save()
-                current_student=student
-                return redirect('/learningcurveapp/student-profile')
-            if(profile_type=='Teacher'):
-                my_group = Group.objects.get(name='teacher')
-                my_group.user_set.add(user)
-                auth.login(request,user)
-                author=Author(user=user)
-                author.save()
-                current_author=author
+            if User.objects.filter(username=username).first():
+                messages.info(request,"The username is already taken, please try another username...")
+                return render(request, 'learningcurveapp/signup.html',context = {
+                    'error_message': "The username is already taken, please try another username...",'form':UserCreateForm()
+                })
+            if not agree:
+                messages.info(request,"You have to agree to create an account")
+                return render(request, 'learningcurveapp/signup.html',context = {
+                    'error_message': "You have to agree to create an account",'form':UserCreateForm()
+                })
+            else:
 
-                return redirect('/learningcurveapp/teacher-profile/')
-    return render(request, 'learningcurveapp/signup.html')
+                user=User.objects.create_user(username=username,email=email, password=password)
+                if(profile_type=='student'):
+                    my_group = Group.objects.get(name='student')
+                    my_group.user_set.add(user)
+                    auth.login(request,user)
+                    student=Student(user=user,description=description,)
+                    student.save()
+
+                    return redirect('/learningcurveapp/student-profile')
+                if(profile_type=='Teacher'):
+                    my_group = Group.objects.get(name='teacher')
+                    my_group.user_set.add(user)
+                    auth.login(request,user)
+                    author=Author(user=user)
+                    author.save()
+
+
+                return redirect('/learningcurveapp/teacher-profile/',context = {'form':UserCreateForm()})
+    return render(request, 'learningcurveapp/signup.html',context = {'form':UserCreateForm()})
 
 
 
@@ -304,15 +295,7 @@ def teacher_addcourse(request):
         return render(request, 'learningcurveapp/teacher-addcourse.html',{'form': CourseForm()})
 
 
-def teacher_course(request,id):
-    if not request.user.is_authenticated:
-        return redirect('learningcurveapp/login')
-    author = Author.objects.get(user=request.user)
-    course=Course.objects.get(id=id)
-    chapters=Chapter.objects.filter(course=id).order_by('number').values()
 
-
-    return render(request, 'learningcurveapp/course.html',{'teacher':True,'course':course,'chapters':chapters,'id':id})
 
 
 @login_required
@@ -361,10 +344,7 @@ def quizzes(request,role):
     return render(request, 'learningcurveapp/quizzes.html',{'quizz':quizz,'role':role})
 
 
-@login_required
-def student_quizzes(request):
-        quizz = Quiz.objects.all()
-        return render(request, 'learningcurveapp/quizzes.html',{'quizz':quizz,'role':"student"})
+
 
 
 
@@ -410,13 +390,7 @@ def coursefeedback(request,role,id):
     return render(request, 'learningcurveapp/coursefeedback.html',{'course_rates':course_rates,'course':course,'role':role,'form':CourseRateForm(),'response':response})
 
 
-def teacher_mycourses(request):
-    if not request.user.is_authenticated:
-        return redirect('learningcurveapp/login')
-    author = Author.objects.get(user=request.user)
-    courses=Course.objects.filter(author=author).values()
 
-    return render(request, 'learningcurveapp/private-courses.html',{'courses':courses})
 
 
 @login_required
@@ -427,19 +401,14 @@ def student_courses(request):
 
 @login_required
 def private_courses(request,role):
-    """courses = Course.objects.annotate(
-            total_chapters=Sum('chapter__number', distinct=True),
-            total_time=Sum('chapter__time', distinct=True),
-            average_result=Avg('course_rate__result')
-        ).values('id','title', 'total_chapters', 'total_time', 'average_result', 'difficulty','topic')"""
+    courses= Course.objects.annotate(
+                                    total_chapters=Sum('chapter_course__number', distinct=True),
+                                    total_time=Sum('chapter_course__time', distinct=True),
+                                    average_result=Avg('course_rate__result')
+                                ).values('id','title', 'total_chapters', 'total_time', 'average_result', 'difficulty','topic')
 
-    courses=Course.objects.select_related('chapter_course').all()
-    courses=courses.select_related('course_rate').all()
-    courses= courses.annotate(
-                                total_chapters=Sum('chapter__number', distinct=True),
-                                total_time=Sum('chapter__time', distinct=True),
-                                average_result=Avg('course_rate__result')
-                            ).values('id','title', 'total_chapters', 'total_time', 'average_result', 'difficulty','topic')
+
+
     if request.method == 'POST':
             form = FilterForm(request.POST)
             if form.is_valid():
@@ -448,21 +417,21 @@ def private_courses(request,role):
                 if(level!='' and topic!=''):
 
                     courses = Course.objects.filter(difficulty=level, topic=topic).annotate(
-                        total_chapters=Sum('chapter__number'),
-                        total_time=Sum('chapter__time'),
-                        average_result=Avg('course_rate__result')
+                        total_chapters=Sum('chapter_course__number', distinct=True),
+                                        total_time=Sum('chapter_course__time', distinct=True),
+                                        average_result=Avg('course_rate__result')
                     ).values('id','title', 'total_chapters', 'total_time', 'average_result', 'difficulty','topic')
 
                 if(topic=='' and level!=''):
                       courses = Course.objects.filter(difficulty=level).annotate(
-                                             total_chapters=Sum('chapter__number'),
-                                             total_time=Sum('chapter__time'),
+                                             total_chapters=Sum('chapter_course__number', distinct=True),
+                                             total_time=Sum('chapter_course__time', distinct=True),
                                              average_result=Avg('course_rate__result')
                         ).values('id','title', 'total_chapters', 'total_time', 'average_result', 'difficulty','topic')
                 if(topic!='' and level==''):
                      courses = Course.objects.filter(topic=topic).annotate(
-                                            total_chapters=Sum('chapter__number'),
-                                            total_time=Sum('chapter__time'),
+                                            total_chapters=Sum('chapter_course__number', distinct=True),
+                                            total_time=Sum('chapter_course__time', distinct=True),
                                             average_result=Avg('course_rate__result')
                                         ).values('id','title', 'total_chapters', 'total_time', 'average_result', 'difficulty','topic')
     return render(request, 'learningcurveapp/private-courses.html',{'courses':courses,'role':role,'form':FilterForm()})
@@ -477,33 +446,30 @@ def showquiz(request,id,role):
 
 @login_required
 def course(request,role,id):
+    review_count = 0
+    review_avg = 0
+    chapter_completes=None
+    progression=0
+    time=0
     course=Course.objects.get(id=id)
     chapters=Chapter.objects.filter(course=id).order_by('number').values().distinct()
-    print(chapters)
     others_course=Course.objects.filter(author=course.author)[:3]
     course_rates = CourseRate.objects.filter(course=course)
     if(course_rates.count()!=0):
         review_count = CourseRate.objects.filter(course_id=id).count()
         review_avg = CourseRate.objects.filter(course=course).aggregate(Avg('result'))['result__avg']
-    else:
-        review_count = 0
-        review_avg = 0
     if(chapters.count()!=0):
         time=chapters.aggregate(total_duree=models.Sum('time'))['total_duree']
         if( role=='student' ):
             student = Student.objects.get(user=request.user)
             chapter_completes = set(student.course_completions_student.filter(chapter__course=course).values_list('chapter_id', flat=True))
             progression=int(len(chapter_completes)/chapters.count()*100)
-    else:
-        chapter_completes=None
-        progression=0
-        time=0
 
 
     return render(request, 'learningcurveapp/course.html',{'role':role,'course':course,'chapters':chapters,'time':time,
                                                             'course_rates':course_rates,'others_course':others_course,
                                                              'review_count':review_count,'review_avg':review_avg,'chapter_completes':chapter_completes,
-                                                             'progression':progression})
+                                                             'progression':progression, 'total_chapters':chapters.count()})
 
 @login_required
 def student_chapter_complete(request,id):
