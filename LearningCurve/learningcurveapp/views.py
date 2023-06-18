@@ -3,8 +3,8 @@ from django import forms
 from django.contrib.auth.models import User,auth,Group
 from django.contrib.auth.decorators import login_required
 
-
-from django.contrib.auth.models import User, auth, Group
+from django.db.models import Prefetch
+from django.contrib.auth.models import User, auth
 from django.contrib import messages
 from django.contrib.auth import authenticate
 from .models import LEVELS, TOPIC
@@ -427,13 +427,19 @@ def student_courses(request):
 
 @login_required
 def private_courses(request,role):
-    courses = Course.objects.annotate(
-            total_chapters=Sum('chapter__number'),
-            total_time=Sum('chapter__time'),
+    """courses = Course.objects.annotate(
+            total_chapters=Sum('chapter__number', distinct=True),
+            total_time=Sum('chapter__time', distinct=True),
             average_result=Avg('course_rate__result')
-        ).values('id','title', 'total_chapters', 'total_time', 'average_result', 'difficulty','topic')
+        ).values('id','title', 'total_chapters', 'total_time', 'average_result', 'difficulty','topic')"""
 
-
+    courses=Course.objects.select_related('chapter_course').all()
+    courses=courses.select_related('course_rate').all()
+    courses= courses.annotate(
+                                total_chapters=Sum('chapter__number', distinct=True),
+                                total_time=Sum('chapter__time', distinct=True),
+                                average_result=Avg('course_rate__result')
+                            ).values('id','title', 'total_chapters', 'total_time', 'average_result', 'difficulty','topic')
     if request.method == 'POST':
             form = FilterForm(request.POST)
             if form.is_valid():
@@ -472,7 +478,8 @@ def showquiz(request,id,role):
 @login_required
 def course(request,role,id):
     course=Course.objects.get(id=id)
-    chapters=Chapter.objects.filter(course=id).order_by('number').values()
+    chapters=Chapter.objects.filter(course=id).order_by('number').values().distinct()
+    print(chapters)
     others_course=Course.objects.filter(author=course.author)[:3]
     course_rates = CourseRate.objects.filter(course=course)
     if(course_rates.count()!=0):
