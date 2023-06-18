@@ -88,7 +88,8 @@ class Chapter(models.Model):
     content_type = models.CharField(choices=TYPE, max_length=10, default='pdf')
     time = models.PositiveSmallIntegerField(validators=[MinValueValidator(0)],default=0)
 
-
+    def __str__(self) -> str:
+        return "Chapter " + str(self.number) + " of "+ self.course.__str__()
 
 
 

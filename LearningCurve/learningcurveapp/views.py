@@ -114,14 +114,36 @@ def student_profile(request):
         average_grade = round(average, 2)
         max_grade =  StudentQuiz.objects.filter(student=student).aggregate(max_score=Max('points'))['max_score']
         max_course =  StudentQuiz.objects.filter(student=student, points=max_grade).first().quiz.course
+        to_continue = False
+        read_courses = ChapterCompletion.objects.filter(student = student)
+        to_continue = False
+        for i in read_courses:
+            c = i.chapter.course
+            isComplete, avancement = isCompleted(c, student)
+            if not isComplete:
+                to_continue = True
+                course_to_continue = c
+                print(avancement)
+                break
+        if not to_continue:
+            course_to_continue = Course.objects.get(id=1)
+            avancement = "0/" +str(chapitres_completes = student.course_completions_student.filter(chapter__course=course_to_continue).count()) 
     return render(request, 'learningcurveapp/student-profile.html',context = {
         'username': request.user.username,
         'read_chapters': nombre_chapitre_lus,
         'answered_quiz':quiz_answered,
         'average_grade': average_grade,
         'max_grade': max_grade,
-        'max_course': max_course
+        'max_course': max_course,
+        'course_to_continue': course_to_continue,
+        'advancement': avancement
     })
+
+def isCompleted(c, student):
+    chapitres_total = Chapter.objects.filter(course=c).count()
+    chapitres_completes = student.course_completions_student.filter(chapter__course=c).count()
+    print(chapitres_total, chapitres_completes)
+    return chapitres_completes == chapitres_total, str(chapitres_completes)+"/"+str(chapitres_total)
 
 
 def student_quiz_result_details(request,id):
