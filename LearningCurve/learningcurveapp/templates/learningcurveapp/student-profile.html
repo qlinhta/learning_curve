@@ -10,7 +10,7 @@
           content="IE=edge">
     <meta name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Learning Path</title>
+    <title>Learning Curve - Home Profile</title>
 
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CRoboto:400,500%7CExo+2:600&display=swap"
           rel="stylesheet">
@@ -197,8 +197,131 @@
             </div>
         </div>
 
+        
+
         <div class="page-section">
             <div class="container page__container">
+
+                <!-- Begin -->
+                <div class="row card-group-row">
+
+                    <div class="card-group-row__col col-md-6">
+    
+                        <div class="card card-group-row__card card-sm">
+                            <div class="card-body d-flex align-items-left">
+                                <div class="flex mr-12pt">
+                                    <a class="card-title"
+                                       href="student-showquiz.html">Read Chapters</a>
+                                </div>
+                                <div class="d-flex flex-column align-items-center">
+                                    <span class="lead text-headings lh-1">{{ read_chapters }}</span>
+                                </div>
+                            </div>
+                        </div>
+    
+                    </div>
+    
+                    <div class="card-group-row__col col-md-6">
+    
+                        <div class="card card-group-row__card card-sm">
+                            <div class="card-body d-flex align-items-left">
+                                </a>
+                                <div class="flex mr-12pt">
+                                    <a class="card-title"
+                                       href="student-showquiz.html">Answered Quiz</a>
+                                </div>
+                                <div class="d-flex flex-column align-items-center">
+                                    <span class="lead text-headings lh-1">{{ answered_quiz }}</span>
+                                    <small class="text-50 text-uppercase text-headings"></small>
+                                </div>
+                            </div>
+                        </div>
+    
+                    </div>
+    
+                    <div class="card-group-row__col col-md-6">
+    
+                        <div class="card card-group-row__card card-sm">
+                            <div class="card-body d-flex align-items-left">
+                                </a>
+                                <div class="flex mr-12pt">
+                                    <a class="card-title"
+                                       href="student-showquiz.html">Average grade</a>
+                                </div>
+                                <div class="d-flex flex-column align-items-center">
+                                    <span class="lead text-headings lh-1">{{ average_grade }}</span>
+                                    <small class="text-50 text-uppercase text-headings">/5</small>
+                                </div>
+                            </div>
+                        </div>
+    
+                    </div>
+    
+                    <div class="card-group-row__col col-md-6">
+    
+                        <div class="card card-group-row__card card-sm">
+                            <div class="card-body d-flex align-items-left">
+                                <div class="flex mr-12pt">
+                                    <a class="card-title"
+                                       href="student-showquiz.html">Highest Grade</a>
+                                </div>
+                                <div class="d-flex flex-column align-items-center">
+                                    <span class="lead text-headings lh-1">{{ max_grade }}</span>
+                                    <small class="text-50 text-uppercase text-headings">{{ max_course }}</small>
+                                </div>
+                            </div>
+                        </div>
+    
+                    </div>
+    
+                </div>
+                <!-- End --> 
+
+
+
+<!-- Begin -->
+
+
+
+
+
+                <div class="card stack">
+                    <div class="list-group list-group-flush">
+
+                        <div class="list-group-item d-flex flex-column flex-sm-row align-items-sm-center px-12pt">
+                            <div class="flex d-flex align-items-center mr-sm-16pt mb-8pt mb-sm-0">
+                                <a href="instructor-edit-quiz.html"
+                                class="avatar overlay overlay--primary avatar-4by3 mr-12pt">
+                                    <img src="{% static 'learningcurveapp/images/paths/Machine-learning-def-.png' %}"
+                                        alt="ML"
+                                        class="avatar-img rounded">
+                                    <span class="overlay__content"></span>
+                                </a>
+                                <div class="flex">
+                                    <a class="card-title"
+                                    href="instructor-edit-quiz.html">{{ course_to_continue.title }}</a>
+                                </div>
+                            </div>
+                            <div class="d-flex flex-column align-items-center mr-16pt">
+                                <span class="lead text-headings lh-1">{{ advancement }}</span>
+                                <small class="text-50 text-uppercase text-headings">Completed Chapters</small>
+                            </div>
+
+                        </div>
+
+                        
+
+                        
+
+                        
+
+                    </div>
+                </div>
+<!-- End -->  
+
+
+
+                
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="card border-0 mb-lg-0">
@@ -476,6 +599,13 @@
                            href="/learningcurveapp/quizzes/student">
                             <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">dvr</span>
                             <span class="sidebar-menu-text">Quiz</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a class="sidebar-menu-button"
+                           href="/learningcurveapp/student-quiz-results/">
+                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">dvr</span>
+                            <span class="sidebar-menu-text">Quiz Results</span>
                         </a>
                     </li>
                     <li class="sidebar-menu-item">
