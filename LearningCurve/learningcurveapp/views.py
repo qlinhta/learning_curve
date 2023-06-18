@@ -127,7 +127,7 @@ def student_profile(request):
                 break
         if not to_continue:
             course_to_continue = Course.objects.get(id=1)
-            avancement = "0/" +str(chapitres_completes = student.course_completions_student.filter(chapter__course=course_to_continue).count()) 
+            avancement = "0/" +str(student.course_completions_student.filter(chapter__course=course_to_continue).count())
     return render(request, 'learningcurveapp/student-profile.html',context = {
         'username': request.user.username,
         'read_chapters': nombre_chapitre_lus,
