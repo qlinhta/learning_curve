@@ -299,7 +299,7 @@
                                 </a>
                                 <div class="flex">
                                     <a class="card-title"
-                                    href="instructor-edit-quiz.html">{{ course_to_continue.title }}</a>
+                                    href="{% url 'course'  id=course_to_continue.id role='student' %}">{{ course_to_continue.title }}</a>
                                 </div>
                             </div>
                             <div class="d-flex flex-column align-items-center mr-16pt">
