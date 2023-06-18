@@ -196,11 +196,19 @@
             <div class="mdk-box__content">
                 <div class="py-64pt text-center text-sm-left">
                     <div class="container d-flex flex-column justify-content-center align-items-center">
-                        <h1 class="text-white mb-24pt">Your Score: 985</h1>
-                        <h3 class="text-white mb-24pt">Your best score: 985</h3>
-                        <h3 class="text-white mb-24pt">Best score: 985</h3>
-                        <a href="{% url 'showquiz' id=id role=role %}"
-                           class="btn btn-outline-white">Restart quiz</a>
+                        <h1 class="text-white mb-24pt">Your Score: {{result}} out of {{total}}</h1>
+                        <h3 class="text-white mb-24pt">Your best score: {{best_score_perso}} out of {{total}}</h3>
+                        <h3 class="text-white mb-24pt">Best score: {{best_score}} out of {{total}}</h3>
+                        <div class="container d-flex flex-row justify-content-between align-items-center">
+                            <a href="{% url 'showquiz' id=id role=role %}"
+                               class="btn btn-outline-white">Restart quiz</a>
+                            {% if quiz.course is not null %}
+                            <a href="{% url 'course'  id=quiz.course.id role=role %}"
+                               class="btn btn-outline-white">Go to course</a>
+                            {% endif %}
+                            <a href="{% url 'student-profile'  %}"
+                               class="btn btn-outline-white">Go Home</a>
+                        </div>
                     </div>
                 </div>
             </div>
