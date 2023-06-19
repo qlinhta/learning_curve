@@ -97,34 +97,7 @@
             <!-- // END Notifications dropdown -->
 
 
-            <div class="nav-item dropdown">
-                <a href="/learningcurveapp/edit-account-profile"
-                   class="nav-link d-flex align-items-center dropdown-toggle"
-                   data-toggle="dropdown"
-                   data-caret="false">
 
-                                <span class="avatar avatar-sm mr-8pt2">
-                                    <span class="avatar-title rounded-circle bg-primary">
-                                        <img src="{% static 'learningcurveapp/img.png' %}"
-                                             alt="avatar_1"
-                                             class="avatar-img rounded-circle">
-                                    </span>
-
-                                </span>
-
-                </a>
-              <div class="dropdown-menu dropdown-menu-right">
-                <div class="dropdown-header"><strong>Menu for account here</strong></div>
-                <a class="dropdown-item"
-                   href="#">Menu 1</a>
-                <a class="dropdown-item"
-                   href="#">Menu 2</a>
-                <a class="dropdown-item"
-                   href="#">Menu 3</a>
-                <a class="dropdown-item"
-                   href="#">Menu 4</a>
-              </div>
-            </div>
           </div>
         </div>
 
@@ -133,15 +106,15 @@
         <div class="container page__container page-section">
 
           <div class="page-headline text-center">
-            <h2>Add Course</h2>
+            <h2>Chapter</h2>
             <p class="lead text-70 col-lg-8 mx-auto">{{ username }}</p>
           </div>
-          <form method="post" action="{% url 'teacher-addchapter' id=id %}"  enctype="multipart/form-data">
+          <form method="post" action="{% url value id=id %}"  enctype="multipart/form-data">
 
             {% csrf_token %}
             {{ form }}
             <br><br>
-            <input id="add" type="submit" value="Submit">
+            <input id="add" type="submit" class="btn btn-primary" value="Submit">
           </form>
         </div>
 

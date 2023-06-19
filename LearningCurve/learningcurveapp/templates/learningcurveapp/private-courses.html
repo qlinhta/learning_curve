@@ -172,31 +172,23 @@
                         </div>
                     </div>
                 </div>
-                <!-- // END Notifications dropdown -->
 
+            </div>
+        </div>
+        {% if role == "teacher" %}
+        <div class="page-section  border-bottom-2">
+            <div class="container page__container">
+                <div class="row">
 
-                <!-- // END Notifications dropdown -->
+                    <div class="col-md-6">
+                        <h4>New Course</h4>
+                        <a href="{% url 'teacher-addcourse'  %}"><p>Please click here to add new course</p></a>
 
-                <div class="nav-item dropdown">
-                    <a href="/learningcurveapp/edit-account-profile"
-                       class="nav-link d-flex align-items-center dropdown-toggle"
-                       data-toggle="dropdown"
-                       data-caret="false">
-
-                                <span class="avatar avatar-sm mr-8pt2">
-                                    <span class="avatar-title rounded-circle bg-primary">
-                                        <img src="{% static 'learningcurveapp/img.png' %}"
-                                             alt="avatar_1"
-                                             class="avatar-img rounded-circle">
-                                    </span>
-
-                                </span>
-
-                    </a>
-
+                    </div>
                 </div>
             </div>
         </div>
+        {% endif %}
 
 
 
@@ -204,7 +196,7 @@
 
             <div class="page-headline text-center">
                 <h1>Courses</h1>
-                <p class="lead text-70 col-lg-8 mx-auto">{{ username }}</p>
+
             </div>
 
 

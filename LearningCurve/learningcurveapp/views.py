@@ -32,6 +32,12 @@ class ChapterForm(forms.ModelForm):
     class Meta:
         model = Chapter
         fields = ['title','description','number','content']
+        widgets = {
+                    'title':forms.TextInput(attrs={'class':"form-control"}),
+                    'description': forms.Textarea(attrs={'blank':'true','class':"form-control",'rows':"3",'placeholder':"Present your course"}),
+                    'number':forms.NumberInput(attrs={'class':"form-control"}),
+                    'content':forms.FileInput(attrs={'class':"custom-file"}),
+                }
 
 class QuizForm(forms.ModelForm):
     class Meta:
@@ -52,6 +58,10 @@ class CourseRateForm(forms.ModelForm):
     class Meta:
         model = CourseRate
         fields = ['result', 'comments']
+        widgets = {
+            'comments': forms.Textarea(attrs={'blank':'true','class':"form-control",'rows':"3",'placeholder':"Can you give a comments..."}),
+            'result':forms.NumberInput(attrs={'class':"form-control"}),
+                        }
 
 class FilterForm(forms.Form):
     level = forms.ChoiceField(choices=LEVELS_CHOICE, required=False, initial='')
@@ -65,7 +75,7 @@ class AuthorUpdateForm(forms.ModelForm):
         fields = ['profile','description','facebook_link','instagram_link']
         widgets = {
             'description': forms.Textarea(attrs={'blank':'true','class':"form-control",'rows':"3",'placeholder':"Present yourself"}),
-            'profile': forms.FileInput(attrs={'blank':'true','class':"custom-file-label"}),
+            'profile': forms.FileInput(attrs={'blank':'true','class':"custom-file"}),
             'facebook_link':forms.TextInput(attrs={'blank':'true','class':"form-control"}),
             'instagram_link':forms.TextInput(attrs={'blank':'true','class':"form-control"}),
         }
@@ -77,7 +87,7 @@ class StudentUpdateForm(forms.ModelForm):
         fields = ['profile','description']
         widgets = {
             'description': forms.Textarea(attrs={'class':"form-control",'rows':"3",'placeholder':"Present yourself"}),
-            'profile': forms.FileInput(attrs={'class':"custom-file-label"}),
+            'profile': forms.FileInput(attrs={'class':"custom-file"}),
         }
 
 
@@ -271,9 +281,9 @@ def teacher_addcourse(request):
             return render(request, 'learningcurveapp/teacher-mycourses.html',context ={'courses':courses})
 
         else:
-            return render(request, 'learningcurveapp/teacher-addcourse.html',context ={'form': CourseForm()})
+            return render(request, 'learningcurveapp/teacher-editcourse.html',context ={'form': CourseForm()})
     else:
-        return render(request, 'learningcurveapp/teacher-addcourse.html',context ={'form': CourseForm()})
+        return render(request, 'learningcurveapp/teacher-editcourse.html',context ={'form': CourseForm()})
 
 
 
@@ -289,14 +299,15 @@ def teacher_addchapter(request,id):
             newchapter.course=course
             newchapter.save()
 
-            return teacher_course(request,id)
+            url = reverse('course', args=('student',id))
+            return redirect(url)
 
         else:
             print(form.errors)
 
-            return render(request, 'learningcurveapp/teacher-addchapter.html',context ={'id':id,'form': ChapterForm()})
+            return render(request, 'learningcurveapp/teacher-editchapter.html',context ={'id':id,'form': ChapterForm(),'value':'teacher-addchapter'})
     else:
-        return render(request, 'learningcurveapp/teacher-addchapter.html',context ={'id':id,'form': ChapterForm()})
+        return render(request, 'learningcurveapp/teacher-editchapter.html',context ={'id':id,'form': ChapterForm(),'value':'teacher-addchapter'})
 
 def instructor_edit_quiz(request):
     if not request.user.is_authenticated:
@@ -310,7 +321,7 @@ def chapter(request,id,role):
         if(role=='student'):
             student = Student.objects.get(user=request.user)
             chapter_completed = ChapterCompletion.objects.filter(chapter=chapter, student=student).exists()
-        return render(request, 'learningcurveapp/chapter.html',context ={'chapter':chapter,'role':role,'chapter_completed':chapter_completed})
+        return render(request, 'learningcurveapp/chapter.html',context ={'chapter':chapter,'role':role,'chapter_completed':chapter_completed,'id':chapter.course__id})
 
 @login_required
 def edit_account_profile(request):
@@ -448,7 +459,7 @@ def course(request,role,id):
     progression=0
     time=0
     course=Course.objects.get(id=id)
-    chapters=Chapter.objects.filter(course=id).order_by('number').values().distinct()
+    chapters=Chapter.objects.filter(course=id).order_by('number').values()
     others_course=Course.objects.filter(author=course.author)[:3]
     course_rates = CourseRate.objects.filter(course=course)
     if(course_rates.count()!=0):
@@ -490,3 +501,14 @@ def student_feedback(request,id):
                 feedback.save()
     url = reverse('coursefeedback', args=(id,'student'))
     return redirect(url)
+
+@login_required
+def teacher_edit_chapter(request,id):
+    if request.method == 'POST':
+        form = ChapterForm(request.POST,request.FILES,instance=Chapter.objects.get(id=id))
+        if form.is_valid():
+             form.save()
+             url = reverse('course', args=('teacher',Chapter.objects.get(id=id).course_id))
+             return redirect(url)
+
+    return render(request, 'learningcurveapp/teacher-editchapter.html',context ={'id':id,'form': ChapterForm(),'value':'teacher-edit-chapter'})

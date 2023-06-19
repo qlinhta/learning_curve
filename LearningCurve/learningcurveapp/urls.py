@@ -23,13 +23,14 @@ urlpatterns = [
     path('teacher-addquizz/', views.teacher_addquizz, name='teacher-addquizz'),
     path('teacher-mycourses/', views.private_courses, name='teacher-addquizz'),
     path('teacher-quizzes/', views.quizzes, name='teacher-addquizz'),
+    path('teacher-edit-chapter/<int:id>/', views.teacher_edit_chapter, name='teacher-edit-chapter'),
 
     path('chapter/<str:role>/<int:id>', views.chapter, name='chapter'),
     path('coursefeedback/<int:id>/<str:role>/', views.coursefeedback, name='coursefeedback'),
     path('quizzes/<str:role>/', views.quizzes, name='quizzes'),
     path('showquiz/<int:id>/<str:role>/', views.showquiz, name='showquiz'),
 
-    path('instructor-edit-quiz/', views.instructor_edit_quiz, name='instructor-edit-quiz'),
+    #path('instructor-edit-quiz/', views.instructor_edit_quiz, name='instructor-edit-quiz'),
     path('edit-account-profile', views.edit_account_profile, name='edit-account-profile'),
 
     path('private-courses/<str:role>/', views.private_courses, name='private-courses'),
