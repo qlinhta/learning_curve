@@ -88,10 +88,6 @@ def login(request):
 
 
 
-
-
-
-
 def student_path(request):
     if not request.user.is_authenticated:
         return redirect('/learningcurveapp/login')
@@ -206,13 +202,48 @@ def student_take_quiz(request):
 
 
 
+from django.db.models import Count
+
+
+from django.db.models import Count
+
+from django.db.models import Count
+
+from django.db.models import Avg
+
 def teacher_profile(request):
     if not request.user.is_authenticated:
         return redirect('learningcurveapp/login')
-    current_author=request.user
-    return render(request, 'learningcurveapp/teacher-profile.html',context = {
+
+    current_teacher = request.user
+    courses = Course.objects.filter(author__user=current_teacher)
+    chapter_counts = {}
+    average_rates = {}
+
+    quizzes = 0
+    answered_quizzes = 0 
+    average_scores_quizz = overall_average_score = CourseRate.objects.filter(course__in=courses).aggregate(Avg('result'))
+    for course in courses:
+        chapter_count = Chapter.objects.filter(course=course).count()
+        chapter_counts[course] = chapter_count
+        average_rate = CourseRate.objects.filter(course=course).aggregate(Avg('result'))
+        average_rates[course] = average_rate['result__avg']
+
+        quizzes = quizzes+ Quiz.objects.filter(course=course).count()
+        answered_quizzes += StudentQuiz.objects.filter(quiz__course=course, student__user=current_teacher).count()
+    
+
+    return render(request, 'learningcurveapp/teacher-profile.html', context={
         'username': request.user.username,
+        'courses': courses,
+        'chapter_counts': chapter_counts,
+        'average_rates': average_rates,
+        'quizzes' : quizzes,
+        'answered_quizzes': answered_quizzes,
+        'average_scores_quizz':average_scores_quizz['result__avg'],
     })
+
+
 
 def teacher_addcourses(request):
     if not request.user.is_authenticated:
