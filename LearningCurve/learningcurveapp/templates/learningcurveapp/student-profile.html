@@ -53,31 +53,130 @@
 </head>
 
 <body class="layout-app ">
-    <div class="mdk-drawer-layout js-mdk-drawer-layout"
-         data-push
-         data-responsive-width="992px">
-        <div class="mdk-drawer-layout__content page-content">
+<div class="mdk-drawer-layout js-mdk-drawer-layout"
+     data-push
+     data-responsive-width="992px">
+    <div class="mdk-drawer-layout__content page-content">
 
-            <div class="nav-item dropdown">
-                <a href="/learningcurveapp/edit-account-profile"
-                   class="nav-link d-flex align-items-center dropdown-toggle"
-                   data-toggle="dropdown"
-                   data-caret="false">
+        <!-- Header -->
 
-                            <span class="avatar avatar-sm mr-8pt2">
-                                <span class="avatar-title rounded-circle bg-primary">
-                                    <img src="{% static 'learningcurveapp/img.png' %}"
-                                         alt="avatar_1"
-                                         class="avatar-img rounded-circle">
+        <!-- Navbar -->
+        <div class="navbar navbar-expand pr-0 navbar-dark border-bottom-2"
+             id="default-navbar"
+             data-primary>
+
+            <!-- Navbar Toggler -->
+
+            <button class="navbar-toggler w-auto mr-16pt d-block d-lg-none rounded-0"
+                    type="button"
+                    data-toggle="sidebar">
+                <span class="material-icons">short_text</span>
+            </button>
+
+            <!-- // END Navbar Toggler -->
+
+            <!-- Navbar Brand -->
+
+            <a href="#"
+               class="navbar-brand mr-16pt d-lg-none">
+
+                        <span class="avatar avatar-sm navbar-brand-icon mr-0 mr-lg-8pt">
+
+                            <span class="avatar-title rounded bg-primary"><img src="{% static 'learningcurveapp/images/user_icon.jpg' %}"
+                                                                               alt="logo"
+                                                                               class="img-fluid"/></span>
+
+                        </span>
+
+                <span class="d-none d-lg-block">{{ username }}</span>
+            </a>
+
+            <!-- // END Navbar Brand -->
+
+
+            <div class="flex"></div>
+            <!-- Navbar Menu -->
+            <div class="nav navbar-nav flex-nowrap d-flex mr-16pt">
+                <!-- Notifications dropdown -->
+                <div class="nav-item dropdown dropdown-notifications dropdown-xs-down-full"
+                     data-toggle="tooltip"
+                     data-title="Messages"
+                     data-placement="bottom"
+                     data-boundary="window">
+
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <div data-perfect-scrollbar
+                             class="position-relative">
+                            <div class="dropdown-header"><strong>Messages</strong></div>
+                            <div class="list-group list-group-flush mb-0">
+
+                                <a href="javascript:void(0);"
+                                   class="list-group-item list-group-item-action unread">
+                                            <span class="d-flex align-items-center mb-1">
+                                                <small class="text-black-50">5 minutes ago</small>
+                                                <span class="ml-auto unread-indicator bg-accent"></span>
+                                            </span>
+                                    <span class="d-flex">
+                                                <span class="avatar avatar-xs mr-2">
+                                                    <img src="{% static 'learningcurveapp/images/user_icon.jpg' %}"
+                                                         alt="people"
+                                                         class="avatar-img rounded-circle">
+                                                </span>
+                                                <span class="flex d-flex flex-column">
+                                                    <strong class="text-black-100">{{ username }}</strong>
+                                                    <span class="text-black-70">Nothing to worries!.</span>
+                                                </span>
+                                            </span>
+                                </a>
+                                <a class="list-group-item list-group-item-action"
+                                   href="javascript:void(0);">
+                                            <span class="d-flex align-items-center mb-1">
+                                                <small class="text-black-50">1000 years ago</small>
+
+                                            </span>
+                                    <span class="d-flex">
+                                                <span class="avatar avatar-xs mr-2">
+                                                    <img src="{% static 'learningcurveapp/images/user_icon.jpg' %}"
+                                                         alt="people"
+                                                         class="avatar-img rounded-circle">
+                                                </span>
+                                                <span class="flex d-flex flex-column">
+                                                    <strong class="text-black-100">{{ username }}</strong>
+                                                    <span class="text-black-70">This is a smile :)</span>
+                                                </span>
+                                            </span>
+
+
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- // END Notifications dropdown -->
+
+
+                <!-- // END Notifications dropdown -->
+
+                <div class="nav-item dropdown">
+                    <a href="/learningcurveapp/edit-account-profile"
+                       class="nav-link d-flex align-items-center dropdown-toggle"
+                       data-toggle="dropdown"
+                       data-caret="false">
+
+                                <span class="avatar avatar-sm mr-8pt2">
+                                    <span class="avatar-title rounded-circle bg-primary">
+                                        <img src="{% static 'learningcurveapp/img.png' %}"
+                                             alt="avatar_1"
+                                             class="avatar-img rounded-circle">
+                                    </span>
+
                                 </span>
 
-                            </span>
+                    </a>
 
-                </a>
-
+                </div>
             </div>
         </div>
-    </div>
         <!-- // END Navbar -->
 
         <!-- // END Header -->
@@ -86,12 +185,12 @@
 
         <div class="page-section border-bottom">
             <div class="container page__container d-flex flex-column flex-md-row align-items-center text-center text-md-left">
-                <img src="{% static 'learningcurveapp/img.png' %}"
+                <img src="../..{{MEDIA_URL}}user/{{chapter.content}}"
                      width="104"
                      class="mr-md-32pt mb-32pt mb-md-0"
                      alt="student">
                 <div class="flex mb-32pt mb-md-0">
-                    <h2 class="text-white mb-0">{{ username }}</h2>
+                    <h2 class="text-white mb-0">{{ request.user.username }}</h2>
                     <p class="lead text-white-50 d-flex align-items-center">Student</p>
                 </div>
 

@@ -134,3 +134,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # set the url path from which the media can be retreived
 MEDIA_URL = '/media/'
+
+#LOGIN_URL=
+#LOGIN_REDIRECT_URL=
