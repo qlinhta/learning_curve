@@ -3,14 +3,14 @@ from django import forms
 from django.contrib.auth.models import User,auth,Group
 from django.contrib.auth.decorators import login_required
 
-
-from django.contrib.auth.models import User, auth, Group
+from django.db.models import Prefetch
+from django.contrib.auth.models import User, auth
 from django.contrib import messages
 from django.contrib.auth import authenticate
 from .models import LEVELS, TOPIC
 from .models import *
 from django.shortcuts import redirect, reverse
-from django.db.models import Sum, Avg,Max
+from django.db.models import Sum, Avg, Max
 from fuzzywuzzy import fuzz
 
 
@@ -99,9 +99,48 @@ def student_profile(request):
     if not request.user.is_authenticated:
         return redirect('/learningcurveapp/login')
     current_student=request.user
+    student = Student.objects.get(user__username=current_student.username)
+    cours_lus = ChapterCompletion.objects.filter(student=student)
+    nombre_chapitre_lus = cours_lus.count()
+    quiz_answered = StudentQuiz.objects.filter(student = student).count()
+    if quiz_answered == 0:
+        average_grade = 0
+        max_grade = 0
+    else:
+        average  = StudentQuiz.objects.filter(student = student).aggregate(Avg('points'))['points__avg']
+        average_grade = round(average, 2)
+        max_grade =  StudentQuiz.objects.filter(student=student).aggregate(max_score=Max('points'))['max_score']
+        max_course =  StudentQuiz.objects.filter(student=student, points=max_grade).first().quiz.course
+        to_continue = False
+        read_courses = ChapterCompletion.objects.filter(student = student)
+        to_continue = False
+        for i in read_courses:
+            c = i.chapter.course
+            isComplete, avancement = isCompleted(c, student)
+            if not isComplete:
+                to_continue = True
+                course_to_continue = c
+                print(avancement)
+                break
+        if not to_continue:
+            course_to_continue = Course.objects.get(id=1)
+            avancement = "0/" +str(student.course_completions_student.filter(chapter__course=course_to_continue).count())
     return render(request, 'learningcurveapp/student-profile.html',context = {
         'username': request.user.username,
+        'read_chapters': nombre_chapitre_lus,
+        'answered_quiz':quiz_answered,
+        'average_grade': average_grade,
+        'max_grade': max_grade,
+        'max_course': max_course,
+        'course_to_continue': course_to_continue,
+        'advancement': avancement
     })
+
+def isCompleted(c, student):
+    chapitres_total = Chapter.objects.filter(course=c).count()
+    chapitres_completes = student.course_completions_student.filter(chapter__course=c).count()
+    print(chapitres_total, chapitres_completes)
+    return chapitres_completes == chapitres_total, str(chapitres_completes)+"/"+str(chapitres_total)
 
 
 def student_quiz_result_details(request,id):
@@ -276,7 +315,6 @@ def signup(request):
             if(profile_type=='Student'):
                 my_group = Group.objects.get(name='student')
                 my_group.user_set.add(user)
-
                 auth.login(request,user)
                 student=Student(user=user)
                 student.save()
@@ -452,13 +490,19 @@ def student_courses(request):
 
 @login_required
 def private_courses(request,role):
-    courses = Course.objects.annotate(
-            total_chapters=Sum('chapter__number'),
-            total_time=Sum('chapter__time'),
+    """courses = Course.objects.annotate(
+            total_chapters=Sum('chapter__number', distinct=True),
+            total_time=Sum('chapter__time', distinct=True),
             average_result=Avg('course_rate__result')
-        ).values('id','title', 'total_chapters', 'total_time', 'average_result', 'difficulty','topic')
+        ).values('id','title', 'total_chapters', 'total_time', 'average_result', 'difficulty','topic')"""
 
-
+    courses=Course.objects.select_related('chapter_course').all()
+    courses=courses.select_related('course_rate').all()
+    courses= courses.annotate(
+                                total_chapters=Sum('chapter__number', distinct=True),
+                                total_time=Sum('chapter__time', distinct=True),
+                                average_result=Avg('course_rate__result')
+                            ).values('id','title', 'total_chapters', 'total_time', 'average_result', 'difficulty','topic')
     if request.method == 'POST':
             form = FilterForm(request.POST)
             if form.is_valid():
@@ -497,7 +541,8 @@ def showquiz(request,id,role):
 @login_required
 def course(request,role,id):
     course=Course.objects.get(id=id)
-    chapters=Chapter.objects.filter(course=id).order_by('number').values()
+    chapters=Chapter.objects.filter(course=id).order_by('number').values().distinct()
+    print(chapters)
     others_course=Course.objects.filter(author=course.author)[:3]
     course_rates = CourseRate.objects.filter(course=course)
     if(course_rates.count()!=0):

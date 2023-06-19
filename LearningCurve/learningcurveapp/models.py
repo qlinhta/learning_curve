@@ -83,12 +83,13 @@ class Chapter(models.Model):
     title = models.CharField(max_length=100, default='')
     description = models.TextField(default='')
     number = models.PositiveSmallIntegerField(validators=[MinValueValidator(0)])
-    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE,related_name='chapter_course')
     content= models.FileField(max_length=1000, default='')
     content_type = models.CharField(choices=TYPE, max_length=10, default='pdf')
     time = models.PositiveSmallIntegerField(validators=[MinValueValidator(0)],default=0)
 
-
+    def __str__(self) -> str:
+        return "Chapter " + str(self.number) + " of "+ self.course.__str__()
 
 
 
@@ -108,7 +109,8 @@ class Quiz(models.Model):
 class Question(models.Model):
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE, related_name="questions")
     question = models.TextField(default='')
-    answer=models.CharField(max_length=150)
+    answer = models.CharField(max_length=150, default='')
+    answer=models.CharField(max_length=150,default='')
 
     def __str__(self) -> str:
         return "Quiz " + self.quiz.course.__str__()
@@ -121,7 +123,7 @@ class StudentQuiz(models.Model):
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE, related_name="studentquiz")
 
     def __str__(self) -> str:
-        return "Quiz " + self.question.quiz.course.__str__() + " - Question "
+        return "Quiz " + self.quiz.course.__str__()
 
 
 class ChapterCompletion(models.Model):
