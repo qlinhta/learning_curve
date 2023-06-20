@@ -386,9 +386,9 @@ def teacher_addchapter(request,id):
         else:
             print(form.errors)
 
-            return render(request, 'learningcurveapp/teacher-editchapter.html',context ={'id':id,'form': ChapterForm(),'value':'teacher-addchapter'})
+            return render(request, 'learningcurveapp/teacher-editchapter.html',context ={'value':'teacher-addchapter',id':id,'form': ChapterForm(),'value':'teacher-addchapter'})
     else:
-        return render(request, 'learningcurveapp/teacher-editchapter.html',context ={'id':id,'form': ChapterForm(),'value':'teacher-addchapter'})
+        return render(request, 'learningcurveapp/teacher-editchapter.html',context ={'value':'teacher-addchapter','id':id,'form': ChapterForm(),'value':'teacher-addchapter'})
 
 @login_required
 def instructor_edit_quiz(request):
@@ -537,42 +537,8 @@ def private_courses(request):
     return render(request, 'learningcurveapp/private-courses.html',{'courses':courses,'role':role,'form':FilterForm()})
 
 
-@login_required
-def private_courses(request):
-    role=request.user.groups.first().name
-    courses=Course.objects.select_related('chapter_course').all()
-    courses=courses.select_related('course_rate').all()
-    courses= courses.annotate(
-                                total_chapters=Sum('chapter_course__number', distinct=True),
-                                total_time=Sum('chapter_course__time', distinct=True),
-                                average_result=Avg('course_rate__result')
-                            ).values('id','title', 'total_chapters', 'total_time', 'average_result', 'difficulty','topic')
-    if request.method == 'POST':
-            form = FilterForm(request.POST)
-            if form.is_valid():
-                level = request.POST['level']
-                topic = request.POST['topic']
-                if(level!='' and topic!=''):
 
-                    courses = Course.objects.filter(difficulty=level, topic=topic).annotate(
-                        total_chapters=Sum('chapter_course__number'),
-                        total_time=Sum('chapter_course__time'),
-                        average_result=Avg('course_rate__result')
-                    ).values('id','title', 'total_chapters', 'total_time', 'average_result', 'difficulty','topic')
 
-                if(topic=='' and level!=''):
-                      courses = Course.objects.filter(difficulty=level).annotate(
-                                             total_chapters=Sum('chapter_course__number'),
-                                             total_time=Sum('chapter_course__time'),
-                                             average_result=Avg('course_rate__result')
-                        ).values('id','title', 'total_chapters', 'total_time', 'average_result', 'difficulty','topic')
-                if(topic!='' and level==''):
-                     courses = Course.objects.filter(topic=topic).annotate(
-                                            total_chapters=Sum('chapter_course__number'),
-                                            total_time=Sum('chapter_course__time'),
-                                            average_result=Avg('course_rate__result')
-                                        ).values('id','title', 'total_chapters', 'total_time', 'average_result', 'difficulty','topic')
-    return render(request, 'learningcurveapp/private-courses.html',{'courses':courses,'role':role,'form':FilterForm()})
 
 @login_required
 def edit_account_profile(request):
@@ -664,4 +630,4 @@ def teacher_edit_chapter(request,id):
              url = reverse('course', args=(Chapter.objects.get(id=id).course_id,))
              return redirect(url)
 
-    return render(request, 'learningcurveapp/teacher-editchapter.html',context ={'id':id,'form': ChapterForm(),'value':'teacher-edit-chapter'})
+    return render(request, 'learningcurveapp/teacher-editchapter.html',context ={'value':'teacher_edit_chapter',id':id,'form': ChapterForm(),'value':'teacher-edit-chapter'})

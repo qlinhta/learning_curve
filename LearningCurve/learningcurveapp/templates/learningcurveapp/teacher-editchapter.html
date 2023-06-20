@@ -105,7 +105,7 @@
         <h2>Chapter</h2>
         <p class="lead text-70 col-lg-8 mx-auto">{{ username }}</p>
       </div>
-      <form method="post" action="{% url 'teacher-addchapter' id=id %}"  enctype="multipart/form-data">
+      <form method="post" action="{% url value id=id %}"  enctype="multipart/form-data">
 
         {% csrf_token %}
         {{ form }}
