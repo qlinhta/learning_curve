@@ -17,6 +17,7 @@ urlpatterns = [
 
 
     path('teacher-profile/', views.teacher_profile, name='teacher-profile'),
+    path('teacher-edit-chapter/<int:id>/', views.teacher_edit_chapter, name='teacher-edit-chapter'),
     path('teacher-showquiz/<int:id>/', views.showquiz, name='teacher-showquiz'),
     path('teacher-addcourse/', views.teacher_addcourse, name='teacher-addcourse'),
     path('teacher-addchapter/<int:id>/', views.teacher_addchapter, name='teacher-addchapter'),
@@ -25,12 +26,14 @@ urlpatterns = [
     path('chapter/<str:role>/<int:id>', views.chapter, name='chapter'),
     path('coursefeedback/<int:id>/<str:role>/', views.coursefeedback, name='coursefeedback'),
     path('quizzes/<str:role>/', views.quizzes, name='quizzes'),
+    path('quizzes/', views.quizzes, name='quizzes'),
     path('showquiz/<int:id>/<str:role>/', views.showquiz, name='showquiz'),
 
     path('instructor-edit-quiz/', views.instructor_edit_quiz, name='instructor-edit-quiz'),
     path('edit-account-profile', views.edit_account_profile, name='edit-account-profile'),
 
     path('private-courses/<str:role>/', views.private_courses, name='private-courses'),
+    path('private-courses/', views.private_courses, name='private-courses'),
     path('course/<str:role>/<int:id>', views.course, name='course'),
 
     path('aboutus/', views.aboutus, name='aboutus'),

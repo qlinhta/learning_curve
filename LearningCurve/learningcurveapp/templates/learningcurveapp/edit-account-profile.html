@@ -80,8 +80,19 @@
             <!-- // END Navbar Toggler -->
 
             <!-- Navbar Brand -->
+            <span class="d-none d-md-flex align-items-center mr-16pt">
 
-            <a href="#"
+                        <span class="avatar avatar-sm mr-12pt">
+                           <a href="javascript:history.back()">
+                            <span class="avatar-title rounded navbar-avatar"><i
+                                    class="material-icons">keyboard_arrow_left</i></span></a>
+                        </span>
+
+
+                    </span>
+
+
+            <a href="/learningcurveapp/student-profile"
                class="navbar-brand mr-16pt d-lg-none">
 
                         <span class="avatar avatar-sm navbar-brand-icon mr-0 mr-lg-8pt">
@@ -98,146 +109,16 @@
 
             <!-- // END Navbar Brand -->
 
-            <span class="d-none d-md-flex align-items-center mr-16pt">
 
-                        <span class="avatar avatar-sm mr-12pt">
-
-                            <span class="avatar-title rounded navbar-avatar"><i
-                                    class="material-icons">opacity</i></span>
-                        </span>
-
-                        <small class="flex d-flex flex-column">
-                            <strong class="navbar-text-100">Experiences</strong>
-                            <span class="navbar-text-50">-1 points</span>
-                        </small>
-                    </span>
 
             <div class="flex"></div>
+
             <!-- Navbar Menu -->
             <div class="nav navbar-nav flex-nowrap d-flex mr-16pt">
-                <!-- Notifications dropdown -->
-                <div class="nav-item dropdown dropdown-notifications dropdown-xs-down-full"
-                     data-toggle="tooltip"
-                     data-title="Messages"
-                     data-placement="bottom"
-                     data-boundary="window">
-                    <button class="nav-link btn-flush dropdown-toggle"
-                            type="button"
-                            data-toggle="dropdown"
-                            data-caret="false">
-                        <i class="material-icons icon-24pt">mail_outline</i>
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-right">
-                        <div data-perfect-scrollbar
-                             class="position-relative">
-                            <div class="dropdown-header"><strong>Messages</strong></div>
-                            <div class="list-group list-group-flush mb-0">
-
-                                <a href="javascript:void(0);"
-                                   class="list-group-item list-group-item-action unread">
-                                            <span class="d-flex align-items-center mb-1">
-                                                <small class="text-black-50">5 minutes ago</small>
-                                                <span class="ml-auto unread-indicator bg-accent"></span>
-                                            </span>
-                                    <span class="d-flex">
-                                                <span class="avatar avatar-xs mr-2">
-                                                    <img src="{% static 'learningcurveapp/img.png' %}"
-                                                         alt="people"
-                                                         class="avatar-img rounded-circle">
-                                                </span>
-                                                <span class="flex d-flex flex-column">
-                                                    <strong class="text-black-100">{{ username }}</strong>
-                                                    <span class="text-black-70">Nothing to worries!.</span>
-                                                </span>
-                                            </span>
-                                </a>
-                                <a class="list-group-item list-group-item-action"
-                                   href="javascript:void(0);">
-                                            <span class="d-flex align-items-center mb-1">
-                                                <small class="text-black-50">1000 years ago</small>
-
-                                            </span>
-                                    <span class="d-flex">
-                                                <span class="avatar avatar-xs mr-2">
-                                                    <img src="{% static 'learningcurveapp/img.png' %}"
-                                                         alt="people"
-                                                         class="avatar-img rounded-circle">
-                                                </span>
-                                                <span class="flex d-flex flex-column">
-                                                    <strong class="text-black-100">{{ username }}</strong>
-                                                    <span class="text-black-70">This is a smile :)</span>
-                                                </span>
-                                            </span>
 
 
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <!-- // END Notifications dropdown -->
 
-                <!-- Notifications dropdown -->
-                <div class="nav-item ml-16pt dropdown dropdown-notifications dropdown-xs-down-full"
-                     data-toggle="tooltip"
-                     data-title="Notifications"
-                     data-placement="bottom"
-                     data-boundary="window">
-                    <button class="nav-link btn-flush dropdown-toggle"
-                            type="button"
-                            data-toggle="dropdown"
-                            data-caret="false">
-                        <i class="material-icons">notifications_none</i>
-                        <span class="badge badge-notifications badge-accent">-1</span>
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-right">
-                        <div data-perfect-scrollbar
-                             class="position-relative">
-                            <div class="dropdown-header"><strong>System notifications</strong></div>
-                            <div class="list-group list-group-flush mb-0">
-
-                                <a href="javascript:void(0);"
-                                   class="list-group-item list-group-item-action unread">
-                                            <span class="d-flex align-items-center mb-1">
-                                                <small class="text-black-50">3 minutes ago</small>
-
-                                                <span class="ml-auto unread-indicator bg-accent"></span>
-
-                                            </span>
-                                    <span class="d-flex">
-                                                <span class="avatar avatar-xs mr-2">
-                                                    <span class="avatar-title rounded-circle bg-light">
-                                                        <i class="material-icons font-size-16pt text-accent">account_circle</i>
-                                                    </span>
-                                                </span>
-                                                <span class="flex d-flex flex-column">
-
-                                                    <span class="text-black-70">This is notification</span>
-                                                </span>
-                                            </span>
-                                </a>
-                                <a href="javascript:void(0);"
-                                   class="list-group-item list-group-item-action">
-                                            <span class="d-flex align-items-center mb-1">
-                                                <small class="text-black-50">5 hours ago</small>
-
-                                            </span>
-                                    <span class="d-flex">
-                                                <span class="avatar avatar-xs mr-2">
-                                                    <span class="avatar-title rounded-circle bg-light">
-                                                        <i class="material-icons font-size-16pt text-primary">account_circle</i>
-                                                    </span>
-                                                </span>
-                                                <span class="flex d-flex flex-column">
-                                                    <strong class="text-black-100">{{ username }}</strong>
-                                                    <span class="text-black-70">CocaCola is good! You should buy more!.</span>
-                                                </span>
-                                            </span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <!-- // END Notifications dropdown -->
 
                 <div class="nav-item dropdown">
@@ -256,17 +137,7 @@
                                 </span>
 
                     </a>
-                    <div class="dropdown-menu dropdown-menu-right">
-                        <div class="dropdown-header"><strong>Menu for account here</strong></div>
-                        <a class="dropdown-item"
-                           href="#">Menu 1</a>
-                        <a class="dropdown-item"
-                           href="#">Menu 2</a>
-                        <a class="dropdown-item"
-                           href="#">Menu 3</a>
-                        <a class="dropdown-item"
-                           href="#">Menu 4</a>
-                    </div>
+
                 </div>
             </div>
 
@@ -278,89 +149,57 @@
 
         <!-- // END Header -->
 
-                <div class="pt-32pt">
-                    <div class="container page__container d-flex flex-column flex-md-row align-items-center text-center text-sm-left">
-                        <div class="flex d-flex flex-column flex-sm-row align-items-center">
+        <div class="pt-32pt">
+            <div class="container page__container d-flex flex-column flex-md-row align-items-center text-center text-sm-left">
+                <div class="flex d-flex flex-column flex-sm-row align-items-center">
 
-                            <div class="mb-24pt mb-sm-0 mr-sm-24pt">
-                                <h2 class="mb-0">Account</h2>
+                    <div class="mb-24pt mb-sm-0 mr-sm-24pt">
+                        <h2 class="mb-0">Account</h2>
 
 
-
-                            </div>
-                        </div>
 
                     </div>
                 </div>
 
-                <!-- BEFORE Page Content -->
+            </div>
+        </div>
 
-                <!-- // END BEFORE Page Content -->
+        <!-- BEFORE Page Content -->
 
-                <!-- Page Content -->
+        <!-- // END BEFORE Page Content -->
 
-                <div class="page-section container page__container">
-                    <div class="page-separator">
-                        <div class="page-separator__text">Profile &amp; Privacy</div>
-                    </div>
-                    <div class="col-md-7 p-0">
-                        <div class="form-group">
-                            <label class="form-label">Your photo</label>
-                            <div class="media align-items-center">
-                                <a href=""
-                                   class="media-left mr-16pt">
-                                    <img src="../../public/images/people/110/guy-3.jpg"
-                                         alt="people"
-                                         width="56"
-                                         class="rounded-circle" />
-                                </a>
-                                <div class="media-body">
-                                    <div class="custom-file">
-                                        <input type="file"
-                                               class="custom-file-input"
-                                               id="inputGroupFile01">
-                                        <label class="custom-file-label"
-                                               for="inputGroupFile01">Choose file</label>
-                                    </div>
-                                </div>
+        <!-- Page Content -->
+
+        <div class="page-section container page__container">
+            <div class="page-separator">
+                <div class="page-separator__text">Profile &amp; Privacy</div>
+            </div>
+            <form method="post" action="{% url 'edit-account-profile' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% for field in form.visible_fields %}
+                <div class="form-group">
+                    <label class="form-label">{{ field.label_tag }}</label>
+                    <div class="media align-items-center">
+
+                        <div class="media-body">
+                            <div class="custom-file">
+
+                                {{ field }}
                             </div>
                         </div>
-
-                        <div class="form-group">
-                            <label class="form-label">Luma profile name</label>
-                            <input type="text"
-                                   class="form-control"
-                                   value="Luma.com/alexander"
-                                   placeholder="Your profile name ...">
-                            <small class="form-text text-muted">Your profile name will be used as part of your public profile URL address.</small>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="form-label">About you</label>
-                            <textarea rows="3"
-                                      class="form-control"
-                                      placeholder="About you ..."></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox"
-                                       class="custom-control-input"
-                                       checked
-                                       id="customCheck1">
-                                <label class="custom-control-label"
-                                       for="customCheck1">Modification confirmed</label>
-                                <small class="form-text text-muted">Please verify your modifications and save it</small>
-                            </div>
-                        </div>
-
-
-                        <button type="submit"
-                                class="btn btn-primary">Save changes</button>
                     </div>
                 </div>
+                {% endfor %}
 
-                <!-- // END Page Content -->
+
+
+
+                <button type="submit"
+                        class="btn btn-primary">Save changes</button>
+            </form>
+        </div>
+
+        <!-- // END Page Content -->
 
         <!-- Footer -->
 
@@ -392,155 +231,7 @@
 
     </div>
 
-    <!-- // END drawer-layout__content -->
 
-    <!-- Drawer -->
-
-    <div class="mdk-drawer js-mdk-drawer"
-         id="default-drawer">
-        <div class="mdk-drawer__content">
-            <div class="sidebar sidebar-black-dodger-blue sidebar-left"
-                 data-perfect-scrollbar>
-
-                <!-- Sidebar Content -->
-
-                <div class="d-flex align-items-center navbar-height">
-                    <form action="#"
-                          class="search-form search-form--black mx-16pt pr-0 pl-16pt">
-                        <input type="text"
-                               class="form-control pl-0"
-                               placeholder="Search">
-                        <button class="btn"
-                                type="submit"><i class="material-icons">search</i></button>
-                    </form>
-                </div>
-
-                <a href="/learningcurveapp/student-profile"
-                   class="sidebar-brand ">
-                    <span class="avatar avatar-xl sidebar-brand-icon h-auto">
-
-                                <span class="avatar-title rounded bg-primary"><img
-                                        src="{% static 'learningcurveapp/img.png' %}"
-                                        class="img-fluid"
-                                        alt="logo"/></span>
-
-                            </span>
-
-                    <span>{{ username }}</span>
-                </a>
-
-                <div class="sidebar-heading">Student</div>
-                <ul class="sidebar-menu">
-
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button"
-                           href="#">
-                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">home</span>
-                            <span class="sidebar-menu-text">Home</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button"
-                           href="#">
-                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">local_library</span>
-                            <span class="sidebar-menu-text">Browse Courses</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button"
-                           href="#">
-                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">style</span>
-                            <span class="sidebar-menu-text">Browse Paths</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button"
-                           href="#">
-                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">account_box</span>
-                            <span class="sidebar-menu-text">Student Dashboard</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button"
-                           href="/learningcurveapp/student-take-course">
-                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">search</span>
-                            <span class="sidebar-menu-text">My Courses</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button"
-                           href="#">
-                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">timeline</span>
-                            <span class="sidebar-menu-text">My Paths</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-menu-item ">
-                        <a class="sidebar-menu-button"
-                           href="/learningcurveapp/student-path">
-                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">change_history</span>
-                            <span class="sidebar-menu-text">Path Details</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button"
-                           href="#">
-                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">panorama_fish_eye</span>
-                            <span class="sidebar-menu-text">Lesson Preview</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button"
-                           href="/learningcurveapp/student-take-lesson">
-                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">import_contacts</span>
-                            <span class="sidebar-menu-text">Take Lesson</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-menu-item active" >
-                        <a class="sidebar-menu-button"
-                           href="/learningcurveapp/student-take-quiz">
-                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">dvr</span>
-                            <span class="sidebar-menu-text">Take Quiz</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button"
-                           href="#">
-                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">poll</span>
-                            <span class="sidebar-menu-text">My Quizzes</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button"
-                           href="/learningcurveapp/student-quiz-results">
-                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">live_help</span>
-                            <span class="sidebar-menu-text">Quiz Result</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button"
-                           href="#">
-                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">layers</span>
-                            <span class="sidebar-menu-text">Skill Assessment</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button"
-                           href="#">
-                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">assignment_turned_in</span>
-                            <span class="sidebar-menu-text">Skill Result</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button"
-                           href="/learningcurveapp/logout">
-                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">logout</span>
-                            <span class="sidebar-menu-text">Logout</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
 </div>
 
 

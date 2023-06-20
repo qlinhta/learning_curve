@@ -524,25 +524,26 @@
 
                     <li class="sidebar-menu-item">
                         <a class="sidebar-menu-button"
-                           href="#">
+                           href="/learningcurveapp/profile">
                             <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">home</span>
                             <span class="sidebar-menu-text">Home</span>
                         </a>
                     </li>
                     <li class="sidebar-menu-item">
                         <a class="sidebar-menu-button"
-                           href="/learningcurveapp/teacher-mycourses">
-                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">search</span>
-                            <span class="sidebar-menu-text">My Courses</span>
-                        </a>
-                    </li>                
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button"
-                           href="/learningcurveapp/teacher-quizzes">
-                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">poll</span>
-                            <span class="sidebar-menu-text">My Quizzes</span>
+                           href="{% url 'private-courses'  %}">
+                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">local_library</span>
+                            <span class="sidebar-menu-text">Courses</span>
                         </a>
                     </li>
+                    <li class="sidebar-menu-item">
+                        <a class="sidebar-menu-button"
+                           href="{% url 'quizzes'  %}">
+                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">dvr</span>
+                            <span class="sidebar-menu-text">Quiz</span>
+                        </a>
+                    </li>
+
                     <li class="sidebar-menu-item">
                         <a class="sidebar-menu-button"
                            href="/learningcurveapp/logout">

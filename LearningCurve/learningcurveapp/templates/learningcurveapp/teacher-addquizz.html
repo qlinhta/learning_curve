@@ -297,9 +297,10 @@
 
                     <div id="questions-container"></div>
 
-                    <button type="button" onclick="addQuestionForm()">Ajouter une question</button>
+                    <button type="button" onclick="addQuestionForm()" class=" btn-primary">Ajouter une question</button>
+                    <button type="button" onclick="removeQuestionForm()" class=" btn-primary">Retirer  la dernière question</button> <br>
                     <br>
-                    <button type="submit">Créer le quiz</button>
+                    <button type="submit" class="btn btn-primary">Créer le quiz</button>
                 </form>
 
                 <script>
@@ -310,12 +311,18 @@
                         const questionForm = `
                                   <div>
                                     <h3>Question ${questionCounter + 1}</h3>
-                                    <input type="text" name="question_${questionCounter}-question" placeholder="Question" required>
-                                    <input type="text" name="question_${questionCounter}-answer" placeholder="Réponse" required>
+                                    <input class="form-control" type="text" name="question_${questionCounter}-question" placeholder="Question" required><br><br>
+                                    <input class="form-control" type="text" name="question_${questionCounter}-answer" placeholder="Réponse" required><br><br>
                                   </div>
                                 `;
                         container.insertAdjacentHTML('beforeend', questionForm);
                         questionCounter++;
+                    }
+
+                    function removeQuestionForm(button) {
+                        const questionContainer = document.querySelector('#questions-container');
+                        questionContainer.lastElementChild.remove();
+                        questionCounter--;
                     }
                 </script>
 

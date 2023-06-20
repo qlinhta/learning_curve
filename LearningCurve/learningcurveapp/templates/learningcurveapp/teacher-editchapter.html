@@ -278,7 +278,7 @@
     <div class="container page__container page-section">
 
       <div class="page-headline text-center">
-        <h2>Add Course</h2>
+        <h2>Chapter</h2>
         <p class="lead text-70 col-lg-8 mx-auto">{{ username }}</p>
       </div>
       <form method="post" action="{% url 'teacher-addchapter' id=id %}"  enctype="multipart/form-data">
@@ -286,7 +286,7 @@
         {% csrf_token %}
         {{ form }}
         <br><br>
-        <input id="add" type="submit" value="Submit">
+        <input id="add" type="submit" value="Submit" class=" btn btn-primary">
       </form>
     </div>
 
