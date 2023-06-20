@@ -23,18 +23,17 @@ urlpatterns = [
     path('teacher-addchapter/<int:id>/', views.teacher_addchapter, name='teacher-addchapter'),
     path('teacher-addquizz/', views.teacher_addquizz, name='teacher-addquizz'),
 
-    path('chapter/<str:role>/<int:id>', views.chapter, name='chapter'),
-    path('coursefeedback/<int:id>/<str:role>/', views.coursefeedback, name='coursefeedback'),
-    path('quizzes/<str:role>/', views.quizzes, name='quizzes'),
+    path('chapter/<int:id>', views.chapter, name='chapter'),
+    path('coursefeedback/<int:id>/', views.coursefeedback, name='coursefeedback'),
     path('quizzes/', views.quizzes, name='quizzes'),
-    path('showquiz/<int:id>/<str:role>/', views.showquiz, name='showquiz'),
+    path('showquiz/<int:id>/', views.showquiz, name='showquiz'),
 
     path('instructor-edit-quiz/', views.instructor_edit_quiz, name='instructor-edit-quiz'),
     path('edit-account-profile', views.edit_account_profile, name='edit-account-profile'),
 
-    path('private-courses/<str:role>/', views.private_courses, name='private-courses'),
     path('private-courses/', views.private_courses, name='private-courses'),
-    path('course/<str:role>/<int:id>', views.course, name='course'),
+    path('private-courses/', views.private_courses, name='private-courses'),
+    path('course/<int:id>', views.course, name='course'),
 
     path('aboutus/', views.aboutus, name='aboutus'),
     path('index', views.index, name='index'),

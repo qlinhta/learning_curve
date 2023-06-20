@@ -61,121 +61,39 @@
         <!-- Header -->
 
         <!-- Navbar -->
-        <div class="navbar navbar-expand pr-0 navbar-dark border-bottom-2"
+        <div class="navbar navbar-expand navbar-dark border-bottom-2"
              id="default-navbar"
              data-primary>
 
-            <!-- Navbar Toggler -->
-
-            <button class="navbar-toggler w-auto mr-16pt d-block d-lg-none rounded-0"
-                    type="button"
-                    data-toggle="sidebar">
-                <span class="material-icons">short_text</span>
-            </button>
-
-            <!-- // END Navbar Toggler -->
-
-            <!-- Navbar Brand -->
-
-            <a href="#"
-               class="navbar-brand mr-16pt d-lg-none">
-
-                        <span class="avatar avatar-sm navbar-brand-icon mr-0 mr-lg-8pt">
-
-                            <span class="avatar-title rounded bg-primary"><img src="{% static 'learningcurveapp/images/user_icon.jpg' %}"
-                                                                               alt="logo"
-                                                                               class="img-fluid"/></span>
-
-                        </span>
-
-                <span class="d-none d-lg-block">{{ username }}</span>
-            </a>
-
-            <!-- // END Navbar Brand -->
 
 
-            <div class="flex"></div>
-            <!-- Navbar Menu -->
-            <div class="nav navbar-nav flex-nowrap d-flex mr-16pt">
-                <!-- Notifications dropdown -->
-                <div class="nav-item dropdown dropdown-notifications dropdown-xs-down-full"
-                     data-toggle="tooltip"
-                     data-title="Messages"
-                     data-placement="bottom"
-                     data-boundary="window">
-
-                    <div class="dropdown-menu dropdown-menu-right">
-                        <div data-perfect-scrollbar
-                             class="position-relative">
-                            <div class="dropdown-header"><strong>Messages</strong></div>
-                            <div class="list-group list-group-flush mb-0">
-
-                                <a href="javascript:void(0);"
-                                   class="list-group-item list-group-item-action unread">
-                                            <span class="d-flex align-items-center mb-1">
-                                                <small class="text-black-50">5 minutes ago</small>
-                                                <span class="ml-auto unread-indicator bg-accent"></span>
-                                            </span>
-                                    <span class="d-flex">
-                                                <span class="avatar avatar-xs mr-2">
-                                                    <img src="{% static 'learningcurveapp/images/user_icon.jpg' %}"
-                                                         alt="people"
-                                                         class="avatar-img rounded-circle">
-                                                </span>
-                                                <span class="flex d-flex flex-column">
-                                                    <strong class="text-black-100">{{ username }}</strong>
-                                                    <span class="text-black-70">Nothing to worries!.</span>
-                                                </span>
-                                            </span>
-                                </a>
-                                <a class="list-group-item list-group-item-action"
-                                   href="javascript:void(0);">
-                                            <span class="d-flex align-items-center mb-1">
-                                                <small class="text-black-50">1000 years ago</small>
-
-                                            </span>
-                                    <span class="d-flex">
-                                                <span class="avatar avatar-xs mr-2">
-                                                    <img src="{% static 'learningcurveapp/images/user_icon.jpg' %}"
-                                                         alt="people"
-                                                         class="avatar-img rounded-circle">
-                                                </span>
-                                                <span class="flex d-flex flex-column">
-                                                    <strong class="text-black-100">{{ username }}</strong>
-                                                    <span class="text-black-70">This is a smile :)</span>
-                                                </span>
-                                            </span>
-
-
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- // END Notifications dropdown -->
-
-
-                <!-- // END Notifications dropdown -->
-
-                <div class="nav-item dropdown">
-                    <a href="/learningcurveapp/edit-account-profile"
-                       class="nav-link d-flex align-items-center dropdown-toggle"
+            <ul class="nav navbar-nav d-none d-sm-flex flex justify-content-start ml-8pt">
+                <li class="nav-item active">
+                    <a href="/learningcurveapp/profile"
+                       class="nav-link">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="{% url 'private-courses'  %}"
+                       class="nav-link dropdown-toggle"
                        data-toggle="dropdown"
-                       data-caret="false">
+                       data-caret="false">Courses</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="{% url 'quizzes'  %}"
+                       class="nav-link dropdown-toggle"
+                       data-toggle="dropdown"
+                       data-caret="false">Quiz</a>
 
-                                <span class="avatar avatar-sm mr-8pt2">
-                                    <span class="avatar-title rounded-circle bg-primary">
-                                        <img src="{% static 'learningcurveapp/img.png' %}"
-                                             alt="avatar_1"
-                                             class="avatar-img rounded-circle">
-                                    </span>
+                </li>
+                <li class="nav-item">
+                    <a href="/learningcurveapp/logout"
+                       class="nav-link">Logout</a>
+                </li>
 
-                                </span>
 
-                    </a>
+            </ul>
 
-                </div>
-            </div>
+
         </div>
         <!-- // END Navbar -->
 
@@ -299,7 +217,7 @@
                                 </a>
                                 <div class="flex">
                                     <a class="card-title"
-                                    href="{% url 'course'  id=course_to_continue.id role='student' %}">{{ course_to_continue.title }}</a>
+                                    href="{% url 'course'  id=course_to_continue.id  %}">{{ course_to_continue.title }}</a>
                                 </div>
                             </div>
                             <div class="d-flex flex-column align-items-center mr-16pt">
@@ -556,69 +474,7 @@
 
     <!-- Drawer -->
 
-    <div class="mdk-drawer js-mdk-drawer"
-         id="default-drawer">
-        <div class="mdk-drawer__content">
-            <div class="sidebar sidebar-black-dodger-blue sidebar-left"
-                 data-perfect-scrollbar>
 
-
-                <a href="#"
-                   class="sidebar-brand ">
-                    <span class="avatar avatar-xl sidebar-brand-icon h-auto">
-
-                                <span class="avatar-title rounded bg-primary"><img
-                                        src="{% static 'learningcurveapp/img.png'%}"
-                                        class="img-fluid"
-                                        alt="logo"/></span>
-
-                            </span>
-
-                    <span>{{ username }}</span>
-                </a>
-
-                <div class="sidebar-heading">Student</div>
-                <ul class="sidebar-menu">
-
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button"
-                           href="/learningcurveapp/profile">
-                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">home</span>
-                            <span class="sidebar-menu-text">Home</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button"
-                           href="/learningcurveapp/private-courses/student">
-                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">local_library</span>
-                            <span class="sidebar-menu-text">Courses</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button"
-                           href="/learningcurveapp/quizzes/student">
-                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">dvr</span>
-                            <span class="sidebar-menu-text">Quiz</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button"
-                           href="/learningcurveapp/student-quiz-results/">
-                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">dvr</span>
-                            <span class="sidebar-menu-text">Quiz Results</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button"
-                           href="/learningcurveapp/logout">
-                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">logout</span>
-                            <span class="sidebar-menu-text">Logout</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
 </div>
 
 

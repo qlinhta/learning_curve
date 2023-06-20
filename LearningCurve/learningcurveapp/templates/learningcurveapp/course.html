@@ -93,72 +93,37 @@
 
             <!-- Navbar Brand -->
 
-            <a href="/learningcurveapp/student-profile"
-               class="navbar-brand mr-16pt d-lg-none">
+            <ul class="nav navbar-nav d-none d-sm-flex flex justify-content-start ml-8pt">
+                <li class="nav-item active">
+                    <a href="/learningcurveapp/profile"
+                       class="nav-link">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="{% url 'private-courses'  %}"
+                       class="nav-link dropdown-toggle"
+                       data-toggle="dropdown"
+                       data-caret="false">Courses</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="{% url 'quizzes'  %}"
+                       class="nav-link dropdown-toggle"
+                       data-toggle="dropdown"
+                       data-caret="false">Quiz</a>
 
-                        <span class="avatar avatar-sm navbar-brand-icon mr-0 mr-lg-8pt">
+                </li>
+                <li class="nav-item">
+                    <a href="/learningcurveapp/logout"
+                       class="nav-link">Logout</a>
+                </li>
 
-                            <span class="avatar-title rounded bg-primary"><img
-                                    src="{% static 'learningcurveapp/img.png' %}"
-                                    alt="logo"
-                                    class="img-fluid"/></span>
 
-                        </span>
-
-                <span class="d-none d-lg-block">{{ username }}</span>
-            </a>
+            </ul>
 
             <!-- // END Navbar Brand -->
 
 
 
-            <div class="flex"></div>
-            <!-- Navbar Menu -->
-            <div class="nav navbar-nav flex-nowrap d-flex mr-16pt">
-                <!-- Notifications dropdown -->
-                <div class="nav-item dropdown dropdown-notifications dropdown-xs-down-full"
-                     data-toggle="tooltip"
-                     data-title="Messages"
-                     data-placement="bottom"
-                     data-boundary="window">
 
-
-                </div>
-                <!-- // END Notifications dropdown -->
-
-                <!-- Notifications dropdown -->
-
-                <!-- // END Notifications dropdown -->
-
-                <div class="nav-item dropdown">
-                    <a href="/learningcurveapp/student-profile"
-                       class="nav-link d-flex align-items-center dropdown-toggle"
-                       data-toggle="dropdown"
-                       data-caret="false">
-
-                                <span class="avatar avatar-sm mr-8pt2">
-                                    <span class="avatar-title rounded-circle bg-primary">
-                                        <img src="{% static 'learningcurveapp/img.png' %}"
-                                             alt="avatar_1"
-                                             class="avatar-img rounded-circle">
-                                    </span>
-
-                                </span>
-
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right">
-                        <div class="dropdown-header"><strong>Menu for account here</strong></div>
-                        <a class="dropdown-item"
-                           href="#">Menu 1</a>
-                        <a class="dropdown-item"
-                           href="#">Menu 2</a>
-                        <a class="dropdown-item"
-                           href="#">Menu 3</a>
-                        <a class="dropdown-item"
-                           href="#">Menu 4</a>
-                    </div>
-                </div>
-            </div>
 
             <!-- // END Navbar Menu -->
 
@@ -252,7 +217,7 @@
                                     <a class="accordion__toggle"
                                        data-toggle="collapse"
                                        data-parent="#toc-2"
-                                       href="{% url 'chapter' id=c.id role=role %}">
+                                       href="{% url 'chapter' id=c.id  %}">
                                         <span class="flex">See More</span>
                                         {% if c.id in chapter_completes %}
                                             <i class="material-icons text-muted icon--left">check</i>
@@ -264,7 +229,9 @@
                             </ul>
 
                         </div>
+                        {% if role == 'teacher' %}
                         <a href="{% url 'teacher-edit-chapter' id=c.id  %}"><i class="material-icons text-muted icon--left">contract edit</i>Modify</a>
+                        {% endif %}
                         {% endfor %}
                     </div>
                 </div>
@@ -281,7 +248,7 @@
                         <nav class="nav page-nav__menu">
                             {% for c in quizzes %}
                             <a class="nav-link active"
-                               href="{% url 'showquiz' id=c.id role=role %}">{{c.course}}</a>
+                               href="{% url 'showquiz' id=c.id  %}">{{c.course}}</a>
 
                             {% endfor %}
                          </nav>
@@ -304,7 +271,7 @@
                     <div class="row d-block js-mdk-carousel"
                          id="carousel-feedback">
                         <a class="carousel-control-next js-mdk-carousel-control mt-n24pt"
-                           href="{% url 'coursefeedback' id=course.id role=role %}"
+                           href="{% url 'coursefeedback' id=course.id  %}"
                            role="button"
                            data-slide="next">
                                     <span class="carousel-control-icon material-icons"
@@ -365,7 +332,7 @@
 
                         <div class="card card-sm mb-8pt">
                             <div class="card-body d-flex align-items-center">
-                                <a href="{% url 'course'  id=oc.id role=role %}"
+                                <a href="{% url 'course'  id=oc.id  %}"
                                    class="avatar avatar-4by3 mr-12pt">
                                     <img src="{% static 'learningcurveapp/images/paths/Machine-learning-def-.png' %}"
                                          alt="Machine Learning Routing In-Depth"
@@ -437,76 +404,7 @@
 
     <!-- Drawer -->
 
-    <div class="mdk-drawer js-mdk-drawer"
-         id="default-drawer">
-        <div class="mdk-drawer__content">
-            <div class="sidebar sidebar-black-dodger-blue sidebar-left"
-                 data-perfect-scrollbar>
 
-                <!-- Sidebar Content -->
-
-                <div class="d-flex align-items-center navbar-height">
-                    <form action="#"
-                          class="search-form search-form--black mx-16pt pr-0 pl-16pt">
-                        <input type="text"
-                               class="form-control pl-0"
-                               placeholder="Search">
-                        <button class="btn"
-                                type="submit"><i class="material-icons">search</i></button>
-                    </form>
-                </div>
-
-                <a href="/learningcurveapp/student-profile"
-                   class="sidebar-brand ">
-                    <span class="avatar avatar-xl sidebar-brand-icon h-auto">
-
-                                <span class="avatar-title rounded bg-primary"><img
-                                        src="{% static 'learningcurveapp/img.png' %}"
-                                        class="img-fluid"
-                                        alt="logo"/></span>
-
-                            </span>
-
-                    <span>{{ username }}</span>
-                </a>
-
-                <div class="sidebar-heading">Student</div>
-
-                <ul class="sidebar-menu">
-
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button"
-                           href="/learningcurveapp/profile">
-                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">home</span>
-                            <span class="sidebar-menu-text">Home</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button"
-                           href="{% url 'private-courses' role=role %}">
-                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">local_library</span>
-                            <span class="sidebar-menu-text">Courses</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button"
-                           href="{% url 'quizzes' role=role %}">
-                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">dvr</span>
-                            <span class="sidebar-menu-text">Quiz</span>
-                        </a>
-                    </li>
-
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button"
-                           href="/learningcurveapp/logout">
-                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">logout</span>
-                            <span class="sidebar-menu-text">Logout</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
 </div>
 
 

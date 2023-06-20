@@ -273,11 +273,8 @@ def teacher_mycourses(request):
 
 
 
-
+@login_required
 def profile(request):
-    if not request.user.is_authenticated:
-        return redirect('/learningcurveapp/login')
-
     user = request.user
     group=user.groups.first().name
     print(group)
@@ -339,23 +336,13 @@ def signup(request):
     return render(request, 'learningcurveapp/signup.html')
 
 
-
+@login_required
 def logout(request):
-    if not request.user.is_authenticated:
-        return render(request, 'learningcurveapp/login.html')
     auth.logout(request)
     return render(request, 'learningcurveapp/login.html')
 
-
-
-
-
 @login_required
 def teacher_addcourse(request):
-    if not request.user.is_authenticated:
-        return redirect('learningcurveapp/login')
-
-
     if request.method == 'POST':
         form = CourseForm(request.POST)
         if form.is_valid():
@@ -393,7 +380,7 @@ def teacher_addchapter(request,id):
             newchapter.course=course
             newchapter.save()
 
-            url = reverse('course', args=('student',id))
+            url = reverse('course', args=(id,))
             return redirect(url)
 
         else:
@@ -408,13 +395,14 @@ def instructor_edit_quiz(request):
     return render(request, 'learningcurveapp/instructor-edit-quiz.html')
 
 @login_required
-def chapter(request,id,role):
-        chapter=Chapter.objects.get(id=id)
-        chapter_completed=False
-        if(role=='student'):
-            student = Student.objects.get(user=request.user)
-            chapter_completed = ChapterCompletion.objects.filter(chapter=chapter, student=student).exists()
-        return render(request, 'learningcurveapp/chapter.html',context ={'chapter':chapter,'role':role,'chapter_completed':chapter_completed,'id':chapter.course_id})
+def chapter(request,id):
+    role=request.user.groups.first().name
+    chapter=Chapter.objects.get(id=id)
+    chapter_completed=False
+    if(role=='student'):
+        student = Student.objects.get(user=request.user)
+        chapter_completed = ChapterCompletion.objects.filter(chapter=chapter, student=student).exists()
+    return render(request, 'learningcurveapp/chapter.html',context ={'chapter':chapter,'role':role,'chapter_completed':chapter_completed,'id':chapter.course_id})
 
 @login_required
 def edit_account_profile(request):
@@ -445,14 +433,6 @@ def quizzes(request):
     return render(request, 'learningcurveapp/quizzes.html',{'quizz':quizz,'role':role})
 
 
-@login_required
-def quizzes(request,role):
-    if(role=="teacher"):
-        author = Author.objects.get(user=request.user)
-        quizz = Quiz.objects.filter(author=author).select_related()
-    if(role=="student"):
-       quizz = Quiz.objects.all()
-    return render(request, 'learningcurveapp/quizzes.html',{'quizz':quizz,'role':role})
 
 @login_required
 def student_quizzes(request):
@@ -492,7 +472,8 @@ def teacher_addquizz(request):
 
 
 @login_required
-def coursefeedback(request,role,id):
+def coursefeedback(request,id):
+    role=request.user.groups.first().name
     course=Course.objects.get(id=id)
     course_rates = CourseRate.objects.filter(course=course)
     response=False
@@ -519,7 +500,8 @@ def student_courses(request):
 
 
 @login_required
-def private_courses(request,role):
+def private_courses(request):
+    role=request.user.groups.first().name
     courses=Course.objects.select_related('chapter_course').all()
     courses=courses.select_related('course_rate').all()
     courses= courses.annotate(
@@ -611,12 +593,14 @@ def edit_account_profile(request):
 
 
 @login_required
-def showquiz(request,id,role):
+def showquiz(request,id):
+    role=request.user.groups.first().name
     questions=Question.objects.filter(quiz=id).order_by('id').values()
     return render(request, 'learningcurveapp/showquiz.html',{'id':id,'questions':questions,'role':role})
 
 @login_required
-def course(request,role,id):
+def course(request,id):
+    role=request.user.groups.first().name
     review_count = 0
     review_avg = 0
     chapter_completes=None
@@ -650,7 +634,8 @@ def student_chapter_complete(request,id):
     student = Student.objects.get(user=request.user)
     chaptercompletion=ChapterCompletion(chapter=chapter,student=student)
     chaptercompletion.save()
-    url = reverse('course', args=('student',chapter.course.id))
+    url = reverse('course', args=(chapter.course.id,))
+
     return redirect(url)
 
 
@@ -665,7 +650,7 @@ def student_feedback(request,id):
                 feedback.student=student
                 feedback.course=course
                 feedback.save()
-    url = reverse('coursefeedback', args=(id,'student'))
+    url = reverse('coursefeedback', args=(id,))
     return redirect(url)
 
 
@@ -675,7 +660,8 @@ def teacher_edit_chapter(request,id):
         form = ChapterForm(request.POST,request.FILES,instance=Chapter.objects.get(id=id))
         if form.is_valid():
              form.save()
-             url = reverse('course', args=('teacher',Chapter.objects.get(id=id).course_id))
+             #('course/'+str()Chapter.objects.get(id=id).course_id)
+             url = reverse('course', args=(Chapter.objects.get(id=id).course_id,))
              return redirect(url)
 
     return render(request, 'learningcurveapp/teacher-editchapter.html',context ={'id':id,'form': ChapterForm(),'value':'teacher-edit-chapter'})

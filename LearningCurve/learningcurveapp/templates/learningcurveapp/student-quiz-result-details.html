@@ -200,10 +200,10 @@
                         <h3 class="text-white mb-24pt">Your best score: {{best_score_perso}} out of {{total}}</h3>
                         <h3 class="text-white mb-24pt">Best score: {{best_score}} out of {{total}}</h3>
                         <div class="container d-flex flex-row justify-content-between align-items-center">
-                            <a href="{% url 'showquiz' id=id role=role %}"
+                            <a href="{% url 'showquiz' id=id  %}"
                                class="btn btn-outline-white">Restart quiz</a>
                             {% if quiz.course is not null %}
-                            <a href="{% url 'course'  id=quiz.course.id role=role %}"
+                            <a href="{% url 'course'  id=quiz.course.id  %}"
                                class="btn btn-outline-white">Go to course</a>
                             {% endif %}
                             <a href="{% url 'student-profile'  %}"
@@ -275,75 +275,7 @@
 
     <!-- Drawer -->
 
-    <div class="mdk-drawer js-mdk-drawer"
-         id="default-drawer">
-        <div class="mdk-drawer__content">
-            <div class="sidebar sidebar-black-dodger-blue sidebar-left"
-                 data-perfect-scrollbar>
-
-                <!-- Sidebar Content -->
-
-                <div class="d-flex align-items-center navbar-height">
-                    <form action="#"
-                          class="search-form search-form--black mx-16pt pr-0 pl-16pt">
-                        <input type="text"
-                               class="form-control pl-0"
-                               placeholder="Search">
-                        <button class="btn"
-                                type="submit"><i class="material-icons">search</i></button>
-                    </form>
-                </div>
-
-                <a href="#.html"
-                   class="sidebar-brand ">
-                    <span class="avatar avatar-xl sidebar-brand-icon h-auto">
-
-                                <span class="avatar-title rounded bg-primary"><img
-                                        src="{% static 'learningcurveapp/images/avt.png' %}"
-                                        class="img-fluid"
-                                        alt="logo"/></span>
-
-                            </span>
-
-                    <span>{{ username }}</span>
-                </a>
-
-                <div class="sidebar-heading">Student</div>
-
-                <ul class="sidebar-menu">
-
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button"
-                           href="/learningcurveapp/profile">
-                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">home</span>
-                            <span class="sidebar-menu-text">Home</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button"
-                           href="/learningcurveapp/private-courses/student">
-                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">local_library</span>
-                            <span class="sidebar-menu-text">Courses</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button"
-                           href="/learningcurveapp/quizzes/student">
-                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">dvr</span>
-                            <span class="sidebar-menu-text">Quiz</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button"
-                           href="/learningcurveapp/logout">
-                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">logout</span>
-                            <span class="sidebar-menu-text">Logout</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
+    
 </div>
 
 

@@ -85,7 +85,7 @@
             <span class="d-none d-md-flex align-items-center mr-16pt">
 
                         <span class="avatar avatar-sm mr-12pt">
-                           <a href="{% url 'course'  id=chapter.course.id role=role %}">
+                           <a href="{% url 'course'  id=chapter.course.id  %}">
                             <span class="avatar-title rounded navbar-avatar"><i
                                     class="material-icons">keyboard_arrow_left</i></span></a>
                         </span>
@@ -256,7 +256,7 @@
 
                 <span class="avatar avatar-sm mr-12pt">
                     {% if role == 'student' and chapter_completed %}
-                     <a href="{% url 'course'  id=chapter.course.id role=role %}">
+                     <a href="{% url 'course'  id=chapter.course.id  %}">
                             <span class="avatar-title rounded navbar-avatar">
                                 <i>Already Done</i>
                             </span>
