@@ -22,7 +22,7 @@ class CourseForm(forms.ModelForm):
 class ChapterForm(forms.ModelForm):
     class Meta:
         model = Chapter
-        fields = ['title','description','number','content']
+        fields = ['title','description','number','content','content_type','time']
         widgets = {
                             'title':forms.TextInput(attrs={'class':"form-control"}),
                             'description': forms.Textarea(attrs={'blank':'true','class':"form-control",'rows':"3",'placeholder':"Present your course"}),
@@ -386,9 +386,9 @@ def teacher_addchapter(request,id):
         else:
             print(form.errors)
 
-            return render(request, 'learningcurveapp/teacher-editchapter.html',context ={'value':'teacher-addchapter',id':id,'form': ChapterForm(),'value':'teacher-addchapter'})
+            return render(request, 'learningcurveapp/teacher-editchapter.html',context ={'value':'teacher-addchapter','id':id,'form': ChapterForm()})
     else:
-        return render(request, 'learningcurveapp/teacher-editchapter.html',context ={'value':'teacher-addchapter','id':id,'form': ChapterForm(),'value':'teacher-addchapter'})
+        return render(request, 'learningcurveapp/teacher-editchapter.html',context ={'value':'teacher-addchapter','id':id,'form': ChapterForm()})
 
 @login_required
 def instructor_edit_quiz(request):
@@ -630,4 +630,4 @@ def teacher_edit_chapter(request,id):
              url = reverse('course', args=(Chapter.objects.get(id=id).course_id,))
              return redirect(url)
 
-    return render(request, 'learningcurveapp/teacher-editchapter.html',context ={'value':'teacher_edit_chapter',id':id,'form': ChapterForm(),'value':'teacher-edit-chapter'})
+    return render(request, 'learningcurveapp/teacher-editchapter.html',context ={'value':'teacher-edit-chapter','id':id,'form': ChapterForm()})
