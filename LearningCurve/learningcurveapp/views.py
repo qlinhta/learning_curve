@@ -147,6 +147,7 @@ def student_profile(request):
             avancement = "0/" +str(student.course_completions_student.filter(chapter__course=course_to_continue).count())
     return render(request, 'learningcurveapp/student-profile.html',context = {
         'username': request.user.username,
+        'student':Student.objects.get(user=request.user),
         'read_chapters': nombre_chapitre_lus,
         'answered_quiz':quiz_answered,
         'average_grade': average_grade,
@@ -216,6 +217,7 @@ def teacher_profile(request):
 
     return render(request, 'learningcurveapp/teacher-profile.html', context={
         'username': request.user.username,
+        'teacher':Author.objects.get(user=request.user),
         'courses': courses,
         'chapter_counts': chapter_counts,
         'average_rates': average_rates,
@@ -381,12 +383,14 @@ def edit_account_profile(request):
             form=AuthorUpdateForm(request.POST,request.FILES,instance=Author.objects.get(user=request.user))
             if form.is_valid():
                 form.save()
+                return redirect('teacher-profile')
         return render(request, 'learningcurveapp/edit-account-profile.html',context ={'id':id,'form': AuthorUpdateForm()})
     if(group=='student'):
         if (request.method == 'POST'):
             form=StudentUpdateForm(request.POST,request.FILES,instance=Student.objects.get(user=request.user))
             if form.is_valid():
                 form.save()
+                return redirect('student-profile')
         return render(request, 'learningcurveapp/edit-account-profile.html',context ={'id':id,'form': StudentUpdateForm()})
     return render(request, 'learningcurveapp/index.html')
 
