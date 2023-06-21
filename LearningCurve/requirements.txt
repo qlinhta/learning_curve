@@ -1,5 +1,0 @@
-django
-fuzzywuzzy
-pillow
-whitenoise
-gunicorn==20.1.0
