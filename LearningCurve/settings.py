@@ -123,3 +123,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # set the url path from which the media can be retreived
 MEDIA_URL = '/media/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
