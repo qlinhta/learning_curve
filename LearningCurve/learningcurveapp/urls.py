@@ -46,5 +46,5 @@ urlpatterns = [
     path('profile/', views.profile, name='profile')
 
 ]
-if settings.DEBUG:
+if True:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

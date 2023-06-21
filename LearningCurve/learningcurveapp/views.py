@@ -505,9 +505,10 @@ def private_courses(request):
     courses=Course.objects.select_related('chapter_course').all()
     courses=courses.select_related('course_rate').all()
     courses= courses.annotate(
-                                total_chapters=Sum('chapter_course__number', distinct=True),
+                                total_chapters=Count('chapter_course', distinct=True),
                                 total_time=Sum('chapter_course__time', distinct=True),
                                 average_result=Avg('course_rate__result')
+
                             ).values('id','title', 'total_chapters', 'total_time', 'average_result', 'difficulty','topic')
     if request.method == 'POST':
             form = FilterForm(request.POST)
