@@ -1,0 +1,5 @@
+To be able to access the application using Docker:
+
+ - Run in the terminal : $ docker run -it -p 8000:8000 learning_curve
+ - Then go to the url : http://localhost:8000
+ 
