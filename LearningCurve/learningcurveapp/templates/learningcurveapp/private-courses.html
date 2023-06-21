@@ -110,6 +110,11 @@
 
 
             </ul>
+            {% if role == 'teacher' %}
+            <a href="{% url 'teacher-addcourse' %}"
+               class="btn btn-white">Add new course</a>
+
+            {% endif %}
         </div>
 
 

@@ -13,6 +13,8 @@ from django.shortcuts import redirect, reverse
 from django.db.models import Sum, Avg, Max,Count
 from fuzzywuzzy import fuzz
 from django.http import *
+from django.shortcuts import get_object_or_404
+
 
 
 class CourseForm(forms.ModelForm):
@@ -87,17 +89,6 @@ def index(request):
 def courses(request):
     return render(request, 'learningcurveapp/courses.html')
 
-def logincheck(request,role):
-    if not request.user.is_authenticated:
-        render(request, 'learningcurveapp/login.html', context = {
-                'error_message': 'You need to login before acces to this path',
-            } )
-    group=group=user.groups.first().name
-    if(role!=role and role!=None):
-        return HttpResponse('Unauthorized', status=401)
-    if(role!='student' and role!='teacher'):
-        return HttpResponse('Unauthorized', status=401)
-    return group
 
 def login(request):
     if request.user.is_authenticated:
@@ -122,7 +113,11 @@ def login(request):
 
 @login_required
 def student_profile(request):
-    logincheck(request,'student')
+    if not request.user.is_authenticated:
+        return HttpResponse('Unauthorized', status=401)
+    role=request.user.groups.first().name
+    if(role!='student'):
+        return HttpResponse('Unauthorized', status=401)
     current_student=request.user
     student = Student.objects.get(user__username=current_student.username)
     cours_lus = ChapterCompletion.objects.filter(student=student)
@@ -169,7 +164,11 @@ def isCompleted(c, student):
 
 
 def student_quiz_result_details(request,id):
-    logincheck(request,'student')
+    if not request.user.is_authenticated:
+        return HttpResponse('Unauthorized', status=401)
+    role=request.user.groups.first().name
+    if(role!='student'):
+        return HttpResponse('Unauthorized', status=401)
     questions=Question.objects.filter(quiz=id).order_by('id').values()
     if request.method == 'POST':
         i=0
@@ -192,7 +191,11 @@ def student_quiz_result_details(request,id):
 
 
 def teacher_profile(request):
-    logincheck(request,'teacher')
+    if not request.user.is_authenticated:
+        return HttpResponse('Unauthorized', status=401)
+    role=request.user.groups.first().name
+    if(role!='teacher'):
+        return HttpResponse('Unauthorized', status=401)
     current_teacher = request.user
     courses = Course.objects.filter(author__user=current_teacher)
     chapter_counts = {}
@@ -227,7 +230,11 @@ def teacher_profile(request):
 
 @login_required
 def profile(request):
-    logincheck(request,None)
+    if not request.user.is_authenticated:
+        return HttpResponse('Unauthorized', status=401)
+    role=request.user.groups.first().name
+    if(role!='student' and role!='teacher'):
+        return HttpResponse('Unauthorized', status=401)
     user = request.user
     group=user.groups.first().name
     print(group)
@@ -298,7 +305,11 @@ def logout(request):
 
 
 def teacher_addcourse(request):
-    logincheck(request,'teacher')
+    if not request.user.is_authenticated:
+        return HttpResponse('Unauthorized', status=401)
+    role=request.user.groups.first().name
+    if(role!='teacher'):
+        return HttpResponse('Unauthorized', status=401)
     if request.method == 'POST':
         form = CourseForm(request.POST)
         if form.is_valid():
@@ -306,23 +317,29 @@ def teacher_addcourse(request):
             newcourse = form.save(commit=False)
             newcourse.author = author
             newcourse.save()
-            courses=Course.objects.filter(author=author).values()
-            return render(request, 'learningcurveapp/teacher-mycourses.html',{'courses':courses})
+
+
+            url = reverse('private-courses')
+            return redirect(url)
 
         else:
             return render(request, 'learningcurveapp/teacher-addcourse.html',{'form': CourseForm()})
     else:
-        return render(request, 'learningcurveapp/teacher-addcourse.html',{'form': CourseForm()})
         return render(request, 'learningcurveapp/teacher-addcourse.html',{'form': CourseForm()})
 
 
 
 @login_required
 def teacher_addchapter(request,id):
+    if not request.user.is_authenticated:
+        return HttpResponse('Unauthorized', status=401)
+    role=request.user.groups.first().name
+    if(role!='teacher'):
+        return HttpResponse('Unauthorized', status=401)
     if request.method == 'POST':
         form = ChapterForm(request.POST,request.FILES)
         if form.is_valid():
-            course=Course.objects.get(id=id)
+            course=get_object_or_404(Course,id=id)
             newchapter=form.save(commit=False)
             newchapter.course=course
             newchapter.save()
@@ -339,8 +356,12 @@ def teacher_addchapter(request,id):
 
 @login_required
 def chapter(request,id):
+    if not request.user.is_authenticated:
+        return HttpResponse('Unauthorized', status=401)
     role=request.user.groups.first().name
-    chapter=Chapter.objects.get(id=id)
+    if(role!='student' and role!='teacher'):
+        return HttpResponse('Unauthorized', status=401)
+    chapter=get_object_or_404(Chapter,id=id)
     chapter_completed=False
     if(role=='student'):
         student = Student.objects.get(user=request.user)
@@ -349,6 +370,11 @@ def chapter(request,id):
 
 @login_required
 def edit_account_profile(request):
+    if not request.user.is_authenticated:
+        return HttpResponse('Unauthorized', status=401)
+    role=request.user.groups.first().name
+    if(role!='student' and role!='teacher'):
+        return HttpResponse('Unauthorized', status=401)
     group=request.user.groups.first().name
     if(group=='teacher'):
         if (request.method == 'POST'):
@@ -367,7 +393,11 @@ def edit_account_profile(request):
 
 @login_required
 def quizzes(request):
+    if not request.user.is_authenticated:
+        return HttpResponse('Unauthorized', status=401)
     role=request.user.groups.first().name
+    if(role!='student' and role!='teacher'):
+        return HttpResponse('Unauthorized', status=401)
     if(role=="teacher"):
         author = Author.objects.get(user=request.user)
         quizz = Quiz.objects.filter(author=author).select_related()
@@ -380,6 +410,11 @@ def quizzes(request):
 
 @login_required
 def teacher_addquizz(request):
+    if not request.user.is_authenticated:
+        return HttpResponse('Unauthorized', status=401)
+    role=request.user.groups.first().name
+    if(role!='teacher'):
+        return HttpResponse('Unauthorized', status=401)
     if request.method == 'POST':
         form = QuizForm(request.POST)
         if form.is_valid():
@@ -410,8 +445,12 @@ def teacher_addquizz(request):
 
 @login_required
 def coursefeedback(request,id):
+    if not request.user.is_authenticated:
+        return HttpResponse('Unauthorized', status=401)
     role=request.user.groups.first().name
-    course=Course.objects.get(id=id)
+    if(role!='student' and role!='teacher'):
+        return HttpResponse('Unauthorized', status=401)
+    course=get_object_or_404(Course,id=id)
     course_rates = CourseRate.objects.filter(course=course)
     response=False
     if(role=='student'):
@@ -421,23 +460,14 @@ def coursefeedback(request,id):
     return render(request, 'learningcurveapp/coursefeedback.html',{'course_rates':course_rates,'course':course,'role':role,'form':CourseRateForm(),'response':response})
 
 
-def teacher_mycourses(request):
-    if not request.user.is_authenticated:
-        return redirect('learningcurveapp/login')
-    author = Author.objects.get(user=request.user)
-    courses=Course.objects.filter(author=author).values()
-
-    return render(request, 'learningcurveapp/private-courses.html',{'courses':courses})
-
-
-@login_required
-def student_courses(request):
-    courses = Course.objects.all()
-    return render(request, 'learningcurveapp/private-courses.html',{'courses':courses,'role':'role','form':FilterForm()})
-
 
 @login_required
 def private_courses(request):
+    if not request.user.is_authenticated:
+        return HttpResponse('Unauthorized', status=401)
+    role=request.user.groups.first().name
+    if(role!='student' and role!='teacher'):
+        return HttpResponse('Unauthorized', status=401)
     role=request.user.groups.first().name
     courses=Course.objects.select_related('chapter_course').all()
     courses=courses.select_related('course_rate').all()
@@ -478,39 +508,34 @@ def private_courses(request):
 
 
 
-@login_required
-def edit_account_profile(request):
-    group=request.user.groups.first().name
-    if(group=='teacher'):
-        if (request.method == 'POST'):
-            form=AuthorUpdateForm(request.POST,request.FILES,instance=Author.objects.get(user=request.user))
-            if form.is_valid():
-                form.save()
-        return render(request, 'learningcurveapp/edit-account-profile.html',context ={'id':id,'form': AuthorUpdateForm()})
-    if(group=='student'):
-        if (request.method == 'POST'):
-            form=StudentUpdateForm(request.POST,request.FILES,instance=Student.objects.get(user=request.user))
-            if form.is_valid():
-                form.save()
-        return render(request, 'learningcurveapp/edit-account-profile.html',context ={'id':id,'form': StudentUpdateForm()})
-    return render(request, 'learningcurveapp/index.html')
 
 
 @login_required
 def showquiz(request,id):
+    if not request.user.is_authenticated:
+        return HttpResponse('Unauthorized', status=401)
+    role=request.user.groups.first().name
+    if(role!='student' and role!='teacher'):
+        return HttpResponse('Unauthorized', status=401)
     role=request.user.groups.first().name
     questions=Question.objects.filter(quiz=id).order_by('id').values()
     return render(request, 'learningcurveapp/showquiz.html',{'id':id,'questions':questions,'role':role})
 
 @login_required
 def course(request,id):
+    if not request.user.is_authenticated:
+        return HttpResponse('Unauthorized', status=401)
+    role=request.user.groups.first().name
+    if(role!='student' and role!='teacher'):
+        return HttpResponse('Unauthorized', status=401)
     role=request.user.groups.first().name
     review_count = 0
     review_avg = 0
     chapter_completes=None
     progression=0
     time=0
-    course=Course.objects.get(id=id)
+    print("-------------",id)
+    course=get_object_or_404(Course,id=id)
     chapters=Chapter.objects.filter(course=id).order_by('number').values()
     others_course=Course.objects.filter(author=course.author)[:3]
     course_rates = CourseRate.objects.filter(course=course)
@@ -534,7 +559,12 @@ def course(request,id):
 
 @login_required
 def student_chapter_complete(request,id):
-    chapter=Chapter.objects.get(id=id)
+    if not request.user.is_authenticated:
+        return HttpResponse('Unauthorized', status=401)
+    role=request.user.groups.first().name
+    if(role!='student'):
+        return HttpResponse('Unauthorized', status=401)
+    chapter=get_object_or_404(Chapter,id=id)
     student = Student.objects.get(user=request.user)
     chaptercompletion=ChapterCompletion(chapter=chapter,student=student)
     chaptercompletion.save()
@@ -545,11 +575,16 @@ def student_chapter_complete(request,id):
 
 @login_required
 def student_feedback(request,id):
+    if not request.user.is_authenticated:
+        return HttpResponse('Unauthorized', status=401)
+    role=request.user.groups.first().name
+    if(role!='student'):
+        return HttpResponse('Unauthorized', status=401)
     if request.method == 'POST':
             form = CourseRateForm(request.POST)
             if form.is_valid():
                 student = Student.objects.get(user=request.user)
-                course= Course.objects.get(id=id)
+                course= get_object_or_404(Course,id=id)
                 feedback = form.save(commit=False)
                 feedback.student=student
                 feedback.course=course
@@ -560,12 +595,18 @@ def student_feedback(request,id):
 
 @login_required
 def teacher_edit_chapter(request,id):
+    if not request.user.is_authenticated:
+        return HttpResponse('Unauthorized', status=401)
+    role=request.user.groups.first().name
+    if(role!='teacher'):
+        return HttpResponse('Unauthorized', status=401)
     if request.method == 'POST':
-        form = ChapterForm(request.POST,request.FILES,instance=Chapter.objects.get(id=id))
+        instance=get_object_or_404(Chapter,id=id)
+        form = ChapterForm(request.POST,request.FILES,instance)
         if form.is_valid():
              form.save()
              #('course/'+str()Chapter.objects.get(id=id).course_id)
-             url = reverse('course', args=(Chapter.objects.get(id=id).course_id,))
+             url = reverse('course', args=(instance.course_id,))
              return redirect(url)
 
     return render(request, 'learningcurveapp/teacher-editchapter.html',context ={'value':'teacher-edit-chapter','id':id,'form': ChapterForm()})

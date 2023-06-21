@@ -26,10 +26,8 @@ urlpatterns = [
     path('quizzes/', views.quizzes, name='quizzes'),
     path('showquiz/<int:id>/', views.showquiz, name='showquiz'),
 
-    path('instructor-edit-quiz/', views.instructor_edit_quiz, name='instructor-edit-quiz'),
     path('edit-account-profile', views.edit_account_profile, name='edit-account-profile'),
 
-    path('private-courses/', views.private_courses, name='private-courses'),
     path('private-courses/', views.private_courses, name='private-courses'),
     path('course/<int:id>', views.course, name='course'),
 
