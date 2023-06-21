@@ -1,4 +1,4 @@
 django
 fuzzywuzzy
 pillow
-gunicorn
+gunicorn==20.1.0
