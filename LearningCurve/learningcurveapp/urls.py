@@ -7,10 +7,8 @@ urlpatterns = [
 
 
 
-    path('student-path/', views.student_path, name='student-path'),
     path('student-profile/', views.student_profile, name='student-profile'),
     path('student-quiz-result-details/<int:id>/', views.student_quiz_result_details, name='student-quiz-result-details'),
-    path('student-quiz-results/', views.student_quiz_results, name='student-quiz-results'),
     path('student-feedback/<int:id>/', views.student_feedback, name='student-feedback'),
     path('student-chapter-complete/<int:id>/', views.student_chapter_complete, name='student-chapter-complete'),
 

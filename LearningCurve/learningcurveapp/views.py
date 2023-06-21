@@ -12,6 +12,7 @@ from .models import *
 from django.shortcuts import redirect, reverse
 from django.db.models import Sum, Avg, Max,Count
 from fuzzywuzzy import fuzz
+from django.http import *
 
 
 class CourseForm(forms.ModelForm):
@@ -86,7 +87,17 @@ def index(request):
 def courses(request):
     return render(request, 'learningcurveapp/courses.html')
 
-
+def logincheck(request,role):
+    if not request.user.is_authenticated:
+        render(request, 'learningcurveapp/login.html', context = {
+                'error_message': 'You need to login before acces to this path',
+            } )
+    group=group=user.groups.first().name
+    if(role!=role and role!=None):
+        return HttpResponse('Unauthorized', status=401)
+    if(role!='student' and role!='teacher'):
+        return HttpResponse('Unauthorized', status=401)
+    return group
 
 def login(request):
     if request.user.is_authenticated:
@@ -108,16 +119,10 @@ def login(request):
 
 
 
-def student_path(request):
-    if not request.user.is_authenticated:
-        return redirect('/learningcurveapp/login')
-    return render(request, 'learningcurveapp/student-path.html',context = {
-        'username': request.user.username,
-    })
 
 @login_required
 def student_profile(request):
-
+    logincheck(request,'student')
     current_student=request.user
     student = Student.objects.get(user__username=current_student.username)
     cours_lus = ChapterCompletion.objects.filter(student=student)
@@ -164,8 +169,7 @@ def isCompleted(c, student):
 
 
 def student_quiz_result_details(request,id):
-    if not request.user.is_authenticated:
-        return redirect('/learningcurveapp/login')
+    logincheck(request,'student')
     questions=Question.objects.filter(quiz=id).order_by('id').values()
     if request.method == 'POST':
         i=0
@@ -187,51 +191,15 @@ def student_quiz_result_details(request,id):
      'result':result,'total':len(answer_list),'best_score_perso':best_score_perso,'best_score':best_score})
 
 
-def student_quiz_results(request):
-    if not request.user.is_authenticated:
-        return redirect('/learningcurveapp/login')
-    return render(request, 'learningcurveapp/student-quiz-results.html',context = {
-        'username': request.user.username,
-    })
-
-def student_take_course(request):
-    if not request.user.is_authenticated:
-        return redirect('/learningcurveapp/login')
-    return render(request, 'learningcurveapp/student-take-course.html',context = {
-        'username': request.user.username,
-    })
-
-def student_take_lesson(request):
-    if not request.user.is_authenticated:
-        return redirect('/learningcurveapp/login')
-    return render(request, 'learningcurveapp/student-take-lesson.html',context = {
-        'username': request.user.username,
-    })
-def student_take_quiz(request):
-    if not request.user.is_authenticated:
-        return redirect('/learningcurveapp/login')
-    return render(request, 'learningcurveapp/student-take-quiz.html',context = {
-        'username': request.user.username,
-    })
-
-
-
-
-
-
-
-
 def teacher_profile(request):
-    if not request.user.is_authenticated:
-        return redirect('learningcurveapp/login')
-
+    logincheck(request,'teacher')
     current_teacher = request.user
     courses = Course.objects.filter(author__user=current_teacher)
     chapter_counts = {}
     average_rates = {}
 
     quizzes = 0
-    answered_quizzes = 0 
+    answered_quizzes = 0
     average_scores_quizz = overall_average_score = CourseRate.objects.filter(course__in=courses).aggregate(Avg('result'))
     for course in courses:
         chapter_count = Chapter.objects.filter(course=course).count()
@@ -241,7 +209,7 @@ def teacher_profile(request):
 
         quizzes = quizzes+ Quiz.objects.filter(course=course).count()
         answered_quizzes += StudentQuiz.objects.filter(quiz__course=course, student__user=current_teacher).count()
-    
+
 
     return render(request, 'learningcurveapp/teacher-profile.html', context={
         'username': request.user.username,
@@ -255,26 +223,11 @@ def teacher_profile(request):
 
 
 
-def teacher_addcourses(request):
-    if not request.user.is_authenticated:
-        return redirect('/learningcurveapp/login')
-    return render(request, 'learningcurveapp/teacher-addcourses.html',context = {
-        'username': request.user.username,
-    })
-
-def teacher_mycourses(request):
-    if not request.user.is_authenticated:
-        return redirect('/learningcurveapp/login')
-    return render(request, 'learningcurveapp/personal_courses.html',context = {
-        'username': request.user.username,
-    })
-
-
-
 
 
 @login_required
 def profile(request):
+    logincheck(request,None)
     user = request.user
     group=user.groups.first().name
     print(group)
@@ -283,7 +236,7 @@ def profile(request):
     if group=='student' :
         return redirect('/learningcurveapp/student-profile')
     else:
-        return redirect('/learningcurveapp/teacher-profile')
+        return redirect('/learningcurveapp/index')
 
 
 
@@ -336,13 +289,16 @@ def signup(request):
     return render(request, 'learningcurveapp/signup.html')
 
 
-@login_required
+
 def logout(request):
+    if not request.user.is_authenticated:
+            return redirect('/learningcurveapp/index')
     auth.logout(request)
     return render(request, 'learningcurveapp/login.html')
 
-@login_required
+
 def teacher_addcourse(request):
+    logincheck(request,'teacher')
     if request.method == 'POST':
         form = CourseForm(request.POST)
         if form.is_valid():
@@ -357,17 +313,8 @@ def teacher_addcourse(request):
             return render(request, 'learningcurveapp/teacher-addcourse.html',{'form': CourseForm()})
     else:
         return render(request, 'learningcurveapp/teacher-addcourse.html',{'form': CourseForm()})
+        return render(request, 'learningcurveapp/teacher-addcourse.html',{'form': CourseForm()})
 
-
-def teacher_course(request,id):
-    if not request.user.is_authenticated:
-        return redirect('learningcurveapp/login')
-    author = Author.objects.get(user=request.user)
-    course=Course.objects.get(id=id)
-    chapters=Chapter.objects.filter(course=id).order_by('number').values()
-
-
-    return render(request, 'learningcurveapp/course.html',{'teacher':True,'course':course,'chapters':chapters,'id':id})
 
 
 @login_required
@@ -389,10 +336,6 @@ def teacher_addchapter(request,id):
             return render(request, 'learningcurveapp/teacher-editchapter.html',context ={'value':'teacher-addchapter','id':id,'form': ChapterForm()})
     else:
         return render(request, 'learningcurveapp/teacher-editchapter.html',context ={'value':'teacher-addchapter','id':id,'form': ChapterForm()})
-
-@login_required
-def instructor_edit_quiz(request):
-    return render(request, 'learningcurveapp/instructor-edit-quiz.html')
 
 @login_required
 def chapter(request,id):
@@ -432,12 +375,6 @@ def quizzes(request):
        quizz = Quiz.objects.all()
     return render(request, 'learningcurveapp/quizzes.html',{'quizz':quizz,'role':role})
 
-
-
-@login_required
-def student_quizzes(request):
-        quizz = Quiz.objects.all()
-        return render(request, 'learningcurveapp/quizzes.html',{'quizz':quizz,'role':"student"})
 
 
 
