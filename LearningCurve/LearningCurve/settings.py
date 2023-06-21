@@ -30,7 +30,7 @@ SECRET_KEY = 'django-insecure--ykyvv5-mj@_m8ugl=var4*&0%g%!+8=lomu2$9&*he68h4nl_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['learningcurvepsl.azurewebsites.net']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
