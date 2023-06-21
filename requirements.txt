@@ -1,3 +1,5 @@
 django~=3.2.18
 fuzzywuzzy~=0.18.0
 whitenoise
+uwsgi==2.0.19.1
+gunicorn
