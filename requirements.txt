@@ -2,3 +2,4 @@ django
 fuzzywuzzy
 pillow
 gunicorn==20.1.0
+whitenoise
