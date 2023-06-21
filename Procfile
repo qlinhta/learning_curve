@@ -1,1 +1,1 @@
-web: gunicorn learning_curve.wsgi --log-file -
+web: gunicorn learningcurveapp.wsgi --log-file -
