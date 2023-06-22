@@ -4,6 +4,7 @@
       class="dark-mode">
 
 <head>
+    {% load static %}
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible"
           content="IE=edge">
@@ -39,17 +40,17 @@
 
     <!-- Preloader -->
     <link type="text/css"
-          href="../../static/learningcurveapp/css/preloader.css"
+          href="{% static 'learningcurveapp/css/preloader.css' %}"
           rel="stylesheet">
 
     <!-- App CSS -->
     <link type="text/css"
-          href="../../static/learningcurveapp/css/app.css"
+          href="{% static 'learningcurveapp/css/app.css' %}"
           rel="stylesheet">
 
     <!-- Dark Mode CSS -->
     <link type="text/css"
-          href="../../static/learningcurveapp/css/dark.css"
+          href="{% static 'learningcurveapp/css/dark.css' %}"
           rel="stylesheet">
 </head>
 
@@ -78,7 +79,7 @@
                        class="navbar-brand mr-16pt d-lg-none">
                         <span class="avatar avatar-sm navbar-brand-icon mr-0 mr-lg-8pt">
 
-                            <span class="avatar-title rounded bg-primary"><img src="../../static/learningcurveapp/images/illustration/student/128/white.svg"
+                            <span class="avatar-title rounded bg-primary"><img src="{% static 'learningcurveapp/images/illustration/student/128/white.svg' %}"
                                      alt="logo"
                                      class="img-fluid" /></span>
 
@@ -89,11 +90,11 @@
 
                     <ul class="nav navbar-nav d-none d-sm-flex flex justify-content-start ml-8pt">
                         <li class="nav-item">
-                            <a href="/learningcurveapp/index"
+                            <a href="{% url 'index'  %}"
                                class="nav-link">Home</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a href="/learningcurveapp/courses"
+                            <a href="{% url 'courses'  %}"
                                class="nav-link dropdown-toggle"
                                data-toggle="dropdown"
                                data-caret="false">Courses</a>
@@ -204,7 +205,7 @@
 
                     <ul class="nav navbar-nav ml-auto mr-0">
                         <li class="nav-item">
-                            <a href="/learningcurveapp/login"
+                            <a href="{% url 'login'  %}"
                                class="nav-link"
                                data-toggle="tooltip"
                                data-title="Login"
@@ -212,7 +213,7 @@
                                data-boundary="window"><i class="material-icons">lock_open</i></a>
                         </li>
                         <li class="nav-item">
-                            <a href="/learningcurveapp/signup"
+                            <a href="{% url 'signup'  %}"
                                class="btn btn-outline-white">Get Started</a>
                         </li>
                     </ul>
@@ -271,7 +272,7 @@
                                     <a href="student-course.html"
                                        class="js-image"
                                        data-position="">
-                                        <img src="../../static/learningcurveapp/images/paths/mailchimp_430x168.png"
+                                        <img src="{% static 'learningcurveapp/images/paths/mailchimp_430x168.png' %}"
                                              alt="course">
                                         <span class="overlay__content align-items-start justify-content-start">
                                             <span class="overlay__action card-body d-flex align-items-center">
@@ -312,7 +313,7 @@
                                 <div class="popoverContainer d-none">
                                     <div class="media">
                                         <div class="media-left mr-12pt">
-                                            <img src="../../static/learningcurveapp/images/paths/mailchimp_40x40@2x.png"
+                                            <img src="{% static 'learningcurveapp/images/paths/mailchimp_430x168.png' %}"
                                                  width="40"
                                                  height="40"
                                                  alt="ML"
@@ -387,7 +388,7 @@
                                     <a href="student-course.html"
                                        class="js-image"
                                        data-position="">
-                                        <img src="../../static/learningcurveapp/images/paths/xd_430x168.png"
+                                        <img src="{% static 'learningcurveapp/images/paths/xd_430x168.png' %}"
                                              alt="course">
                                         <span class="overlay__content align-items-start justify-content-start">
                                             <span class="overlay__action card-body d-flex align-items-center">
@@ -428,7 +429,7 @@
                                 <div class="popoverContainer d-none">
                                     <div class="media">
                                         <div class="media-left mr-12pt">
-                                            <img src="../../static/learningcurveapp/images/paths/xd_40x40@2x.png"
+                                            <img src="{% static 'learningcurveapp/images/paths/xd_40x40@2x.png' %}"
                                                  width="40"
                                                  height="40"
                                                  alt="ML"
@@ -503,7 +504,7 @@
                                     <a href="student-course.html"
                                        class="js-image"
                                        data-position="">
-                                        <img src="../../static/learningcurveapp/images/paths/invision_430x168.png"
+                                        <img src="{% static 'learningcurveapp/images/paths/invision_430x168.png' %}"
                                              alt="course">
                                         <span class="overlay__content align-items-start justify-content-start">
                                             <span class="overlay__action card-body d-flex align-items-center">
@@ -544,7 +545,7 @@
                                 <div class="popoverContainer d-none">
                                     <div class="media">
                                         <div class="media-left mr-12pt">
-                                            <img src="../../static/learningcurveapp/images/paths/invision_40x40@2x.png"
+                                            <img src="{% static 'learningcurveapp/images/paths/invision_40x40@2x.png' %}"
                                                  width="40"
                                                  height="40"
                                                  alt="ML"
@@ -619,7 +620,7 @@
                                     <a href="student-course.html"
                                        class="js-image"
                                        data-position="">
-                                        <img src="../../static/learningcurveapp/images/paths/craft_430x168.png"
+                                        <img src="{% static 'learningcurveapp/images/paths/craft_430x168.png' %}"
                                              alt="course">
                                         <span class="overlay__content align-items-start justify-content-start">
                                             <span class="overlay__action card-body d-flex align-items-center">
@@ -660,7 +661,7 @@
                                 <div class="popoverContainer d-none">
                                     <div class="media">
                                         <div class="media-left mr-12pt">
-                                            <img src="../../static/learningcurveapp/images/paths/craft_40x40@2x.png"
+                                            <img src="{% static 'learningcurveapp/images/paths/craft_40x40@2x.png' %}"
                                                  width="40"
                                                  height="40"
                                                  alt="ML"
@@ -782,7 +783,7 @@
                                        class="card-img-top js-image"
                                        data-position=""
                                        data-height="140">
-                                        <img src="../../static/learningcurveapp/images/paths/ML_430x168.png"
+                                        <img src="{% static 'learningcurveapp/images/paths/ML_430x168.png' %}"
                                              alt="course">
                                         <span class="overlay__content">
                                             <span class="overlay__action d-flex flex-column text-center">
@@ -833,7 +834,7 @@
                                 <div class="popoverContainer d-none">
                                     <div class="media">
                                         <div class="media-left mr-12pt">
-                                            <img src="../../static/learningcurveapp/images/paths/ML_40x40@2x.png"
+                                            <img src="{% static 'learningcurveapp/images/paths/ML_40x40@2x.png' %}"
                                                  width="40"
                                                  height="40"
                                                  alt="ML"
@@ -908,7 +909,7 @@
                                        class="card-img-top js-image"
                                        data-position=""
                                        data-height="140">
-                                        <img src="../../static/learningcurveapp/images/paths/swift_430x168.png"
+                                        <img src="{% static 'learningcurveapp/images/paths/swift_430x168.png' %}"
                                              alt="course">
                                         <span class="overlay__content">
                                             <span class="overlay__action d-flex flex-column text-center">
@@ -959,7 +960,7 @@
                                 <div class="popoverContainer d-none">
                                     <div class="media">
                                         <div class="media-left mr-12pt">
-                                            <img src="../../static/learningcurveapp/images/paths/swift_40x40@2x.png"
+                                            <img src="{% static 'learningcurveapp/images/paths/swift_40x40@2x.png' %}"
                                                  width="40"
                                                  height="40"
                                                  alt="ML"
@@ -1034,7 +1035,7 @@
                                        class="card-img-top js-image"
                                        data-position=""
                                        data-height="140">
-                                        <img src="../../static/learningcurveapp/images/paths/wordpress_430x168.png"
+                                        <img src="{% static 'learningcurveapp/images/paths/wordpress_430x168.png' %}"
                                              alt="course">
                                         <span class="overlay__content">
                                             <span class="overlay__action d-flex flex-column text-center">
@@ -1085,7 +1086,7 @@
                                 <div class="popoverContainer d-none">
                                     <div class="media">
                                         <div class="media-left mr-12pt">
-                                            <img src="../../static/learningcurveapp/images/paths/wordpress_40x40@2x.png"
+                                            <img src="{% static 'learningcurveapp/images/paths/wordpress_40x40@2x.png' %}"
                                                  width="40"
                                                  height="40"
                                                  alt="ML"
@@ -1160,7 +1161,7 @@
                                        class="card-img-top js-image"
                                        data-position="left"
                                        data-height="140">
-                                        <img src="../../static/learningcurveapp/images/paths/react_430x168.png"
+                                        <img src="{% static 'learningcurveapp/images/paths/react_430x168.png' %}"
                                              alt="course">
                                         <span class="overlay__content">
                                             <span class="overlay__action d-flex flex-column text-center">
@@ -1211,7 +1212,7 @@
                                 <div class="popoverContainer d-none">
                                     <div class="media">
                                         <div class="media-left mr-12pt">
-                                            <img src="../../static/learningcurveapp/images/paths/react_40x40@2x.png"
+                                            <img src="{% static 'learningcurveapp/images/paths/react_40x40@2x.png' %}"
                                                  width="40"
                                                  height="40"
                                                  alt="ML"
@@ -1384,7 +1385,7 @@
                                 <div class="popoverContainer d-none">
                                     <div class="media">
                                         <div class="media-left mr-12pt">
-                                            <img src="../../static/learningcurveapp/images/paths/sketch_40x40@2x.png"
+                                            <img src="{% static 'learningcurveapp/images/paths/sketch_40x40@2x.png' %}"
                                                  width="40"
                                                  height="40"
                                                  alt="ML"
@@ -1459,7 +1460,7 @@
                                        class="card-img-top js-image"
                                        data-position=""
                                        data-height="140">
-                                        <img src="../../static/learningcurveapp/images/paths/flinto_430x168.png"
+                                        <img src="{% static 'learningcurveapp/images/paths/flinto_430x168.png' %}"
                                              alt="course">
                                         <span class="overlay__content">
                                             <span class="overlay__action d-flex flex-column text-center">
@@ -1510,7 +1511,7 @@
                                 <div class="popoverContainer d-none">
                                     <div class="media">
                                         <div class="media-left mr-12pt">
-                                            <img src="../../static/learningcurveapp/images/paths/flinto_40x40@2x.png"
+                                            <img src="{% static 'learningcurveapp/images/paths/flinto_40x40@2x.png' %}"
                                                  width="40"
                                                  height="40"
                                                  alt="ML"
@@ -1585,7 +1586,7 @@
                                        class="card-img-top js-image"
                                        data-position=""
                                        data-height="140">
-                                        <img src="../../static/learningcurveapp/images/paths/photoshop_430x168.png"
+                                        <img src="{% static 'learningcurveapp/images/paths/photoshop_430x168.png' %}"
                                              alt="course">
                                         <span class="overlay__content">
                                             <span class="overlay__action d-flex flex-column text-center">
@@ -1636,7 +1637,7 @@
                                 <div class="popoverContainer d-none">
                                     <div class="media">
                                         <div class="media-left mr-12pt">
-                                            <img src="../../static/learningcurveapp/images/paths/photoshop_40x40@2x.png"
+                                            <img src="{% static 'learningcurveapp/images/paths/photoshop_40x40@2x.png' %}"
                                                  width="40"
                                                  height="40"
                                                  alt="ML"
@@ -1711,7 +1712,7 @@
                                        class="card-img-top js-image"
                                        data-position=""
                                        data-height="140">
-                                        <img src="../../static/learningcurveapp/images/paths/figma_430x168.png"
+                                        <img src="{% static 'learningcurveapp/images/paths/figma_430x168.png' %}"
                                              alt="course">
                                         <span class="overlay__content">
                                             <span class="overlay__action d-flex flex-column text-center">
@@ -1762,7 +1763,7 @@
                                 <div class="popoverContainer d-none">
                                     <div class="media">
                                         <div class="media-left mr-12pt">
-                                            <img src="../../static/learningcurveapp/images/paths/figma_40x40@2x.png"
+                                            <img src="{% static 'learningcurveapp/images/paths/figma_40x40@2x.png' %}"
                                                  width="40"
                                                  height="40"
                                                  alt="ML"
@@ -1875,7 +1876,7 @@
                     <div class="container page__container page-section d-flex flex-column">
                         <p class="text-70 brand mb-24pt">
                             <img class="brand-icon"
-                                 src="../../static/learningcurveapp/images/Logo.svg"
+                                 src="{% static 'learningcurveapp/images/Logo.svg' %}"
                                  width="300"
                         </p>
                         <p class="mb-8pt d-flex">
@@ -1894,26 +1895,26 @@
 
 
         <!-- jQuery -->
-        <script src="../../static/learningcurveapp/vendor/jquery.min.js"></script>
+        <script src="{% static 'learningcurveapp/vendor/jquery.min.js' %}"></script>
 
         <!-- Bootstrap -->
-        <script src="../../static/learningcurveapp/vendor/popper.min.js"></script>
-        <script src="../../static/learningcurveapp/vendor/bootstrap.min.js"></script>
+        <script src="{% static 'learningcurveapp/vendor/popper.min.js' %}"></script>
+        <script src="{% static 'learningcurveapp/vendor/bootstrap.min.js' %}"></script>
 
         <!-- Perfect Scrollbar -->
-        <script src="../../static/learningcurveapp/vendor/perfect-scrollbar.min.js"></script>
+        <script src="{% static 'learningcurveapp/vendor/perfect-scrollbar.min.js' %}"></script>
 
         <!-- DOM Factory -->
-        <script src="../../static/learningcurveapp/vendor/dom-factory.js"></script>
+        <script src="{% static 'learningcurveapp/vendor/dom-factory.js' %}"></script>
 
         <!-- MDK -->
-        <script src="../../static/learningcurveapp/vendor/material-design-kit.js"></script>
+        <script src="{% static 'learningcurveapp/vendor/material-design-kit.js' %}"></script>
 
         <!-- App JS -->
-        <script src="../../static/learningcurveapp/js/app.js"></script>
+        <script src="{% static 'learningcurveapp/js/app.js' %}"></script>
 
         <!-- Preloader -->
-        <script src="../../static/learningcurveapp/js/preloader.js"></script>
+        <script src="{% static 'learningcurveapp/js/preloader.js' %}"></script>
 
     </body>
 

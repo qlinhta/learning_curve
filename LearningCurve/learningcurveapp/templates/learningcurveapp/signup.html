@@ -84,7 +84,7 @@
 
             <ul class="nav navbar-nav d-none d-sm-flex flex justify-content-start ml-8pt">
                 <li class="nav-item ">
-                    <a href="/learningcurveapp/index"
+                    <a href="{% url 'index'  %}"
                        class="nav-link">Home</a>
                 </li>
 
@@ -170,7 +170,7 @@
 
             <ul class="nav navbar-nav ml-auto mr-0">
                 <li class="nav-item">
-                    <a href="/learningcurveapp/login"
+                    <a href="{% url 'login'  %}"
                        class="nav-link"
                        data-toggle="tooltip"
                        data-title="Login"
@@ -178,7 +178,7 @@
                        data-boundary="window"><i class="material-icons">lock_open</i></a>
                 </li>
                 <li class="nav-item">
-                    <a href="/learningcurveapp/signup"
+                    <a href="{% url 'signup'  %}"
                        class="btn btn-outline-white">Get Started</a>
                 </li>
             </ul>

@@ -164,7 +164,7 @@
                 <!-- // END Notifications dropdown -->
 
                 <div class="nav-item dropdown">
-                    <a href="/learningcurveapp/edit-account-profile"
+                    <a href="{% url 'edit-account-profile'  %}"
                        class="nav-link d-flex align-items-center dropdown-toggle"
                        data-toggle="dropdown"
                        data-caret="false">
@@ -246,7 +246,7 @@
         <div class=" border-top-2 mt-auto">
             <div class="container page__container page-section d-flex flex-column">
                 <p class="text-70 brand mb-24pt">
-                    <a href="/learningcurveapp/aboutus"
+                    <a href="{% url 'aboutus'  %}"
                        class="text-70 text-underline small">About us</a>
                     <img class="brand-icon"
                          src="{% static 'learningcurveapp/images/Logo.svg' %}"

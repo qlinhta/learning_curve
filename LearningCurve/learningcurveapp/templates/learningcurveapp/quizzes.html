@@ -87,7 +87,7 @@
 
             <ul class="nav navbar-nav d-none d-sm-flex flex justify-content-start ml-8pt">
                 <li class="nav-item">
-                    <a href="/learningcurveapp/profile"
+                    <a href="{% url 'profile'  %}"
                        class="nav-link">Home</a>
                 </li>
                 <li class="nav-item dropdown">
@@ -104,7 +104,7 @@
 
                 </li>
                 <li class="nav-item">
-                    <a href="/learningcurveapp/logout"
+                    <a href="{% url 'logout'  %}"
                        class="nav-link">Logout</a>
                 </li>
 
@@ -120,7 +120,7 @@
 
                     <div class="col-md-6">
                         <h4>New Quizz</h4>
-                        <a href="/learningcurveapp/teacher-addquizz"><p>Please click here to add new quizz</p></a>
+                        <a href="{% url 'teacher-addquizz'  %}"><p>Please click here to add new quizz</p></a>
 
                     </div>
                 </div>
@@ -182,7 +182,7 @@
         <div class=" border-top-2 mt-auto">
             <div class="container page__container page-section d-flex flex-column">
                 <p class="text-70 brand mb-24pt">
-                    <a href="/learningcurveapp/aboutus"
+                    <a href="{% url 'aboutus'  %}"
                        class="text-70 text-underline small">About us</a>
                     <img class="brand-icon"
                          src="{% static 'learningcurveapp/images/Logo.svg' %}"
