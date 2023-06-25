@@ -126,6 +126,9 @@ def student_profile(request):
     if quiz_answered == 0:
         average_grade = 0
         max_grade = 0
+        max_course = ""
+        course_to_continue = Course.objects.get(id=1)
+        avancement = "0/" +str(student.course_completions_student.filter(chapter__course=course_to_continue).count())
     else:
         average  = StudentQuiz.objects.filter(student = student).aggregate(Avg('points'))['points__avg']
         average_grade = round(average, 2)
